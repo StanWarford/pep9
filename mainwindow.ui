@@ -1,0 +1,917 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindowClass</class>
+ <widget class="QMainWindow" name="MainWindowClass">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1044</width>
+    <height>747</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>0</width>
+    <height>0</height>
+   </size>
+  </property>
+  <property name="mouseTracking">
+   <bool>false</bool>
+  </property>
+  <property name="windowTitle">
+   <string>Pep/8</string>
+  </property>
+  <property name="animated">
+   <bool>true</bool>
+  </property>
+  <property name="documentMode">
+   <bool>true</bool>
+  </property>
+  <property name="tabShape">
+   <enum>QTabWidget::Rounded</enum>
+  </property>
+  <property name="dockNestingEnabled">
+   <bool>false</bool>
+  </property>
+  <property name="dockOptions">
+   <set>QMainWindow::AnimatedDocks|QMainWindow::VerticalTabs</set>
+  </property>
+  <property name="unifiedTitleAndToolBarOnMac">
+   <bool>true</bool>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout_3">
+    <property name="leftMargin">
+     <number>4</number>
+    </property>
+    <property name="topMargin">
+     <number>6</number>
+    </property>
+    <property name="rightMargin">
+     <number>4</number>
+    </property>
+    <property name="bottomMargin">
+     <number>6</number>
+    </property>
+    <item>
+     <widget class="QSplitter" name="horizontalSplitter">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <widget class="QTabWidget" name="pepCodeTraceTab">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="currentIndex">
+        <number>0</number>
+       </property>
+       <widget class="QWidget" name="pepCodeTab">
+        <attribute name="title">
+         <string>Code</string>
+        </attribute>
+        <layout class="QVBoxLayout" name="verticalLayout">
+         <property name="margin">
+          <number>0</number>
+         </property>
+         <item>
+          <widget class="QSplitter" name="codeSplitter">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <widget class="QWidget" name="SourceCodeWidgetPane" native="true"/>
+           <widget class="QWidget" name="ObjectCodeWidgetPane" native="true"/>
+           <widget class="QWidget" name="AssemblerListingWidgetPane" native="true"/>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="pepTraceTab">
+        <attribute name="title">
+         <string>Trace</string>
+        </attribute>
+        <layout class="QVBoxLayout" name="verticalLayout_2">
+         <property name="margin">
+          <number>0</number>
+         </property>
+         <item>
+          <widget class="QSplitter" name="traceSplitter">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <widget class="QWidget" name="ListingTraceWidgetPane" native="true">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+           </widget>
+           <widget class="QWidget" name="MemoryTraceWidgetPane" native="true"/>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+      <widget class="QSplitter" name="middleSplitter">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="opaqueResize">
+        <bool>true</bool>
+       </property>
+       <property name="handleWidth">
+        <number>7</number>
+       </property>
+       <widget class="QWidget" name="CpuWidgetPane" native="true"/>
+       <widget class="QTabWidget" name="pepInputOutputTab">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="tabShape">
+         <enum>QTabWidget::Rounded</enum>
+        </property>
+        <property name="currentIndex">
+         <number>0</number>
+        </property>
+        <widget class="QWidget" name="pepBatchTab">
+         <attribute name="title">
+          <string>Batch I/O</string>
+         </attribute>
+         <layout class="QVBoxLayout">
+          <property name="margin">
+           <number>0</number>
+          </property>
+          <item>
+           <widget class="QSplitter" name="batchSplitter">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="handleWidth">
+             <number>7</number>
+            </property>
+            <widget class="QWidget" name="InputWidgetPane" native="true">
+             <property name="enabled">
+              <bool>true</bool>
+             </property>
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+            </widget>
+            <widget class="QWidget" name="OutputWidgetPane" native="true"/>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="pepTerminalTab">
+         <attribute name="title">
+          <string>Terminal I/O</string>
+         </attribute>
+         <layout class="QVBoxLayout">
+          <property name="margin">
+           <number>0</number>
+          </property>
+          <item>
+           <widget class="QSplitter" name="terminalSplitter">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <widget class="QWidget" name="TerminalWidgetPane" native="true">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>16777215</height>
+              </size>
+             </property>
+            </widget>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="MemoryDumpWidgetPane" native="true">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
+       </property>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QToolBar" name="fileToolBar">
+   <property name="windowTitle">
+    <string>Toolbar</string>
+   </property>
+   <property name="movable">
+    <bool>false</bool>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>32</width>
+     <height>32</height>
+    </size>
+   </property>
+   <property name="floatable">
+    <bool>false</bool>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionFile_New"/>
+   <addaction name="actionFile_Open"/>
+   <addaction name="actionFile_Save_Source"/>
+   <addaction name="actionEdit_Undo"/>
+   <addaction name="actionEdit_Redo"/>
+   <addaction name="actionHelp"/>
+   <addaction name="actionBuild_Assemble"/>
+   <addaction name="actionBuild_Run_Source"/>
+   <addaction name="actionBuild_Start_Debugging_Source"/>
+   <addaction name="actionBuild_Stop_Debugging"/>
+   <addaction name="actionView_Code_Only"/>
+   <addaction name="actionView_Code_CPU"/>
+   <addaction name="actionView_Code_CPU_Memory"/>
+  </widget>
+  <widget class="QToolBar" name="byteConverterToolBar">
+   <property name="windowTitle">
+    <string>Byte Converter</string>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="movable">
+    <bool>false</bool>
+   </property>
+   <property name="allowedAreas">
+    <set>Qt::TopToolBarArea</set>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+   <property name="floatable">
+    <bool>false</bool>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1044</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu_Edit">
+    <property name="toolTip">
+     <string/>
+    </property>
+    <property name="title">
+     <string>&amp;Edit</string>
+    </property>
+    <addaction name="actionEdit_Undo"/>
+    <addaction name="actionEdit_Redo"/>
+    <addaction name="separator"/>
+    <addaction name="actionEdit_Cut"/>
+    <addaction name="actionEdit_Copy"/>
+    <addaction name="actionEdit_Paste"/>
+    <addaction name="separator"/>
+    <addaction name="actionEdit_Format_From_Listing"/>
+    <addaction name="actionEdit_Remove_Error_Messages"/>
+    <addaction name="separator"/>
+    <addaction name="actionEdit_Font"/>
+   </widget>
+   <widget class="QMenu" name="menu_File">
+    <property name="toolTip">
+     <string/>
+    </property>
+    <property name="title">
+     <string>&amp;File</string>
+    </property>
+    <addaction name="actionFile_New"/>
+    <addaction name="actionFile_Open"/>
+    <addaction name="separator"/>
+    <addaction name="actionFile_Save_Source"/>
+    <addaction name="separator"/>
+    <addaction name="actionFile_Save_Source_As"/>
+    <addaction name="actionFile_Save_Object_As"/>
+    <addaction name="actionFile_Save_Listing_As"/>
+    <addaction name="separator"/>
+    <addaction name="actionFile_Print_Source"/>
+    <addaction name="actionFile_Print_Object"/>
+    <addaction name="actionFile_Print_Listing"/>
+   </widget>
+   <widget class="QMenu" name="menuBuild">
+    <property name="title">
+     <string>Build</string>
+    </property>
+    <addaction name="actionBuild_Assemble"/>
+    <addaction name="actionBuild_Load"/>
+    <addaction name="actionBuild_Execute"/>
+    <addaction name="separator"/>
+    <addaction name="actionBuild_Run_Source"/>
+    <addaction name="actionBuild_Start_Debugging_Source"/>
+    <addaction name="separator"/>
+    <addaction name="actionBuild_Run_Object"/>
+    <addaction name="actionBuild_Start_Debugging_Object"/>
+    <addaction name="separator"/>
+    <addaction name="actionBuild_Start_Debugging_Loader"/>
+    <addaction name="separator"/>
+    <addaction name="actionBuild_Stop_Debugging"/>
+    <addaction name="actionBuild_Interrupt_Execution"/>
+   </widget>
+   <widget class="QMenu" name="menu_System">
+    <property name="title">
+     <string>&amp;System</string>
+    </property>
+    <addaction name="actionSystem_Clear_Memory"/>
+    <addaction name="actionSystem_Redefine_Mnemonics"/>
+    <addaction name="separator"/>
+    <addaction name="actionSystem_Assemble_Install_New_OS"/>
+    <addaction name="actionSystem_Reinstall_Default_OS"/>
+   </widget>
+   <widget class="QMenu" name="menu_View">
+    <property name="title">
+     <string>&amp;View</string>
+    </property>
+    <addaction name="actionView_Code_Only"/>
+    <addaction name="actionView_Code_CPU"/>
+    <addaction name="actionView_Code_CPU_Memory"/>
+    <addaction name="separator"/>
+    <addaction name="actionView_Code_Tab"/>
+    <addaction name="actionView_Trace_Tab"/>
+    <addaction name="separator"/>
+    <addaction name="actionView_Batch_I_O_Tab"/>
+    <addaction name="actionView_Terminal_Tab"/>
+   </widget>
+   <widget class="QMenu" name="menu_Help">
+    <property name="title">
+     <string>&amp;Help</string>
+    </property>
+    <widget class="QMenu" name="menuHelp_Writing_Programs">
+     <property name="title">
+      <string>Writing Programs</string>
+     </property>
+     <addaction name="actionHelp_Machine_Language"/>
+     <addaction name="actionHelp_Assembly_Language"/>
+    </widget>
+    <addaction name="actionHelp_Check_for_updates"/>
+    <addaction name="separator"/>
+    <addaction name="menuHelp_Writing_Programs"/>
+    <addaction name="actionHelp_Debugging_Programs"/>
+    <addaction name="actionHelp_Writing_Trap_Handlers"/>
+    <addaction name="actionHelp_Pep_8_Reference"/>
+    <addaction name="actionHelp_Examples"/>
+    <addaction name="actionHelp_Pep_8_Operating_System"/>
+    <addaction name="separator"/>
+    <addaction name="actionAbout_Pep8"/>
+    <addaction name="actionAbout_Qt"/>
+   </widget>
+   <addaction name="menu_File"/>
+   <addaction name="menu_Edit"/>
+   <addaction name="menuBuild"/>
+   <addaction name="menu_View"/>
+   <addaction name="menu_System"/>
+   <addaction name="menu_Help"/>
+  </widget>
+  <action name="actionFile_New">
+   <property name="icon">
+    <iconset resource="pep8resources.qrc">
+     <normaloff>:/images/new.png</normaloff>:/images/new.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;New</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+N</string>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>false</bool>
+   </property>
+  </action>
+  <action name="actionFile_Open">
+   <property name="icon">
+    <iconset resource="pep8resources.qrc">
+     <normaloff>:/images/open.png</normaloff>:/images/open.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Open...</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>false</bool>
+   </property>
+  </action>
+  <action name="actionFile_Save_Source">
+   <property name="icon">
+    <iconset resource="pep8resources.qrc">
+     <normaloff>:/images/save.png</normaloff>:/images/save.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Save Source</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>false</bool>
+   </property>
+  </action>
+  <action name="actionFile_Save_Source_As">
+   <property name="text">
+    <string>Save Source As...</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+S</string>
+   </property>
+  </action>
+  <action name="actionFile_Print_Source">
+   <property name="icon">
+    <iconset resource="pep8resources.qrc">
+     <normaloff>:/images/print.png</normaloff>:/images/print.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Print Source...</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+P</string>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>false</bool>
+   </property>
+  </action>
+  <action name="actionEdit_Undo">
+   <property name="icon">
+    <iconset resource="pep8resources.qrc">
+     <normaloff>:/images/undo.png</normaloff>:/images/undo.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Undo</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Z</string>
+   </property>
+   <property name="autoRepeat">
+    <bool>true</bool>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>false</bool>
+   </property>
+  </action>
+  <action name="actionEdit_Redo">
+   <property name="icon">
+    <iconset resource="pep8resources.qrc">
+     <normaloff>:/images/redo.png</normaloff>:/images/redo.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Redo</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Y</string>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>false</bool>
+   </property>
+  </action>
+  <action name="actionEdit_Cut">
+   <property name="icon">
+    <iconset resource="pep8resources.qrc">
+     <normaloff>:/images/cut.png</normaloff>:/images/cut.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Cut</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+X</string>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>false</bool>
+   </property>
+  </action>
+  <action name="actionEdit_Copy">
+   <property name="icon">
+    <iconset resource="pep8resources.qrc">
+     <normaloff>:/images/copy.png</normaloff>:/images/copy.png</iconset>
+   </property>
+   <property name="text">
+    <string>Copy</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+C</string>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>false</bool>
+   </property>
+  </action>
+  <action name="actionEdit_Paste">
+   <property name="icon">
+    <iconset resource="pep8resources.qrc">
+     <normaloff>:/images/paste.png</normaloff>:/images/paste.png</iconset>
+   </property>
+   <property name="text">
+    <string>Paste</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+V</string>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>false</bool>
+   </property>
+  </action>
+  <action name="actionEdit_Font">
+   <property name="text">
+    <string>Font...</string>
+   </property>
+   <property name="shortcut">
+    <string/>
+   </property>
+  </action>
+  <action name="actionBuild_Assemble">
+   <property name="icon">
+    <iconset resource="pep8resources.qrc">
+     <normaloff>:/images/assemble.png</normaloff>:/images/assemble.png</iconset>
+   </property>
+   <property name="text">
+    <string>Assemble</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+A</string>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>false</bool>
+   </property>
+  </action>
+  <action name="actionBuild_Execute">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/execute.png</normaloff>:/images/execute.png</iconset>
+   </property>
+   <property name="text">
+    <string>Execute</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+E</string>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>false</bool>
+   </property>
+  </action>
+  <action name="actionBuild_Run_Source">
+   <property name="icon">
+    <iconset resource="pep8resources.qrc">
+     <normaloff>:/images/run.png</normaloff>:/images/run.png</iconset>
+   </property>
+   <property name="text">
+    <string>Run Source</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+R</string>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>false</bool>
+   </property>
+  </action>
+  <action name="actionBuild_Start_Debugging_Source">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="pep8resources.qrc">
+     <normaloff>:/images/debugger_start.png</normaloff>:/images/debugger_start.png</iconset>
+   </property>
+   <property name="text">
+    <string>Start Debugging Source</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+D</string>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>false</bool>
+   </property>
+  </action>
+  <action name="actionEdit_Remove_Error_Messages">
+   <property name="text">
+    <string>Remove Error Messages</string>
+   </property>
+  </action>
+  <action name="actionSystem_Redefine_Mnemonics">
+   <property name="text">
+    <string>Redefine Mnemonics...</string>
+   </property>
+  </action>
+  <action name="actionSystem_Assemble_Install_New_OS">
+   <property name="text">
+    <string>Assemble/Install New OS</string>
+   </property>
+  </action>
+  <action name="actionSystem_Reinstall_Default_OS">
+   <property name="text">
+    <string>Reinstall Default OS</string>
+   </property>
+  </action>
+  <action name="actionHelp_Writing_Trap_Handlers">
+   <property name="text">
+    <string>Writing Trap Handlers</string>
+   </property>
+  </action>
+  <action name="actionView_Code_Only">
+   <property name="icon">
+    <iconset resource="pep8resources.qrc">
+     <normaloff>:/images/CodeOnly.xpm</normaloff>:/images/CodeOnly.xpm</iconset>
+   </property>
+   <property name="text">
+    <string>Code Only</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+1</string>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>false</bool>
+   </property>
+  </action>
+  <action name="actionView_Code_CPU">
+   <property name="icon">
+    <iconset resource="pep8resources.qrc">
+     <normaloff>:/images/CodeCPU.xpm</normaloff>:/images/CodeCPU.xpm</iconset>
+   </property>
+   <property name="text">
+    <string>Code/CPU</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+2</string>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>false</bool>
+   </property>
+  </action>
+  <action name="actionView_Code_CPU_Memory">
+   <property name="icon">
+    <iconset resource="pep8resources.qrc">
+     <normaloff>:/images/CodeCPUMemory.xpm</normaloff>:/images/CodeCPUMemory.xpm</iconset>
+   </property>
+   <property name="text">
+    <string>Code/CPU/Memory</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+3</string>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>false</bool>
+   </property>
+  </action>
+  <action name="actionAbout_Pep8">
+   <property name="text">
+    <string>About Pep8</string>
+   </property>
+  </action>
+  <action name="actionAbout_Qt">
+   <property name="text">
+    <string>About QT</string>
+   </property>
+  </action>
+  <action name="actionHelp_Assembly_Language">
+   <property name="text">
+    <string>Assembly Language</string>
+   </property>
+  </action>
+  <action name="actionHelp_Machine_Language">
+   <property name="text">
+    <string>Machine Language</string>
+   </property>
+  </action>
+  <action name="actionHelp_Examples">
+   <property name="text">
+    <string>Examples</string>
+   </property>
+  </action>
+  <action name="actionBuild_Load">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/load.xpm</normaloff>:/images/load.xpm</iconset>
+   </property>
+   <property name="text">
+    <string>Load</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+L</string>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>false</bool>
+   </property>
+  </action>
+  <action name="actionHelp_Pep_8_Operating_System">
+   <property name="text">
+    <string>Pep/8 Operating System</string>
+   </property>
+  </action>
+  <action name="actionFile_Save_Object_As">
+   <property name="text">
+    <string>Save Object As...</string>
+   </property>
+  </action>
+  <action name="actionFile_Save_Listing_As">
+   <property name="text">
+    <string>Save Listing As...</string>
+   </property>
+  </action>
+  <action name="actionFile_Print_Object">
+   <property name="text">
+    <string>&amp;Print Object...</string>
+   </property>
+  </action>
+  <action name="actionFile_Print_Listing">
+   <property name="text">
+    <string>&amp;Print Listing...</string>
+   </property>
+  </action>
+  <action name="actionHelp">
+   <property name="icon">
+    <iconset>
+     <normalon>:/images/help.png</normalon>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>Help</string>
+   </property>
+   <property name="shortcut">
+    <string>F1</string>
+   </property>
+  </action>
+  <action name="actionEdit_Format_From_Listing">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Format From Listing</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+L</string>
+   </property>
+  </action>
+  <action name="actionView_Code_Tab">
+   <property name="text">
+    <string>Code Tab</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+4</string>
+   </property>
+  </action>
+  <action name="actionView_Trace_Tab">
+   <property name="text">
+    <string>Trace Tab</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+5</string>
+   </property>
+  </action>
+  <action name="actionView_Batch_I_O_Tab">
+   <property name="text">
+    <string>Batch I/O Tab</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+6</string>
+   </property>
+  </action>
+  <action name="actionView_Terminal_Tab">
+   <property name="text">
+    <string>Terminal Tab</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+7</string>
+   </property>
+  </action>
+  <action name="actionBuild_Start_Debugging_Object">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Start Debugging Object</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+D</string>
+   </property>
+  </action>
+  <action name="actionBuild_Run_Object">
+   <property name="text">
+    <string>Run Object</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+R</string>
+   </property>
+  </action>
+  <action name="actionBuild_Stop_Debugging">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="pep8resources.qrc">
+     <normaloff>:/images/stop.png</normaloff>:/images/stop.png</iconset>
+   </property>
+   <property name="text">
+    <string>Stop Debugging</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+E</string>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>false</bool>
+   </property>
+  </action>
+  <action name="actionBuild_Interrupt_Execution">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Interrupt Execution</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+.</string>
+   </property>
+  </action>
+  <action name="actionHelp_Debugging_Programs">
+   <property name="text">
+    <string>Debugging Programs</string>
+   </property>
+  </action>
+  <action name="actionHelp_Pep_8_Reference">
+   <property name="text">
+    <string>Pep/8 Reference</string>
+   </property>
+  </action>
+  <action name="actionBuild_Start_Debugging_Loader">
+   <property name="text">
+    <string>Start Debugging Loader</string>
+   </property>
+  </action>
+  <action name="actionHelp_Check_for_updates">
+   <property name="text">
+    <string>Check for updates...</string>
+   </property>
+  </action>
+  <action name="actionSystem_Clear_Memory">
+   <property name="text">
+    <string>Clear Memory</string>
+   </property>
+  </action>
+ </widget>
+ <resources>
+  <include location="pep8resources.qrc"/>
+ </resources>
+ <connections/>
+</ui>

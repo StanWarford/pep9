@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C/DTD HTML 4.01//EN">
+
+<html>
+<head>
+ <title> Pep/8: Trap Handlers Documentation </title>
+  <style type="text/css" media="all">
+   code { font-family:Courier, 'Courier New', monospace; font-size:11pt }
+   pre { font-family:Courier; font-size:11pt }
+   img { vertical-align:text-top; }
+   h4 { margin-bottom: 0; border-bottom-width: 0; padding-bottom: 0; }
+  </style>
+</head>
+<body bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#000033" alink="#0066FF">
+<table bgcolor="#FB9F14" width="100%" cellpadding="2" cellspacing="0" border="0">
+<tr><td>
+<p style="text-align:center; font-family:helvetica, arial, sans-serif; font-size:14pt; font-weight:bold; color: #29315E">
+Writing Trap Handlers
+</p>
+</td></tr>
+</table>
+<p>
+Reference: <i>Computer Systems</i>, Chapter 8, Section 8.2.
+<p>
+ A trap instruction executes as if it were a single machine language instruction wired into the instruction set of the CPU.
+ However, it really executes a <i>sequence</i> of machine language instructions that are initiated by the hardware trap mechanism.
+ The Pep/8 operating system provides one nonunary trap instruction, <code>NOP</code> and four unary trap instructions,
+ <code>NOP0</code>, <code>NOP1</code>, <code>NOP2</code>, and <code>NOP3</code>, so you can reprogram them to implement
+  instructions of your own choosing.
+<p>
+ <a name = "Topics">Topics:</a>
+ <a href="#Trap">Trap handlers</a>,
+ <a href="#BURN">The .BURN pseudo-op</a>.
+
+<h3><a name="Trap">Trap handlers</a></h3>
+
+To modify the operating system for the problems in Chapter 8 of the text is a six-step process.
+<p>
+<h4>Step 1.</h4>
+Decide on your mnemonic for your new instruction.
+It will replace one of <code>NOP0</code>, <code>NOP1</code>, <code>NOP2</code>, <code>NOP3</code>,
+<code>NOP</code>, <code>DECI</code>, <code>DECO</code>, or <code>STRO</code>.
+Select the menu option System->Redefine Mnemonics to change the mnemonics of one of the instructions.
+The dialog box requires you to enter a mnemonic and its allowed addressing modes if it is nonunary.
+For example, change the mnemonic for the unary instruction <code>NOP0</code> to <code>ECHO</code>.
+<p>
+<img src="qrc:/help/images/redefinemnemonics.png" alt="redefinemnemonics" hspace=10 vspace=10>
+<p>
+<h4>Step 2.</h4>
+In this Help system in the pane on the left, select Pep/8 Operating System, and then click the Copy to Source button.
+The default operating system will be copied to the Source Code pane.
+<p>
+<img src="qrc:/help/images/pep8oshelpsystem.png" alt="pep8oshelpsystem" hspace=10 vspace=10>
+<p>
+<h4>Step 3.</h4>
+Modify the trap handler part of the operating system to implement your new instruction.
+As an example, here is the original NOP0 trap handler.
+<p>
+<img src="qrc:/help/images/nop0.png" alt="nop0" hspace=10 vspace=10>
+<p>
+And here is how you would modify it to implement the new <code>ECHO</code> instruction in place of <code>NOP0</code>.
+<p>
+<img src="qrc:/help/images/echo.png" alt="echo" hspace=10 vspace=10>
+<p>
+CAUTION: You cannot use any trap instructions in your trap handler.
+<p>
+<h4>Step 4.</h4>
+Select System->Assemble/Install New OS to assemble and install the reprogrammed operating system.
+<p>
+<img src="qrc:/help/images/assembleinstallnewos.png" alt="assembleinstallnewos" hspace=10 vspace=10>
+<p>
+You can save your modified operating system as a <code>.pep</code> file as you would any other Pep/8 assembly language program.
+<p>
+<h4>Step 5.</h4>
+Write an assembly language program to test your new instruction with the new mnemonic.
+The assembler should recognize the new mnemonic and generate the appropriate object code.
+For example, your test program might be the following.
+<p>
+<img src="qrc:/help/images/echoprogram.png" alt="echoprogram" hspace=10 vspace=10>
+<p>
+<h4>Step 6.</h4>
+Load and execute your program assembled in step 5.
+In this example, whatever character is placed in the Input pane should be echoed in the output pane.
+<p>
+<img src="qrc:/help/images/pecho.png" alt="pecho" hspace=10 vspace=10>
+<p>
+<a href="#Topics">Scroll to topics</a>.
+
+<h3><a name="BURN">The .BURN pseudo-op</a></h3>
+
+When you include <code>.BURN</code> in a program, the assembler assumes that the program will be burned into read-only memory (ROM).
+It generates code for those instrctions that follow the burn directive, but not for those that precede it.
+The assembler also assumes that the ROM will be installed at the bottom of memory, leaving the top of memory for the application programs.
+It therefore calculates tha addresses for the symbol table such that the last byte generated will have the address specified
+by the burn directive.
+<p>
+Pep/8 is a 16-bit computer, and can therfore access 2<sup>16</sup> = 64KB = 65,536 bytes of main memory.
+The Pep/8 operating system contains <code>.BURN 0xFFFF</code> because <code>0xFFFF</code> is the address of the 65,536th byte.
+<p>
+It is possible to install a smaller amount of memory in the Pep/8 system.
+Simply change the burn directive in the operating system to a smaller value.
+For example, you can change the burn directive to <code>.BURN 0x7FFF</code>, assemble and install the new OS,
+and the system will install only 32KB of memory instead of 64KB.
+<p>
+<img src="qrc:/help/images/modifieddotburn.png" alt="modifieddotburn" hspace=10 vspace=10>
+<p>
+The trap handlers all run correctly, which you can trace in the Memory Dump pane.
+<p>
+<img src="qrc:/help/images/relocatedos.png" alt="relocatedos" hspace=10 vspace=10>
+<p>
+<a href="#Topics">Scroll to topics</a>.
+<p>
+</body>
+</html>

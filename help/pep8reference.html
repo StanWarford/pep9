@@ -1,0 +1,369 @@
+<!DOCTYPE HTML PUBLIC "-//W3C/DTD HTML 4.01//EN">
+
+<html>
+<head>
+ <title> Pep/8: Reference Documentation </title>
+  <style type="text/css" media="all">
+   th { background-color:#FB9F14; color: #29315E }
+   img { vertical-align:text-top; }
+   code { font-family:Courier, 'Courier New', monospace; font-size:11pt }
+  </style>
+</head>
+<body bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#000033" alink="#0066FF">
+<table bgcolor="#FB9F14" width="100%" cellpadding="2" cellspacing="0" border="0">
+<tr><td>
+<p style="text-align:center; font-family:helvetica, arial, sans-serif; font-size:14pt; font-weight:bold; color: #29315E">
+Pep/8 Reference
+</p>
+</td></tr>
+</table>
+<p>
+ The Pep/8 computer is a 16-bit complex instruction set computer (CISC).
+ It is designed to teach computer architecture and assembly language programming principles.
+ Its 39 instructions are based on an expanding opcode and are either unary (one byte) or nonunary (three bytes).
+ The eight addressing modes are designed for straighforward translation between C/C++ and assembly language.
+<p>
+ <a name = "Topics">Topics:</a>
+ <a href="#Instruction">Instruction set</a>,
+ <a href="#SettingC">Setting the C bit on subtraction</a>,
+ <a href="#SettingN">Setting the N bit on <code>CPr</code></a>,
+ <a href="#Dot">Dot commands</a>,
+ <a href="#Addressing">Addressing modes</a>,
+ <a href="#Register">Register field</a>,
+ <a href="#Trace">Trace tags</a>,
+ <a href="#Syntax">Assembly language syntax summary</a>.
+
+<h3><a name="Instruction">Instruction set</a></h3>
+
+<table border cellspacing=0 cellpadding=5>
+ <tr>
+  <th>Instruction Specifier</th> <th>Mnemonic</th> <th>Instruction</th> <th>Addressing Modes</th> <th>Status Bits</th>
+ </tr>
+ <tr>
+  <td><code>0000 0000</code></code></td> <td><code>STOP</code></td> <td>Stop execution</td> <td>U</td> <td></td>
+ </tr>
+ <tr>
+  <td><code>0000 0001</code></td> <td><code>RETTR</code></td> <td>Return from trap</td> <td>U</td> <td></td>
+ </tr>
+ <tr>
+  <td><code>0000 0010</code></td> <td><code>MOVSPA</code></td> <td>Move SP to A</td> <td>U</td> <td></td>
+ </tr>
+ <tr>
+  <td><code>0000 0011</code></td> <td><code>MOVFLGA</code></td> <td>Move NZVC flags to A</td> <td>U</td> <td></td>
+ </tr>
+ <tr>
+  <td><code>0000 010a</code></td> <td><code>BR</code></td> <td>Branch unconditional</td> <td>i, x</td> <td></td>
+ </tr>
+ <tr>
+  <td><code>0000 011a</code></td> <td><code>BRLE</code></td> <td>Branch if less than or equal to</td> <td>i, x</td> <td></td>
+ </tr>
+ <tr>
+  <td><code>0000 100a</code></td> <td><code>BRLT</code></td> <td>Branch if less than</td> <td>i, x</td> <td></td>
+ </tr>
+ <tr>
+  <td><code>0000 101a</code></td> <td><code>BREQ</code></td> <td>Branch if equal to</td> <td>i, x</td> <td></td>
+ </tr>
+ <tr>
+  <td><code>0000 110a</code></td> <td><code>BRNE</code></td> <td>Branch if not equal to</td> <td>i, x</td> <td></td>
+ </tr>
+ <tr>
+  <td><code>0000 111a</code></td> <td><code>BRGE</code></td> <td>Branch if greater than or equal to</td> <td>i, x</td> <td></td>
+ </tr>
+ <tr>
+  <td><code>0001 000a</code></td> <td><code>BRGT</code></td> <td>Branch if greater than</td> <td>i, x</td> <td></td>
+ </tr>
+ <tr>
+  <td><code>0001 001a</code></td> <td><code>BRV</code></td> <td>Branch if V</td> <td>i, x</td> <td></td>
+ </tr>
+ <tr>
+  <td><code>0001 010a</code></td> <td><code>BRC</code></td> <td>Branch if C</td> <td>i, x</td> <td></td>
+ </tr>
+ <tr>
+  <td><code>0001 011a</code></td> <td><code>CALL</code></td> <td>Call subroutine</td> <td>i, x</td> <td></td>
+ </tr>
+ <tr>
+  <td><code>0001 100r</code></td> <td><code>NOTr</code></td> <td>Bitwise invert r</td> <td>U</td> <td>N Z</td>
+ </tr>
+ <tr>
+  <td><code>0001 101r</code></td> <td><code>NEGr</code></td> <td>Negate r</td> <td>U</td> <td>N Z V</td>
+ </tr>
+ <tr>
+  <td><code>0001 110r</code></td> <td><code>ASLr</code></td> <td>Arithmetic shift left r</td> <td>U</td> <td>N Z V C</td>
+ </tr>
+ <tr>
+  <td><code>0001 111r</code></td> <td><code>ASRr</code></td> <td>Arithmetic shift right r</td> <td>U</td> <td>N Z C</td>
+ </tr>
+ <tr>
+  <td><code>0010 000r</code></td> <td><code>ROLr</code></td> <td>Rotate left r</td> <td>U</td> <td>C</td>
+ </tr>
+ <tr>
+  <td><code>0010 001r</code></td> <td><code>RORr</code></td> <td>Rotate right r</td> <td>U</td> <td>C</td>
+ </tr>
+ <tr>
+  <td><code>0010 01nn</code></td> <td><code>NOPn</code></td> <td>Unary no operation trap</td> <td>U</td> <td></td>
+ </tr>
+ <tr>
+  <td><code>0010 1aaa</code></td> <td><code>NOP</code></td> <td>Nonunary no operation trap</td> <td>i</td> <td></td>
+ </tr>
+ <tr>
+  <td><code>0011 0aaa</code></td> <td><code>DECI</code></td> <td>Decimal input trap</td> <td>d, n, s, sf, x, sx, sxf</td> <td>N Z V</td>
+ </tr>
+ <tr>
+  <td><code>0011 1aaa</code></td> <td><code>DECO</code></td> <td>Decimal output trap</td> <td>i, d, n, s, sf, x, sx, sxf</td> <td></td>
+ </tr>
+ <tr>
+  <td><code>0100 0aaa</code></td> <td><code>STRO</code></td> <td>String output trap</td> <td>d, n, sf</td> <td></td>
+ </tr>
+ <tr>
+  <td><code>0100 1aaa</code></td> <td><code>CHARI</code></td> <td>Character input</td> <td>d, n, s, sf, x, sx, sxf</td> <td></td>
+ </tr>
+ <tr>
+  <td><code>0101 0aaa</code></td> <td><code>CHARO</code></td> <td>Character output</td> <td>i, d, n, s, sf, x, sx, sxf</td> <td></td>
+ </tr>
+ <tr>
+  <td><code>0101 1nnn</code></td> <td><code>RETn</code></td> <td>Return from call with n local bytes</td> <td>U</td> <td></td>
+ </tr>
+ <tr>
+  <td><code>0110 0aaa</code></td> <td><code>ADDSP</code></td> <td>Add to stack pointer (SP)</td> <td>i, d, n, s, sf, x, sx, sxf</td> <td>N Z V C</td>
+ </tr>
+ <tr>
+  <td><code>0110 1aaa</code></td> <td><code>SUBSP</code></td> <td>Subtract from stack pointer (SP)</td> <td>i, d, n, s, sf, x, sx, sxf</td> <td>N Z V C</td>
+ </tr>
+ <tr>
+  <td><code>0111 raaa</code></td> <td><code>ADDr</code></td> <td>Add to r</td> <td>i, d, n, s, sf, x, sx, sxf</td> <td>N Z V C</td>
+ </tr>
+ <tr>
+  <td><code>1000 raaa</code></td> <td><code>SUBr</code></td> <td>Subtract from r</td> <td>i, d, n, s, sf, x, sx, sxf</td> <td>N Z V C</td>
+ </tr>
+ <tr>
+  <td><code>1001 raaa</code></td> <td><code>ANDr</code></td> <td>Bitwise AND to r</td> <td>i, d, n, s, sf, x, sx, sxf</td> <td>N Z</td>
+ </tr>
+ <tr>
+  <td><code>1010 raaa</code></td> <td><code>ORr</code></td> <td>Bitwise OR to r</td> <td>i, d, n, s, sf, x, sx, sxf</td> <td>N Z</td>
+ </tr>
+ <tr>
+  <td><code>1011 raaa</code></td> <td><code>CPr</code></td> <td>Compare r</td> <td>i, d, n, s, sf, x, sx, sxf</td> <td>N Z V C</td>
+ </tr>
+ <tr>
+  <td><code>1100 raaa</code></td> <td><code>LDr</code></td> <td>Load r from memory</td> <td>i, d, n, s, sf, x, sx, sxf</td> <td>N Z</td>
+ </tr>
+ <tr>
+  <td><code>1101 raaa</code></td> <td><code>LDBYTEr</code></td> <td>Load byte r from memory</td> <td>i, d, n, s, sf, x, sx, sxf</td> <td>N Z</td>
+ </tr>
+ <tr>
+  <td><code>1110 raaa</code></td> <td><code>STr</code></td> <td>Store r to memory</td> <td>d, n, s, sf, x, sx, sxf</td> <td></td>
+ </tr>
+ <tr>
+  <td><code>1111 raaa</code></td> <td><code>STBYTEr</code></td> <td>Store byte r to memory</td> <td>d, n, s, sf, x, sx, sxf</td> <td></td>
+ </tr>
+</table>
+<p>
+<a href="#Topics">Scroll to topics</a>.
+
+<h3><a name="SettingC">Setting the C bit on subtraction</a></h3>
+
+There are two different philosophies for setting the carry bit after subtraction.
+<p>
+Z80, x86, and SPARC treat the carry flag as a "borrow flag" when doing a subtraction.
+When subtracting x - y, if x is less than y (treating both operands as unsigned),
+the carry flag is set because there is a borrow.
+A BRC after a <code>SUBr</code> or <code>CPr</code> instruction is equivalent to "branch if unsigned overflow" in this case.
+<p>
+On other processor families, such as ARM and PowerPC, the carry flag after a subtraction
+is set to the adder carry output after computing (x + ~y + 1).
+When subtracting x - y, if x is greater than or equal to y (treating both operands as unsigned), the carry flag is set.
+A BRC after a <code>SUBr</code> or <code>CPr</code> instruction is equivalent to "branch if not unsigned overflow" in this case.
+<p>
+Previous versions of Pep/8 set the C bit on subtraction according to the first philosophy.
+However, starting with version 8.1.0, the C bit on subtraction is set according to the second philosophy.
+This is consistent with the section "The Carry Bit" in Chapter 3, and the adder/subtracter circuit
+in Figure 10.53 in the text.
+<p>
+<a href="#Topics">Scroll to topics</a>.
+
+<h3><a name="SettingN">Setting the N bit on <code>CPr</code></a></h3>
+
+Normally, the N bit duplicates the sign bit, so that N is 1 when the result of the operation is negative.
+The compare instruction <code>CPr</code> subtracts the operand from the register and sets the status bits without storing
+the result of the subtraction.
+<p>
+As long as there is no overflow when the operands are interpreted as signed integers, the N bit is set appropriately for a
+subsequent conditional branch instruction.
+If the result of the subtraction yields an overflow and the N bit were set as usual, the subsequent conditional branch instruction
+might execute an erroneous branch.
+Consequently, if the <code>CPr</code> subtraction operation overflows and sets the V bit, then the N bit is inverted
+from its normal value and does not duplicate the sign bit.
+<p>
+With this adjustment, the compare operation extends the range of valid comparisons.
+Even though there is an overflow, the N bit is set as if there were no overflow so that a subsequent conditional branch
+will operate as expected.
+<p>
+<a href="#Topics">Scroll to topics</a>.
+
+<h3><a name="Dot">Dot commands</a></h3>
+
+<table border cellspacing=0 cellpadding=5>
+ <tr>
+  <th>Dot Command</th> <th>Description</th>
+ </tr>
+ <tr>
+  <td><code>.ADDRSS</code> symbol</td> <td>The address of a symbol (two bytes)</td>
+ </tr>
+ <tr>
+  <td><code>.ASCII</code> "string"</td> <td>A string of ASCII bytes</td>
+ </tr>
+ <tr>
+  <td><code>.BLOCK</code> n</td> <td>A block of n bytes</td>
+ </tr>
+ <tr>
+  <td><code>.BURN 0xFFFF</code></td> <td>Initiate ROM burn ending at 0xFFFF</td>
+ </tr>
+ <tr>
+  <td><code>.BYTE</code> constant</td> <td>A byte value (one byte)</td>
+ </tr>
+ <tr>
+  <td><code>.END</code></td> <td>The sentinel for the assembler</td>
+ </tr>
+ <tr>
+  <td><code>.EQUATE</code> constant</td> <td>Equate a symbol to a constant value</td>
+ </tr>
+ <tr>
+  <td><code>.WORD</code> constant</td> <td>A word value (two bytes)</td>
+ </tr>
+</table>
+<p>
+<a href="#Topics">Scroll to topics</a>.
+
+<h3><a name="Addressing">Addressing modes</a></h3>
+
+<table border cellspacing=0 cellpadding=5>
+ <tr>
+  <th>Addressing Mode</th> <th>aaa-field</th> <th>Letters</th> <th>Operand</th>
+ </tr>
+ <tr>
+  <td>Immediate</td> <td><code>000</code></td> <td>i</td> <td>OprndSpec</td>
+ </tr>
+ <tr>
+  <td>Direct</td> <td><code>001</code></td> <td>d</td> <td>Mem [OprndSpec ]</td>
+ </tr>
+ <tr>
+  <td>Indirect</td> <td><code>010</code></td> <td>n</td> <td>Mem [Mem [OprndSpec ] ]</td>
+ </tr>
+ <tr>
+  <td>Stack-relative</td> <td><code>011</code></td> <td>s</td> <td>Mem [SP + OprndSpec ]</td>
+ </tr>
+ <tr>
+  <td>Stack-relative deferred</td> <td><code>100</code></td> <td>sf</td> <td>Mem [Mem [SP + OprndSpec ] ]</td>
+ </tr>
+ <tr>
+  <td>Indexed</td> <td><code>101</code></td> <td>x</td> <td>Mem [OprndSpec + X ]</td>
+ </tr>
+ <tr>
+  <td>Stack-indexed</td> <td><code>110</code></td> <td>sx</td> <td>Mem [SP + OprndSpec + X ]</td>
+ </tr>
+ <tr>
+  <td>Stack-indexed deferred</td> <td><code>111</code></td> <td>sxf</td> <td>Mem [Mem [SP + OprndSpec ] + X ]</td>
+ </tr>
+</table>
+<p>
+<a href="#Topics">Scroll to topics</a>.
+
+<p>
+<table border cellspacing=0 cellpadding=5>
+ <tr>
+  <th>Addressing Mode</th> <th>a-field</th> <th>Letters</th> <th>Operand</th>
+ </tr>
+ <tr>
+  <td>Immediate</td> <td><code>0</code></td> <td>i</td> <td>OprndSpec</td>
+ </tr>
+ <tr>
+  <td>Indexed</td> <td><code>1</code></td> <td>x</td> <td>Mem [OprndSpec + X ]</td>
+ </tr>
+</table>
+<p>
+<a href="#Topics">Scroll to topics</a>.
+
+<h3><a name="Register">Register field</a></h3>
+
+<p>
+<table border cellspacing=0 cellpadding=5>
+ <tr>
+  <th>r-field</th> <th>Register</th>
+ </tr>
+ <tr>
+  <td><code>0</code></td> <td>Accumulator, A</td>
+ </tr>
+ <tr>
+  <td><code>1</code></td> <td>Index register, X</td>
+ </tr>
+</table>
+<p>
+<a href="#Topics">Scroll to topics</a>.
+
+<h3><a name="Trace">Trace tags</a></h3>
+
+<p>
+<table border cellspacing=0 cellpadding=5>
+ <tr>
+  <th>Trace tag</th> <th>Format</th>
+ </tr>
+ <tr>
+  <td><code>#1c</code></td> <td>One-byte character</td>
+ </tr>
+ <tr>
+  <td><code>#1d</code></td> <td>One-byte decimal</td>
+ </tr>
+ <tr>
+  <td><code>#2d</code></td> <td>Two-byte decimal</td>
+ </tr>
+ <tr>
+  <td><code>#1h</code></td> <td>One-byte hexadecimal</td>
+ </tr>
+ <tr>
+  <td><code>#2h</code></td> <td>Two-byte hexadecimal</td>
+ <tr>
+  <td><code>#2d4a</code></td> <td>Two-byte decimal, four-cell array (example)</td>
+ </tr>
+</table>
+<p>
+<a href="#Topics">Scroll to topics</a>.
+
+<h3><a name="Syntax">Assembly language syntax summary</a></h3>
+
+A decimal integer starts with an optional <code>+</code> or <code>-</code>, followed by a decimal digit followed by zero or more digits.
+<p>
+A decimal integer used with <code>.BYTE</code> ranges from -128 to 255, otherwise from -32768 to 65535.
+<p>
+A hex integer starts with <code>0x</code> or <code>0X</code> followed by one or more hex digits (upper- or lower-case).
+<p>
+A hex integer used with <code>.BYTE</code> ranges from 0 to FF, otherwise from 0 to FFFF.
+<p>
+A single character is enclosed in single quotes, as in <code>'t'</code>.
+<p>
+An ASCII string is enclosed in double quotes, as in <code>"My string."</code>.
+<p>
+An arbitrary byte can be included in a string or a character by prefixing exactly two hex digits with <code>\x</code> or <code>\X</code>, as in <code>"Null terminated\x00"</code>.
+<p>
+A double quote is included in a string by prefixing it with <code>\</code>, as in <code>"She said, \"Hello\"."</code>.
+<p>
+A single quote is included in a character by prefixing it with <code>\</code>, as in <code>'\''</code>.
+<p>
+A backslash character is included in a string or character by prefixing it with <code>\</code>, as in <code>"My bash is \\."</code> and <code>'\\'</code>.
+<p>
+The following letters, when preceded by <code>\</code>, generate non printable characters&#151;<code>b</code> backspace, <code>f</code> form feed, <code>n</code> line feed (new line), <code>r</code> carriage return, <code>t</code> horizontal tab, <code>v</code> vertical tab&#151;in string and character constants, as in <code>"\n Starts on a new line."</code> and <code>'\n'</code>.
+<p>
+A backslash character followed by any character other than <code>b</code>, <code>f</code>, <code>n</code>, <code>r</code>, <code>t</code>, <code>v</code>, <code>x</code>, <code>X</code>, <code>"</code>, <code>'</code>, or <code>\</code> (except for the second of a pair of <code>\</code>&#146;s) is an error.
+<p>
+A double quote preceded by a backslash in a character is not necessary but is valid and represents one double quote.
+<p>
+A single quote preceded by a backslash in a string is not necessary but is valid and represents one single quote.
+<p>
+A constant used as an operand specifier that occupies less than two bytes is right justified in the two-byte field.
+<p>
+A constant used as an operand specifier that occupies more than two bytes is an error.
+<p>
+<a href="#Topics">Scroll to topics</a>.
+
+<p>
+</body>
+</html>

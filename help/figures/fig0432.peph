@@ -1,0 +1,9 @@
+;File: fig0432.peph
+;Computer Systems, Fourth Edition
+;Chapter 4, Figure 4.32
+             
+0000  510007  ;Character output
+0003  510008  ;Character output
+0006  00      ;Stop
+0007  48      ;ASCII H character
+0008  69      ;ASCII i character

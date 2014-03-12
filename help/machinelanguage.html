@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C/DTD HTML 4.01//EN">
+
+<html>
+<head>
+ <title> Pep/8: Machine Language Documentation </title>
+  <style type="text/css" media="all">
+   code { font-family:Courier, 'Courier New', monospace; font-size:11pt }
+   img { vertical-align:text-top; }
+   h4 { margin-bottom: 0; border-bottom-width: 0; padding-bottom: 0; }
+  </style>
+</head>
+<body bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#000033" alink="#0066FF">
+<table bgcolor="#FB9F14" width="100%" cellpadding="2" cellspacing="0" border="0">
+<tr><td>
+<p style="text-align:center; font-family:helvetica, arial, sans-serif; font-size:14pt; font-weight:bold; color: #29315E">
+Machine Language
+</p>
+</td></tr>
+</table>
+<p>
+Reference: <i>Computer Systems</i>, Chapters 3, 4.
+<p>
+A machine language program is a binary sequence, that is, a sequence of ones and zeros, that the
+machine interprets according to its von Neumann cycle as in Figure 4.31 of the text.
+Therefore, to write a machine language program is to write a sequence of ones and zeros.
+Fortunately, the Pep/8 loader permits you to use the hexadecimal abbreviation for binary, as Section 3.4 explains.
+<p>
+ <a name = "Topics">Topics:</a>
+ <a href="#Writing">Writing a machine language program</a>,
+ <a href="#Run">The Run Object option</a>.
+
+<h3><a name="Writing">Writing a machine language program</a></h3>
+
+Writing a machine language program is a three-step process.
+<p>
+<h4>Step 1.</h4>
+With this Pep/8 application, you write the machine language program in hexadecimal in the Object Code pane.
+The following figure shows the object program from Figure 4.41 of the text.
+<p>
+<img src="qrc:/help/images/fig0441.png" alt="fig0441" hspace=10 vspace=10>
+<p>
+A hexadecimal program must follow precise formatting rules.
+Each hex number representing a byte must contain exactly two characters.
+Each character must be in 0..9, A..F, or a..f and must be followed by exactly one space.
+There must be no leading spaces at the beginning of a line
+and no trailing spaces at the end of a line.
+The last two characters in the file must be lowercase <code>zz</code>,
+which is used as the terminating sentinel by the loader.
+<p>
+<h4>Step 2.</h4>
+After writing the machine language program, load it by selecting Build -> Load from the menu.
+<p>
+<img src="qrc:/help/images/load.png" alt="load" hspace=10 vspace=10>
+<p>
+If there are no errors in the program a message to that effect will appear at the bottom of the main window.
+<p>
+<img src="qrc:/help/images/loadsucceeded.png" alt="loadsucceeded" hspace=10 vspace=10>
+<p>
+<h4>Step 3.</h4>
+To execute the program select Build -> Execute from the menu.
+<p>
+<img src="qrc:/help/images/execute.png" alt="execute" hspace=10 vspace=10>
+<p>
+With this program, the output appears in the output pane.
+<p>
+<img src="qrc:/help/images/fig0441output.png" alt="fig0441output" hspace=10 vspace=10>
+<p>
+<a href="#Topics">Scroll to topics</a>.
+
+<h3><a name="Run">The Run Object option</a></h3>
+
+The two steps &mdash; Load, Execute &mdash; are combined in the single option called Run Object.
+You can initiate a run by selecting Build->Run Object from the menu.
+<p>
+<img src="qrc:/help/images/runobject.png" alt="runobject" hspace=10 vspace=10>
+<p>
+<a href="#Topics">Scroll to topics</a>.
+<p>
+</body>
+</html>

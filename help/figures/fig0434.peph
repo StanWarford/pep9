@@ -1,0 +1,9 @@
+;File: fig0434.peph
+;Computer Systems, Fourth Edition
+;Chapter 4, Figure 4.34
+             
+0000  49000D  ;Input first character 
+0003  49000E  ;Input second character 
+0006  51000E  ;Output second character 
+0009  51000D  ;Output first character 
+000C  00      ;Stop

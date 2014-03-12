@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C/DTD HTML 4.01//EN">
+
+<html>
+<head>
+ <title> Pep/8: Writing Programs Documentation </title>
+  <style type="text/css" media="all">
+   img { vertical-align:text-top; }
+   code { font-family:Courier, 'Courier New', monospace; font-size:11pt }
+  </style>
+</head>
+<body bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#000033" alink="#29316B">
+<table bgcolor="#FB9F14" width="100%" cellpadding="2" cellspacing="0" border="0">
+<tr><td>
+<p style="text-align:center; font-family:helvetica, arial, sans-serif; font-size:14pt; font-weight:bold; color: #29315E">
+Writing Programs
+</p>
+</td></tr>
+</table>
+<p>
+Pep/8 is a virtual machine for writing machine language and assembly language programs.
+It is designed to be used with the textbook, <i>Computer Systems</i>, J. Stanley Warford, Fourth edition, Jones and Bartlett, Publishers, 2010.
+The goal of the book is to teach the fundamentals of the classic von Neumann machine.
+You should use the Pep/8 system in conjunction with the textbook to write machine language and assembly language programs.
+<p>
+ <a name = "Topics">Topics:</a>
+ <a href="#Viewing">Viewing panels</a>,
+ <a href="#Input">Input and output</a>,
+ <a href="#Endless">Endless loops</a>,
+ <a href="#File">File extensions</a>.
+
+<h3><a name="Viewing">Viewing panels</a></h3>
+
+The Pep/8 system has three panels &mdash; the code panel, the CPU panel, and the memory dump panel.
+You can change which of these panels is visible by making the appropriate selection from the View menu or clicking the corresponding
+icon on the tool bar.
+<p>
+<img src="qrc:/help/images/codecpumemory.png" alt="codecpumemory" hspace=10 vspace=10>
+<img src="qrc:/help/images/viewicon.png" alt="viewicon" hspace=10 vspace=10>
+<p>
+When you click in one of the panes inside a panel it becomes the active pane, which is indicated by the blue color
+of its label at the top of the pane.
+If you double click on the label the pane will expand to its maximum height.
+The following screenshot shows the label at the top of the Source Code pane in the code panel.
+<p>
+<img src="qrc:/help/images/sourcecode.png" alt="viewicon" hspace=10 vspace=10>
+<p>
+<a href="#Topics">Scroll to topics</a>.
+
+<h3><a name="Input">Input and output</a></h3>
+
+The top part of the CPU panel shows the content of the Pep/8 central processing unit.
+The bottom part of the panel shows the input and output of your machine language or assembly language program.
+The Pep/8 system supports both batch and interactive I/O, which you can select by clicking the appropriate tab.
+<p>
+<img src="qrc:/help/images/iotab.png" alt="iotab" hspace=10 vspace=10>
+<p>
+When you execute in batch mode, you must enter the input in the Input pane before you run your program.
+The output will appear in the Output pane as the program executes.
+<p>
+Your program executes in interactive mode when you select the Terminal I/O tab.
+In this mode, executing an input statement in your program will make the program pause and wait
+for you to enter the input in the Input/Output pane.
+The executing program accepts your input and continues executing when you press the enter or return key.
+<p>
+<a href="#Topics">Scroll to topics</a>.
+
+<h3><a name="Endless">Endless loops</a></h3>
+
+If you execute a program with an endless loop, you can interrupt it by pressing &lt;command&gt;+<code>.</code> on a
+Mac or &lt;control&gt;+<code>.</code> on a Windows computer.
+Or, you can select Build->Interrupt Execution from the menu.
+Either of these actions will pause execution of the program, allow you to use the debugging tools,
+and, if you wish, continue execution of your program.
+<p>
+<img src="qrc:/help/images/interruptexecution.png" alt="interruptexecution" hspace=10 vspace=10>
+<p>
+Alternatively, you can terminate execution of your program by selecting Build->Stop Debugging from the menu
+or clicking the Stop icon in the tool bar.
+<p>
+<img src="qrc:/help/images/stopdebugging.png" alt="stopdebugging" hspace=10 vspace=10>
+<img src="qrc:/help/images/stopdebuggingicon.png" alt="stopdebuggingicon" hspace=10 vspace=10>
+<p>
+ <a href="#Topics">Scroll to topics</a>.
+
+<h3><a name="File">File extensions</a></h3>
+
+The Pep/8 system uses the following file extensions:
+<p>
+<code>.pep</code> is the file extension for source code programs.<br>
+<code>.pepo</code> is the file extension for object code programs.<br>
+<code>.pepl</code> is the file extension for the formatted program listing.
+<p>
+All these files are text files that you can modify with your favorite text editor or word processor outside the Pep/8 application.
+When you open a <code>.pep</code> file, it opens in the Source Code pane.
+When you open a <code>.pepo</code> file, it opens in the Object Code pane.
+Although you can save a <code>.pepl</code> file, there is no facility for inputting it into the Pep/8 application.
+<p>
+<a href="#Topics">Scroll to topics</a>.
+<p>
+</body>
+</html>

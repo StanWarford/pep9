@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C/DTD HTML 4.01//EN">
+
+<html>
+<head>
+ <title> Pep/8: Assembly Language Documentation </title>
+  <style type="text/css" media="all">
+   code { font-family:Courier, 'Courier New', monospace; font-size:11pt }
+   img { vertical-align:text-top; }
+   h4 { margin-bottom: 0; border-bottom-width: 0; padding-bottom: 0; }
+  </style>
+</head>
+<body bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#000033" alink="#0066FF">
+<table bgcolor="#FB9F14" width="100%" cellpadding="2" cellspacing="0" border="0">
+<tr><td>
+<p style="text-align:center; font-family:helvetica, arial, sans-serif; font-size:14pt; font-weight:bold; color: #29315E">
+Assembly Language
+</p>
+</td></tr>
+</table>
+<p>
+ Reference: <i>Computer Systems</i>, Chapters 5, 6.
+<p>
+An assembly language program is a sequence of lines, each line containing either an instruction
+from the Pep/8 instruction set specfied by a mnemonic,
+or a pseudo-operation, also called a pseudo-op or dot command.
+The assembly language program must end with the pseudo-op <code>.END</code>.
+<p>
+ <a name = "Topics">Topics:</a>
+ <a href="#Writing">Writing an assembly language program</a>,
+ <a href="#Trace">Trace tag warnings</a>,
+ <a href="#Run">The Run Source option</a>.
+
+<h3><a name="Writing">Writing an assembly language program</a></h3>
+
+Writing an assembly language program is a four-step process.
+<p>
+<h4>Step 1.</h4>
+With this Pep/8 application, you write the assembly language program using the built-in text editor in the Source Code pane.
+The following figure shows the source program after entering the program from Figure 5.18 of the textbook.
+<p>
+<img src="qrc:/help/images/fig518.png" alt="fig518" hspace=10 vspace=10>
+<p>
+Strict formatting is not required as long as there is one instruction or dot command per line,
+and at least one space between a mnemonic and an operand specifier.
+For example, the above program could be entered as follows.
+<p>
+<img src="qrc:/help/images/fig518unformatted.png" alt="fig518unformatted" hspace=10 vspace=10>
+<p>
+<h4>Step 2.</h4>
+After writing the assembly language program, assemble it by selecting Build->Assemble from the menu
+or clicking on the hammer icon in the tool bar.
+<p>
+<img src="qrc:/help/images/assemble.png" alt="assemble" hspace=10 vspace=10>
+<img src="qrc:/help/images/assembleicon.png" alt="assembleicon" hspace=10 vspace=10>
+<p>
+If there are no errors in the program a message to that effect will appear at the bottom of the main window.
+<p>
+<img src="qrc:/help/images/assemblysucceeded.png" alt="assemblysucceeded" hspace=10 vspace=10>
+<p>
+The translated program will appear in the Object Code pane,
+and a formatted listing will appear in the Assembler Listing pane.
+<p>
+<img src="qrc:/help/images/fig518assembled.png" alt="fig518assembled" hspace=10 vspace=10>
+<p>
+If there is an error in your program, an error message will appear in the source code pane.
+The following screenshot shows what would happen if you fail to supply the addressing mode for
+the <code>STRO</code> instruction.
+<P>
+<img src="qrc:/help/images/fig518error.png" alt="fig518error" hspace=10 vspace=10>
+<p>
+If you would like, you can select Build->Remove Error Messages from the menu to delete the error message.
+Then, you can correct your error and try to assemble your program again.
+It is not necessary to remove the error message before correcting your program, as error messages
+are automatically removed when you reassemble your program.
+<p>
+<img src="qrc:/help/images/removeerrormessages.png" alt="removeerrormessages" hspace=10 vspace=10>
+<p>
+Once you assemble your program so that a formatted listing appears in the Assembler Listing pane,
+you can select Edit->Format From Listing from the menu.
+Your source code will be replaced with the standard formatted source code extracted from the Assembler Listing pane.
+<p>
+<img src="qrc:/help/images/formatfromlisting.png" alt="formatfromlisting" hspace=10 vspace=10>
+<p>
+<h4>Step 3.</h4>
+Load your program by selecting Build -> Load from the menu.
+<p>
+<img src="qrc:/help/images/load.png" alt="load" hspace=10 vspace=10>
+<p>
+<h4>Step 4.</h4>
+To execute the program select Build -> Execute from the menu.
+<p>
+<img src="qrc:/help/images/execute.png" alt="execute" hspace=10 vspace=10>
+<p>
+<a href="#Topics">Scroll to topics</a>.
+
+<h3><a name="Trace">Trace tag warnings</a></h3>
+
+If your program assembles correctly but there is an error in your trace tags, a trace tag warning is displayed.
+For example, here is what happens if you make an error in one of the trace tags in the program from Figure 5.26.
+<p>
+<img src="qrc:/help/images/fig518tracetagwarning.png" alt="fig518tracetagwarning" hspace=10 vspace=10>
+<p>
+Programs with trace tag warnings have assembled correctly and will still run.
+In the debugger, you can still single step through the program, set break points, and trace memory in the Memory Dump pane.
+However, the symbolic trace feature that shows the C++ memory model graphically in the Memory Trace pane is disabled until
+you fix the trace tag error and reassemble your program.
+<p>
+<a href="#Topics">Scroll to topics</a>.
+
+<h3><a name="Run">The Run Source option</a></h3>
+
+The three steps &mdash; Assemble, Load, Execute &mdash; are combined in the single option called Run Source.
+You can initiate a run by selecting Build->Run Source from the menu or by clicking on the Run Source icon in the tool bar.
+<p>
+<img src="qrc:/help/images/runsource.png" alt="runsource" hspace=10 vspace=10>
+<img src="qrc:/help/images/runicon.png" alt="runicon" hspace=10 vspace=10>
+<p>
+<a href="#Topics">Scroll to topics</a>.
+<p>
+</body>
+</html>

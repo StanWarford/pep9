@@ -1,0 +1,578 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>HelpDialog</class>
+ <widget class="QDialog" name="HelpDialog">
+  <property name="windowModality">
+   <enum>Qt::NonModal</enum>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>994</width>
+    <height>602</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>700</width>
+    <height>500</height>
+   </size>
+  </property>
+  <property name="focusPolicy">
+   <enum>Qt::NoFocus</enum>
+  </property>
+  <property name="windowTitle">
+   <string>Pep/8 Help</string>
+  </property>
+  <property name="autoFillBackground">
+   <bool>false</bool>
+  </property>
+  <property name="sizeGripEnabled">
+   <bool>true</bool>
+  </property>
+  <property name="modal">
+   <bool>false</bool>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_2">
+   <property name="leftMargin">
+    <number>6</number>
+   </property>
+   <property name="topMargin">
+    <number>6</number>
+   </property>
+   <property name="rightMargin">
+    <number>6</number>
+   </property>
+   <property name="bottomMargin">
+    <number>12</number>
+   </property>
+   <item>
+    <widget class="QSplitter" name="splitter_3">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <widget class="QTreeWidget" name="treeWidget">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+        <horstretch>170</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>170</width>
+        <height>0</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="baseSize">
+       <size>
+        <width>0</width>
+        <height>0</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Sunken</enum>
+      </property>
+      <property name="editTriggers">
+       <set>QAbstractItemView::DoubleClicked|QAbstractItemView::SelectedClicked</set>
+      </property>
+      <property name="showDropIndicator" stdset="0">
+       <bool>false</bool>
+      </property>
+      <property name="horizontalScrollMode">
+       <enum>QAbstractItemView::ScrollPerItem</enum>
+      </property>
+      <property name="indentation">
+       <number>15</number>
+      </property>
+      <property name="animated">
+       <bool>false</bool>
+      </property>
+      <property name="headerHidden">
+       <bool>true</bool>
+      </property>
+      <column>
+       <property name="text">
+        <string>Help Topics</string>
+       </property>
+      </column>
+      <item>
+       <property name="text">
+        <string>Writing Programs</string>
+       </property>
+       <property name="flags">
+        <set>ItemIsSelectable|ItemIsEnabled</set>
+       </property>
+       <item>
+        <property name="text">
+         <string>Machine Language</string>
+        </property>
+        <property name="flags">
+         <set>ItemIsSelectable|ItemIsEnabled</set>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Assembly Language</string>
+        </property>
+        <property name="flags">
+         <set>ItemIsSelectable|ItemIsEnabled</set>
+        </property>
+       </item>
+      </item>
+      <item>
+       <property name="text">
+        <string>Debugging Programs</string>
+       </property>
+       <property name="flags">
+        <set>ItemIsSelectable|ItemIsEnabled</set>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Writing Trap Handlers</string>
+       </property>
+       <property name="flags">
+        <set>ItemIsSelectable|ItemIsEnabled</set>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Pep/8 Reference</string>
+       </property>
+       <property name="flags">
+        <set>ItemIsSelectable|ItemIsEnabled</set>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Examples</string>
+       </property>
+       <property name="flags">
+        <set>ItemIsSelectable|ItemIsEnabled</set>
+       </property>
+       <item>
+        <property name="text">
+         <string>Figure 4.32</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Figure 4.34</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Figure 4.35</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Figure 4.36</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Figure 5.3</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Figure 5.6</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Figure 5.7</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Figure 5.10</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Figure 5.11</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Figure 5.12</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Figure 5.13</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Figure 5.14a</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Figure 5.14b</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Figure 5.15</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Figure 5.16</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Figure 5.18</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Figure 5.21</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Figure 5.26</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Figure 6.1</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Figure 6.4</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Figure 6.6</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Figure 6.8</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Figure 6.10</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Figure 6.12</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Figure 6.14</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Figure 6.16</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Figure 6.18</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Figure 6.21</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Figure 6.23</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Figure 6.25</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Figure 6.27</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Figure 6.29</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Figure 6.32</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Figure 6.34</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Figure 6.36</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Figure 6.38</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Figure 6.40</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Figure 6.41</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Figure 6.43</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Figure 6.45</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Figure 6.47</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Excercise 8.4</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Problem 8.29</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Problem 8.32</string>
+        </property>
+       </item>
+      </item>
+      <item>
+       <property name="text">
+        <string>Pep/8 Operating System</string>
+       </property>
+       <property name="flags">
+        <set>ItemIsSelectable|ItemIsEnabled</set>
+       </property>
+      </item>
+     </widget>
+     <widget class="QSplitter" name="helpSplitter">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <widget class="QWebView" name="webView">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="font">
+        <font>
+         <family>Lucida Grande</family>
+         <pointsize>12</pointsize>
+         <weight>50</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="mouseTracking">
+        <bool>true</bool>
+       </property>
+       <property name="contextMenuPolicy">
+        <enum>Qt::NoContextMenu</enum>
+       </property>
+       <property name="url">
+        <url>
+         <string>about:blank</string>
+        </url>
+       </property>
+      </widget>
+      <widget class="QWidget" name="layoutWidget">
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+         <widget class="QSplitter" name="splitter">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <widget class="QTextEdit" name="leftTextEdit">
+           <property name="font">
+            <font>
+             <family>Courier</family>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
+           <property name="lineWrapMode">
+            <enum>QTextEdit::NoWrap</enum>
+           </property>
+           <property name="textInteractionFlags">
+            <set>Qt::TextSelectableByMouse</set>
+           </property>
+          </widget>
+          <widget class="QTextEdit" name="rightCppTextEdit">
+           <property name="font">
+            <font>
+             <family>Courier</family>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
+           <property name="lineWrapMode">
+            <enum>QTextEdit::NoWrap</enum>
+           </property>
+           <property name="textInteractionFlags">
+            <set>Qt::TextSelectableByMouse</set>
+           </property>
+          </widget>
+          <widget class="QTextEdit" name="rightPepTextEdit">
+           <property name="font">
+            <font>
+             <family>Courier</family>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
+           <property name="lineWrapMode">
+            <enum>QTextEdit::NoWrap</enum>
+           </property>
+           <property name="readOnly">
+            <bool>true</bool>
+           </property>
+           <property name="textInteractionFlags">
+            <set>Qt::TextSelectableByMouse</set>
+           </property>
+          </widget>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout">
+          <property name="spacing">
+           <number>5</number>
+          </property>
+          <item>
+           <widget class="QPushButton" name="copyToSourceButton">
+            <property name="text">
+             <string>Copy to Source</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QFrame" name="frame">
+            <property name="minimumSize">
+             <size>
+              <width>10</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>10</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::NoFrame</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="figureLabel">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>35</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>Example Text</string>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Minimum</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QWebView</class>
+   <extends>QWidget</extends>
+   <header>QtWebKitWidgets/QWebView</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

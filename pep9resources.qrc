@@ -1,0 +1,23 @@
+<RCC>
+    <qresource prefix="/" >
+        <file>images/paste.png</file>
+        <file>images/cut.png</file>
+        <file>images/undo.png</file>
+        <file>images/redo.png</file>
+        <file>images/print.png</file>
+        <file>images/save.png</file>
+        <file>images/open.png</file>
+        <file>images/CodeCPUMemory.xpm</file>
+        <file>images/CodeCPU.xpm</file>
+        <file>images/CodeOnly.xpm</file>
+        <file>images/copy.png</file>
+        <file>images/new.png</file>
+        <file>images/assemble.png</file>
+        <file>images/run.png</file>
+        <file>images/debugger_start.png</file>
+        <file>images/help.png</file>
+        <file>images/stop.png</file>
+        <file>sounds/itsatrap.wav</file>
+        <file>images/Pep8-icon.png</file>
+    </qresource>
+</RCC>
