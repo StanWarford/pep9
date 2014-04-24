@@ -38,7 +38,7 @@ namespace Enu
         ORA, ORX,
         RET, RETTR, ROLA, ROLX, RORA, RORX,
         STBA, STBX, STWA, STWX, STOP, STRO, SUBA, SUBSP, SUBX
-        // FOR DEBUGGING, ELIMINATE EVENTUALLY *****************************
+        // FOR DEBUGGING, ELIMINATE EVENTUALLY ***********************
         , CHARI, CHARO
         };
 
