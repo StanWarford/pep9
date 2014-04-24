@@ -1,6 +1,6 @@
 // File: enu.h
 /*
-    Pep8-1 is a virtual machine for writing machine language and assembly
+    Pep9 is a virtual machine for writing machine language and assembly
     language programs.
     
     Copyright (C) 2009  J. Stanley Warford, Pepperdine University
@@ -29,14 +29,17 @@ namespace Enu
    {
         ADDA, ADDSP, ADDX, ANDA, ANDX, ASLA, ASLX, ASRA, ASRX,
         BR, BRC, BREQ, BRGE, BRGT, BRLE, BRLT, BRNE, BRV,
-        CALL, CHARI, CHARO, CPA, CPX,
+        CALL, CPBA, CPBX, CPWA, CPWX,
         DECI, DECO,
-        LDA, LDBYTEA, LDBYTEX, LDX,
-        MOVFLGA, MOVSPA,
-        NEGA, NEGX, NOP, NOP0, NOP1, NOP2, NOP3, NOTA, NOTX,
+        HEXO,
+        LDBA, LDBX, LDWA, LDWX,
+        MOVAFLG, MOVFLGA, MOVSPA,
+        NEGA, NEGX, NOP, NOP0, NOP1, NOTA, NOTX,
         ORA, ORX,
-        RET0, RET1, RET2, RET3, RET4, RET5, RET6, RET7, RETTR, ROLA, ROLX, RORA, RORX,
-        STA, STBYTEA, STBYTEX, STOP, STRO, STX, SUBA, SUBSP, SUBX
+        RET, RETTR, ROLA, ROLX, RORA, RORX,
+        STBA, STBX, STWA, STWX, STOP, STRO, SUBA, SUBSP, SUBX
+        // FOR DEBUGGING, ELIMINATE EVENTUALLY *****************************
+        , CHARI, CHARO
         };
 
     // Addressing modes for instructions

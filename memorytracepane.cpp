@@ -1,6 +1,6 @@
 // File: memorytracepane.cpp
 /*
-    Pep8-1 is a virtual machine for writing machine language and assembly
+    Pep9 is a virtual machine for writing machine language and assembly
     language programs.
     
     Copyright (C) 2009  J. Stanley Warford, Pepperdine University
@@ -298,14 +298,7 @@ void MemoryTracePane::cacheStackChanges()
     switch (Pep::decodeMnemonic[Sim::readByte(Sim::programCounter)]) {
     case Enu::SUBSP:
     case Enu::CALL:
-    case Enu::RET0:
-    case Enu::RET1:
-    case Enu::RET2:
-    case Enu::RET3:
-    case Enu::RET4:
-    case Enu::RET5:
-    case Enu::RET6:
-    case Enu::RET7:
+    case Enu::RET:
     case Enu::ADDSP:
         if (Pep::symbolTraceList.contains(Sim::programCounter)) {
             lookAheadSymbolList = Pep::symbolTraceList.value(Sim::programCounter);
@@ -378,37 +371,9 @@ void MemoryTracePane::cacheStackChanges()
             frameSizeToAdd = stackFrameFSM.makeTransition(numCellsToAdd);
         }
         break;
-    case Enu::RET0:
+    case Enu::RET:
         popBytes(2);
         frameSizeToAdd = stackFrameFSM.makeTransition(0); // makeTransition(0) -> 0 bytes to add to the stack frame FSM.
-        break;
-    case Enu::RET1:
-        popBytes(3);
-        frameSizeToAdd = stackFrameFSM.makeTransition(0);
-        break;
-    case Enu::RET2:
-        popBytes(4);
-        frameSizeToAdd = stackFrameFSM.makeTransition(0);
-        break;
-    case Enu::RET3:
-        popBytes(5);
-        frameSizeToAdd = stackFrameFSM.makeTransition(0);
-        break;
-    case Enu::RET4:
-        popBytes(6);
-        frameSizeToAdd = stackFrameFSM.makeTransition(0);
-        break;
-    case Enu::RET5:
-        popBytes(7);
-        frameSizeToAdd = stackFrameFSM.makeTransition(0);
-        break;
-    case Enu::RET6:
-        popBytes(8);
-        frameSizeToAdd = stackFrameFSM.makeTransition(0);
-        break;
-    case Enu::RET7:
-        popBytes(9);
-        frameSizeToAdd = stackFrameFSM.makeTransition(0);
         break;
     case Enu::ADDSP:
         popBytes(Sim::operandSpecifier);

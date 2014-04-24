@@ -1,6 +1,6 @@
 // File: helpdialog.cpp
 /*
-    Pep8-1 is a virtual machine for writing machine language and assembly
+    Pep9 is a virtual machine for writing machine language and assembly
     language programs.
     
     Copyright (C) 2009  J. Stanley Warford, Pepperdine University
@@ -426,14 +426,14 @@ void HelpDialog::onCurrentItemChanged(QTreeWidgetItem*, QTreeWidgetItem*) {
 
         }
     }
-    else if (!isHelpSubCat && row == eOS) {         // Pep/8 Operating System
+    else if (!isHelpSubCat && row == eOS) {         // Pep/9 Operating System
         ui->copyToSourceButton->setText("Copy to Source");
         ui->helpSplitter->widget(0)->hide();
         ui->helpSplitter->widget(1)->show();
         ui->leftTextEdit->setText(Pep::resToString(":/help/figures/pep8os.pep"));
         ui->rightCppTextEdit->hide();
         ui->rightPepTextEdit->hide();
-        ui->figureLabel->setText("<b>Figures 8.2, 8.3, 8.6, 8.8, 8.10, 8.11</b><code>  </code> The Pep/8 operating system.");
+        ui->figureLabel->setText("<b>Figures 8.2, 8.3, 8.6, 8.8, 8.10, 8.11</b><code>  </code> The Pep/9 operating system.");
     }
 }
 
@@ -461,7 +461,7 @@ void HelpDialog::writingTrapHandlersClicked()
 
 void HelpDialog::pep8ReferenceClicked()
 {
-    selectItem("Pep/8 Reference");
+    selectItem("Pep/9 Reference");
 }
 
 void HelpDialog::examplesClicked()
@@ -471,7 +471,7 @@ void HelpDialog::examplesClicked()
 
 void HelpDialog::operatingSystemClicked()
 {
-    selectItem("Pep/8 Operating System");
+    selectItem("Pep/9 Operating System");
 }
 
 // Helper Functions
@@ -479,7 +479,7 @@ QString HelpDialog::getCode(Enu::EPane &destPane, Enu::EPane &inputDest, QString
 {
     bool isHelpSubCat = ui->treeWidget->currentIndex().parent().isValid();
     int row = ui->treeWidget->currentIndex().row();
-    if (!isHelpSubCat && row == eOS) {         // Pep/8 Operating System
+    if (!isHelpSubCat && row == eOS) {         // Pep/9 Operating System
         destPane = Enu::ESource;
         return ui->leftTextEdit->toPlainText();
     }

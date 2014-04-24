@@ -20,7 +20,7 @@
    <bool>false</bool>
   </property>
   <property name="windowTitle">
-   <string>Pep/8</string>
+   <string>Pep/9</string>
   </property>
   <property name="animated">
    <bool>true</bool>
@@ -757,7 +757,7 @@
   </action>
   <action name="actionHelp_Pep_8_Operating_System">
    <property name="text">
-    <string>Pep/8 Operating System</string>
+    <string>Pep/9 Operating System</string>
    </property>
   </action>
   <action name="actionFile_Save_Object_As">
@@ -891,7 +891,7 @@
   </action>
   <action name="actionHelp_Pep_8_Reference">
    <property name="text">
-    <string>Pep/8 Reference</string>
+    <string>Pep/9 Reference</string>
    </property>
   </action>
   <action name="actionBuild_Start_Debugging_Loader">

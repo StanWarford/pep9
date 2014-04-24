@@ -1,6 +1,6 @@
 // File: pep.cpp
 /*
-    Pep8-1 is a virtual machine for writing machine language and assembly
+    Pep9 is a virtual machine for writing machine language and assembly
     language programs.
     
     Copyright (C) 2009  J. Stanley Warford, Pepperdine University
@@ -34,8 +34,6 @@ const int Pep::labelFontSize = getSystem() == "Mac" ? 13 : 10;
 // Default redefine mnemonics
 const QString Pep::defaultUnaryMnemonic0 = "NOP0";
 const QString Pep::defaultUnaryMnemonic1 = "NOP1";
-const QString Pep::defaultUnaryMnemonic2 = "NOP2";
-const QString Pep::defaultUnaryMnemonic3 = "NOP3";
 const QString Pep::defaultNonUnaryMnemonic0 = "NOP";
 const bool Pep::defaultMnemon0i = true;
 const bool Pep::defaultMnemon0d = false;
@@ -63,15 +61,24 @@ const bool Pep::defaultMnemon2sf = true;
 const bool Pep::defaultMnemon2x = true;
 const bool Pep::defaultMnemon2sx = true;
 const bool Pep::defaultMnemon2sxf = true;
-const QString Pep::defaultNonUnaryMnemonic3 = "STRO";
-const bool Pep::defaultMnemon3i = false;
+const QString Pep::defaultNonUnaryMnemonic3 = "HEXO";
+const bool Pep::defaultMnemon3i = true;
 const bool Pep::defaultMnemon3d = true;
 const bool Pep::defaultMnemon3n = true;
-const bool Pep::defaultMnemon3s = false;
+const bool Pep::defaultMnemon3s = true;
 const bool Pep::defaultMnemon3sf = true;
-const bool Pep::defaultMnemon3x = false;
-const bool Pep::defaultMnemon3sx = false;
-const bool Pep::defaultMnemon3sxf = false;
+const bool Pep::defaultMnemon3x = true;
+const bool Pep::defaultMnemon3sx = true;
+const bool Pep::defaultMnemon3sxf = true;
+const QString Pep::defaultNonUnaryMnemonic4 = "STRO";
+const bool Pep::defaultMnemon4i = false;
+const bool Pep::defaultMnemon4d = true;
+const bool Pep::defaultMnemon4n = true;
+const bool Pep::defaultMnemon4s = false;
+const bool Pep::defaultMnemon4sf = true;
+const bool Pep::defaultMnemon4x = false;
+const bool Pep::defaultMnemon4sx = false;
+const bool Pep::defaultMnemon4sxf = false;
 
 int Pep::aaaAddressField(EAddrMode addressMode)
 {
@@ -172,16 +179,22 @@ void Pep::initEnumMnemonMaps()
     enumToMnemonMap.insert(BRNE, "BRNE"); mnemonToEnumMap.insert("BRNE", BRNE);
     enumToMnemonMap.insert(BRV, "BRV"); mnemonToEnumMap.insert("BRV", BRV);
     enumToMnemonMap.insert(CALL, "CALL"); mnemonToEnumMap.insert("CALL", CALL);
+    // FOR DEBUGGING NOW. ELIMINATE LATER *************************************************
     enumToMnemonMap.insert(CHARI, "CHARI"); mnemonToEnumMap.insert("CHARI", CHARI);
     enumToMnemonMap.insert(CHARO, "CHARO"); mnemonToEnumMap.insert("CHARO", CHARO);
-    enumToMnemonMap.insert(CPA, "CPA"); mnemonToEnumMap.insert("CPA", CPA);
-    enumToMnemonMap.insert(CPX, "CPX"); mnemonToEnumMap.insert("CPX", CPX);
+
+    enumToMnemonMap.insert(CPBA, "CPBA"); mnemonToEnumMap.insert("CPBA", CPBA);
+    enumToMnemonMap.insert(CPBX, "CPBX"); mnemonToEnumMap.insert("CPBX", CPBX);
+    enumToMnemonMap.insert(CPWA, "CPWA"); mnemonToEnumMap.insert("CPWA", CPWA);
+    enumToMnemonMap.insert(CPWX, "CPWX"); mnemonToEnumMap.insert("CPWX", CPWX);
     enumToMnemonMap.insert(DECI, defaultNonUnaryMnemonic1); mnemonToEnumMap.insert(defaultNonUnaryMnemonic1, DECI);
     enumToMnemonMap.insert(DECO, defaultNonUnaryMnemonic2); mnemonToEnumMap.insert(defaultNonUnaryMnemonic2, DECO);
-    enumToMnemonMap.insert(LDA, "LDA"); mnemonToEnumMap.insert("LDA", LDA);
-    enumToMnemonMap.insert(LDBYTEA, "LDBYTEA"); mnemonToEnumMap.insert("LDBYTEA", LDBYTEA);
-    enumToMnemonMap.insert(LDBYTEX, "LDBYTEX"); mnemonToEnumMap.insert("LDBYTEX", LDBYTEX);
-    enumToMnemonMap.insert(LDX, "LDX"); mnemonToEnumMap.insert("LDX", LDX);
+    enumToMnemonMap.insert(HEXO, defaultNonUnaryMnemonic3); mnemonToEnumMap.insert(defaultNonUnaryMnemonic3, HEXO);
+    enumToMnemonMap.insert(LDBA, "LDBA"); mnemonToEnumMap.insert("LDBA", LDBA);
+    enumToMnemonMap.insert(LDWA, "LDWA"); mnemonToEnumMap.insert("LDWA", LDWA);
+    enumToMnemonMap.insert(LDBX, "LDBX"); mnemonToEnumMap.insert("LDBX", LDBX);
+    enumToMnemonMap.insert(LDWX, "LDWX"); mnemonToEnumMap.insert("LDWX", LDWX);
+    enumToMnemonMap.insert(MOVAFLG, "MOVAFLG"); mnemonToEnumMap.insert("MOVAFLG", MOVAFLG);
     enumToMnemonMap.insert(MOVFLGA, "MOVFLGA"); mnemonToEnumMap.insert("MOVFLGA", MOVFLGA);
     enumToMnemonMap.insert(MOVSPA, "MOVSPA"); mnemonToEnumMap.insert("MOVSPA", MOVSPA);
     enumToMnemonMap.insert(NEGA, "NEGA"); mnemonToEnumMap.insert("NEGA", NEGA);
@@ -189,31 +202,22 @@ void Pep::initEnumMnemonMaps()
     enumToMnemonMap.insert(NOP, defaultNonUnaryMnemonic0); mnemonToEnumMap.insert(defaultNonUnaryMnemonic0, NOP);
     enumToMnemonMap.insert(NOP0, defaultUnaryMnemonic0); mnemonToEnumMap.insert(defaultUnaryMnemonic0, NOP0);
     enumToMnemonMap.insert(NOP1, defaultUnaryMnemonic1); mnemonToEnumMap.insert(defaultUnaryMnemonic1, NOP1);
-    enumToMnemonMap.insert(NOP2, defaultUnaryMnemonic2); mnemonToEnumMap.insert(defaultUnaryMnemonic2, NOP2);
-    enumToMnemonMap.insert(NOP3, defaultUnaryMnemonic3); mnemonToEnumMap.insert(defaultUnaryMnemonic3, NOP3);
     enumToMnemonMap.insert(NOTA, "NOTA"); mnemonToEnumMap.insert("NOTA", NOTA);
     enumToMnemonMap.insert(NOTX, "NOTX"); mnemonToEnumMap.insert("NOTX", NOTX);
     enumToMnemonMap.insert(ORA, "ORA"); mnemonToEnumMap.insert("ORA", ORA);
     enumToMnemonMap.insert(ORX, "ORX"); mnemonToEnumMap.insert("ORX", ORX);
-    enumToMnemonMap.insert(RET0, "RET0"); mnemonToEnumMap.insert("RET0", RET0);
-    enumToMnemonMap.insert(RET1, "RET1"); mnemonToEnumMap.insert("RET1", RET1);
-    enumToMnemonMap.insert(RET2, "RET2"); mnemonToEnumMap.insert("RET2", RET2);
-    enumToMnemonMap.insert(RET3, "RET3"); mnemonToEnumMap.insert("RET3", RET3);
-    enumToMnemonMap.insert(RET4, "RET4"); mnemonToEnumMap.insert("RET4", RET4);
-    enumToMnemonMap.insert(RET5, "RET5"); mnemonToEnumMap.insert("RET5", RET5);
-    enumToMnemonMap.insert(RET6, "RET6"); mnemonToEnumMap.insert("RET6", RET6);
-    enumToMnemonMap.insert(RET7, "RET7"); mnemonToEnumMap.insert("RET7", RET7);
+    enumToMnemonMap.insert(RET, "RET"); mnemonToEnumMap.insert("RET", RET);
     enumToMnemonMap.insert(RETTR, "RETTR"); mnemonToEnumMap.insert("RETTR", RETTR);
     enumToMnemonMap.insert(ROLA, "ROLA"); mnemonToEnumMap.insert("ROLA", ROLA);
     enumToMnemonMap.insert(ROLX, "ROLX"); mnemonToEnumMap.insert("ROLX", ROLX);
     enumToMnemonMap.insert(RORA, "RORA"); mnemonToEnumMap.insert("RORA", RORA);
     enumToMnemonMap.insert(RORX, "RORX"); mnemonToEnumMap.insert("RORX", RORX);
-    enumToMnemonMap.insert(STA, "STA"); mnemonToEnumMap.insert("STA", STA);
-    enumToMnemonMap.insert(STBYTEA, "STBYTEA"); mnemonToEnumMap.insert("STBYTEA", STBYTEA);
-    enumToMnemonMap.insert(STBYTEX, "STBYTEX"); mnemonToEnumMap.insert("STBYTEX", STBYTEX);
+    enumToMnemonMap.insert(STBA, "STBA"); mnemonToEnumMap.insert("STBA", STBA);
+    enumToMnemonMap.insert(STBX, "STBX"); mnemonToEnumMap.insert("STBX", STBX);
+    enumToMnemonMap.insert(STWA, "STWA"); mnemonToEnumMap.insert("STWA", STWA);
+    enumToMnemonMap.insert(STWX, "STWX"); mnemonToEnumMap.insert("STWX", STWX);
     enumToMnemonMap.insert(STOP, "STOP"); mnemonToEnumMap.insert("STOP", STOP);
-    enumToMnemonMap.insert(STRO, defaultNonUnaryMnemonic3); mnemonToEnumMap.insert(defaultNonUnaryMnemonic3, STRO);
-    enumToMnemonMap.insert(STX, "STX"); mnemonToEnumMap.insert("STX", STX);
+    enumToMnemonMap.insert(STRO, defaultNonUnaryMnemonic4); mnemonToEnumMap.insert(defaultNonUnaryMnemonic4, STRO);
     enumToMnemonMap.insert(SUBA, "SUBA"); mnemonToEnumMap.insert("SUBA", SUBA);
     enumToMnemonMap.insert(SUBSP, "SUBSP"); mnemonToEnumMap.insert("SUBSP", SUBSP);
     enumToMnemonMap.insert(SUBX, "SUBX"); mnemonToEnumMap.insert("SUBX", SUBX);
@@ -227,79 +231,77 @@ QMap<Enu::EMnemonic, bool> Pep::isTrapMap;
 
 void Pep::initMnemonicMaps()
 {
-    opCodeMap.insert(ADDA, 112); isUnaryMap.insert(ADDA, false); addrModeRequiredMap.insert(ADDA, true); isTrapMap.insert(ADDA, false);
-    opCodeMap.insert(ADDSP, 96); isUnaryMap.insert(ADDSP, false); addrModeRequiredMap.insert(ADDSP, true); isTrapMap.insert(ADDSP, false);
-    opCodeMap.insert(ADDX, 120); isUnaryMap.insert(ADDX, false); addrModeRequiredMap.insert(ADDX, true); isTrapMap.insert(ADDX, false);
-    opCodeMap.insert(ANDA, 144); isUnaryMap.insert(ANDA, false); addrModeRequiredMap.insert(ANDA, true); isTrapMap.insert(ANDA, false);
-    opCodeMap.insert(ANDX, 152); isUnaryMap.insert(ANDX, false); addrModeRequiredMap.insert(ANDX, true); isTrapMap.insert(ANDX, false);
-    opCodeMap.insert(ASLA, 28); isUnaryMap.insert(ASLA, true); addrModeRequiredMap.insert(ASLA, true); isTrapMap.insert(ASLA, false);
-    opCodeMap.insert(ASLX, 29); isUnaryMap.insert(ASLX, true); addrModeRequiredMap.insert(ASLX, true); isTrapMap.insert(ASLX, false);
-    opCodeMap.insert(ASRA, 30); isUnaryMap.insert(ASRA, true); addrModeRequiredMap.insert(ASRA, true); isTrapMap.insert(ASRA, false);
-    opCodeMap.insert(ASRX, 31); isUnaryMap.insert(ASRX, true); addrModeRequiredMap.insert(ASRX, true); isTrapMap.insert(ASRX, false);
+    opCodeMap.insert(ADDA, 96); isUnaryMap.insert(ADDA, false); addrModeRequiredMap.insert(ADDA, true); isTrapMap.insert(ADDA, false);
+    opCodeMap.insert(ADDSP, 80); isUnaryMap.insert(ADDSP, false); addrModeRequiredMap.insert(ADDSP, true); isTrapMap.insert(ADDSP, false);
+    opCodeMap.insert(ADDX, 104); isUnaryMap.insert(ADDX, false); addrModeRequiredMap.insert(ADDX, true); isTrapMap.insert(ADDX, false);
+    opCodeMap.insert(ANDA, 128); isUnaryMap.insert(ANDA, false); addrModeRequiredMap.insert(ANDA, true); isTrapMap.insert(ANDA, false);
+    opCodeMap.insert(ANDX, 136); isUnaryMap.insert(ANDX, false); addrModeRequiredMap.insert(ANDX, true); isTrapMap.insert(ANDX, false);
+    opCodeMap.insert(ASLA, 10); isUnaryMap.insert(ASLA, true); addrModeRequiredMap.insert(ASLA, true); isTrapMap.insert(ASLA, false);
+    opCodeMap.insert(ASLX, 11); isUnaryMap.insert(ASLX, true); addrModeRequiredMap.insert(ASLX, true); isTrapMap.insert(ASLX, false);
+    opCodeMap.insert(ASRA, 12); isUnaryMap.insert(ASRA, true); addrModeRequiredMap.insert(ASRA, true); isTrapMap.insert(ASRA, false);
+    opCodeMap.insert(ASRX, 13); isUnaryMap.insert(ASRX, true); addrModeRequiredMap.insert(ASRX, true); isTrapMap.insert(ASRX, false);
 
-    opCodeMap.insert(BR, 4); isUnaryMap.insert(BR, false); addrModeRequiredMap.insert(BR, false); isTrapMap.insert(BR, false);
-    opCodeMap.insert(BRC, 20); isUnaryMap.insert(BRC, false); addrModeRequiredMap.insert(BRC, false); isTrapMap.insert(BRC, false);
-    opCodeMap.insert(BREQ, 10); isUnaryMap.insert(BREQ, false); addrModeRequiredMap.insert(BREQ, false); isTrapMap.insert(BREQ, false);
-    opCodeMap.insert(BRGE, 14); isUnaryMap.insert(BRGE, false); addrModeRequiredMap.insert(BRGE, false); isTrapMap.insert(BRGE, false);
-    opCodeMap.insert(BRGT, 16); isUnaryMap.insert(BRGT, false); addrModeRequiredMap.insert(BRGT, false); isTrapMap.insert(BRGT, false);
-    opCodeMap.insert(BRLE, 6); isUnaryMap.insert(BRLE, false); addrModeRequiredMap.insert(BRLE, false); isTrapMap.insert(BRLE, false);
-    opCodeMap.insert(BRLT, 8); isUnaryMap.insert(BRLT, false); addrModeRequiredMap.insert(BRLT, false); isTrapMap.insert(BRLT, false);
-    opCodeMap.insert(BRNE, 12); isUnaryMap.insert(BRNE, false); addrModeRequiredMap.insert(BRNE, false); isTrapMap.insert(BRNE, false);
-    opCodeMap.insert(BRV, 18); isUnaryMap.insert(BRV, false); addrModeRequiredMap.insert(BRV, false); isTrapMap.insert(BRV, false);
+    opCodeMap.insert(BR, 18); isUnaryMap.insert(BR, false); addrModeRequiredMap.insert(BR, false); isTrapMap.insert(BR, false);
+    opCodeMap.insert(BRC, 34); isUnaryMap.insert(BRC, false); addrModeRequiredMap.insert(BRC, false); isTrapMap.insert(BRC, false);
+    opCodeMap.insert(BREQ, 24); isUnaryMap.insert(BREQ, false); addrModeRequiredMap.insert(BREQ, false); isTrapMap.insert(BREQ, false);
+    opCodeMap.insert(BRGE, 28); isUnaryMap.insert(BRGE, false); addrModeRequiredMap.insert(BRGE, false); isTrapMap.insert(BRGE, false);
+    opCodeMap.insert(BRGT, 30); isUnaryMap.insert(BRGT, false); addrModeRequiredMap.insert(BRGT, false); isTrapMap.insert(BRGT, false);
+    opCodeMap.insert(BRLE, 20); isUnaryMap.insert(BRLE, false); addrModeRequiredMap.insert(BRLE, false); isTrapMap.insert(BRLE, false);
+    opCodeMap.insert(BRLT, 22); isUnaryMap.insert(BRLT, false); addrModeRequiredMap.insert(BRLT, false); isTrapMap.insert(BRLT, false);
+    opCodeMap.insert(BRNE, 26); isUnaryMap.insert(BRNE, false); addrModeRequiredMap.insert(BRNE, false); isTrapMap.insert(BRNE, false);
+    opCodeMap.insert(BRV, 32); isUnaryMap.insert(BRV, false); addrModeRequiredMap.insert(BRV, false); isTrapMap.insert(BRV, false);
 
-    opCodeMap.insert(CALL, 22); isUnaryMap.insert(CALL, false); addrModeRequiredMap.insert(CALL, false); isTrapMap.insert(CALL, false);
-    opCodeMap.insert(CHARI, 72); isUnaryMap.insert(CHARI, false); addrModeRequiredMap.insert(CHARI, true); isTrapMap.insert(CHARI, false);
-    opCodeMap.insert(CHARO, 80); isUnaryMap.insert(CHARO, false); addrModeRequiredMap.insert(CHARO, true); isTrapMap.insert(CHARO, false);
-    opCodeMap.insert(CPA, 176); isUnaryMap.insert(CPA, false); addrModeRequiredMap.insert(CPA, true); isTrapMap.insert(CPA, false);
-    opCodeMap.insert(CPX, 184); isUnaryMap.insert(CPX, false); addrModeRequiredMap.insert(CPX, true); isTrapMap.insert(CPX, false);
+    opCodeMap.insert(CALL, 36); isUnaryMap.insert(CALL, false); addrModeRequiredMap.insert(CALL, false); isTrapMap.insert(CALL, false);
+    // FOR DEBUGGING. REMOVE LATER ***************************************************************
+    opCodeMap.insert(CHARI, 0); isUnaryMap.insert(CHARI, false); addrModeRequiredMap.insert(CHARI, true); isTrapMap.insert(CHARI, false);
+    opCodeMap.insert(CHARO, 0); isUnaryMap.insert(CHARO, false); addrModeRequiredMap.insert(CHARO, true); isTrapMap.insert(CHARO, false);
+    // ******************************************************
+    opCodeMap.insert(CPBA, 176); isUnaryMap.insert(CPBA, false); addrModeRequiredMap.insert(CPBA, true); isTrapMap.insert(CPBA, false);
+    opCodeMap.insert(CPBX, 184); isUnaryMap.insert(CPBX, false); addrModeRequiredMap.insert(CPBX, true); isTrapMap.insert(CPBX, false);
+    opCodeMap.insert(CPWA, 160); isUnaryMap.insert(CPWA, false); addrModeRequiredMap.insert(CPWA, true); isTrapMap.insert(CPWA, false);
+    opCodeMap.insert(CPWX, 168); isUnaryMap.insert(CPWX, false); addrModeRequiredMap.insert(CPWX, true); isTrapMap.insert(CPWX, false);
 
     opCodeMap.insert(DECI, 48); isUnaryMap.insert(DECI, false); addrModeRequiredMap.insert(DECI, true); isTrapMap.insert(DECI, true);
     opCodeMap.insert(DECO, 56); isUnaryMap.insert(DECO, false); addrModeRequiredMap.insert(DECO, true); isTrapMap.insert(DECO, true);
 
-    opCodeMap.insert(LDA, 192); isUnaryMap.insert(LDA, false); addrModeRequiredMap.insert(LDA, true); isTrapMap.insert(LDA, false);
-    opCodeMap.insert(LDBYTEA, 208); isUnaryMap.insert(LDBYTEA, false); addrModeRequiredMap.insert(LDBYTEA, true); isTrapMap.insert(LDBYTEA, false);
-    opCodeMap.insert(LDBYTEX, 216); isUnaryMap.insert(LDBYTEX, false); addrModeRequiredMap.insert(LDBYTEX, true); isTrapMap.insert(LDBYTEX, false);
-    opCodeMap.insert(LDX, 200); isUnaryMap.insert(LDX, false); addrModeRequiredMap.insert(LDX, true); isTrapMap.insert(LDX, false);
+    opCodeMap.insert(HEXO, 64); isUnaryMap.insert(HEXO, false); addrModeRequiredMap.insert(HEXO, true); isTrapMap.insert(HEXO, true);
 
-    opCodeMap.insert(MOVFLGA, 3); isUnaryMap.insert(MOVFLGA, true); addrModeRequiredMap.insert(MOVFLGA, true); isTrapMap.insert(MOVFLGA, false);
-    opCodeMap.insert(MOVSPA, 2); isUnaryMap.insert(MOVSPA, true); addrModeRequiredMap.insert(MOVSPA, true); isTrapMap.insert(MOVSPA, false);
+    opCodeMap.insert(LDBA, 208); isUnaryMap.insert(LDBA, false); addrModeRequiredMap.insert(LDBA, true); isTrapMap.insert(LDBA, false);
+    opCodeMap.insert(LDBX, 216); isUnaryMap.insert(LDBX, false); addrModeRequiredMap.insert(LDBX, true); isTrapMap.insert(LDBX, false);
+    opCodeMap.insert(LDWA, 192); isUnaryMap.insert(LDWA, false); addrModeRequiredMap.insert(LDWA, true); isTrapMap.insert(LDWA, false);
+    opCodeMap.insert(LDWX, 200); isUnaryMap.insert(LDWX, false); addrModeRequiredMap.insert(LDWX, true); isTrapMap.insert(LDWX, false);
 
-    opCodeMap.insert(NEGA, 26); isUnaryMap.insert(NEGA, true); addrModeRequiredMap.insert(NEGA, true); isTrapMap.insert(NEGA, false);
-    opCodeMap.insert(NEGX, 27); isUnaryMap.insert(NEGX, true); addrModeRequiredMap.insert(NEGX, true); isTrapMap.insert(NEGX, false);
+    opCodeMap.insert(MOVAFLG, 5); isUnaryMap.insert(MOVAFLG, true); addrModeRequiredMap.insert(MOVAFLG, true); isTrapMap.insert(MOVAFLG, false);
+    opCodeMap.insert(MOVFLGA, 4); isUnaryMap.insert(MOVFLGA, true); addrModeRequiredMap.insert(MOVFLGA, true); isTrapMap.insert(MOVFLGA, false);
+    opCodeMap.insert(MOVSPA, 3); isUnaryMap.insert(MOVSPA, true); addrModeRequiredMap.insert(MOVSPA, true); isTrapMap.insert(MOVSPA, false);
+
+    opCodeMap.insert(NEGA, 8); isUnaryMap.insert(NEGA, true); addrModeRequiredMap.insert(NEGA, true); isTrapMap.insert(NEGA, false);
+    opCodeMap.insert(NEGX, 9); isUnaryMap.insert(NEGX, true); addrModeRequiredMap.insert(NEGX, true); isTrapMap.insert(NEGX, false);
     opCodeMap.insert(NOP, 40); isUnaryMap.insert(NOP, false); addrModeRequiredMap.insert(NOP, true); isTrapMap.insert(NOP, true);
-    opCodeMap.insert(NOP0, 36); isUnaryMap.insert(NOP0, true); addrModeRequiredMap.insert(NOP0, true); isTrapMap.insert(NOP0, true);
-    opCodeMap.insert(NOP1, 37); isUnaryMap.insert(NOP1, true); addrModeRequiredMap.insert(NOP1, true); isTrapMap.insert(NOP1, true);
-    opCodeMap.insert(NOP2, 38); isUnaryMap.insert(NOP2, true); addrModeRequiredMap.insert(NOP2, true); isTrapMap.insert(NOP2, true);
-    opCodeMap.insert(NOP3, 39); isUnaryMap.insert(NOP3, true); addrModeRequiredMap.insert(NOP3, true); isTrapMap.insert(NOP3, true);
-    opCodeMap.insert(NOTA, 24); isUnaryMap.insert(NOTA, true); addrModeRequiredMap.insert(NOTA, true); isTrapMap.insert(NOTA, false);
-    opCodeMap.insert(NOTX, 25); isUnaryMap.insert(NOTX, true); addrModeRequiredMap.insert(NOTX, true); isTrapMap.insert(NOTX, false);
+    opCodeMap.insert(NOP0, 38); isUnaryMap.insert(NOP0, true); addrModeRequiredMap.insert(NOP0, true); isTrapMap.insert(NOP0, true);
+    opCodeMap.insert(NOP1, 39); isUnaryMap.insert(NOP1, true); addrModeRequiredMap.insert(NOP1, true); isTrapMap.insert(NOP1, true);
+    opCodeMap.insert(NOTA, 6); isUnaryMap.insert(NOTA, true); addrModeRequiredMap.insert(NOTA, true); isTrapMap.insert(NOTA, false);
+    opCodeMap.insert(NOTX, 7); isUnaryMap.insert(NOTX, true); addrModeRequiredMap.insert(NOTX, true); isTrapMap.insert(NOTX, false);
 
-    opCodeMap.insert(ORA, 160); isUnaryMap.insert(ORA, false); addrModeRequiredMap.insert(ORA, true); isTrapMap.insert(ORA, false);
-    opCodeMap.insert(ORX, 168); isUnaryMap.insert(ORX, false); addrModeRequiredMap.insert(ORX, true); isTrapMap.insert(ORX, false);
+    opCodeMap.insert(ORA, 144); isUnaryMap.insert(ORA, false); addrModeRequiredMap.insert(ORA, true); isTrapMap.insert(ORA, false);
+    opCodeMap.insert(ORX, 152); isUnaryMap.insert(ORX, false); addrModeRequiredMap.insert(ORX, true); isTrapMap.insert(ORX, false);
 
-    opCodeMap.insert(RET0, 88); isUnaryMap.insert(RET0, true); addrModeRequiredMap.insert(RET0, true); isTrapMap.insert(RET0, false);
-    opCodeMap.insert(RET1, 89); isUnaryMap.insert(RET1, true); addrModeRequiredMap.insert(RET1, true); isTrapMap.insert(RET1, false);
-    opCodeMap.insert(RET2, 90); isUnaryMap.insert(RET2, true); addrModeRequiredMap.insert(RET2, true); isTrapMap.insert(RET2, false);
-    opCodeMap.insert(RET3, 91); isUnaryMap.insert(RET3, true); addrModeRequiredMap.insert(RET3, true); isTrapMap.insert(RET3, false);
-    opCodeMap.insert(RET4, 92); isUnaryMap.insert(RET4, true); addrModeRequiredMap.insert(RET4, true); isTrapMap.insert(RET4, false);
-    opCodeMap.insert(RET5, 93); isUnaryMap.insert(RET5, true); addrModeRequiredMap.insert(RET5, true); isTrapMap.insert(RET5, false);
-    opCodeMap.insert(RET6, 94); isUnaryMap.insert(RET6, true); addrModeRequiredMap.insert(RET6, true); isTrapMap.insert(RET6, false);
-    opCodeMap.insert(RET7, 95); isUnaryMap.insert(RET7, true); addrModeRequiredMap.insert(RET7, true); isTrapMap.insert(RET7, false);
-    opCodeMap.insert(RETTR, 1); isUnaryMap.insert(RETTR, true); addrModeRequiredMap.insert(RETTR, true); isTrapMap.insert(RETTR, false);
-    opCodeMap.insert(ROLA, 32); isUnaryMap.insert(ROLA, true); addrModeRequiredMap.insert(ROLA, true); isTrapMap.insert(ROLA, false);
-    opCodeMap.insert(ROLX, 33); isUnaryMap.insert(ROLX, true); addrModeRequiredMap.insert(ROLX, true); isTrapMap.insert(ROLX, false);
-    opCodeMap.insert(RORA, 34); isUnaryMap.insert(RORA, true); addrModeRequiredMap.insert(RORA, true); isTrapMap.insert(RORA, false);
-    opCodeMap.insert(RORX, 35); isUnaryMap.insert(RORX, true); addrModeRequiredMap.insert(RORX, true); isTrapMap.insert(RORX, false);
+    opCodeMap.insert(RET, 1); isUnaryMap.insert(RET, true); addrModeRequiredMap.insert(RET, true); isTrapMap.insert(RET, false);
+    opCodeMap.insert(RETTR, 2); isUnaryMap.insert(RETTR, true); addrModeRequiredMap.insert(RETTR, true); isTrapMap.insert(RETTR, false);
+    opCodeMap.insert(ROLA, 14); isUnaryMap.insert(ROLA, true); addrModeRequiredMap.insert(ROLA, true); isTrapMap.insert(ROLA, false);
+    opCodeMap.insert(ROLX, 15); isUnaryMap.insert(ROLX, true); addrModeRequiredMap.insert(ROLX, true); isTrapMap.insert(ROLX, false);
+    opCodeMap.insert(RORA, 16); isUnaryMap.insert(RORA, true); addrModeRequiredMap.insert(RORA, true); isTrapMap.insert(RORA, false);
+    opCodeMap.insert(RORX, 17); isUnaryMap.insert(RORX, true); addrModeRequiredMap.insert(RORX, true); isTrapMap.insert(RORX, false);
 
-    opCodeMap.insert(STA, 224); isUnaryMap.insert(STA, false); addrModeRequiredMap.insert(STA, true); isTrapMap.insert(STA, false);
-    opCodeMap.insert(STBYTEA, 240); isUnaryMap.insert(STBYTEA, false); addrModeRequiredMap.insert(STBYTEA, true); isTrapMap.insert(STBYTEA, false);
-    opCodeMap.insert(STBYTEX, 248); isUnaryMap.insert(STBYTEX, false); addrModeRequiredMap.insert(STBYTEX, true); isTrapMap.insert(STBYTEX, false);
+    opCodeMap.insert(STBA, 240); isUnaryMap.insert(STBA, false); addrModeRequiredMap.insert(STBA, true); isTrapMap.insert(STBA, false);
+    opCodeMap.insert(STBX, 248); isUnaryMap.insert(STBX, false); addrModeRequiredMap.insert(STBX, true); isTrapMap.insert(STBX, false);
+    opCodeMap.insert(STWA, 224); isUnaryMap.insert(STWA, false); addrModeRequiredMap.insert(STWA, true); isTrapMap.insert(STWA, false);
+    opCodeMap.insert(STWX, 232); isUnaryMap.insert(STWX, false); addrModeRequiredMap.insert(STWX, true); isTrapMap.insert(STWX, false);
     opCodeMap.insert(STOP, 0); isUnaryMap.insert(STOP, true); addrModeRequiredMap.insert(STOP, true); isTrapMap.insert(STOP, false);
-    opCodeMap.insert(STRO, 64); isUnaryMap.insert(STRO, false); addrModeRequiredMap.insert(STRO, true); isTrapMap.insert(STRO, true);
-    opCodeMap.insert(STX, 232); isUnaryMap.insert(STX, false); addrModeRequiredMap.insert(STX, true); isTrapMap.insert(STX, false);
-    opCodeMap.insert(SUBA, 128); isUnaryMap.insert(SUBA, false); addrModeRequiredMap.insert(SUBA, true); isTrapMap.insert(SUBA, false);
-    opCodeMap.insert(SUBSP, 104); isUnaryMap.insert(SUBSP, false); addrModeRequiredMap.insert(SUBSP, true); isTrapMap.insert(SUBSP, false);
-    opCodeMap.insert(SUBX, 136); isUnaryMap.insert(SUBX, false); addrModeRequiredMap.insert(SUBX, true); isTrapMap.insert(SUBX, false);
+    opCodeMap.insert(STRO, 72); isUnaryMap.insert(STRO, false); addrModeRequiredMap.insert(STRO, true); isTrapMap.insert(STRO, true);
+    opCodeMap.insert(SUBA, 112); isUnaryMap.insert(SUBA, false); addrModeRequiredMap.insert(SUBA, true); isTrapMap.insert(SUBA, false);
+    opCodeMap.insert(SUBSP, 88); isUnaryMap.insert(SUBSP, false); addrModeRequiredMap.insert(SUBSP, true); isTrapMap.insert(SUBSP, false);
+    opCodeMap.insert(SUBX, 120); isUnaryMap.insert(SUBX, false); addrModeRequiredMap.insert(SUBX, true); isTrapMap.insert(SUBX, false);
 }
 
 // Map to specify legal addressing modes for each instruction

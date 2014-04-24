@@ -1,6 +1,6 @@
 // File: byteconverterbin.h
 /*
-    Pep8-1 is a virtual machine for writing machine language and assembly
+    Pep9 is a virtual machine for writing machine language and assembly
     language programs.
     
     Copyright (C) 2009  J. Stanley Warford, Pepperdine University

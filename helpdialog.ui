@@ -23,7 +23,7 @@
    <enum>Qt::NoFocus</enum>
   </property>
   <property name="windowTitle">
-   <string>Pep/8 Help</string>
+   <string>Pep/9 Help</string>
   </property>
   <property name="autoFillBackground">
    <bool>false</bool>
@@ -153,7 +153,7 @@
       </item>
       <item>
        <property name="text">
-        <string>Pep/8 Reference</string>
+        <string>Pep/9 Reference</string>
        </property>
        <property name="flags">
         <set>ItemIsSelectable|ItemIsEnabled</set>
@@ -389,7 +389,7 @@
       </item>
       <item>
        <property name="text">
-        <string>Pep/8 Operating System</string>
+        <string>Pep/9 Operating System</string>
        </property>
        <property name="flags">
         <set>ItemIsSelectable|ItemIsEnabled</set>

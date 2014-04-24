@@ -1,6 +1,6 @@
 // File: pep.h
 /*
-    Pep8-1 is a virtual machine for writing machine language and assembly
+    Pep9 is a virtual machine for writing machine language and assembly
     language programs.
     
     Copyright (C) 2009  J. Stanley Warford, Pepperdine University
@@ -44,8 +44,6 @@ public:
     // Default redefine mnemonics
     static const QString defaultUnaryMnemonic0;
     static const QString defaultUnaryMnemonic1;
-    static const QString defaultUnaryMnemonic2;
-    static const QString defaultUnaryMnemonic3;
     static const QString defaultNonUnaryMnemonic0;
     static const bool defaultMnemon0i;
     static const bool defaultMnemon0d;
@@ -82,6 +80,15 @@ public:
     static const bool defaultMnemon3x;
     static const bool defaultMnemon3sx;
     static const bool defaultMnemon3sxf;
+    static const QString defaultNonUnaryMnemonic4;
+    static const bool defaultMnemon4i;
+    static const bool defaultMnemon4d;
+    static const bool defaultMnemon4n;
+    static const bool defaultMnemon4s;
+    static const bool defaultMnemon4sf;
+    static const bool defaultMnemon4x;
+    static const bool defaultMnemon4sx;
+    static const bool defaultMnemon4sxf;
 
     // Functions for computing instruction specifiers
     static int aaaAddressField(Enu::EAddrMode addressMode);

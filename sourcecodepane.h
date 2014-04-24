@@ -1,6 +1,6 @@
 // File: sourcecodepane.h
 /*
-    Pep8-1 is a virtual machine for writing machine language and assembly
+    Pep9 is a virtual machine for writing machine language and assembly
     language programs.
     
     Copyright (C) 2009  J. Stanley Warford, Pepperdine University
@@ -41,7 +41,7 @@ public:
     virtual ~SourceCodePane();
 
     bool assemble();
-    // Pre: The source code pane contains a Pep/8 source program.
+    // Pre: The source code pane contains a Pep/9 source program.
     // Post: If the program assembles correctly, true is returned, and codeList is populated
     // with the code objects. Otherwise false is returned and codeList is partially populated.
     // Post: Pep::symbolTable is populated with values not adjusted for .BURN.
@@ -49,11 +49,11 @@ public:
     // Post: Pep::burnCount is the number of .BURN instructions encountered in the source program.
 
     QList<int> getObjectCode();
-    // Pre: codeList is populated with code from a complete correct Pep/8 source program.
+    // Pre: codeList is populated with code from a complete correct Pep/9 source program.
     // Post: objectCode is populated with the object code, one byte per entry, and returned.
 
     QStringList getAssemblerListingList();
-    // Pre: codeList is populated with code from a complete correct Pep/8 source program.
+    // Pre: codeList is populated with code from a complete correct Pep/9 source program.
     // Post: assemlberListingList is populated with the assembler listing.
     // Post: listingTraceList is populated with the object code.
     // Post: hasCheckBox is populated with the checkBox list that specifies whether a trace line can have a break point.
@@ -68,11 +68,11 @@ public:
     // Post: hasCheckBox is returned.
 
     void adjustCodeList(int addressDelta);
-    // Pre: codeList is populated with code from a complete correct Pep/8 source program.
+    // Pre: codeList is populated with code from a complete correct Pep/9 source program.
     // Post: The memAddress field of each code object is incremented by addressDelta.
 
     void installOS();
-    // Pre: objectCode is populated with code from a complete correct Pep/8 OS source program.
+    // Pre: objectCode is populated with code from a complete correct Pep/9 OS source program.
     // Post: objectCode is loaded into OS rom of Pep::Mem.
 
     bool installDefaultOs();

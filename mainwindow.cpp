@@ -1,7 +1,7 @@
 
 // File: mainwindow.cpp
 /*
-    Pep8-1 is a virtual machine for writing machine language and assembly
+    Pep9 is a virtual machine for writing machine language and assembly
     language programs.
     
     Copyright (C) 2009  J. Stanley Warford, Pepperdine University
@@ -246,7 +246,7 @@ bool MainWindow::maybeSaveSource()
 {
     if (sourceCodePane->isModified()) {
         QMessageBox::StandardButton ret;
-        ret = QMessageBox::warning(this, "Pep/8",
+        ret = QMessageBox::warning(this, "Pep/9",
                                    "The source code has been modified.\n"
                                    "Do you want to save your changes?",
                                    QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel);
@@ -262,7 +262,7 @@ bool MainWindow::maybeSaveObject()
 {
     if (objectCodePane->isModified()) {
         QMessageBox::StandardButton ret;
-        ret = QMessageBox::warning(this, "Pep/8",
+        ret = QMessageBox::warning(this, "Pep/9",
                                    "The object code has been modified.\n"
                                    "Do you want to save your changes?",
                                    QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel);
@@ -357,7 +357,7 @@ bool MainWindow::saveFileListing(const QString &fileName)
 {
     QFile file(fileName);
     if (!file.open(QFile::WriteOnly | QFile::Text)) {
-        QMessageBox::warning(this, tr("Pep/8"),
+        QMessageBox::warning(this, tr("Pep/9"),
                              tr("Cannot write file %1:\n%2.")
                              .arg(fileName)
                              .arg(file.errorString()));

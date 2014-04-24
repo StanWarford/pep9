@@ -1,6 +1,6 @@
 // File: cpupane.cpp
 /*
-    Pep8-1 is a virtual machine for writing machine language and assembly
+    Pep9 is a virtual machine for writing machine language and assembly
     language programs.
 
     Copyright (C) 2009  J. Stanley Warford, Pepperdine University
@@ -205,7 +205,7 @@ void CpuPane::runWithBatch()
             }
         }
         else {
-            QMessageBox::warning(0, "Pep/8", errorString);
+            QMessageBox::warning(0, "Pep/9", errorString);
             updateCpu();
             emit executionComplete();
             isCurrentlySimulating = false;
@@ -249,7 +249,7 @@ void CpuPane::runWithTerminal()
                 }
             }
             else {
-                QMessageBox::warning(0, "Pep/8", errorString);
+                QMessageBox::warning(0, "Pep/9", errorString);
                 updateCpu();
                 emit executionComplete();
                 isCurrentlySimulating = false;
@@ -307,7 +307,7 @@ void CpuPane::resumeWithBatch()
             }
         }
         else {
-            QMessageBox::warning(0, "Pep/8", errorString);
+            QMessageBox::warning(0, "Pep/9", errorString);
             updateCpu();
             emit updateSimulationView();
             isCurrentlySimulating = false;
@@ -356,7 +356,7 @@ void CpuPane::resumeWithTerminal()
                         }
                     }
                     else {
-                        QMessageBox::warning(0, "Pep/8", errorString);
+                        QMessageBox::warning(0, "Pep/9", errorString);
                         emit updateSimulationView();
                         emit executionComplete();
                         isCurrentlySimulating = false;
@@ -402,7 +402,7 @@ void CpuPane::resumeWithTerminal()
                 }
             }
             else {
-                QMessageBox::warning(0, "Pep/8", errorString);
+                QMessageBox::warning(0, "Pep/9", errorString);
                 updateCpu();
                 emit updateSimulationView();
                 emit executionComplete();
@@ -441,7 +441,7 @@ void CpuPane::singleStepWithBatch()
                 }
             }
             else {
-                QMessageBox::warning(0, "Pep/8", errorString);
+                QMessageBox::warning(0, "Pep/9", errorString);
                 emit updateSimulationView();
                 emit executionComplete();
                 isCurrentlySimulating = false;
@@ -472,7 +472,7 @@ void CpuPane::singleStepWithBatch()
         }
     }
     else {
-        QMessageBox::warning(0, "Pep/8", errorString);
+        QMessageBox::warning(0, "Pep/9", errorString);
         emit executionComplete();
     }
     isCurrentlySimulating = false;
@@ -512,7 +512,7 @@ void CpuPane::singleStepWithTerminal()
                     }
                 }
                 else {
-                    QMessageBox::warning(0, "Pep/8", errorString);
+                    QMessageBox::warning(0, "Pep/9", errorString);
                     emit updateSimulationView();
                     emit executionComplete();
                     isCurrentlySimulating = false;
@@ -549,7 +549,7 @@ void CpuPane::singleStepWithTerminal()
             }
         }
         else {
-            QMessageBox::warning(0, "Pep/8", errorString);
+            QMessageBox::warning(0, "Pep/9", errorString);
             emit executionComplete();
             return;
         }

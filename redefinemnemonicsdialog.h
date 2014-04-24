@@ -1,6 +1,6 @@
 // File: redefinemnemonicsdialog.h
 /*
-    Pep8-1 is a virtual machine for writing machine language and assembly
+    Pep9 is a virtual machine for writing machine language and assembly
     language programs.
     
     Copyright (C) 2009  J. Stanley Warford, Pepperdine University
@@ -48,11 +48,10 @@ private slots:
     void redefineNonUnaryMnemonic1(QString);
     void redefineNonUnaryMnemonic2(QString);
     void redefineNonUnaryMnemonic3(QString);
+    void redefineNonUnaryMnemonic4(QString);
 
     void redefineUnaryMnemonic0(QString);
     void redefineUnaryMnemonic1(QString);
-    void redefineUnaryMnemonic2(QString);
-    void redefineUnaryMnemonic3(QString);
 
     void setNonUnaryAllowedModes();
 };

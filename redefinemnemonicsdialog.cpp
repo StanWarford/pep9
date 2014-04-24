@@ -1,6 +1,6 @@
 // File: redefinemnemonicsdialog.cpp
 /*
-    Pep8-1 is a virtual machine for writing machine language and assembly
+    Pep9 is a virtual machine for writing machine language and assembly
     language programs.
     
     Copyright (C) 2009  J. Stanley Warford, Pepperdine University
@@ -33,14 +33,10 @@ RedefineMnemonicsDialog::RedefineMnemonicsDialog(QWidget *parent) :
     ui->unaryOpCodeLabel->setFont(QFont(Pep::labelFont, Pep::labelFontSize, QFont::Bold));
     ui->unaryOpCode1Label->setFont(QFont(Pep::codeFont));
     ui->unaryOpCode2Label->setFont(QFont(Pep::codeFont));
-    ui->unaryOpCode3Label->setFont(QFont(Pep::codeFont));
-    ui->unaryOpCode4Label->setFont(QFont(Pep::codeFont));
 
     ui->unaryMnemonicLabel->setFont(QFont(Pep::labelFont, Pep::labelFontSize, QFont::Bold));
     ui->unaryMnemonic0LineEdit->setFont(QFont(Pep::codeFont));
     ui->unaryMnemonic1LineEdit->setFont(QFont(Pep::codeFont));
-    ui->unaryMnemonic2LineEdit->setFont(QFont(Pep::codeFont));
-    ui->unaryMnemonic3LineEdit->setFont(QFont(Pep::codeFont));
 
     ui->nonunaryMnemonicLabel->setFont(QFont(Pep::labelFont, Pep::labelFontSize, QFont::Bold));
     ui->iLabel->setFont(QFont(Pep::labelFont, Pep::labelFontSize, QFont::Bold));
@@ -58,11 +54,13 @@ RedefineMnemonicsDialog::RedefineMnemonicsDialog(QWidget *parent) :
     ui->nonunaryOpCode2Label->setFont(QFont(Pep::codeFont));
     ui->nonunaryOpCode3Label->setFont(QFont(Pep::codeFont));
     ui->nonunaryOpCode4Label->setFont(QFont(Pep::codeFont));
+    ui->nonunaryOpCode5Label->setFont(QFont(Pep::codeFont));
 
     ui->nonUnaryMnemonic0LineEdit->setFont(QFont(Pep::codeFont));
     ui->nonUnaryMnemonic1LineEdit->setFont(QFont(Pep::codeFont));
     ui->nonUnaryMnemonic2LineEdit->setFont(QFont(Pep::codeFont));
     ui->nonUnaryMnemonic3LineEdit->setFont(QFont(Pep::codeFont));
+    ui->nonUnaryMnemonic4LineEdit->setFont(QFont(Pep::codeFont));
 
     connect(ui->defaultMnemonicsButton, SIGNAL(clicked()), this, SLOT(restoreDefaults()));
 
@@ -73,21 +71,19 @@ RedefineMnemonicsDialog::RedefineMnemonicsDialog(QWidget *parent) :
     ui->nonUnaryMnemonic1LineEdit->setValidator(validator);
     ui->nonUnaryMnemonic2LineEdit->setValidator(validator);
     ui->nonUnaryMnemonic3LineEdit->setValidator(validator);
+    ui->nonUnaryMnemonic4LineEdit->setValidator(validator);
 
     ui->unaryMnemonic0LineEdit->setValidator(validator);
     ui->unaryMnemonic1LineEdit->setValidator(validator);
-    ui->unaryMnemonic2LineEdit->setValidator(validator);
-    ui->unaryMnemonic3LineEdit->setValidator(validator);
 
     connect(ui->nonUnaryMnemonic0LineEdit, SIGNAL(textEdited(QString)), this, SLOT(redefineNonUnaryMnemonic0(QString)));
     connect(ui->nonUnaryMnemonic1LineEdit, SIGNAL(textEdited(QString)), this, SLOT(redefineNonUnaryMnemonic1(QString)));
     connect(ui->nonUnaryMnemonic2LineEdit, SIGNAL(textEdited(QString)), this, SLOT(redefineNonUnaryMnemonic2(QString)));
     connect(ui->nonUnaryMnemonic3LineEdit, SIGNAL(textEdited(QString)), this, SLOT(redefineNonUnaryMnemonic3(QString)));
+    connect(ui->nonUnaryMnemonic4LineEdit, SIGNAL(textEdited(QString)), this, SLOT(redefineNonUnaryMnemonic3(QString)));
 
     connect(ui->unaryMnemonic0LineEdit, SIGNAL(textEdited(QString)), this, SLOT(redefineUnaryMnemonic0(QString)));
     connect(ui->unaryMnemonic1LineEdit, SIGNAL(textEdited(QString)), this, SLOT(redefineUnaryMnemonic1(QString)));
-    connect(ui->unaryMnemonic2LineEdit, SIGNAL(textEdited(QString)), this, SLOT(redefineUnaryMnemonic2(QString)));
-    connect(ui->unaryMnemonic3LineEdit, SIGNAL(textEdited(QString)), this, SLOT(redefineUnaryMnemonic3(QString)));
 
     connect(ui->mnemon0iCheckBox, SIGNAL(clicked()), this, SLOT(setNonUnaryAllowedModes()));
     connect(ui->mnemon0dCheckBox, SIGNAL(clicked()), this, SLOT(setNonUnaryAllowedModes()));
@@ -124,6 +120,15 @@ RedefineMnemonicsDialog::RedefineMnemonicsDialog(QWidget *parent) :
     connect(ui->mnemon3xCheckBox, SIGNAL(clicked()), this, SLOT(setNonUnaryAllowedModes()));
     connect(ui->mnemon3sxCheckBox, SIGNAL(clicked()), this, SLOT(setNonUnaryAllowedModes()));
     connect(ui->mnemon3sxfCheckBox, SIGNAL(clicked()), this, SLOT(setNonUnaryAllowedModes()));
+
+    connect(ui->mnemon4iCheckBox, SIGNAL(clicked()), this, SLOT(setNonUnaryAllowedModes()));
+    connect(ui->mnemon4dCheckBox, SIGNAL(clicked()), this, SLOT(setNonUnaryAllowedModes()));
+    connect(ui->mnemon4nCheckBox, SIGNAL(clicked()), this, SLOT(setNonUnaryAllowedModes()));
+    connect(ui->mnemon4sCheckBox, SIGNAL(clicked()), this, SLOT(setNonUnaryAllowedModes()));
+    connect(ui->mnemon4sfCheckBox, SIGNAL(clicked()), this, SLOT(setNonUnaryAllowedModes()));
+    connect(ui->mnemon4xCheckBox, SIGNAL(clicked()), this, SLOT(setNonUnaryAllowedModes()));
+    connect(ui->mnemon4sxCheckBox, SIGNAL(clicked()), this, SLOT(setNonUnaryAllowedModes()));
+    connect(ui->mnemon4sxfCheckBox, SIGNAL(clicked()), this, SLOT(setNonUnaryAllowedModes()));
 }
 
 RedefineMnemonicsDialog::~RedefineMnemonicsDialog()
@@ -135,8 +140,6 @@ void RedefineMnemonicsDialog::restoreDefaults()
 {
     ui->unaryMnemonic0LineEdit->setText(Pep::defaultUnaryMnemonic0);
     ui->unaryMnemonic1LineEdit->setText(Pep::defaultUnaryMnemonic1);
-    ui->unaryMnemonic2LineEdit->setText(Pep::defaultUnaryMnemonic2);
-    ui->unaryMnemonic3LineEdit->setText(Pep::defaultUnaryMnemonic3);
     ui->nonUnaryMnemonic0LineEdit->setText(Pep::defaultNonUnaryMnemonic0);
     ui->mnemon0iCheckBox->setChecked(Pep::defaultMnemon0i);
     ui->mnemon0dCheckBox->setChecked(Pep::defaultMnemon0d);
@@ -173,6 +176,15 @@ void RedefineMnemonicsDialog::restoreDefaults()
     ui->mnemon3xCheckBox->setChecked(Pep::defaultMnemon3x);
     ui->mnemon3sxCheckBox->setChecked(Pep::defaultMnemon3sx);
     ui->mnemon3sxfCheckBox->setChecked(Pep::defaultMnemon3sxf);
+    ui->nonUnaryMnemonic4LineEdit->setText(Pep::defaultNonUnaryMnemonic4);
+    ui->mnemon4iCheckBox->setChecked(Pep::defaultMnemon4i);
+    ui->mnemon4dCheckBox->setChecked(Pep::defaultMnemon4d);
+    ui->mnemon4nCheckBox->setChecked(Pep::defaultMnemon4n);
+    ui->mnemon4sCheckBox->setChecked(Pep::defaultMnemon4s);
+    ui->mnemon4sfCheckBox->setChecked(Pep::defaultMnemon4sf);
+    ui->mnemon4xCheckBox->setChecked(Pep::defaultMnemon4x);
+    ui->mnemon4sxCheckBox->setChecked(Pep::defaultMnemon4sx);
+    ui->mnemon4sxfCheckBox->setChecked(Pep::defaultMnemon4sxf);
 
     int addrMode = 0;
     if (Pep::defaultMnemon0i) addrMode |= I;
@@ -213,6 +225,16 @@ void RedefineMnemonicsDialog::restoreDefaults()
     if (Pep::defaultMnemon3x) addrMode |= X;
     if (Pep::defaultMnemon3sx) addrMode |= SX;
     if (Pep::defaultMnemon3sxf) addrMode |= SXF;
+    Pep::addrModesMap.insert(HEXO, addrMode);
+    addrMode = 0;
+    if (Pep::defaultMnemon4i) addrMode |= I;
+    if (Pep::defaultMnemon4d) addrMode |= D;
+    if (Pep::defaultMnemon4n) addrMode |= N;
+    if (Pep::defaultMnemon4s) addrMode |= S;
+    if (Pep::defaultMnemon4sf) addrMode |= SF;
+    if (Pep::defaultMnemon4x) addrMode |= X;
+    if (Pep::defaultMnemon4sx) addrMode |= SX;
+    if (Pep::defaultMnemon4sxf) addrMode |= SXF;
     Pep::addrModesMap.insert(STRO, addrMode);
 
     Pep::initEnumMnemonMaps();
@@ -283,6 +305,24 @@ void RedefineMnemonicsDialog::redefineNonUnaryMnemonic3(QString string)
     }
     else {
         ui->nonUnaryMnemonic3LineEdit->setText(string);
+        Pep::mnemonToEnumMap.remove(Pep::enumToMnemonMap.value(Enu::HEXO));
+        Pep::enumToMnemonMap.insert(Enu::STRO, string);
+        Pep::mnemonToEnumMap.insert(string, Enu::HEXO);
+        ui->warningLabel->clear();
+    }
+}
+
+void RedefineMnemonicsDialog::redefineNonUnaryMnemonic4(QString string)
+{
+    string = string.toUpper();
+    if (string.isEmpty()) {
+        ui->warningLabel->setText("Empty mnemonic not stored for 01001.");
+    }
+    else if (Pep::mnemonToEnumMap.contains(string)) {
+        ui->warningLabel->setText("Duplicate not stored for 01001.");
+    }
+    else {
+        ui->nonUnaryMnemonic3LineEdit->setText(string);
         Pep::mnemonToEnumMap.remove(Pep::enumToMnemonMap.value(Enu::STRO));
         Pep::enumToMnemonMap.insert(Enu::STRO, string);
         Pep::mnemonToEnumMap.insert(string, Enu::STRO);
@@ -322,42 +362,6 @@ void RedefineMnemonicsDialog::redefineUnaryMnemonic1(QString string)
         Pep::mnemonToEnumMap.remove(Pep::enumToMnemonMap.value(Enu::NOP1));
         Pep::enumToMnemonMap.insert(Enu::NOP1, string);
         Pep::mnemonToEnumMap.insert(string, Enu::NOP1);
-        ui->warningLabel->clear();
-    }
-}
-
-void RedefineMnemonicsDialog::redefineUnaryMnemonic2(QString string)
-{
-    string = string.toUpper();
-    if (string.isEmpty()) {
-        ui->warningLabel->setText("Empty mnemonic not stored for 0010 0110.");
-    }
-    else if (Pep::mnemonToEnumMap.contains(string)) {
-        ui->warningLabel->setText("Duplicate not stored for 0010 0110.");
-    }
-    else {
-        ui->unaryMnemonic2LineEdit->setText(string);
-        Pep::mnemonToEnumMap.remove(Pep::enumToMnemonMap.value(Enu::NOP2));
-        Pep::enumToMnemonMap.insert(Enu::NOP2, string);
-        Pep::mnemonToEnumMap.insert(string, Enu::NOP2);
-        ui->warningLabel->clear();
-    }
-}
-
-void RedefineMnemonicsDialog::redefineUnaryMnemonic3(QString string)
-{
-    string = string.toUpper();
-    if (string.isEmpty()) {
-        ui->warningLabel->setText("Empty mnemonic not stored for 0010 0111.");
-    }
-    else if (Pep::mnemonToEnumMap.contains(string)) {
-        ui->warningLabel->setText("Duplicate not stored for 0010 0111.");
-    }
-    else {
-        ui->unaryMnemonic3LineEdit->setText(string);
-        Pep::mnemonToEnumMap.remove(Pep::enumToMnemonMap.value(Enu::NOP3));
-        Pep::enumToMnemonMap.insert(Enu::NOP3, string);
-        Pep::mnemonToEnumMap.insert(string, Enu::NOP3);
         ui->warningLabel->clear();
     }
 }
@@ -403,5 +407,15 @@ void RedefineMnemonicsDialog::setNonUnaryAllowedModes()
     if (ui->mnemon3xCheckBox->isChecked()) addrMode |= X;
     if (ui->mnemon3sxCheckBox->isChecked()) addrMode |= SX;
     if (ui->mnemon3sxfCheckBox->isChecked()) addrMode |= SXF;
+    Pep::addrModesMap.insert(HEXO, addrMode);
+    addrMode = 0;
+    if (ui->mnemon4iCheckBox->isChecked()) addrMode |= I;
+    if (ui->mnemon4dCheckBox->isChecked()) addrMode |= D;
+    if (ui->mnemon4nCheckBox->isChecked()) addrMode |= N;
+    if (ui->mnemon4sCheckBox->isChecked()) addrMode |= S;
+    if (ui->mnemon4sfCheckBox->isChecked()) addrMode |= SF;
+    if (ui->mnemon4xCheckBox->isChecked()) addrMode |= X;
+    if (ui->mnemon4sxCheckBox->isChecked()) addrMode |= SX;
+    if (ui->mnemon4sxfCheckBox->isChecked()) addrMode |= SXF;
     Pep::addrModesMap.insert(STRO, addrMode);
 }
