@@ -55,7 +55,8 @@ private:
 public:
     void appendObjectCode(QList<int> &objectCode);
     void appendSourceLine(QStringList &assemblerListingList, QStringList &listingTraceList, QList<bool> &hasCheckBox);
-    bool processSymbolTraceTags(int &sourceLine, QString &errorString);
+//    NO LONGER WITH PEP/9. FOR RET1, RET2, ..., RET7
+//    bool processSymbolTraceTags(int &sourceLine, QString &errorString);
 };
 
 class NonUnaryInstruction: public Code

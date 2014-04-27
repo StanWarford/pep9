@@ -161,8 +161,8 @@ void Pep::initEnumMnemonMaps()
 {
     enumToMnemonMap.clear(); mnemonToEnumMap.clear(); // Can be called from Redefine Mnemonics
     enumToMnemonMap.insert(ADDA, "ADDA"); mnemonToEnumMap.insert("ADDA", ADDA);
-    enumToMnemonMap.insert(ADDSP, "ADDSP"); mnemonToEnumMap.insert("ADDSP", ADDSP);
     enumToMnemonMap.insert(ADDX, "ADDX"); mnemonToEnumMap.insert("ADDX", ADDX);
+    enumToMnemonMap.insert(ADDSP, "ADDSP"); mnemonToEnumMap.insert("ADDSP", ADDSP);
     enumToMnemonMap.insert(ANDA, "ANDA"); mnemonToEnumMap.insert("ANDA", ANDA);
     enumToMnemonMap.insert(ANDX, "ANDX"); mnemonToEnumMap.insert("ANDX", ANDX);
     enumToMnemonMap.insert(ASLA, "ASLA"); mnemonToEnumMap.insert("ASLA", ASLA);
@@ -219,8 +219,8 @@ void Pep::initEnumMnemonMaps()
     enumToMnemonMap.insert(STOP, "STOP"); mnemonToEnumMap.insert("STOP", STOP);
     enumToMnemonMap.insert(STRO, defaultNonUnaryMnemonic4); mnemonToEnumMap.insert(defaultNonUnaryMnemonic4, STRO);
     enumToMnemonMap.insert(SUBA, "SUBA"); mnemonToEnumMap.insert("SUBA", SUBA);
-    enumToMnemonMap.insert(SUBSP, "SUBSP"); mnemonToEnumMap.insert("SUBSP", SUBSP);
     enumToMnemonMap.insert(SUBX, "SUBX"); mnemonToEnumMap.insert("SUBX", SUBX);
+    enumToMnemonMap.insert(SUBSP, "SUBSP"); mnemonToEnumMap.insert("SUBSP", SUBSP);
 }
 
 // Maps to characterize each instruction
@@ -232,8 +232,8 @@ QMap<Enu::EMnemonic, bool> Pep::isTrapMap;
 void Pep::initMnemonicMaps()
 {
     opCodeMap.insert(ADDA, 96); isUnaryMap.insert(ADDA, false); addrModeRequiredMap.insert(ADDA, true); isTrapMap.insert(ADDA, false);
-    opCodeMap.insert(ADDSP, 80); isUnaryMap.insert(ADDSP, false); addrModeRequiredMap.insert(ADDSP, true); isTrapMap.insert(ADDSP, false);
     opCodeMap.insert(ADDX, 104); isUnaryMap.insert(ADDX, false); addrModeRequiredMap.insert(ADDX, true); isTrapMap.insert(ADDX, false);
+    opCodeMap.insert(ADDSP, 80); isUnaryMap.insert(ADDSP, false); addrModeRequiredMap.insert(ADDSP, true); isTrapMap.insert(ADDSP, false);
     opCodeMap.insert(ANDA, 128); isUnaryMap.insert(ANDA, false); addrModeRequiredMap.insert(ANDA, true); isTrapMap.insert(ANDA, false);
     opCodeMap.insert(ANDX, 136); isUnaryMap.insert(ANDX, false); addrModeRequiredMap.insert(ANDX, true); isTrapMap.insert(ANDX, false);
     opCodeMap.insert(ASLA, 10); isUnaryMap.insert(ASLA, true); addrModeRequiredMap.insert(ASLA, true); isTrapMap.insert(ASLA, false);
@@ -300,8 +300,8 @@ void Pep::initMnemonicMaps()
     opCodeMap.insert(STOP, 0); isUnaryMap.insert(STOP, true); addrModeRequiredMap.insert(STOP, true); isTrapMap.insert(STOP, false);
     opCodeMap.insert(STRO, 72); isUnaryMap.insert(STRO, false); addrModeRequiredMap.insert(STRO, true); isTrapMap.insert(STRO, true);
     opCodeMap.insert(SUBA, 112); isUnaryMap.insert(SUBA, false); addrModeRequiredMap.insert(SUBA, true); isTrapMap.insert(SUBA, false);
-    opCodeMap.insert(SUBSP, 88); isUnaryMap.insert(SUBSP, false); addrModeRequiredMap.insert(SUBSP, true); isTrapMap.insert(SUBSP, false);
     opCodeMap.insert(SUBX, 120); isUnaryMap.insert(SUBX, false); addrModeRequiredMap.insert(SUBX, true); isTrapMap.insert(SUBX, false);
+    opCodeMap.insert(SUBSP, 88); isUnaryMap.insert(SUBSP, false); addrModeRequiredMap.insert(SUBSP, true); isTrapMap.insert(SUBSP, false);
 }
 
 // Map to specify legal addressing modes for each instruction
@@ -310,8 +310,8 @@ void Pep::initAddrModesMap()
 {
     // Nonunary instructions
     addrModesMap.insert(ADDA, ALL);
-    addrModesMap.insert(ADDSP, ALL);
     addrModesMap.insert(ADDX, ALL);
+    addrModesMap.insert(ADDSP, ALL);
     addrModesMap.insert(ANDA, ALL);
     addrModesMap.insert(ANDX, ALL);
     addrModesMap.insert(BR, I | X);
@@ -324,23 +324,27 @@ void Pep::initAddrModesMap()
     addrModesMap.insert(BRNE, I | X);
     addrModesMap.insert(BRV, I | X);
     addrModesMap.insert(CALL, I | X);
+    // DEBUGGING FOR NOW. REMOVE LATER
     addrModesMap.insert(CHARI, D | N | S | SF | X | SX | SXF);
     addrModesMap.insert(CHARO, ALL);
-    addrModesMap.insert(CPA, ALL);
-    addrModesMap.insert(CPX, ALL);
-    addrModesMap.insert(LDA, ALL);
-    addrModesMap.insert(LDBYTEA, ALL);
-    addrModesMap.insert(LDBYTEX, ALL);
-    addrModesMap.insert(LDX, ALL);
+    // **********************************************
+    addrModesMap.insert(CPBA, ALL);
+    addrModesMap.insert(CPBX, ALL);
+    addrModesMap.insert(CPWA, ALL);
+    addrModesMap.insert(CPWX, ALL);
+    addrModesMap.insert(LDBA, ALL);
+    addrModesMap.insert(LDBX, ALL);
+    addrModesMap.insert(LDWA, ALL);
+    addrModesMap.insert(LDWX, ALL);
     addrModesMap.insert(ORA, ALL);
     addrModesMap.insert(ORX, ALL);
-    addrModesMap.insert(STA, D | N | S | SF | X | SX | SXF);
-    addrModesMap.insert(STBYTEA, D | N | S | SF | X | SX | SXF);
-    addrModesMap.insert(STBYTEX, D | N | S | SF | X | SX | SXF);
-    addrModesMap.insert(STX, D | N | S | SF | X | SX | SXF);
+    addrModesMap.insert(STBA, D | N | S | SF | X | SX | SXF);
+    addrModesMap.insert(STBX, D | N | S | SF | X | SX | SXF);
+    addrModesMap.insert(STWA, D | N | S | SF | X | SX | SXF);
+    addrModesMap.insert(STWX, D | N | S | SF | X | SX | SXF);
     addrModesMap.insert(SUBA, ALL);
-    addrModesMap.insert(SUBSP, ALL);
     addrModesMap.insert(SUBX, ALL);
+    addrModesMap.insert(SUBSP, ALL);
     // Nonunary trap instructions
     int addrMode;
     addrMode = 0;
@@ -382,6 +386,16 @@ void Pep::initAddrModesMap()
     if (defaultMnemon3x) addrMode |= X;
     if (defaultMnemon3sx) addrMode |= SX;
     if (defaultMnemon3sxf) addrMode |= SXF;
+    addrModesMap.insert(HEXO, addrMode);
+    addrMode = 0;
+    if (defaultMnemon3i) addrMode |= I;
+    if (defaultMnemon3d) addrMode |= D;
+    if (defaultMnemon3n) addrMode |= N;
+    if (defaultMnemon3s) addrMode |= S;
+    if (defaultMnemon3sf) addrMode |= SF;
+    if (defaultMnemon3x) addrMode |= X;
+    if (defaultMnemon3sx) addrMode |= SX;
+    if (defaultMnemon3sxf) addrMode |= SXF;
     addrModesMap.insert(STRO, addrMode);
 }
 
@@ -414,49 +428,49 @@ QVector<Enu::EAddrMode> Pep::decodeAddrMode(256);
 void Pep::initDecoderTables()
 {
     decodeMnemonic[0] = STOP; decodeAddrMode[0] = NONE;
-    decodeMnemonic[1] = RETTR; decodeAddrMode[1] = NONE;
-    decodeMnemonic[2] = MOVSPA; decodeAddrMode[2] = NONE;
-    decodeMnemonic[3] = MOVFLGA; decodeAddrMode[3] = NONE;
+    decodeMnemonic[1] = RET; decodeAddrMode[1] = NONE;
+    decodeMnemonic[2] = RETTR; decodeAddrMode[2] = NONE;
+    decodeMnemonic[3] = MOVSPA; decodeAddrMode[3] = NONE;
+    decodeMnemonic[4] = MOVFLGA; decodeAddrMode[4] = NONE;
+    decodeMnemonic[5] = MOVAFLG; decodeAddrMode[5] = NONE;
 
-    decodeMnemonic[4] = BR; decodeAddrMode[4] = I;
-    decodeMnemonic[5] = BR; decodeAddrMode[5] = X;
-    decodeMnemonic[6] = BRLE; decodeAddrMode[6] = I;
-    decodeMnemonic[7] = BRLE; decodeAddrMode[7] = X;
-    decodeMnemonic[8] = BRLT; decodeAddrMode[8] = I;
-    decodeMnemonic[9] = BRLT; decodeAddrMode[9] = X;
-    decodeMnemonic[10] = BREQ; decodeAddrMode[10] = I;
-    decodeMnemonic[11] = BREQ; decodeAddrMode[11] = X;
-    decodeMnemonic[12] = BRNE; decodeAddrMode[12] = I;
-    decodeMnemonic[13] = BRNE; decodeAddrMode[13] = X;
-    decodeMnemonic[14] = BRGE; decodeAddrMode[14] = I;
-    decodeMnemonic[15] = BRGE; decodeAddrMode[15] = X;
-    decodeMnemonic[16] = BRGT; decodeAddrMode[16] = I;
-    decodeMnemonic[17] = BRGT; decodeAddrMode[17] = X;
-    decodeMnemonic[18] = BRV; decodeAddrMode[18] = I;
-    decodeMnemonic[19] = BRV; decodeAddrMode[19] = X;
-    decodeMnemonic[20] = BRC; decodeAddrMode[20] = I;
-    decodeMnemonic[21] = BRC; decodeAddrMode[21] = X;
-    decodeMnemonic[22] = CALL; decodeAddrMode[22] = I;
-    decodeMnemonic[23] = CALL; decodeAddrMode[23] = X;
+    decodeMnemonic[6] = NOTA; decodeAddrMode[6] = NONE;
+    decodeMnemonic[7] = NOTX; decodeAddrMode[7] = NONE;
+    decodeMnemonic[8] = NEGA; decodeAddrMode[8] = NONE;
+    decodeMnemonic[9] = NEGX; decodeAddrMode[9] = NONE;
+    decodeMnemonic[10] = ASLA; decodeAddrMode[10] = NONE;
+    decodeMnemonic[11] = ASLX; decodeAddrMode[11] = NONE;
+    decodeMnemonic[12] = ASRA; decodeAddrMode[12] = NONE;
+    decodeMnemonic[13] = ASRX; decodeAddrMode[13] = NONE;
+    decodeMnemonic[14] = ROLA; decodeAddrMode[14] = NONE;
+    decodeMnemonic[15] = ROLX; decodeAddrMode[15] = NONE;
+    decodeMnemonic[16] = RORA; decodeAddrMode[16] = NONE;
+    decodeMnemonic[17] = RORX; decodeAddrMode[17] = NONE;
 
-    decodeMnemonic[24] = NOTA; decodeAddrMode[24] = NONE;
-    decodeMnemonic[25] = NOTX; decodeAddrMode[25] = NONE;
-    decodeMnemonic[26] = NEGA; decodeAddrMode[26] = NONE;
-    decodeMnemonic[27] = NEGX; decodeAddrMode[27] = NONE;
-    decodeMnemonic[28] = ASLA; decodeAddrMode[28] = NONE;
-    decodeMnemonic[29] = ASLX; decodeAddrMode[29] = NONE;
-    decodeMnemonic[30] = ASRA; decodeAddrMode[30] = NONE;
-    decodeMnemonic[31] = ASRX; decodeAddrMode[31] = NONE;
-    decodeMnemonic[32] = ROLA; decodeAddrMode[32] = NONE;
-    decodeMnemonic[33] = ROLX; decodeAddrMode[33] = NONE;
-    decodeMnemonic[34] = RORA; decodeAddrMode[34] = NONE;
-    decodeMnemonic[35] = RORX; decodeAddrMode[35] = NONE;
+    decodeMnemonic[18] = BR; decodeAddrMode[18] = I;
+    decodeMnemonic[19] = BR; decodeAddrMode[19] = X;
+    decodeMnemonic[20] = BRLE; decodeAddrMode[20] = I;
+    decodeMnemonic[21] = BRLE; decodeAddrMode[21] = X;
+    decodeMnemonic[22] = BRLT; decodeAddrMode[22] = I;
+    decodeMnemonic[23] = BRLT; decodeAddrMode[23] = X;
+    decodeMnemonic[24] = BREQ; decodeAddrMode[24] = I;
+    decodeMnemonic[25] = BREQ; decodeAddrMode[25] = X;
+    decodeMnemonic[26] = BRNE; decodeAddrMode[26] = I;
+    decodeMnemonic[27] = BRNE; decodeAddrMode[27] = X;
+    decodeMnemonic[28] = BRGE; decodeAddrMode[28] = I;
+    decodeMnemonic[29] = BRGE; decodeAddrMode[29] = X;
+    decodeMnemonic[30] = BRGT; decodeAddrMode[30] = I;
+    decodeMnemonic[31] = BRGT; decodeAddrMode[31] = X;
+    decodeMnemonic[32] = BRV; decodeAddrMode[32] = I;
+    decodeMnemonic[33] = BRV; decodeAddrMode[33] = X;
+    decodeMnemonic[34] = BRC; decodeAddrMode[34] = I;
+    decodeMnemonic[35] = BRC; decodeAddrMode[35] = X;
+    decodeMnemonic[36] = CALL; decodeAddrMode[36] = I;
+    decodeMnemonic[37] = CALL; decodeAddrMode[37] = X;
 
     // Note that the trap instructions are all unary at the machine level
-    decodeMnemonic[36] = NOP0; decodeAddrMode[36] = NONE;
-    decodeMnemonic[37] = NOP1; decodeAddrMode[37] = NONE;
-    decodeMnemonic[38] = NOP2; decodeAddrMode[38] = NONE;
-    decodeMnemonic[39] = NOP3; decodeAddrMode[39] = NONE;
+    decodeMnemonic[38] = NOP0; decodeAddrMode[38] = NONE;
+    decodeMnemonic[39] = NOP1; decodeAddrMode[39] = NONE;
 
     decodeMnemonic[40] = NOP; decodeAddrMode[40] = NONE;
     decodeMnemonic[41] = NOP; decodeAddrMode[41] = NONE;
@@ -476,7 +490,7 @@ void Pep::initDecoderTables()
     decodeMnemonic[54] = DECI; decodeAddrMode[54] = NONE;
     decodeMnemonic[55] = DECI; decodeAddrMode[55] = NONE;
 
-    decodeMnemonic[56] = DECO; decodeAddrMode[56] = NONE; // I think this is a bug...?
+    decodeMnemonic[56] = DECO; decodeAddrMode[56] = NONE;
     decodeMnemonic[57] = DECO; decodeAddrMode[57] = NONE;
     decodeMnemonic[58] = DECO; decodeAddrMode[58] = NONE;
     decodeMnemonic[59] = DECO; decodeAddrMode[59] = NONE;
@@ -485,221 +499,221 @@ void Pep::initDecoderTables()
     decodeMnemonic[62] = DECO; decodeAddrMode[62] = NONE;
     decodeMnemonic[63] = DECO; decodeAddrMode[63] = NONE;
 
-    decodeMnemonic[64] = STRO; decodeAddrMode[64] = NONE;
-    decodeMnemonic[65] = STRO; decodeAddrMode[65] = NONE;
-    decodeMnemonic[66] = STRO; decodeAddrMode[66] = NONE;
-    decodeMnemonic[67] = STRO; decodeAddrMode[67] = NONE;
-    decodeMnemonic[68] = STRO; decodeAddrMode[68] = NONE;
-    decodeMnemonic[69] = STRO; decodeAddrMode[69] = NONE;
-    decodeMnemonic[70] = STRO; decodeAddrMode[70] = NONE;
-    decodeMnemonic[71] = STRO; decodeAddrMode[71] = NONE;
+    decodeMnemonic[64] = HEXO; decodeAddrMode[64] = NONE;
+    decodeMnemonic[65] = HEXO; decodeAddrMode[65] = NONE;
+    decodeMnemonic[66] = HEXO; decodeAddrMode[66] = NONE;
+    decodeMnemonic[67] = HEXO; decodeAddrMode[67] = NONE;
+    decodeMnemonic[68] = HEXO; decodeAddrMode[68] = NONE;
+    decodeMnemonic[69] = HEXO; decodeAddrMode[69] = NONE;
+    decodeMnemonic[70] = HEXO; decodeAddrMode[70] = NONE;
+    decodeMnemonic[71] = HEXO; decodeAddrMode[71] = NONE;
 
-    decodeMnemonic[72] = CHARI; decodeAddrMode[72] = I;
-    decodeMnemonic[73] = CHARI; decodeAddrMode[73] = D;
-    decodeMnemonic[74] = CHARI; decodeAddrMode[74] = N;
-    decodeMnemonic[75] = CHARI; decodeAddrMode[75] = S;
-    decodeMnemonic[76] = CHARI; decodeAddrMode[76] = SF;
-    decodeMnemonic[77] = CHARI; decodeAddrMode[77] = X;
-    decodeMnemonic[78] = CHARI; decodeAddrMode[78] = SX;
-    decodeMnemonic[79] = CHARI; decodeAddrMode[79] = SXF;
+    decodeMnemonic[72] = STRO; decodeAddrMode[72] = NONE;
+    decodeMnemonic[73] = STRO; decodeAddrMode[73] = NONE;
+    decodeMnemonic[74] = STRO; decodeAddrMode[74] = NONE;
+    decodeMnemonic[75] = STRO; decodeAddrMode[75] = NONE;
+    decodeMnemonic[76] = STRO; decodeAddrMode[76] = NONE;
+    decodeMnemonic[77] = STRO; decodeAddrMode[77] = NONE;
+    decodeMnemonic[78] = STRO; decodeAddrMode[78] = NONE;
+    decodeMnemonic[79] = STRO; decodeAddrMode[79] = NONE;
 
-    decodeMnemonic[80] = CHARO; decodeAddrMode[80] = I;
-    decodeMnemonic[81] = CHARO; decodeAddrMode[81] = D;
-    decodeMnemonic[82] = CHARO; decodeAddrMode[82] = N;
-    decodeMnemonic[83] = CHARO; decodeAddrMode[83] = S;
-    decodeMnemonic[84] = CHARO; decodeAddrMode[84] = SF;
-    decodeMnemonic[85] = CHARO; decodeAddrMode[85] = X;
-    decodeMnemonic[86] = CHARO; decodeAddrMode[86] = SX;
-    decodeMnemonic[87] = CHARO; decodeAddrMode[87] = SXF;
+    decodeMnemonic[80] = ADDSP; decodeAddrMode[80] = I;
+    decodeMnemonic[81] = ADDSP; decodeAddrMode[81] = D;
+    decodeMnemonic[82] = ADDSP; decodeAddrMode[82] = N;
+    decodeMnemonic[83] = ADDSP; decodeAddrMode[83] = S;
+    decodeMnemonic[84] = ADDSP; decodeAddrMode[84] = SF;
+    decodeMnemonic[85] = ADDSP; decodeAddrMode[85] = X;
+    decodeMnemonic[86] = ADDSP; decodeAddrMode[86] = SX;
+    decodeMnemonic[87] = ADDSP; decodeAddrMode[87] = SXF;
 
-    decodeMnemonic[88] = RET0; decodeAddrMode[88] = NONE;
-    decodeMnemonic[89] = RET1; decodeAddrMode[89] = NONE;
-    decodeMnemonic[90] = RET2; decodeAddrMode[90] = NONE;
-    decodeMnemonic[91] = RET3; decodeAddrMode[91] = NONE;
-    decodeMnemonic[92] = RET4; decodeAddrMode[92] = NONE;
-    decodeMnemonic[93] = RET5; decodeAddrMode[93] = NONE;
-    decodeMnemonic[94] = RET6; decodeAddrMode[94] = NONE;
-    decodeMnemonic[95] = RET7; decodeAddrMode[95] = NONE;
+    decodeMnemonic[88] = SUBSP; decodeAddrMode[88] = I;
+    decodeMnemonic[89] = SUBSP; decodeAddrMode[89] = D;
+    decodeMnemonic[90] = SUBSP; decodeAddrMode[90] = N;
+    decodeMnemonic[91] = SUBSP; decodeAddrMode[91] = S;
+    decodeMnemonic[92] = SUBSP; decodeAddrMode[92] = SF;
+    decodeMnemonic[93] = SUBSP; decodeAddrMode[93] = X;
+    decodeMnemonic[94] = SUBSP; decodeAddrMode[94] = SX;
+    decodeMnemonic[95] = SUBSP; decodeAddrMode[95] = SXF;
 
-    decodeMnemonic[96] = ADDSP; decodeAddrMode[96] = I;
-    decodeMnemonic[97] = ADDSP; decodeAddrMode[97] = D;
-    decodeMnemonic[98] = ADDSP; decodeAddrMode[98] = N;
-    decodeMnemonic[99] = ADDSP; decodeAddrMode[99] = S;
-    decodeMnemonic[100] = ADDSP; decodeAddrMode[100] = SF;
-    decodeMnemonic[101] = ADDSP; decodeAddrMode[101] = X;
-    decodeMnemonic[102] = ADDSP; decodeAddrMode[102] = SX;
-    decodeMnemonic[103] = ADDSP; decodeAddrMode[103] = SXF;
+    decodeMnemonic[96] = ADDA; decodeAddrMode[96] = I;
+    decodeMnemonic[97] = ADDA; decodeAddrMode[97] = D;
+    decodeMnemonic[98] = ADDA; decodeAddrMode[98] = N;
+    decodeMnemonic[99] = ADDA; decodeAddrMode[99] = S;
+    decodeMnemonic[100] = ADDA; decodeAddrMode[100] = SF;
+    decodeMnemonic[101] = ADDA; decodeAddrMode[101] = X;
+    decodeMnemonic[102] = ADDA; decodeAddrMode[102] = SX;
+    decodeMnemonic[103] = ADDA; decodeAddrMode[103] = SXF;
 
-    decodeMnemonic[104] = SUBSP; decodeAddrMode[104] = I;
-    decodeMnemonic[105] = SUBSP; decodeAddrMode[105] = D;
-    decodeMnemonic[106] = SUBSP; decodeAddrMode[106] = N;
-    decodeMnemonic[107] = SUBSP; decodeAddrMode[107] = S;
-    decodeMnemonic[108] = SUBSP; decodeAddrMode[108] = SF;
-    decodeMnemonic[109] = SUBSP; decodeAddrMode[109] = X;
-    decodeMnemonic[110] = SUBSP; decodeAddrMode[110] = SX;
-    decodeMnemonic[111] = SUBSP; decodeAddrMode[111] = SXF;
+    decodeMnemonic[104] = ADDX; decodeAddrMode[104] = I;
+    decodeMnemonic[105] = ADDX; decodeAddrMode[105] = D;
+    decodeMnemonic[106] = ADDX; decodeAddrMode[106] = N;
+    decodeMnemonic[107] = ADDX; decodeAddrMode[107] = S;
+    decodeMnemonic[108] = ADDX; decodeAddrMode[108] = SF;
+    decodeMnemonic[109] = ADDX; decodeAddrMode[109] = X;
+    decodeMnemonic[110] = ADDX; decodeAddrMode[110] = SX;
+    decodeMnemonic[111] = ADDX; decodeAddrMode[111] = SXF;
 
-    decodeMnemonic[112] = ADDA; decodeAddrMode[112] = I;
-    decodeMnemonic[113] = ADDA; decodeAddrMode[113] = D;
-    decodeMnemonic[114] = ADDA; decodeAddrMode[114] = N;
-    decodeMnemonic[115] = ADDA; decodeAddrMode[115] = S;
-    decodeMnemonic[116] = ADDA; decodeAddrMode[116] = SF;
-    decodeMnemonic[117] = ADDA; decodeAddrMode[117] = X;
-    decodeMnemonic[118] = ADDA; decodeAddrMode[118] = SX;
-    decodeMnemonic[119] = ADDA; decodeAddrMode[119] = SXF;
+    decodeMnemonic[112] = SUBA; decodeAddrMode[112] = I;
+    decodeMnemonic[113] = SUBA; decodeAddrMode[113] = D;
+    decodeMnemonic[114] = SUBA; decodeAddrMode[114] = N;
+    decodeMnemonic[115] = SUBA; decodeAddrMode[115] = S;
+    decodeMnemonic[116] = SUBA; decodeAddrMode[116] = SF;
+    decodeMnemonic[117] = SUBA; decodeAddrMode[117] = X;
+    decodeMnemonic[118] = SUBA; decodeAddrMode[118] = SX;
+    decodeMnemonic[119] = SUBA; decodeAddrMode[119] = SXF;
 
-    decodeMnemonic[120] = ADDX; decodeAddrMode[120] = I;
-    decodeMnemonic[121] = ADDX; decodeAddrMode[121] = D;
-    decodeMnemonic[122] = ADDX; decodeAddrMode[122] = N;
-    decodeMnemonic[123] = ADDX; decodeAddrMode[123] = S;
-    decodeMnemonic[124] = ADDX; decodeAddrMode[124] = SF;
-    decodeMnemonic[125] = ADDX; decodeAddrMode[125] = X;
-    decodeMnemonic[126] = ADDX; decodeAddrMode[126] = SX;
-    decodeMnemonic[127] = ADDX; decodeAddrMode[127] = SXF;
+    decodeMnemonic[120] = SUBX; decodeAddrMode[120] = I;
+    decodeMnemonic[121] = SUBX; decodeAddrMode[121] = D;
+    decodeMnemonic[122] = SUBX; decodeAddrMode[122] = N;
+    decodeMnemonic[123] = SUBX; decodeAddrMode[123] = S;
+    decodeMnemonic[124] = SUBX; decodeAddrMode[124] = SF;
+    decodeMnemonic[125] = SUBX; decodeAddrMode[125] = X;
+    decodeMnemonic[126] = SUBX; decodeAddrMode[126] = SX;
+    decodeMnemonic[127] = SUBX; decodeAddrMode[127] = SXF;
 
-    decodeMnemonic[128] = SUBA; decodeAddrMode[128] = I;
-    decodeMnemonic[129] = SUBA; decodeAddrMode[129] = D;
-    decodeMnemonic[130] = SUBA; decodeAddrMode[130] = N;
-    decodeMnemonic[131] = SUBA; decodeAddrMode[131] = S;
-    decodeMnemonic[132] = SUBA; decodeAddrMode[132] = SF;
-    decodeMnemonic[133] = SUBA; decodeAddrMode[133] = X;
-    decodeMnemonic[134] = SUBA; decodeAddrMode[134] = SX;
-    decodeMnemonic[135] = SUBA; decodeAddrMode[135] = SXF;
+    decodeMnemonic[128] = ANDA; decodeAddrMode[128] = I;
+    decodeMnemonic[129] = ANDA; decodeAddrMode[129] = D;
+    decodeMnemonic[130] = ANDA; decodeAddrMode[130] = N;
+    decodeMnemonic[131] = ANDA; decodeAddrMode[131] = S;
+    decodeMnemonic[132] = ANDA; decodeAddrMode[132] = SF;
+    decodeMnemonic[133] = ANDA; decodeAddrMode[133] = X;
+    decodeMnemonic[134] = ANDA; decodeAddrMode[134] = SX;
+    decodeMnemonic[135] = ANDA; decodeAddrMode[135] = SXF;
 
-    decodeMnemonic[136] = SUBX; decodeAddrMode[136] = I;
-    decodeMnemonic[137] = SUBX; decodeAddrMode[137] = D;
-    decodeMnemonic[138] = SUBX; decodeAddrMode[138] = N;
-    decodeMnemonic[139] = SUBX; decodeAddrMode[139] = S;
-    decodeMnemonic[140] = SUBX; decodeAddrMode[140] = SF;
-    decodeMnemonic[141] = SUBX; decodeAddrMode[141] = X;
-    decodeMnemonic[142] = SUBX; decodeAddrMode[142] = SX;
-    decodeMnemonic[143] = SUBX; decodeAddrMode[143] = SXF;
+    decodeMnemonic[136] = ANDX; decodeAddrMode[136] = I;
+    decodeMnemonic[137] = ANDX; decodeAddrMode[137] = D;
+    decodeMnemonic[138] = ANDX; decodeAddrMode[138] = N;
+    decodeMnemonic[139] = ANDX; decodeAddrMode[139] = S;
+    decodeMnemonic[140] = ANDX; decodeAddrMode[140] = SF;
+    decodeMnemonic[141] = ANDX; decodeAddrMode[141] = X;
+    decodeMnemonic[142] = ANDX; decodeAddrMode[142] = SX;
+    decodeMnemonic[143] = ANDX; decodeAddrMode[143] = SXF;
 
-    decodeMnemonic[144] = ANDA; decodeAddrMode[144] = I;
-    decodeMnemonic[145] = ANDA; decodeAddrMode[145] = D;
-    decodeMnemonic[146] = ANDA; decodeAddrMode[146] = N;
-    decodeMnemonic[147] = ANDA; decodeAddrMode[147] = S;
-    decodeMnemonic[148] = ANDA; decodeAddrMode[148] = SF;
-    decodeMnemonic[149] = ANDA; decodeAddrMode[149] = X;
-    decodeMnemonic[150] = ANDA; decodeAddrMode[150] = SX;
-    decodeMnemonic[151] = ANDA; decodeAddrMode[151] = SXF;
+    decodeMnemonic[144] = ORA; decodeAddrMode[144] = I;
+    decodeMnemonic[145] = ORA; decodeAddrMode[145] = D;
+    decodeMnemonic[146] = ORA; decodeAddrMode[146] = N;
+    decodeMnemonic[147] = ORA; decodeAddrMode[147] = S;
+    decodeMnemonic[148] = ORA; decodeAddrMode[148] = SF;
+    decodeMnemonic[149] = ORA; decodeAddrMode[149] = X;
+    decodeMnemonic[150] = ORA; decodeAddrMode[150] = SX;
+    decodeMnemonic[151] = ORA; decodeAddrMode[151] = SXF;
 
-    decodeMnemonic[152] = ANDX; decodeAddrMode[152] = I;
-    decodeMnemonic[153] = ANDX; decodeAddrMode[153] = D;
-    decodeMnemonic[154] = ANDX; decodeAddrMode[154] = N;
-    decodeMnemonic[155] = ANDX; decodeAddrMode[155] = S;
-    decodeMnemonic[156] = ANDX; decodeAddrMode[156] = SF;
-    decodeMnemonic[157] = ANDX; decodeAddrMode[157] = X;
-    decodeMnemonic[158] = ANDX; decodeAddrMode[158] = SX;
-    decodeMnemonic[159] = ANDX; decodeAddrMode[159] = SXF;
+    decodeMnemonic[152] = ORX; decodeAddrMode[152] = I;
+    decodeMnemonic[153] = ORX; decodeAddrMode[153] = D;
+    decodeMnemonic[154] = ORX; decodeAddrMode[154] = N;
+    decodeMnemonic[155] = ORX; decodeAddrMode[155] = S;
+    decodeMnemonic[156] = ORX; decodeAddrMode[156] = SF;
+    decodeMnemonic[157] = ORX; decodeAddrMode[157] = X;
+    decodeMnemonic[158] = ORX; decodeAddrMode[158] = SX;
+    decodeMnemonic[159] = ORX; decodeAddrMode[159] = SXF;
 
-    decodeMnemonic[160] = ORA; decodeAddrMode[160] = I;
-    decodeMnemonic[161] = ORA; decodeAddrMode[161] = D;
-    decodeMnemonic[162] = ORA; decodeAddrMode[162] = N;
-    decodeMnemonic[163] = ORA; decodeAddrMode[163] = S;
-    decodeMnemonic[164] = ORA; decodeAddrMode[164] = SF;
-    decodeMnemonic[165] = ORA; decodeAddrMode[165] = X;
-    decodeMnemonic[166] = ORA; decodeAddrMode[166] = SX;
-    decodeMnemonic[167] = ORA; decodeAddrMode[167] = SXF;
+    decodeMnemonic[160] = CPWA; decodeAddrMode[160] = I;
+    decodeMnemonic[161] = CPWA; decodeAddrMode[161] = D;
+    decodeMnemonic[162] = CPWA; decodeAddrMode[162] = N;
+    decodeMnemonic[163] = CPWA; decodeAddrMode[163] = S;
+    decodeMnemonic[164] = CPWA; decodeAddrMode[164] = SF;
+    decodeMnemonic[165] = CPWA; decodeAddrMode[165] = X;
+    decodeMnemonic[166] = CPWA; decodeAddrMode[166] = SX;
+    decodeMnemonic[167] = CPWA; decodeAddrMode[167] = SXF;
 
-    decodeMnemonic[168] = ORX; decodeAddrMode[168] = I;
-    decodeMnemonic[169] = ORX; decodeAddrMode[169] = D;
-    decodeMnemonic[170] = ORX; decodeAddrMode[170] = N;
-    decodeMnemonic[171] = ORX; decodeAddrMode[171] = S;
-    decodeMnemonic[172] = ORX; decodeAddrMode[172] = SF;
-    decodeMnemonic[173] = ORX; decodeAddrMode[173] = X;
-    decodeMnemonic[174] = ORX; decodeAddrMode[174] = SX;
-    decodeMnemonic[175] = ORX; decodeAddrMode[175] = SXF;
+    decodeMnemonic[168] = CPWX; decodeAddrMode[168] = I;
+    decodeMnemonic[169] = CPWX; decodeAddrMode[169] = D;
+    decodeMnemonic[170] = CPWX; decodeAddrMode[170] = N;
+    decodeMnemonic[171] = CPWX; decodeAddrMode[171] = S;
+    decodeMnemonic[172] = CPWX; decodeAddrMode[172] = SF;
+    decodeMnemonic[173] = CPWX; decodeAddrMode[173] = X;
+    decodeMnemonic[174] = CPWX; decodeAddrMode[174] = SX;
+    decodeMnemonic[175] = CPWX; decodeAddrMode[175] = SXF;
 
-    decodeMnemonic[176] = CPA; decodeAddrMode[176] = I;
-    decodeMnemonic[177] = CPA; decodeAddrMode[177] = D;
-    decodeMnemonic[178] = CPA; decodeAddrMode[178] = N;
-    decodeMnemonic[179] = CPA; decodeAddrMode[179] = S;
-    decodeMnemonic[180] = CPA; decodeAddrMode[180] = SF;
-    decodeMnemonic[181] = CPA; decodeAddrMode[181] = X;
-    decodeMnemonic[182] = CPA; decodeAddrMode[182] = SX;
-    decodeMnemonic[183] = CPA; decodeAddrMode[183] = SXF;
+    decodeMnemonic[176] = CPBA; decodeAddrMode[176] = I;
+    decodeMnemonic[177] = CPBA; decodeAddrMode[177] = D;
+    decodeMnemonic[178] = CPBA; decodeAddrMode[178] = N;
+    decodeMnemonic[179] = CPBA; decodeAddrMode[179] = S;
+    decodeMnemonic[180] = CPBA; decodeAddrMode[180] = SF;
+    decodeMnemonic[181] = CPBA; decodeAddrMode[181] = X;
+    decodeMnemonic[182] = CPBA; decodeAddrMode[182] = SX;
+    decodeMnemonic[183] = CPBA; decodeAddrMode[183] = SXF;
 
-    decodeMnemonic[184] = CPX; decodeAddrMode[184] = I;
-    decodeMnemonic[185] = CPX; decodeAddrMode[185] = D;
-    decodeMnemonic[186] = CPX; decodeAddrMode[186] = N;
-    decodeMnemonic[187] = CPX; decodeAddrMode[187] = S;
-    decodeMnemonic[188] = CPX; decodeAddrMode[188] = SF;
-    decodeMnemonic[189] = CPX; decodeAddrMode[189] = X;
-    decodeMnemonic[190] = CPX; decodeAddrMode[190] = SX;
-    decodeMnemonic[191] = CPX; decodeAddrMode[191] = SXF;
+    decodeMnemonic[184] = CPBX; decodeAddrMode[184] = I;
+    decodeMnemonic[185] = CPBX; decodeAddrMode[185] = D;
+    decodeMnemonic[186] = CPBX; decodeAddrMode[186] = N;
+    decodeMnemonic[187] = CPBX; decodeAddrMode[187] = S;
+    decodeMnemonic[188] = CPBX; decodeAddrMode[188] = SF;
+    decodeMnemonic[189] = CPBX; decodeAddrMode[189] = X;
+    decodeMnemonic[190] = CPBX; decodeAddrMode[190] = SX;
+    decodeMnemonic[191] = CPBX; decodeAddrMode[191] = SXF;
 
-    decodeMnemonic[192] = LDA; decodeAddrMode[192] = I;
-    decodeMnemonic[193] = LDA; decodeAddrMode[193] = D;
-    decodeMnemonic[194] = LDA; decodeAddrMode[194] = N;
-    decodeMnemonic[195] = LDA; decodeAddrMode[195] = S;
-    decodeMnemonic[196] = LDA; decodeAddrMode[196] = SF;
-    decodeMnemonic[197] = LDA; decodeAddrMode[197] = X;
-    decodeMnemonic[198] = LDA; decodeAddrMode[198] = SX;
-    decodeMnemonic[199] = LDA; decodeAddrMode[199] = SXF;
+    decodeMnemonic[192] = LDWA; decodeAddrMode[192] = I;
+    decodeMnemonic[193] = LDWA; decodeAddrMode[193] = D;
+    decodeMnemonic[194] = LDWA; decodeAddrMode[194] = N;
+    decodeMnemonic[195] = LDWA; decodeAddrMode[195] = S;
+    decodeMnemonic[196] = LDWA; decodeAddrMode[196] = SF;
+    decodeMnemonic[197] = LDWA; decodeAddrMode[197] = X;
+    decodeMnemonic[198] = LDWA; decodeAddrMode[198] = SX;
+    decodeMnemonic[199] = LDWA; decodeAddrMode[199] = SXF;
 
-    decodeMnemonic[200] = LDX; decodeAddrMode[200] = I;
-    decodeMnemonic[201] = LDX; decodeAddrMode[201] = D;
-    decodeMnemonic[202] = LDX; decodeAddrMode[202] = N;
-    decodeMnemonic[203] = LDX; decodeAddrMode[203] = S;
-    decodeMnemonic[204] = LDX; decodeAddrMode[204] = SF;
-    decodeMnemonic[205] = LDX; decodeAddrMode[205] = X;
-    decodeMnemonic[206] = LDX; decodeAddrMode[206] = SX;
-    decodeMnemonic[207] = LDX; decodeAddrMode[207] = SXF;
+    decodeMnemonic[200] = LDWX; decodeAddrMode[200] = I;
+    decodeMnemonic[201] = LDWX; decodeAddrMode[201] = D;
+    decodeMnemonic[202] = LDWX; decodeAddrMode[202] = N;
+    decodeMnemonic[203] = LDWX; decodeAddrMode[203] = S;
+    decodeMnemonic[204] = LDWX; decodeAddrMode[204] = SF;
+    decodeMnemonic[205] = LDWX; decodeAddrMode[205] = X;
+    decodeMnemonic[206] = LDWX; decodeAddrMode[206] = SX;
+    decodeMnemonic[207] = LDWX; decodeAddrMode[207] = SXF;
 
-    decodeMnemonic[208] = LDBYTEA; decodeAddrMode[208] = I;
-    decodeMnemonic[209] = LDBYTEA; decodeAddrMode[209] = D;
-    decodeMnemonic[210] = LDBYTEA; decodeAddrMode[210] = N;
-    decodeMnemonic[211] = LDBYTEA; decodeAddrMode[211] = S;
-    decodeMnemonic[212] = LDBYTEA; decodeAddrMode[212] = SF;
-    decodeMnemonic[213] = LDBYTEA; decodeAddrMode[213] = X;
-    decodeMnemonic[214] = LDBYTEA; decodeAddrMode[214] = SX;
-    decodeMnemonic[215] = LDBYTEA; decodeAddrMode[215] = SXF;
+    decodeMnemonic[208] = LDBA; decodeAddrMode[208] = I;
+    decodeMnemonic[209] = LDBA; decodeAddrMode[209] = D;
+    decodeMnemonic[210] = LDBA; decodeAddrMode[210] = N;
+    decodeMnemonic[211] = LDBA; decodeAddrMode[211] = S;
+    decodeMnemonic[212] = LDBA; decodeAddrMode[212] = SF;
+    decodeMnemonic[213] = LDBA; decodeAddrMode[213] = X;
+    decodeMnemonic[214] = LDBA; decodeAddrMode[214] = SX;
+    decodeMnemonic[215] = LDBA; decodeAddrMode[215] = SXF;
 
-    decodeMnemonic[216] = LDBYTEX; decodeAddrMode[216] = I;
-    decodeMnemonic[217] = LDBYTEX; decodeAddrMode[217] = D;
-    decodeMnemonic[218] = LDBYTEX; decodeAddrMode[218] = N;
-    decodeMnemonic[219] = LDBYTEX; decodeAddrMode[219] = S;
-    decodeMnemonic[220] = LDBYTEX; decodeAddrMode[220] = SF;
-    decodeMnemonic[221] = LDBYTEX; decodeAddrMode[221] = X;
-    decodeMnemonic[222] = LDBYTEX; decodeAddrMode[222] = SX;
-    decodeMnemonic[223] = LDBYTEX; decodeAddrMode[223] = SXF;
+    decodeMnemonic[216] = LDBX; decodeAddrMode[216] = I;
+    decodeMnemonic[217] = LDBX; decodeAddrMode[217] = D;
+    decodeMnemonic[218] = LDBX; decodeAddrMode[218] = N;
+    decodeMnemonic[219] = LDBX; decodeAddrMode[219] = S;
+    decodeMnemonic[220] = LDBX; decodeAddrMode[220] = SF;
+    decodeMnemonic[221] = LDBX; decodeAddrMode[221] = X;
+    decodeMnemonic[222] = LDBX; decodeAddrMode[222] = SX;
+    decodeMnemonic[223] = LDBX; decodeAddrMode[223] = SXF;
 
-    decodeMnemonic[224] = STA; decodeAddrMode[224] = I;
-    decodeMnemonic[225] = STA; decodeAddrMode[225] = D;
-    decodeMnemonic[226] = STA; decodeAddrMode[226] = N;
-    decodeMnemonic[227] = STA; decodeAddrMode[227] = S;
-    decodeMnemonic[228] = STA; decodeAddrMode[228] = SF;
-    decodeMnemonic[229] = STA; decodeAddrMode[229] = X;
-    decodeMnemonic[230] = STA; decodeAddrMode[230] = SX;
-    decodeMnemonic[231] = STA; decodeAddrMode[231] = SXF;
+    decodeMnemonic[224] = STWA; decodeAddrMode[224] = I;
+    decodeMnemonic[225] = STWA; decodeAddrMode[225] = D;
+    decodeMnemonic[226] = STWA; decodeAddrMode[226] = N;
+    decodeMnemonic[227] = STWA; decodeAddrMode[227] = S;
+    decodeMnemonic[228] = STWA; decodeAddrMode[228] = SF;
+    decodeMnemonic[229] = STWA; decodeAddrMode[229] = X;
+    decodeMnemonic[230] = STWA; decodeAddrMode[230] = SX;
+    decodeMnemonic[231] = STWA; decodeAddrMode[231] = SXF;
 
-    decodeMnemonic[232] = STX; decodeAddrMode[232] = I;
-    decodeMnemonic[233] = STX; decodeAddrMode[233] = D;
-    decodeMnemonic[234] = STX; decodeAddrMode[234] = N;
-    decodeMnemonic[235] = STX; decodeAddrMode[235] = S;
-    decodeMnemonic[236] = STX; decodeAddrMode[236] = SF;
-    decodeMnemonic[237] = STX; decodeAddrMode[237] = X;
-    decodeMnemonic[238] = STX; decodeAddrMode[238] = SX;
-    decodeMnemonic[239] = STX; decodeAddrMode[239] = SXF;
+    decodeMnemonic[232] = STWX; decodeAddrMode[232] = I;
+    decodeMnemonic[233] = STWX; decodeAddrMode[233] = D;
+    decodeMnemonic[234] = STWX; decodeAddrMode[234] = N;
+    decodeMnemonic[235] = STWX; decodeAddrMode[235] = S;
+    decodeMnemonic[236] = STWX; decodeAddrMode[236] = SF;
+    decodeMnemonic[237] = STWX; decodeAddrMode[237] = X;
+    decodeMnemonic[238] = STWX; decodeAddrMode[238] = SX;
+    decodeMnemonic[239] = STWX; decodeAddrMode[239] = SXF;
 
-    decodeMnemonic[240] = STBYTEA; decodeAddrMode[240] = I;
-    decodeMnemonic[241] = STBYTEA; decodeAddrMode[241] = D;
-    decodeMnemonic[242] = STBYTEA; decodeAddrMode[242] = N;
-    decodeMnemonic[243] = STBYTEA; decodeAddrMode[243] = S;
-    decodeMnemonic[244] = STBYTEA; decodeAddrMode[244] = SF;
-    decodeMnemonic[245] = STBYTEA; decodeAddrMode[245] = X;
-    decodeMnemonic[246] = STBYTEA; decodeAddrMode[246] = SX;
-    decodeMnemonic[247] = STBYTEA; decodeAddrMode[247] = SXF;
+    decodeMnemonic[240] = STBA; decodeAddrMode[240] = I;
+    decodeMnemonic[241] = STBA; decodeAddrMode[241] = D;
+    decodeMnemonic[242] = STBA; decodeAddrMode[242] = N;
+    decodeMnemonic[243] = STBA; decodeAddrMode[243] = S;
+    decodeMnemonic[244] = STBA; decodeAddrMode[244] = SF;
+    decodeMnemonic[245] = STBA; decodeAddrMode[245] = X;
+    decodeMnemonic[246] = STBA; decodeAddrMode[246] = SX;
+    decodeMnemonic[247] = STBA; decodeAddrMode[247] = SXF;
 
-    decodeMnemonic[248] = STBYTEX; decodeAddrMode[248] = I;
-    decodeMnemonic[249] = STBYTEX; decodeAddrMode[249] = D;
-    decodeMnemonic[250] = STBYTEX; decodeAddrMode[250] = N;
-    decodeMnemonic[251] = STBYTEX; decodeAddrMode[251] = S;
-    decodeMnemonic[252] = STBYTEX; decodeAddrMode[252] = SF;
-    decodeMnemonic[253] = STBYTEX; decodeAddrMode[253] = X;
-    decodeMnemonic[254] = STBYTEX; decodeAddrMode[254] = SX;
-    decodeMnemonic[255] = STBYTEX; decodeAddrMode[255] = SXF;
+    decodeMnemonic[248] = STBX; decodeAddrMode[248] = I;
+    decodeMnemonic[249] = STBX; decodeAddrMode[249] = D;
+    decodeMnemonic[250] = STBX; decodeAddrMode[250] = N;
+    decodeMnemonic[251] = STBX; decodeAddrMode[251] = S;
+    decodeMnemonic[252] = STBX; decodeAddrMode[252] = SF;
+    decodeMnemonic[253] = STBX; decodeAddrMode[253] = X;
+    decodeMnemonic[254] = STBX; decodeAddrMode[254] = SX;
+    decodeMnemonic[255] = STBX; decodeAddrMode[255] = SXF;
 }
 
 // .BURN and the ROM state

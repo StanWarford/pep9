@@ -27,7 +27,7 @@ namespace Enu
    // Instruction mnemonics
    enum EMnemonic
    {
-        ADDA, ADDSP, ADDX, ANDA, ANDX, ASLA, ASLX, ASRA, ASRX,
+        ADDA, ADDX, ADDSP, ANDA, ANDX, ASLA, ASLX, ASRA, ASRX,
         BR, BRC, BREQ, BRGE, BRGT, BRLE, BRLT, BRNE, BRV,
         CALL, CPBA, CPBX, CPWA, CPWX,
         DECI, DECO,
@@ -37,7 +37,7 @@ namespace Enu
         NEGA, NEGX, NOP, NOP0, NOP1, NOTA, NOTX,
         ORA, ORX,
         RET, RETTR, ROLA, ROLX, RORA, RORX,
-        STBA, STBX, STWA, STWX, STOP, STRO, SUBA, SUBSP, SUBX
+        STBA, STBX, STWA, STWX, STOP, STRO, SUBA, SUBX, SUBSP
         // FOR DEBUGGING, ELIMINATE EVENTUALLY ***********************
         , CHARI, CHARO
         };

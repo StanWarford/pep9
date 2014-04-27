@@ -294,15 +294,15 @@ bool Sim::vonNeumannStep(QString &errorString)
         operandDisplayFieldWidth = 4;
         accumulator = addAndSetNZVC(accumulator, operand);
         return true;
-    case ADDSP:
-        operand = readWordOprnd(addrMode);
-        operandDisplayFieldWidth = 4;
-        stackPointer = addAndSetNZVC(stackPointer, operand);
-        return true;
     case ADDX:
         operand = readWordOprnd(addrMode);
         operandDisplayFieldWidth = 4;
         indexRegister = addAndSetNZVC(indexRegister, operand);
+        return true;
+    case ADDSP:
+        operand = readWordOprnd(addrMode);
+        operandDisplayFieldWidth = 4;
+        stackPointer = addAndSetNZVC(stackPointer, operand);
         return true;
     case ANDA:
         operand = readWordOprnd(addrMode);
@@ -436,6 +436,8 @@ bool Sim::vonNeumannStep(QString &errorString)
         writeWord(stackPointer, programCounter); // Mem[SP] <- PC
         programCounter = operand; // PC <- Oprnd
         return true;
+
+ //  FOR NOW. MUST CHANGE LATER AND PUT THIS CODE IN LDA AND LDX
     case CHARI:
         if (Sim::inputBuffer.size() != 0) {
             QString ch = Sim::inputBuffer.left(1);
@@ -454,12 +456,20 @@ bool Sim::vonNeumannStep(QString &errorString)
 //            return false;
         }
         return true;
+
+        //   FOR NOW. MUST CHANGE LATER AND PUT THIS CODE IN STA AND STX
     case CHARO:
         operand = readByteOprnd(addrMode);
         operandDisplayFieldWidth = 2;
         Sim::outputBuffer = QString(operand);
         return true;
-    case CPA:
+    case CPBA:
+        errorString = "Not yet implemented.";
+        return false;
+    case CPBX:
+        errorString = "Not yet implemented.";
+        return false;
+    case CPWA:
         operand = readWordOprnd(addrMode);
         operandDisplayFieldWidth = 4;
         addAndSetNZVC(accumulator, (~operand + 1) & 0xffff);
@@ -467,7 +477,7 @@ bool Sim::vonNeumannStep(QString &errorString)
             nBit = !nBit;
         }
         return true;
-    case CPX:
+    case CPWX:
         operand = readWordOprnd(addrMode);
         operandDisplayFieldWidth = 4;
         addAndSetNZVC(indexRegister, (~operand + 1) & 0xffff);
@@ -476,7 +486,7 @@ bool Sim::vonNeumannStep(QString &errorString)
         }
         return true;
     case DECI: case DECO: case STRO:
-    case NOP: case NOP0: case NOP1: case NOP2: case NOP3:
+    case NOP: case NOP0: case NOP1:
         temp = readWord(Pep::dotBurnArgument - 5);
         writeByte(temp - 1, instructionSpecifier);
         writeWord(temp - 3, stackPointer);
@@ -487,14 +497,7 @@ bool Sim::vonNeumannStep(QString &errorString)
         stackPointer = temp - 10;
         programCounter = readWord(Pep::dotBurnArgument - 1);
         return true;
-    case LDA:
-        operand = readWordOprnd(addrMode);
-        operandDisplayFieldWidth = 4;
-        accumulator = operand & 0xffff;
-        nBit = accumulator >= 32768;
-        zBit = accumulator == 0;
-        return true;
-    case LDBYTEA:
+    case LDBA:
         operand = readByteOprnd(addrMode);
         operandDisplayFieldWidth = 2;
         accumulator = accumulator & 0xff00;
@@ -502,7 +505,7 @@ bool Sim::vonNeumannStep(QString &errorString)
         nBit = accumulator >= 32768;
         zBit = accumulator == 0;
         return true;
-    case LDBYTEX:
+    case LDBX:
         operand = readByteOprnd(addrMode);
         operandDisplayFieldWidth = 2;
         indexRegister = indexRegister & 0xff00;
@@ -510,13 +513,23 @@ bool Sim::vonNeumannStep(QString &errorString)
         nBit = indexRegister >= 32768;
         zBit = indexRegister == 0;
         return true;
-    case LDX:
+    case LDWA:
+        operand = readWordOprnd(addrMode);
+        operandDisplayFieldWidth = 4;
+        accumulator = operand & 0xffff;
+        nBit = accumulator >= 32768;
+        zBit = accumulator == 0;
+        return true;
+    case LDWX:
         operand = readWordOprnd(addrMode);
         operandDisplayFieldWidth = 4;
         indexRegister = operand & 0xffff;
         nBit = indexRegister >= 32768;
         zBit = indexRegister == 0;
         return true;
+    case MOVAFLG:
+        errorString = "Not yet implemented.";
+        return false;
     case MOVFLGA:
         accumulator = 0;
         accumulator |= cBit ? 1 : 0;
@@ -563,42 +576,7 @@ bool Sim::vonNeumannStep(QString &errorString)
         nBit = indexRegister > 32768;
         zBit = indexRegister == 0;
         return true;
-    case RET0:
-        programCounter = readWord(stackPointer); // PC <- Mem[SP]
-        stackPointer = add(stackPointer, 2); // SP <- SP + 2
-        return true;
-    case RET1:
-        stackPointer = add(stackPointer, 1); // SP <- SP + 1
-        programCounter = readWord(stackPointer); // PC <- Mem[SP]
-        stackPointer = add(stackPointer, 2); // SP <- SP + 2
-        return true;
-    case RET2:
-        stackPointer = add(stackPointer, 2); // SP <- SP + 2
-        programCounter = readWord(stackPointer); // PC <- Mem[SP]
-        stackPointer = add(stackPointer, 2); // SP <- SP + 2
-        return true;
-    case RET3:
-        stackPointer = add(stackPointer, 3); // SP <- SP + 3
-        programCounter = readWord(stackPointer); // PC <- Mem[SP]
-        stackPointer = add(stackPointer, 2); // SP <- SP + 2
-        return true;
-    case RET4:
-        stackPointer = add(stackPointer, 4); // SP <- SP + 4
-        programCounter = readWord(stackPointer); // PC <- Mem[SP]
-        stackPointer = add(stackPointer, 2); // SP <- SP + 2
-        return true;
-    case RET5:
-        stackPointer = add(stackPointer, 5); // SP <- SP + 5
-        programCounter = readWord(stackPointer); // PC <- Mem[SP]
-        stackPointer = add(stackPointer, 2); // SP <- SP + 2
-        return true;
-    case RET6:
-        stackPointer = add(stackPointer, 6); // SP <- SP + 6
-        programCounter = readWord(stackPointer); // PC <- Mem[SP]
-        stackPointer = add(stackPointer, 2); // SP <- SP + 2
-        return true;
-    case RET7:
-        stackPointer = add(stackPointer, 7); // SP <- SP + 7
+    case RET:
         programCounter = readWord(stackPointer); // PC <- Mem[SP]
         stackPointer = add(stackPointer, 2); // SP <- SP + 2
         return true;
@@ -637,42 +615,42 @@ bool Sim::vonNeumannStep(QString &errorString)
         indexRegister |= cBit ? 0x8000 : 0;
         cBit = bTemp;
         return true;
-    case STA:
-        writeWordOprnd(addrMode, accumulator);
-        operand = readWordOprnd(addrMode);
-        operandDisplayFieldWidth = 4;
-        return true;
-    case STBYTEA:
+    case STBA:
         writeByteOprnd(addrMode, accumulator & 0x00ff);
         operand = readByteOprnd(addrMode);
         operandDisplayFieldWidth = 2;
         return true;
-    case STBYTEX:
+    case STBX:
         writeByteOprnd(addrMode, indexRegister & 0x00ff);
         operand = readByteOprnd(addrMode);
         operandDisplayFieldWidth = 2;
         return true;
-    case STOP:
+    case STWA:
+        writeWordOprnd(addrMode, accumulator);
+        operand = readWordOprnd(addrMode);
+        operandDisplayFieldWidth = 4;
         return true;
-    case STX:
+    case STWX:
         writeWordOprnd(addrMode, indexRegister);
         operand = readWordOprnd(addrMode);
         operandDisplayFieldWidth = 4;
+        return true;
+    case STOP:
         return true;
     case SUBA:
         operand = readWordOprnd(addrMode);
         operandDisplayFieldWidth = 4;
         accumulator = addAndSetNZVC(accumulator, (~operand + 1) & 0xffff);
         return true;
-    case SUBSP:
-        operand = readWordOprnd(addrMode);
-        operandDisplayFieldWidth = 4;
-        stackPointer = addAndSetNZVC(stackPointer, (~operand + 1) & 0xffff);
-        return true;
     case SUBX:
         operand = readWordOprnd(addrMode);
         operandDisplayFieldWidth = 4;
         indexRegister = addAndSetNZVC(indexRegister, (~operand + 1) & 0xffff);
+        return true;
+    case SUBSP:
+        operand = readWordOprnd(addrMode);
+        operandDisplayFieldWidth = 4;
+        stackPointer = addAndSetNZVC(stackPointer, (~operand + 1) & 0xffff);
         return true;
     default:
         return false;

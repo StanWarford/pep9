@@ -407,7 +407,7 @@ void CpuPane::resumeWithTerminal()
                 emit updateSimulationView();
                 emit executionComplete();
                 isCurrentlySimulating = false;
-#warning "should we return here?"
+                // *********************************"should we return here?"
             }
         }
         if (interruptExecutionFlag) {

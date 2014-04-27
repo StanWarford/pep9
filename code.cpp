@@ -494,6 +494,8 @@ bool DotBlock::processSymbolTraceTags(int &sourceLine, QString &errorString) {
     return true;
 }
 
+/* DON'T NEED THIS ANY MORE WITH PEP/9
+ *
 bool UnaryInstruction::processSymbolTraceTags(int &sourceLine, QString &errorString) {
     int numBytesDeallocated;
     switch (mnemonic) {
@@ -545,6 +547,7 @@ bool UnaryInstruction::processSymbolTraceTags(int &sourceLine, QString &errorStr
     Pep::symbolTraceList.insert(memAddress, list);
     return true;
 }
+*/
 
 bool NonUnaryInstruction::processSymbolTraceTags(int &sourceLine, QString &errorString) {
     if (mnemonic == Enu::ADDSP || mnemonic == Enu::SUBSP) {
