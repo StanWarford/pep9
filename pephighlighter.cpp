@@ -30,12 +30,15 @@ PepHighlighter::PepHighlighter(QTextDocument *parent)
     QStringList oprndPatterns;
     oprndPatterns << "\\bADD(A|SP|X)\\b" << "\\bAND(A|X)\\b" << "\\bASL(A|X)\\b"
             << "\\bASR(A|X)\\b" << "\\bBR\\b" << "\\bBR(C|EQ|GE|GT|LE|LT|NE|V)\\b"
-            << "\\bCALL\\b" << "\\bCHAR(I|O)\\b" << "\\bCP(A|X)\\b"
-            << "\\bDEC(I|O)\\b" << "\\bLD(A|X|BYTEA|BYTEX)\\b" << "\\bMOV(FLGA|SPA)\\b"
-            << "\\bNEG(A|X)\\b" << "\\bNOP\\b" << "\\bNOP(0|1|2|3)\\b"
-            << "\\bNOT(A|X)\\b" << "\\bOR(A|X)\\b" << "\\bRET(0|1|2|3|4|5|6|7|TR)\\b"
-            << "\\bROL(A|X)\\b" << "\\bROR(A|X)\\b" << "\\bST(A|X|BYTEA|BYTEX)\\b" << "\\bSTOP\\b"
-            << "\\bSTRO\\b" << "\\bSTX\\b" << "\\bSUB(A|X|SP)\\b";
+            << "\\bCALL\\b" << "\\bCPB(A|X)\\b" << "\\bCPW(A|X)\\b"
+            << "\\bDEC(I|O)\\b"
+            << "\\bHEXO\\b"
+            << "\\bLDB(A|X)\\b" << "\\bLDW(A|X)\\b"
+            << "\\bMOV(FLGA|AFLG|SPA)\\b"
+            << "\\bNEG(A|X)\\b" << "\\bNOP\\b" << "\\bNOP(0|1)\\b" << "\\bNOT(A|X)\\b"
+            << "\\bOR(A|X)\\b"
+            << "\\bRET\\b" << "\\bRETTR\\b" << "\\bROL(A|X)\\b" << "\\bROR(A|X)\\b"
+            << "\\bSTB(A|X)\\b" << "\\bSTOP\\b" << "\\bSTRO\\b" << "\\bSTW(A|X)\\b" << "\\bSUB(A|X|SP)\\b";
     foreach (const QString &pattern, oprndPatterns) {
         rule.pattern = QRegExp(pattern);
         rule.format = oprndFormat;
