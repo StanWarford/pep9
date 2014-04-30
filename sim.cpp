@@ -437,7 +437,7 @@ bool Sim::vonNeumannStep(QString &errorString)
         programCounter = operand; // PC <- Oprnd
         return true;
 
- //  FOR NOW. MUST CHANGE LATER AND PUT THIS CODE IN LDA AND LDX
+ //  FOR NOW. MUST CHANGE LATER AND PUT THIS CODE IN LDBX
     case CHARI:
         if (Sim::inputBuffer.size() != 0) {
             QString ch = Sim::inputBuffer.left(1);
@@ -457,7 +457,7 @@ bool Sim::vonNeumannStep(QString &errorString)
         }
         return true;
 
-        //   FOR NOW. MUST CHANGE LATER AND PUT THIS CODE IN STA AND STX
+        //   FOR NOW. MUST CHANGE LATER AND PUT THIS CODE IN STBX
     case CHARO:
         operand = readByteOprnd(addrMode);
         operandDisplayFieldWidth = 2;

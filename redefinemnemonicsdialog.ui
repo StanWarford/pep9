@@ -40,8 +40,8 @@
   <property name="modal">
    <bool>false</bool>
   </property>
-  <layout class="QGridLayout" name="gridLayout_2">
-   <item row="0" column="0" colspan="2">
+  <layout class="QVBoxLayout" name="verticalLayout_2">
+   <item>
     <widget class="QGroupBox" name="groupBox">
      <property name="title">
       <string>Unary</string>
@@ -119,184 +119,14 @@
      </layout>
     </widget>
    </item>
-   <item row="1" column="0" colspan="2">
+   <item>
     <widget class="QGroupBox" name="groupBox_2">
      <property name="title">
       <string>Nonunary</string>
      </property>
-     <layout class="QGridLayout">
-      <item row="2" column="4">
-       <widget class="QCheckBox" name="mnemon1nCheckBox">
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="2">
-       <widget class="QCheckBox" name="mnemon1iCheckBox">
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="8">
-       <widget class="QCheckBox" name="mnemon3sxCheckBox">
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="1">
-       <widget class="QLineEdit" name="nonUnaryMnemonic1LineEdit"/>
-      </item>
-      <item row="2" column="0">
-       <widget class="QLabel" name="nonunaryOpCode2Label">
-        <property name="text">
-         <string>00110</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="9">
-       <widget class="QCheckBox" name="mnemon0sxfCheckBox">
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="8">
-       <widget class="QCheckBox" name="mnemon0sxCheckBox">
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="7">
-       <widget class="QCheckBox" name="mnemon0xCheckBox">
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="3">
-       <widget class="QCheckBox" name="mnemon1dCheckBox">
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="6">
-       <widget class="QCheckBox" name="mnemon0sfCheckBox">
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="5">
-       <widget class="QCheckBox" name="mnemon0sCheckBox">
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="0">
-       <widget class="QLabel" name="nonunaryOpCode4Label">
-        <property name="text">
-         <string>01000</string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="0">
-       <widget class="QLabel" name="nonunaryOpCode3Label">
-        <property name="text">
-         <string>00111</string>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="1">
-       <widget class="QLineEdit" name="nonUnaryMnemonic3LineEdit"/>
-      </item>
-      <item row="1" column="4">
-       <widget class="QCheckBox" name="mnemon0nCheckBox">
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="2">
-       <widget class="QCheckBox" name="mnemon2iCheckBox">
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="3">
-       <widget class="QCheckBox" name="mnemon0dCheckBox">
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="7">
-       <widget class="QCheckBox" name="mnemon2xCheckBox">
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="2">
-       <widget class="QCheckBox" name="mnemon0iCheckBox">
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1">
-       <widget class="QLineEdit" name="nonUnaryMnemonic0LineEdit"/>
-      </item>
-      <item row="3" column="3">
-       <widget class="QCheckBox" name="mnemon2dCheckBox">
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="6">
-       <widget class="QCheckBox" name="mnemon2sfCheckBox">
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="nonunaryOpCode1Label">
-        <property name="text">
-         <string>00101</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="5">
-       <widget class="QCheckBox" name="mnemon1sCheckBox">
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="6">
-       <widget class="QCheckBox" name="mnemon1sfCheckBox">
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="8">
-       <widget class="QCheckBox" name="mnemon2sxCheckBox">
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="9">
-       <widget class="QLabel" name="sxfLabel">
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="0" column="0">
+       <widget class="QLabel" name="nonunaryOpCodeLabel">
         <property name="font">
          <font>
           <family>Lucida Grande</family>
@@ -309,29 +139,33 @@
          </font>
         </property>
         <property name="text">
-         <string>sxf</string>
+         <string>opCode</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLabel" name="nonunaryMnemonicLabel">
+        <property name="font">
+         <font>
+          <family>Lucida Grande</family>
+          <pointsize>13</pointsize>
+          <weight>75</weight>
+          <italic>false</italic>
+          <bold>true</bold>
+          <underline>false</underline>
+          <strikeout>false</strikeout>
+         </font>
+        </property>
+        <property name="text">
+         <string>Mnemonic</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
         </property>
        </widget>
       </item>
-      <item row="3" column="5">
-       <widget class="QCheckBox" name="mnemon2sCheckBox">
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="6">
-       <widget class="QCheckBox" name="mnemon3sfCheckBox">
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="8">
-       <widget class="QLabel" name="sxLabel">
+      <item row="0" column="2">
+       <widget class="QLabel" name="iLabel">
         <property name="font">
          <font>
           <family>Lucida Grande</family>
@@ -344,29 +178,15 @@
          </font>
         </property>
         <property name="text">
-         <string>sx</string>
+         <string>i</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
         </property>
        </widget>
       </item>
-      <item row="4" column="7">
-       <widget class="QCheckBox" name="mnemon3xCheckBox">
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="8">
-       <widget class="QCheckBox" name="mnemon1sxCheckBox">
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="7">
-       <widget class="QLabel" name="xLabel">
+      <item row="0" column="3">
+       <widget class="QLabel" name="dLabel">
         <property name="font">
          <font>
           <family>Lucida Grande</family>
@@ -379,63 +199,7 @@
          </font>
         </property>
         <property name="text">
-         <string>x</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="7">
-       <widget class="QCheckBox" name="mnemon1xCheckBox">
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="4">
-       <widget class="QCheckBox" name="mnemon3nCheckBox">
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="6">
-       <widget class="QLabel" name="sfLabel">
-        <property name="font">
-         <font>
-          <family>Lucida Grande</family>
-          <pointsize>13</pointsize>
-          <weight>75</weight>
-          <italic>false</italic>
-          <bold>true</bold>
-          <underline>false</underline>
-          <strikeout>false</strikeout>
-         </font>
-        </property>
-        <property name="text">
-         <string>sf</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="5">
-       <widget class="QLabel" name="sLabel">
-        <property name="font">
-         <font>
-          <family>Lucida Grande</family>
-          <pointsize>13</pointsize>
-          <weight>75</weight>
-          <italic>false</italic>
-          <bold>true</bold>
-          <underline>false</underline>
-          <strikeout>false</strikeout>
-         </font>
-        </property>
-        <property name="text">
-         <string>s</string>
+         <string>d</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -463,15 +227,8 @@
         </property>
        </widget>
       </item>
-      <item row="2" column="9">
-       <widget class="QCheckBox" name="mnemon1sxfCheckBox">
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="3">
-       <widget class="QLabel" name="dLabel">
+      <item row="0" column="5">
+       <widget class="QLabel" name="sLabel">
         <property name="font">
          <font>
           <family>Lucida Grande</family>
@@ -484,10 +241,324 @@
          </font>
         </property>
         <property name="text">
-         <string>d</string>
+         <string>s</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="6">
+       <widget class="QLabel" name="sfLabel">
+        <property name="font">
+         <font>
+          <family>Lucida Grande</family>
+          <pointsize>13</pointsize>
+          <weight>75</weight>
+          <italic>false</italic>
+          <bold>true</bold>
+          <underline>false</underline>
+          <strikeout>false</strikeout>
+         </font>
+        </property>
+        <property name="text">
+         <string>sf</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="7">
+       <widget class="QLabel" name="xLabel">
+        <property name="font">
+         <font>
+          <family>Lucida Grande</family>
+          <pointsize>13</pointsize>
+          <weight>75</weight>
+          <italic>false</italic>
+          <bold>true</bold>
+          <underline>false</underline>
+          <strikeout>false</strikeout>
+         </font>
+        </property>
+        <property name="text">
+         <string>x</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="8">
+       <widget class="QLabel" name="sxLabel">
+        <property name="font">
+         <font>
+          <family>Lucida Grande</family>
+          <pointsize>13</pointsize>
+          <weight>75</weight>
+          <italic>false</italic>
+          <bold>true</bold>
+          <underline>false</underline>
+          <strikeout>false</strikeout>
+         </font>
+        </property>
+        <property name="text">
+         <string>sx</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="9">
+       <widget class="QLabel" name="sxfLabel">
+        <property name="font">
+         <font>
+          <family>Lucida Grande</family>
+          <pointsize>13</pointsize>
+          <weight>75</weight>
+          <italic>false</italic>
+          <bold>true</bold>
+          <underline>false</underline>
+          <strikeout>false</strikeout>
+         </font>
+        </property>
+        <property name="text">
+         <string>sxf</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="nonunaryOpCode1Label">
+        <property name="text">
+         <string>00101</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="nonUnaryMnemonic0LineEdit">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>21</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>21</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="2">
+       <widget class="QCheckBox" name="mnemon0iCheckBox">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="3">
+       <widget class="QCheckBox" name="mnemon0dCheckBox">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="4">
+       <widget class="QCheckBox" name="mnemon0nCheckBox">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="5">
+       <widget class="QCheckBox" name="mnemon0sCheckBox">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="6">
+       <widget class="QCheckBox" name="mnemon0sfCheckBox">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="7">
+       <widget class="QCheckBox" name="mnemon0xCheckBox">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="8">
+       <widget class="QCheckBox" name="mnemon0sxCheckBox">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="9">
+       <widget class="QCheckBox" name="mnemon0sxfCheckBox">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="nonunaryOpCode2Label">
+        <property name="text">
+         <string>00110</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLineEdit" name="nonUnaryMnemonic1LineEdit">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>21</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>21</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="2">
+       <widget class="QCheckBox" name="mnemon1iCheckBox">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="3">
+       <widget class="QCheckBox" name="mnemon1dCheckBox">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="4">
+       <widget class="QCheckBox" name="mnemon1nCheckBox">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="5">
+       <widget class="QCheckBox" name="mnemon1sCheckBox">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="6">
+       <widget class="QCheckBox" name="mnemon1sfCheckBox">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="7">
+       <widget class="QCheckBox" name="mnemon1xCheckBox">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="8">
+       <widget class="QCheckBox" name="mnemon1sxCheckBox">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="9">
+       <widget class="QCheckBox" name="mnemon1sxfCheckBox">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="nonunaryOpCode3Label">
+        <property name="text">
+         <string>00111</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QLineEdit" name="nonUnaryMnemonic2LineEdit">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>21</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>21</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="2">
+       <widget class="QCheckBox" name="mnemon2iCheckBox">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="3">
+       <widget class="QCheckBox" name="mnemon2dCheckBox">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="4">
+       <widget class="QCheckBox" name="mnemon2nCheckBox">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="5">
+       <widget class="QCheckBox" name="mnemon2sCheckBox">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="6">
+       <widget class="QCheckBox" name="mnemon2sfCheckBox">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="7">
+       <widget class="QCheckBox" name="mnemon2xCheckBox">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="8">
+       <widget class="QCheckBox" name="mnemon2sxCheckBox">
+        <property name="text">
+         <string/>
         </property>
        </widget>
       </item>
@@ -498,8 +569,31 @@
         </property>
        </widget>
       </item>
-      <item row="4" column="9">
-       <widget class="QCheckBox" name="mnemon3sxfCheckBox">
+      <item row="4" column="0">
+       <widget class="QLabel" name="nonunaryOpCode4Label">
+        <property name="text">
+         <string>01000</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="QLineEdit" name="nonUnaryMnemonic3LineEdit">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>21</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>21</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="2">
+       <widget class="QCheckBox" name="mnemon3iCheckBox">
         <property name="text">
          <string/>
         </property>
@@ -512,85 +606,43 @@
         </property>
        </widget>
       </item>
-      <item row="4" column="2">
-       <widget class="QCheckBox" name="mnemon3iCheckBox">
+      <item row="4" column="4">
+       <widget class="QCheckBox" name="mnemon3nCheckBox">
         <property name="text">
          <string/>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="2">
-       <widget class="QLabel" name="iLabel">
-        <property name="font">
-         <font>
-          <family>Lucida Grande</family>
-          <pointsize>13</pointsize>
-          <weight>75</weight>
-          <italic>false</italic>
-          <bold>true</bold>
-          <underline>false</underline>
-          <strikeout>false</strikeout>
-         </font>
-        </property>
-        <property name="text">
-         <string>i</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="1">
-       <widget class="QLabel" name="nonunaryMnemonicLabel">
-        <property name="font">
-         <font>
-          <family>Lucida Grande</family>
-          <pointsize>13</pointsize>
-          <weight>75</weight>
-          <italic>false</italic>
-          <bold>true</bold>
-          <underline>false</underline>
-          <strikeout>false</strikeout>
-         </font>
-        </property>
-        <property name="text">
-         <string>Mnemonic</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="1">
-       <widget class="QLineEdit" name="nonUnaryMnemonic2LineEdit"/>
-      </item>
-      <item row="3" column="4">
-       <widget class="QCheckBox" name="mnemon2nCheckBox">
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="0">
-       <widget class="QLabel" name="nonunaryOpCodeLabel">
-        <property name="font">
-         <font>
-          <family>Lucida Grande</family>
-          <pointsize>13</pointsize>
-          <weight>75</weight>
-          <italic>false</italic>
-          <bold>true</bold>
-          <underline>false</underline>
-          <strikeout>false</strikeout>
-         </font>
-        </property>
-        <property name="text">
-         <string>opCode</string>
         </property>
        </widget>
       </item>
       <item row="4" column="5">
        <widget class="QCheckBox" name="mnemon3sCheckBox">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="6">
+       <widget class="QCheckBox" name="mnemon3sfCheckBox">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="7">
+       <widget class="QCheckBox" name="mnemon3xCheckBox">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="8">
+       <widget class="QCheckBox" name="mnemon3sxCheckBox">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="9">
+       <widget class="QCheckBox" name="mnemon3sxfCheckBox">
         <property name="text">
          <string/>
         </property>
@@ -604,7 +656,20 @@
        </widget>
       </item>
       <item row="5" column="1">
-       <widget class="QLineEdit" name="nonUnaryMnemonic4LineEdit"/>
+       <widget class="QLineEdit" name="nonUnaryMnemonic4LineEdit">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>21</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>21</height>
+         </size>
+        </property>
+       </widget>
       </item>
       <item row="5" column="2">
        <widget class="QCheckBox" name="mnemon4iCheckBox">
@@ -665,7 +730,7 @@
      </layout>
     </widget>
    </item>
-   <item row="2" column="0">
+   <item>
     <layout class="QHBoxLayout">
      <item>
       <widget class="QLabel" name="warningLabel">
@@ -696,7 +761,7 @@
      </item>
     </layout>
    </item>
-   <item row="3" column="1">
+   <item>
     <spacer name="verticalSpacer">
      <property name="orientation">
       <enum>Qt::Vertical</enum>
@@ -715,41 +780,50 @@
   <tabstop>unaryMnemonic0LineEdit</tabstop>
   <tabstop>unaryMnemonic1LineEdit</tabstop>
   <tabstop>nonUnaryMnemonic0LineEdit</tabstop>
-  <tabstop>nonUnaryMnemonic1LineEdit</tabstop>
-  <tabstop>nonUnaryMnemonic2LineEdit</tabstop>
-  <tabstop>nonUnaryMnemonic3LineEdit</tabstop>
-  <tabstop>mnemon3sxCheckBox</tabstop>
-  <tabstop>mnemon0sxfCheckBox</tabstop>
-  <tabstop>mnemon1nCheckBox</tabstop>
-  <tabstop>mnemon1sxCheckBox</tabstop>
-  <tabstop>mnemon2sCheckBox</tabstop>
-  <tabstop>mnemon3sfCheckBox</tabstop>
-  <tabstop>mnemon0xCheckBox</tabstop>
-  <tabstop>mnemon0sCheckBox</tabstop>
-  <tabstop>mnemon3dCheckBox</tabstop>
-  <tabstop>mnemon3sCheckBox</tabstop>
-  <tabstop>mnemon0dCheckBox</tabstop>
-  <tabstop>mnemon1sCheckBox</tabstop>
-  <tabstop>mnemon2dCheckBox</tabstop>
-  <tabstop>mnemon2nCheckBox</tabstop>
-  <tabstop>mnemon2sfCheckBox</tabstop>
-  <tabstop>mnemon1iCheckBox</tabstop>
-  <tabstop>mnemon2sxfCheckBox</tabstop>
-  <tabstop>mnemon0sfCheckBox</tabstop>
-  <tabstop>mnemon3iCheckBox</tabstop>
-  <tabstop>mnemon0nCheckBox</tabstop>
-  <tabstop>mnemon2sxCheckBox</tabstop>
-  <tabstop>mnemon1dCheckBox</tabstop>
-  <tabstop>mnemon2xCheckBox</tabstop>
-  <tabstop>mnemon1xCheckBox</tabstop>
-  <tabstop>mnemon3sxfCheckBox</tabstop>
-  <tabstop>mnemon3nCheckBox</tabstop>
-  <tabstop>mnemon3xCheckBox</tabstop>
   <tabstop>mnemon0iCheckBox</tabstop>
-  <tabstop>mnemon1sfCheckBox</tabstop>
+  <tabstop>mnemon0dCheckBox</tabstop>
+  <tabstop>mnemon0nCheckBox</tabstop>
+  <tabstop>mnemon0sCheckBox</tabstop>
+  <tabstop>mnemon0sfCheckBox</tabstop>
+  <tabstop>mnemon0xCheckBox</tabstop>
   <tabstop>mnemon0sxCheckBox</tabstop>
+  <tabstop>mnemon0sxfCheckBox</tabstop>
+  <tabstop>nonUnaryMnemonic1LineEdit</tabstop>
+  <tabstop>mnemon1iCheckBox</tabstop>
+  <tabstop>mnemon1dCheckBox</tabstop>
+  <tabstop>mnemon1nCheckBox</tabstop>
+  <tabstop>mnemon1sCheckBox</tabstop>
+  <tabstop>mnemon2sCheckBox</tabstop>
+  <tabstop>mnemon1xCheckBox</tabstop>
+  <tabstop>mnemon1sxCheckBox</tabstop>
   <tabstop>mnemon1sxfCheckBox</tabstop>
+  <tabstop>nonUnaryMnemonic2LineEdit</tabstop>
   <tabstop>mnemon2iCheckBox</tabstop>
+  <tabstop>mnemon3sfCheckBox</tabstop>
+  <tabstop>mnemon2nCheckBox</tabstop>
+  <tabstop>mnemon1sfCheckBox</tabstop>
+  <tabstop>mnemon2sfCheckBox</tabstop>
+  <tabstop>mnemon2xCheckBox</tabstop>
+  <tabstop>mnemon2sxCheckBox</tabstop>
+  <tabstop>mnemon2sxfCheckBox</tabstop>
+  <tabstop>nonUnaryMnemonic3LineEdit</tabstop>
+  <tabstop>mnemon3iCheckBox</tabstop>
+  <tabstop>mnemon3dCheckBox</tabstop>
+  <tabstop>mnemon3nCheckBox</tabstop>
+  <tabstop>mnemon3sCheckBox</tabstop>
+  <tabstop>mnemon4iCheckBox</tabstop>
+  <tabstop>mnemon3xCheckBox</tabstop>
+  <tabstop>mnemon3sxCheckBox</tabstop>
+  <tabstop>mnemon3sxfCheckBox</tabstop>
+  <tabstop>nonUnaryMnemonic4LineEdit</tabstop>
+  <tabstop>mnemon2dCheckBox</tabstop>
+  <tabstop>mnemon4dCheckBox</tabstop>
+  <tabstop>mnemon4nCheckBox</tabstop>
+  <tabstop>mnemon4sCheckBox</tabstop>
+  <tabstop>mnemon4sfCheckBox</tabstop>
+  <tabstop>mnemon4xCheckBox</tabstop>
+  <tabstop>mnemon4sxCheckBox</tabstop>
+  <tabstop>mnemon4sxfCheckBox</tabstop>
   <tabstop>defaultMnemonicsButton</tabstop>
  </tabstops>
  <resources/>

@@ -1,5 +1,5 @@
 <RCC>
-    <qresource prefix="/" >
+    <qresource prefix="/">
         <file>help/writingprograms.html</file>
         <file>help/machinelanguage.html</file>
         <file>help/assemblylanguage.html</file>
@@ -56,7 +56,7 @@
         <file>help/figures/fig0645.pep</file>
         <file>help/figures/fig0647.cpp</file>
         <file>help/figures/fig0647.pep</file>
-        <file>help/figures/pep8os.pep</file>
+        <file>help/figures/pep9os.pep</file>
         <file>help/figures/fig0432.pepb</file>
         <file>help/figures/fig0432.peph</file>
         <file>help/figures/fig0432.pepo</file>

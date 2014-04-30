@@ -430,7 +430,7 @@ void HelpDialog::onCurrentItemChanged(QTreeWidgetItem*, QTreeWidgetItem*) {
         ui->copyToSourceButton->setText("Copy to Source");
         ui->helpSplitter->widget(0)->hide();
         ui->helpSplitter->widget(1)->show();
-        ui->leftTextEdit->setText(Pep::resToString(":/help/figures/pep8os.pep"));
+        ui->leftTextEdit->setText(Pep::resToString(":/help/figures/pep9os.pep"));
         ui->rightCppTextEdit->hide();
         ui->rightPepTextEdit->hide();
         ui->figureLabel->setText("<b>Figures 8.2, 8.3, 8.6, 8.8, 8.10, 8.11</b><code>  </code> The Pep/9 operating system.");
@@ -459,7 +459,7 @@ void HelpDialog::writingTrapHandlersClicked()
     selectItem("Writing Trap Handlers");
 }
 
-void HelpDialog::pep8ReferenceClicked()
+void HelpDialog::pep9ReferenceClicked()
 {
     selectItem("Pep/9 Reference");
 }

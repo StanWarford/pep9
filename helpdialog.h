@@ -43,7 +43,7 @@ public:
     void assemblyLanguageClicked();
     void debuggingProgramsClicked();
     void writingTrapHandlersClicked();
-    void pep8ReferenceClicked();
+    void pep9ReferenceClicked();
     void examplesClicked();
     void operatingSystemClicked();
     QString getCode(Enu::EPane &destPane, Enu::EPane &inputDest, QString &input);

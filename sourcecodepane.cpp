@@ -192,7 +192,7 @@ bool SourceCodePane::installDefaultOs()
     while (!codeList.isEmpty()) {
         delete codeList.takeFirst();
     }
-    QString sourceCode = Pep::resToString(":/help/figures/pep8os.pep");
+    QString sourceCode = Pep::resToString(":/help/figures/pep9os.pep");
     sourceCodeList = sourceCode.split('\n');
     Pep::byteCount = 0;
     Pep::burnCount = 0;

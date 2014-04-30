@@ -2,7 +2,7 @@
 
 <html>
 <head>
- <title> Pep/8: Reference Documentation </title>
+ <title> Pep/9: Reference Documentation </title>
   <style type="text/css" media="all">
    th { background-color:#FB9F14; color: #29315E }
    img { vertical-align:text-top; }
@@ -13,15 +13,15 @@
 <table bgcolor="#FB9F14" width="100%" cellpadding="2" cellspacing="0" border="0">
 <tr><td>
 <p style="text-align:center; font-family:helvetica, arial, sans-serif; font-size:14pt; font-weight:bold; color: #29315E">
-Pep/8 Reference
+Pep/9 Reference
 </p>
 </td></tr>
 </table>
 <p>
- The Pep/8 computer is a 16-bit complex instruction set computer (CISC).
+ The Pep/9 computer is a 16-bit complex instruction set computer (CISC).
  It is designed to teach computer architecture and assembly language programming principles.
- Its 39 instructions are based on an expanding opcode and are either unary (one byte) or nonunary (three bytes).
- The eight addressing modes are designed for straighforward translation between C/C++ and assembly language.
+ Its 40 instructions are based on an expanding opcode and are either unary (one byte) or nonunary (three bytes).
+ The eight addressing modes are designed for straighforward translation between C and assembly language.
 <p>
  <a name = "Topics">Topics:</a>
  <a href="#Instruction">Instruction set</a>,
@@ -43,64 +43,70 @@ Pep/8 Reference
   <td><code>0000 0000</code></code></td> <td><code>STOP</code></td> <td>Stop execution</td> <td>U</td> <td></td>
  </tr>
  <tr>
-  <td><code>0000 0001</code></td> <td><code>RETTR</code></td> <td>Return from trap</td> <td>U</td> <td></td>
+  <td><code>0000 0001</code></td> <td><code>RET</code></td> <td>Return from <code>CALL</code></td> <td>U</td> <td></td>
  </tr>
  <tr>
-  <td><code>0000 0010</code></td> <td><code>MOVSPA</code></td> <td>Move SP to A</td> <td>U</td> <td></td>
+  <td><code>0000 0010</code></td> <td><code>RETTR</code></td> <td>Return from trap</td> <td>U</td> <td></td>
  </tr>
  <tr>
-  <td><code>0000 0011</code></td> <td><code>MOVFLGA</code></td> <td>Move NZVC flags to A</td> <td>U</td> <td></td>
+  <td><code>0000 0011</code></td> <td><code>MOVSPA</code></td> <td>Move SP to A</td> <td>U</td> <td></td>
  </tr>
  <tr>
-  <td><code>0000 010a</code></td> <td><code>BR</code></td> <td>Branch unconditional</td> <td>i, x</td> <td></td>
+  <td><code>0000 0100</code></td> <td><code>MOVFLGA</code></td> <td>Move NZVC flags to A&lt;12..15&gt;</td> <td>U</td> <td></td>
  </tr>
  <tr>
-  <td><code>0000 011a</code></td> <td><code>BRLE</code></td> <td>Branch if less than or equal to</td> <td>i, x</td> <td></td>
+  <td><code>0000 0101</code></td> <td><code>MOVAFLG</code></td> <td>Move A&lt;12..15&gt; to NZVC flags</td> <td>U</td> <td></td>
  </tr>
  <tr>
-  <td><code>0000 100a</code></td> <td><code>BRLT</code></td> <td>Branch if less than</td> <td>i, x</td> <td></td>
+  <td><code>0000 011r</code></td> <td><code>NOTr</code></td> <td>Bitwise invert r</td> <td>U</td> <td>N Z</td>
  </tr>
  <tr>
-  <td><code>0000 101a</code></td> <td><code>BREQ</code></td> <td>Branch if equal to</td> <td>i, x</td> <td></td>
+  <td><code>0000 100r</code></td> <td><code>NEGr</code></td> <td>Negate r</td> <td>U</td> <td>N Z V</td>
  </tr>
  <tr>
-  <td><code>0000 110a</code></td> <td><code>BRNE</code></td> <td>Branch if not equal to</td> <td>i, x</td> <td></td>
+  <td><code>0000 101r</code></td> <td><code>ASLr</code></td> <td>Arithmetic shift left r</td> <td>U</td> <td>N Z V C</td>
  </tr>
  <tr>
-  <td><code>0000 111a</code></td> <td><code>BRGE</code></td> <td>Branch if greater than or equal to</td> <td>i, x</td> <td></td>
+  <td><code>0000 110r</code></td> <td><code>ASRr</code></td> <td>Arithmetic shift right r</td> <td>U</td> <td>N Z C</td>
  </tr>
  <tr>
-  <td><code>0001 000a</code></td> <td><code>BRGT</code></td> <td>Branch if greater than</td> <td>i, x</td> <td></td>
+  <td><code>0000 111r</code></td> <td><code>ROLr</code></td> <td>Rotate left r</td> <td>U</td> <td>C</td>
  </tr>
  <tr>
-  <td><code>0001 001a</code></td> <td><code>BRV</code></td> <td>Branch if V</td> <td>i, x</td> <td></td>
+  <td><code>0001 000r</code></td> <td><code>RORr</code></td> <td>Rotate right r</td> <td>U</td> <td>C</td>
  </tr>
  <tr>
-  <td><code>0001 010a</code></td> <td><code>BRC</code></td> <td>Branch if C</td> <td>i, x</td> <td></td>
+  <td><code>0001 001a</code></td> <td><code>BR</code></td> <td>Branch unconditional</td> <td>i, x</td> <td></td>
  </tr>
  <tr>
-  <td><code>0001 011a</code></td> <td><code>CALL</code></td> <td>Call subroutine</td> <td>i, x</td> <td></td>
+  <td><code>0001 010a</code></td> <td><code>BRLE</code></td> <td>Branch if less than or equal to</td> <td>i, x</td> <td></td>
  </tr>
  <tr>
-  <td><code>0001 100r</code></td> <td><code>NOTr</code></td> <td>Bitwise invert r</td> <td>U</td> <td>N Z</td>
+  <td><code>0001 011a</code></td> <td><code>BRLT</code></td> <td>Branch if less than</td> <td>i, x</td> <td></td>
  </tr>
  <tr>
-  <td><code>0001 101r</code></td> <td><code>NEGr</code></td> <td>Negate r</td> <td>U</td> <td>N Z V</td>
+  <td><code>0001 100a</code></td> <td><code>BREQ</code></td> <td>Branch if equal to</td> <td>i, x</td> <td></td>
  </tr>
  <tr>
-  <td><code>0001 110r</code></td> <td><code>ASLr</code></td> <td>Arithmetic shift left r</td> <td>U</td> <td>N Z V C</td>
+  <td><code>0001 101a</code></td> <td><code>BRNE</code></td> <td>Branch if not equal to</td> <td>i, x</td> <td></td>
  </tr>
  <tr>
-  <td><code>0001 111r</code></td> <td><code>ASRr</code></td> <td>Arithmetic shift right r</td> <td>U</td> <td>N Z C</td>
+  <td><code>0001 110a</code></td> <td><code>BRGE</code></td> <td>Branch if greater than or equal to</td> <td>i, x</td> <td></td>
  </tr>
  <tr>
-  <td><code>0010 000r</code></td> <td><code>ROLr</code></td> <td>Rotate left r</td> <td>U</td> <td>C</td>
+  <td><code>0001 111a</code></td> <td><code>BRGT</code></td> <td>Branch if greater than</td> <td>i, x</td> <td></td>
  </tr>
  <tr>
-  <td><code>0010 001r</code></td> <td><code>RORr</code></td> <td>Rotate right r</td> <td>U</td> <td>C</td>
+  <td><code>0010 000a</code></td> <td><code>BRV</code></td> <td>Branch if V</td> <td>i, x</td> <td></td>
  </tr>
  <tr>
-  <td><code>0010 01nn</code></td> <td><code>NOPn</code></td> <td>Unary no operation trap</td> <td>U</td> <td></td>
+  <td><code>0010 001a</code></td> <td><code>BRC</code></td> <td>Branch if C</td> <td>i, x</td> <td></td>
+ </tr>
+ <tr>
+  <td><code>0010 010a</code></td> <td><code>CALL</code></td> <td>Call subroutine</td> <td>i, x</td> <td></td>
+ </tr>
+ <tr>
+  <td><code>0010 011n</code></td> <td><code>NOPn</code></td> <td>Unary no operation trap</td> <td>U</td> <td></td>
  </tr>
  <tr>
   <td><code>0010 1aaa</code></td> <td><code>NOP</code></td> <td>Nonunary no operation trap</td> <td>i</td> <td></td>
@@ -112,49 +118,46 @@ Pep/8 Reference
   <td><code>0011 1aaa</code></td> <td><code>DECO</code></td> <td>Decimal output trap</td> <td>i, d, n, s, sf, x, sx, sxf</td> <td></td>
  </tr>
  <tr>
-  <td><code>0100 0aaa</code></td> <td><code>STRO</code></td> <td>String output trap</td> <td>d, n, sf</td> <td></td>
+  <td><code>0100 0aaa</code></td> <td><code>HEXO</code></td> <td>Hexadecimal output trap</td> <td>i, d, n, s, sf, x, sx, sxf</td> <td></td>
  </tr>
  <tr>
-  <td><code>0100 1aaa</code></td> <td><code>CHARI</code></td> <td>Character input</td> <td>d, n, s, sf, x, sx, sxf</td> <td></td>
+  <td><code>0100 1aaa</code></td> <td><code>STRO</code></td> <td>String output trap</td> <td>d, n, sf</td> <td></td>
  </tr>
  <tr>
-  <td><code>0101 0aaa</code></td> <td><code>CHARO</code></td> <td>Character output</td> <td>i, d, n, s, sf, x, sx, sxf</td> <td></td>
+  <td><code>0101 0aaa</code></td> <td><code>ADDSP</code></td> <td>Add to stack pointer (SP)</td> <td>i, d, n, s, sf, x, sx, sxf</td> <td>N Z V C</td>
  </tr>
  <tr>
-  <td><code>0101 1nnn</code></td> <td><code>RETn</code></td> <td>Return from call with n local bytes</td> <td>U</td> <td></td>
+  <td><code>0101 1aaa</code></td> <td><code>SUBSP</code></td> <td>Subtract from stack pointer (SP)</td> <td>i, d, n, s, sf, x, sx, sxf</td> <td>N Z V C</td>
  </tr>
  <tr>
-  <td><code>0110 0aaa</code></td> <td><code>ADDSP</code></td> <td>Add to stack pointer (SP)</td> <td>i, d, n, s, sf, x, sx, sxf</td> <td>N Z V C</td>
+  <td><code>0110 raaa</code></td> <td><code>ADDr</code></td> <td>Add to r</td> <td>i, d, n, s, sf, x, sx, sxf</td> <td>N Z V C</td>
  </tr>
  <tr>
-  <td><code>0110 1aaa</code></td> <td><code>SUBSP</code></td> <td>Subtract from stack pointer (SP)</td> <td>i, d, n, s, sf, x, sx, sxf</td> <td>N Z V C</td>
+  <td><code>0111 raaa</code></td> <td><code>SUBr</code></td> <td>Subtract from r</td> <td>i, d, n, s, sf, x, sx, sxf</td> <td>N Z V C</td>
  </tr>
  <tr>
-  <td><code>0111 raaa</code></td> <td><code>ADDr</code></td> <td>Add to r</td> <td>i, d, n, s, sf, x, sx, sxf</td> <td>N Z V C</td>
+  <td><code>1000 raaa</code></td> <td><code>ANDr</code></td> <td>Bitwise AND to r</td> <td>i, d, n, s, sf, x, sx, sxf</td> <td>N Z</td>
  </tr>
  <tr>
-  <td><code>1000 raaa</code></td> <td><code>SUBr</code></td> <td>Subtract from r</td> <td>i, d, n, s, sf, x, sx, sxf</td> <td>N Z V C</td>
+  <td><code>1001 raaa</code></td> <td><code>ORr</code></td> <td>Bitwise OR to r</td> <td>i, d, n, s, sf, x, sx, sxf</td> <td>N Z</td>
  </tr>
  <tr>
-  <td><code>1001 raaa</code></td> <td><code>ANDr</code></td> <td>Bitwise AND to r</td> <td>i, d, n, s, sf, x, sx, sxf</td> <td>N Z</td>
+  <td><code>1010 raaa</code></td> <td><code>CPWr</code></td> <td>Compare word to r</td> <td>i, d, n, s, sf, x, sx, sxf</td> <td>N Z V C</td>
  </tr>
  <tr>
-  <td><code>1010 raaa</code></td> <td><code>ORr</code></td> <td>Bitwise OR to r</td> <td>i, d, n, s, sf, x, sx, sxf</td> <td>N Z</td>
+  <td><code>1011 raaa</code></td> <td><code>CPBr</code></td> <td>Compare byte to r&lt;8..15&gt;</td> <td>i, d, n, s, sf, x, sx, sxf</td> <td>N Z V C</td>
  </tr>
  <tr>
-  <td><code>1011 raaa</code></td> <td><code>CPr</code></td> <td>Compare r</td> <td>i, d, n, s, sf, x, sx, sxf</td> <td>N Z V C</td>
+  <td><code>1100 raaa</code></td> <td><code>LDWr</code></td> <td>Load word r from memory</td> <td>i, d, n, s, sf, x, sx, sxf</td> <td>N Z</td>
  </tr>
  <tr>
-  <td><code>1100 raaa</code></td> <td><code>LDr</code></td> <td>Load r from memory</td> <td>i, d, n, s, sf, x, sx, sxf</td> <td>N Z</td>
+  <td><code>1101 raaa</code></td> <td><code>LDBr</code></td> <td>Load byte r&lt;8..15&gt; from memory</td> <td>i, d, n, s, sf, x, sx, sxf</td> <td>N Z</td>
  </tr>
  <tr>
-  <td><code>1101 raaa</code></td> <td><code>LDBYTEr</code></td> <td>Load byte r from memory</td> <td>i, d, n, s, sf, x, sx, sxf</td> <td>N Z</td>
+  <td><code>1110 raaa</code></td> <td><code>STWr</code></td> <td>Store word r to memory</td> <td>d, n, s, sf, x, sx, sxf</td> <td></td>
  </tr>
  <tr>
-  <td><code>1110 raaa</code></td> <td><code>STr</code></td> <td>Store r to memory</td> <td>d, n, s, sf, x, sx, sxf</td> <td></td>
- </tr>
- <tr>
-  <td><code>1111 raaa</code></td> <td><code>STBYTEr</code></td> <td>Store byte r to memory</td> <td>d, n, s, sf, x, sx, sxf</td> <td></td>
+  <td><code>1111 raaa</code></td> <td><code>STBr</code></td> <td>Store byte r&lt;8..15&gt; to memory</td> <td>d, n, s, sf, x, sx, sxf</td> <td></td>
  </tr>
 </table>
 <p>
@@ -165,17 +168,17 @@ Pep/8 Reference
 There are two different philosophies for setting the carry bit after subtraction.
 <p>
 Z80, x86, and SPARC treat the carry flag as a "borrow flag" when doing a subtraction.
-When subtracting x - y, if x is less than y (treating both operands as unsigned),
+When subtracting x &ndash; y, if x is less than y (treating both operands as unsigned),
 the carry flag is set because there is a borrow.
-A BRC after a <code>SUBr</code> or <code>CPr</code> instruction is equivalent to "branch if unsigned overflow" in this case.
+A <code>BRC</code> after a <code>SUBr</code> or <code>CPr</code> instruction is equivalent to "branch if unsigned overflow" in this case.
 <p>
 On other processor families, such as ARM and PowerPC, the carry flag after a subtraction
 is set to the adder carry output after computing (x + ~y + 1).
-When subtracting x - y, if x is greater than or equal to y (treating both operands as unsigned), the carry flag is set.
-A BRC after a <code>SUBr</code> or <code>CPr</code> instruction is equivalent to "branch if not unsigned overflow" in this case.
+When subtracting x &ndash; y, if x is greater than or equal to y (treating both operands as unsigned), the carry flag is set.
+A <code>BRC</code> after a <code>SUBr</code> or <code>CPr</code> instruction is equivalent to "branch if not unsigned overflow" in this case.
 <p>
-Previous versions of Pep/8 set the C bit on subtraction according to the first philosophy.
-However, starting with version 8.1.0, the C bit on subtraction is set according to the second philosophy.
+Versions of Pep/8 previous to 8.1.0 set the C bit on subtraction according to the first philosophy.
+However, starting with version 8.1.0 and for all Pep/9 versions, the C bit on subtraction is set according to the second philosophy.
 This is consistent with the section "The Carry Bit" in Chapter 3, and the adder/subtracter circuit
 in Figure 10.53 in the text.
 <p>

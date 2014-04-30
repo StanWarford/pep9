@@ -186,10 +186,10 @@ private slots:
     void on_actionHelp_Assembly_Language_triggered();
     void on_actionHelp_Debugging_Programs_triggered();
     void on_actionHelp_Writing_Trap_Handlers_triggered();
-    void on_actionHelp_Pep_8_Reference_triggered();
+    void on_actionHelp_Pep_9_Reference_triggered();
     void on_actionHelp_Examples_triggered();
-    void on_actionHelp_Pep_8_Operating_System_triggered();
-    void on_actionAbout_Pep8_triggered();
+    void on_actionHelp_Pep_9_Operating_System_triggered();
+    void on_actionAbout_Pep9_triggered();
     void on_actionAbout_Qt_triggered();
 
     void helpCopyToSourceButtonClicked();

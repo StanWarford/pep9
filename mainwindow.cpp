@@ -212,7 +212,7 @@ bool MainWindow::saveObject()
 
 void MainWindow::readSettings()
 {
-    QSettings settings("Pep8", "MainWindow");
+    QSettings settings("Pep9", "MainWindow");
     QDesktopWidget *desktop = QApplication::desktop();
     int width = static_cast<int>(desktop->width() * 0.80);
     int height = static_cast<int>(desktop->height() * 0.70);
@@ -236,7 +236,7 @@ void MainWindow::readSettings()
 
 void MainWindow::writeSettings()
 {
-    QSettings settings("Pep8", "MainWindow");
+    QSettings settings("Pep9", "MainWindow");
     settings.setValue("pos", pos());
     settings.setValue("size", size());
     settings.setValue("filePath", curPath);
@@ -431,7 +431,7 @@ QString MainWindow::strippedName(const QString &fullFileName)
 // Recent files:
 void MainWindow::updateRecentFileActions()
 {
-    QSettings settings("Pep8", "Recent Files");
+    QSettings settings("Pep9", "Recent Files");
     QStringList files = settings.value("recentFileList").toStringList();
 
     int numRecentFiles = qMin(files.size(), (int)MaxRecentFiles);
@@ -650,11 +650,11 @@ bool MainWindow::on_actionFile_Save_Source_As_triggered()
             this,
             "Save Source Code",
             curSourceFile.isEmpty() ? curPath + "/untitled.pep" : curPath + "/" + strippedName(curSourceFile),
-            "Pep8 Source (*.pep *.txt)");
+            "Pep9 Source (*.pep *.txt)");
     if (fileName.isEmpty())
         return false;
 
-    QSettings settings("Pep8", "Recent Files");
+    QSettings settings("Pep9", "Recent Files");
     QStringList files = settings.value("recentFileList").toStringList();
     files.removeAll(fileName);
     files.prepend(fileName);
@@ -678,11 +678,11 @@ bool MainWindow::on_actionFile_Save_Object_As_triggered()
             this,
             "Save Object Code",
             curObjectFile.isEmpty() ? curPath + "/untitled.pepo" : curPath + "/" + strippedName(curObjectFile),
-            "Pep8 Object (*.pepo *.txt)");
+            "Pep9 Object (*.pepo *.txt)");
     if (fileName.isEmpty())
         return false;
 
-    QSettings settings("Pep8", "Recent Files");
+    QSettings settings("Pep9", "Recent Files");
     QStringList files = settings.value("recentFileList").toStringList();
     files.removeAll(fileName);
     files.prepend(fileName);
@@ -706,7 +706,7 @@ bool MainWindow::on_actionFile_Save_Listing_As_triggered()
             this,
             "Save Assembler Listing",
             curListingFile.isEmpty() ? curPath + "/untitled.pepl" : curPath + "/" + strippedName(curListingFile),
-            "Pep8 Listing (*.pepl)");
+            "Pep9 Listing (*.pepl)");
     if (fileName.isEmpty()) {
         return false;
     }
@@ -1227,7 +1227,7 @@ void MainWindow::on_actionSystem_Assemble_Install_New_OS_triggered()
             ui->statusbar->showMessage("Assembly failed", 4000);
         }
         else if (Pep::burnCount > 1) {
-            QString errorString = ";ERROR: Program contain more than one .BURN.";
+            QString errorString = ";ERROR: Program contains more than one .BURN.";
             sourceCodePane->appendMessageInSourceCodePaneAt(0, errorString);
             assemblerListingPane->clearAssemblerListing();
             objectCodePane->clearObjectCode();
@@ -1317,10 +1317,10 @@ void MainWindow::on_actionHelp_Writing_Trap_Handlers_triggered()
     helpDialog->writingTrapHandlersClicked();
 }
 
-void MainWindow::on_actionHelp_Pep_8_Reference_triggered()
+void MainWindow::on_actionHelp_Pep_9_Reference_triggered()
 {
     helpDialog->show();
-    helpDialog->pep8ReferenceClicked();
+    helpDialog->pep9ReferenceClicked();
 }
 
 void MainWindow::on_actionHelp_Examples_triggered()
@@ -1329,13 +1329,13 @@ void MainWindow::on_actionHelp_Examples_triggered()
     helpDialog->examplesClicked();
 }
 
-void MainWindow::on_actionHelp_Pep_8_Operating_System_triggered()
+void MainWindow::on_actionHelp_Pep_9_Operating_System_triggered()
 {
     helpDialog->show();
     helpDialog->operatingSystemClicked();
 }
 
-void MainWindow::on_actionAbout_Pep8_triggered()
+void MainWindow::on_actionAbout_Pep9_triggered()
 {
     aboutPepDialog->exec();
 }
