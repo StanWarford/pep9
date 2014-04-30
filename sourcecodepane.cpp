@@ -104,7 +104,9 @@ bool SourceCodePane::assemble()
         return false;
     }
     for (int i = 0; i < Asm::listOfReferencedSymbols.length(); i++) {
-        if (!Pep::symbolTable.contains(Asm::listOfReferencedSymbols[i])) {
+        if (!Pep::symbolTable.contains(Asm::listOfReferencedSymbols[i])
+                && !(Asm::listOfReferencedSymbols[i] == "charIn")
+                && !(Asm::listOfReferencedSymbols[i] == "charOut")) {
             errorString = ";ERROR: Symbol " + Asm::listOfReferencedSymbols[i] + " is used but not defined.";
             appendMessageInSourceCodePaneAt(Asm::listOfReferencedSymbolLineNums[i], errorString);
             return false;

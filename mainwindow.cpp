@@ -39,10 +39,10 @@
 #include "pep.h"
 #include "sim.h"
 
- #include <QDebug>
+#include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent)
-        : QMainWindow(parent), ui(new Ui::MainWindowClass)
+    : QMainWindow(parent), ui(new Ui::MainWindowClass)
 {
     ui->setupUi(this);
 
@@ -463,44 +463,42 @@ bool MainWindow::assemble()
             ui->pepCodeTraceTab->setCurrentIndex(0); // Make source code pane visible
             return false;
         }
-        else {
-            objectCodePane->setObjectCode(sourceCodePane->getObjectCode());
-            assemblerListingPane->setAssemblerListing(sourceCodePane->getAssemblerListingList());
-            listingTracePane->setListingTrace(sourceCodePane->getAssemblerListingList(), sourceCodePane->getHasCheckBox());
-            memoryTracePane->setMemoryTrace();
-            listingTracePane->showAssemblerListing();
+        objectCodePane->setObjectCode(sourceCodePane->getObjectCode());
+        assemblerListingPane->setAssemblerListing(sourceCodePane->getAssemblerListingList());
+        listingTracePane->setListingTrace(sourceCodePane->getAssemblerListingList(), sourceCodePane->getHasCheckBox());
+        memoryTracePane->setMemoryTrace();
+        listingTracePane->showAssemblerListing();
 
-            QString temp = curSourceFile;
-            if (!curSourceFile.isEmpty()) {
-                if (temp.endsWith(".pep", Qt::CaseInsensitive) || temp.endsWith(".txt", Qt::CaseInsensitive)) {
-                    temp.chop(4);
-                }
-                temp.append(".pepo");
-                curObjectFile = temp;
-                setCurrentFile(curObjectFile, Enu::EObject);
-                temp.chop(5);
-                temp.append(".pepl");
-                curListingFile = temp;
-                setCurrentFile(curListingFile, Enu::EListing);
+        QString temp = curSourceFile;
+        if (!curSourceFile.isEmpty()) {
+            if (temp.endsWith(".pep", Qt::CaseInsensitive) || temp.endsWith(".txt", Qt::CaseInsensitive)) {
+                temp.chop(4);
             }
-            else {
-                setCurrentFile("", Enu::EObject);
-                setCurrentFile("", Enu::EListing);
-            }
-            ui->actionEdit_Format_From_Listing->setEnabled(true);
-           if (!Pep::traceTagWarning && !(Pep::blockSymbols.isEmpty()
-                && Pep::equateSymbols.isEmpty()
-                && Pep::globalStructSymbols.isEmpty()
-                && Pep::symbolFormat.isEmpty()
-                && Pep::symbolFormatMultiplier.isEmpty())) {
-                memoryTracePane->show();
-            }
-            else {
-                memoryTracePane->hide();
-            }
-            ui->actionBuild_Start_Debugging_Source->setEnabled(true);
-            return true;
+            temp.append(".pepo");
+            curObjectFile = temp;
+            setCurrentFile(curObjectFile, Enu::EObject);
+            temp.chop(5);
+            temp.append(".pepl");
+            curListingFile = temp;
+            setCurrentFile(curListingFile, Enu::EListing);
         }
+        else {
+            setCurrentFile("", Enu::EObject);
+            setCurrentFile("", Enu::EListing);
+        }
+        ui->actionEdit_Format_From_Listing->setEnabled(true);
+        if (!Pep::traceTagWarning && !(Pep::blockSymbols.isEmpty()
+                                       && Pep::equateSymbols.isEmpty()
+                                       && Pep::globalStructSymbols.isEmpty()
+                                       && Pep::symbolFormat.isEmpty()
+                                       && Pep::symbolFormatMultiplier.isEmpty())) {
+            memoryTracePane->show();
+        }
+        else {
+            memoryTracePane->hide();
+        }
+        ui->actionBuild_Start_Debugging_Source->setEnabled(true);
+        return true;
     }
     assemblerListingPane->clearAssemblerListing();
     objectCodePane->clearObjectCode();
@@ -516,7 +514,7 @@ bool MainWindow::load()
         Sim::loadMem(objectCodeList);
         memoryDumpPane->refreshMemoryLines(0, objectCodeList.size());
         return true;
-    }    
+    }
     return false;
 }
 
@@ -569,7 +567,7 @@ bool MainWindow::eventFilter(QObject *, QEvent *event)
                     return true;
                 }
                 singleStepButtonClicked();
-                return true;                
+                return true;
             }
             else if ((listingTracePane->hasFocus() || memoryTracePane->hasFocus()) && ui->actionBuild_Stop_Debugging->isEnabled()) {
                 // listing trace or memory trace has focus, and we are debugging
@@ -621,10 +619,10 @@ void MainWindow::on_actionFile_Open_triggered()
 {
     if (maybeSaveSource()) {
         QString fileName = QFileDialog::getOpenFileName(
-                this,
-                "Open text file",
-                curPath,
-                "Text files (*.pepo *.txt *.pep)");
+                    this,
+                    "Open text file",
+                    curPath,
+                    "Text files (*.pepo *.txt *.pep)");
         if (!fileName.isEmpty()) {
             loadFile(fileName);
             ui->pepCodeTraceTab->setCurrentIndex(0);
@@ -647,10 +645,10 @@ bool MainWindow::on_actionFile_Save_Source_triggered()
 bool MainWindow::on_actionFile_Save_Source_As_triggered()
 {
     QString fileName = QFileDialog::getSaveFileName(
-            this,
-            "Save Source Code",
-            curSourceFile.isEmpty() ? curPath + "/untitled.pep" : curPath + "/" + strippedName(curSourceFile),
-            "Pep9 Source (*.pep *.txt)");
+                this,
+                "Save Source Code",
+                curSourceFile.isEmpty() ? curPath + "/untitled.pep" : curPath + "/" + strippedName(curSourceFile),
+                "Pep9 Source (*.pep *.txt)");
     if (fileName.isEmpty())
         return false;
 
@@ -675,10 +673,10 @@ bool MainWindow::on_actionFile_Save_Source_As_triggered()
 bool MainWindow::on_actionFile_Save_Object_As_triggered()
 {
     QString fileName = QFileDialog::getSaveFileName(
-            this,
-            "Save Object Code",
-            curObjectFile.isEmpty() ? curPath + "/untitled.pepo" : curPath + "/" + strippedName(curObjectFile),
-            "Pep9 Object (*.pepo *.txt)");
+                this,
+                "Save Object Code",
+                curObjectFile.isEmpty() ? curPath + "/untitled.pepo" : curPath + "/" + strippedName(curObjectFile),
+                "Pep9 Object (*.pepo *.txt)");
     if (fileName.isEmpty())
         return false;
 
@@ -703,10 +701,10 @@ bool MainWindow::on_actionFile_Save_Object_As_triggered()
 bool MainWindow::on_actionFile_Save_Listing_As_triggered()
 {
     QString fileName = QFileDialog::getSaveFileName(
-            this,
-            "Save Assembler Listing",
-            curListingFile.isEmpty() ? curPath + "/untitled.pepl" : curPath + "/" + strippedName(curListingFile),
-            "Pep9 Listing (*.pepl)");
+                this,
+                "Save Assembler Listing",
+                curListingFile.isEmpty() ? curPath + "/untitled.pepl" : curPath + "/" + strippedName(curListingFile),
+                "Pep9 Listing (*.pepl)");
     if (fileName.isEmpty()) {
         return false;
     }
@@ -983,7 +981,7 @@ void MainWindow::on_actionBuild_Start_Debugging_Source_triggered()
     else {
         if (assemblerListingPane->isEmpty()) {
             ui->statusbar->showMessage("No assembler listing, cannot debug source", 4000);
-        } 
+        }
         else {
             ui->statusbar->showMessage("Load failed", 4000);
         }
@@ -1218,6 +1216,10 @@ void MainWindow::on_actionSystem_Assemble_Install_New_OS_triggered()
     Pep::memAddrssToAssemblerListing = &Pep::memAddrssToAssemblerListingOS;
     Pep::listingRowChecked = &Pep::listingRowCheckedOS;
     if (sourceCodePane->assemble()) {
+        // Test for definition of charIn
+
+        // Test for definition of charOut
+
         if (Pep::burnCount == 0) {
             QString errorString = ";ERROR: .BURN required to install OS.";
             sourceCodePane->appendMessageInSourceCodePaneAt(0, errorString);

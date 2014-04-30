@@ -24,6 +24,7 @@
 
 #include "asm.h"
 #include "pep.h"
+#include "sim.h"
 
 // Abstract Argument class
 class Argument
@@ -99,7 +100,17 @@ private:
     QString symbolRefValue;
 public:
     SymbolRefArgument(QString sRefValue) { symbolRefValue = sRefValue; }
-    int getArgumentValue() { return Pep::symbolTable.value(symbolRefValue); }
+    int getArgumentValue() {
+        if (symbolRefValue == "charIn") {
+            return Pep::symbolTable.contains("charIn") ? Pep::symbolTable.value(symbolRefValue) : 256 * Sim::Mem[0xfff8] + Sim::Mem[0xfff9];
+        }
+        else if (symbolRefValue == "charOut") {
+            return Pep::symbolTable.contains("charOut") ? Pep::symbolTable.value(symbolRefValue) : 256 * Sim::Mem[0xfffa] + Sim::Mem[0xfffb];
+        }
+        else {
+            return Pep::symbolTable.value(symbolRefValue);
+        }
+    }
     QString getArgumentString() { return symbolRefValue; }
 };
 

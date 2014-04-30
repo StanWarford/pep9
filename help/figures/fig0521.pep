@@ -2,21 +2,25 @@
 ;Computer Systems, Fourth edition
 ;Figure 5.21
 ;
-         BR      main        
+         BR      main
 ch:      .BLOCK  1           ;global variable #1c
 j:       .BLOCK  2           ;global variable #2d
 ;
-main:    CHARI   ch,d        ;cin >> ch
+main:    LDBA    charIn,d    ;cin >> ch
+         STBA    ch,d
          DECI    j,d         ;   >> j
-         LDA     j,d         ;j += 5
-         ADDA    5,i         
-         STA     j,d         
-         LDBYTEA ch,d        ;ch++
-         ADDA    1,i         
-         STBYTEA ch,d        
-         CHARO   ch,d        ;cout << ch
-         CHARO   '\n',i      ;   << endl
+         LDWA    j,d         ;j += 5
+         ADDA    5,i
+         STWA    j,d
+         LDBA    ch,d        ;ch++
+         ADDA    1,i
+         STBA    ch,d
+         LDBA    ch,d        ;cout << ch
+         STBA    charOut,d
+         LDBA    '\n',i      ;   << endl
+         STBA    charOut,d
          DECO    j,d         ;   << j
-         CHARO   '\n',i      ;   << endl
-         STOP                
-         .END                  
+         LDBA    '\n',i      ;   << endl
+         STBA    charOut,d
+         STOP
+         .END
