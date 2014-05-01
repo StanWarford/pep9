@@ -104,6 +104,33 @@ int Sim::readWord(int memAddr)
      return 256 * Mem[memAddr & 0xffff] + Mem[(memAddr + 1) & 0xffff];
 }
 
+int Sim::addrOfByteOprnd(Enu::EAddrMode addrMode)
+{
+    switch (addrMode) {
+    case Enu::NONE:
+        break;
+    case Enu::I:
+        break;
+    case Enu::D:
+        return operandSpecifier;
+    case Enu::N:
+        return readWord(operandSpecifier);
+    case Enu::S:
+        return add(stackPointer, operandSpecifier);
+    case Enu::SF:
+        return readWord(add(stackPointer, operandSpecifier));
+    case Enu::X:
+        return add(operandSpecifier, indexRegister);
+    case Enu::SX:
+        return add(add(stackPointer, operandSpecifier), indexRegister);
+    case Enu::SXF:
+        return add(readWord(add(stackPointer, operandSpecifier)), indexRegister);
+    case Enu::ALL:
+        break;
+    }
+    return 0;
+}
+
 int Sim::readByteOprnd(Enu::EAddrMode addrMode)
 {
     switch (addrMode) {
@@ -276,7 +303,7 @@ bool Sim::vonNeumannStep(QString &errorString)
     programCounter = add(programCounter, 1);
     // Decode
     mnemonic = Pep::decodeMnemonic[instructionSpecifier];
-    addrMode = Pep::decodeAddrMode[Sim::instructionSpecifier];
+    addrMode = Pep::decodeAddrMode[instructionSpecifier];
     if (!Pep::isUnaryMap[mnemonic]) {
         operandSpecifier = readWord(programCounter);
         programCounter = add(programCounter, 2);
@@ -498,20 +525,48 @@ bool Sim::vonNeumannStep(QString &errorString)
         programCounter = readWord(Pep::dotBurnArgument - 1);
         return true;
     case LDBA:
-        operand = readByteOprnd(addrMode);
+        if (addrMode != Enu::I && addrOfByteOprnd(addrMode) == 256 * Mem[0xfff8] + Mem[0xfff9]) {
+            // Memory-mapped input
+            if (Sim::inputBuffer.size() != 0) {
+                QString ch = Sim::inputBuffer.left(1);
+                Sim::inputBuffer.remove(0, 1);
+                operand = QChar(ch[0]).toLatin1();
+                operand += operand < 0 ? 256 : 0;
+            } else {
+                // Attempt to read past end of input.
+                // Only happens with batch input.
+                operand = 0;
+            }
+        } else {
+            operand = readByteOprnd(addrMode);
+        }
         operandDisplayFieldWidth = 2;
         accumulator = accumulator & 0xff00;
         accumulator |= operand & 255;
-        nBit = accumulator >= 32768;
-        zBit = accumulator == 0;
+        nBit = 0;
+        zBit = operand == 0;
         return true;
     case LDBX:
-        operand = readByteOprnd(addrMode);
+        if (addrMode != Enu::I && addrOfByteOprnd(addrMode) == 256 * Mem[0xfff8] + Mem[0xfff9]) {
+            // Memory-mapped input
+            if (Sim::inputBuffer.size() != 0) {
+                QString ch = Sim::inputBuffer.left(1);
+                Sim::inputBuffer.remove(0, 1);
+                operand = QChar(ch[0]).toLatin1();
+                operand += operand < 0 ? 256 : 0;
+            } else {
+                // Attempt to read past end of input.
+                // Only happens with batch input.
+                operand = 0;
+            }
+        } else {
+            operand = readByteOprnd(addrMode);
+        }
         operandDisplayFieldWidth = 2;
         indexRegister = indexRegister & 0xff00;
         indexRegister |= operand & 255;
-        nBit = indexRegister >= 32768;
-        zBit = indexRegister == 0;
+        nBit = 0;
+        zBit = operand == 0;
         return true;
     case LDWA:
         operand = readWordOprnd(addrMode);
@@ -616,13 +671,23 @@ bool Sim::vonNeumannStep(QString &errorString)
         cBit = bTemp;
         return true;
     case STBA:
-        writeByteOprnd(addrMode, accumulator & 0x00ff);
-        operand = readByteOprnd(addrMode);
+        operand = accumulator & 0x00ff;
+        if (addrOfByteOprnd(addrMode) == 256 * Mem[0xfffa] + Mem[0xfffb]) {
+            // Memory-mapped output
+            Sim::outputBuffer = QString(operand);
+        } else {
+            writeByteOprnd(addrMode, operand);
+        }
         operandDisplayFieldWidth = 2;
         return true;
     case STBX:
-        writeByteOprnd(addrMode, indexRegister & 0x00ff);
-        operand = readByteOprnd(addrMode);
+        operand = indexRegister & 0x00ff;
+        if (addrOfByteOprnd(addrMode) == 256 * Mem[0xfffa] + Mem[0xfffb]) {
+            // Memory-mapped output
+            Sim::outputBuffer = QString(operand);
+        } else {
+            writeByteOprnd(addrMode, operand);
+        }
         operandDisplayFieldWidth = 2;
         return true;
     case STWA:

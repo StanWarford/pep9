@@ -1,9 +1,11 @@
 ;Stan Warford
-;January 13, 2009
+;May 1, 2016
 ;A program to output "Hi"
 ;
-         CHARO   0x0007,d    ;Output 'H'
-         CHARO   0x0008,d    ;Output 'i'
-         STOP                
-         .ASCII  "Hi"        
-         .END                  
+         LDBA    0x000D,d    ;Output 'H'
+         STBA    0xFC4F,d
+         LDBA    0x000E,d    ;Output 'i'
+         STBA    0xFC4F,d
+         STOP
+         .ASCII  "Hi"
+         .END

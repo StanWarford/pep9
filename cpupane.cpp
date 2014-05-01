@@ -225,6 +225,41 @@ void CpuPane::runWithBatch()
     }
 }
 
+bool CpuPane::willAccessCharIn()
+{
+    // Memory-mapped input. Must look ahead to fill empty buffer.
+    if (Pep::decodeMnemonic[Sim::readByte(Sim::programCounter)] != Enu::LDBA && Pep::decodeMnemonic[Sim::readByte(Sim::programCounter)] != Enu::LDBX) {
+        return false;
+    }
+    if (Pep::decodeAddrMode[Sim::readByte(Sim::programCounter)] == Enu::I) {
+        return false;
+    }
+
+    // Memory-mapped input. Must look ahead to fill empty buffer.
+    && (Pep::decodeMnemonic[Sim::readByte(Sim::programCounter)] == Enu::LDBA || Pep::decodeMnemonic[Sim::readByte(Sim::programCounter)] == Enu::LDBX)
+    && (Pep::decodeAddrMode[Sim::readByte(Sim::programCounter)] != Enu::I)
+    && (willAccessCharIn())
+    ) {
+
+
+addrOfByteOprnd(addrMode)
+
+// Fetch
+instructionSpecifier = readByte(programCounter);
+// Increment
+programCounter = add(programCounter, 1);
+// Decode
+mnemonic = Pep::decodeMnemonic[Sim::instructionSpecifier];
+addrMode = Pep::decodeAddrMode[Sim::instructionSpecifier];
+if (!Pep::isUnaryMap[mnemonic]) {
+    operandSpecifier = readWord(programCounter);
+    programCounter = add(programCounter, 2);
+}
+
+
+
+}
+
 void CpuPane::runWithTerminal()
 {
     isCurrentlySimulating = true;
@@ -233,7 +268,8 @@ void CpuPane::runWithTerminal()
     QString errorString;
     while (true) {
         qApp->processEvents(); // To make sure that the event filter gets to handle keypresses during the run
-        if ((Pep::decodeMnemonic[Sim::readByte(Sim::programCounter)] == Enu::CHARI) && Sim::inputBuffer.isEmpty()) {
+        if (Sim::inputBuffer.isEmpty() && willAccessCharIn())
+        {
             // we are waiting for input
             updateCpu();
             emit waitingForInput();

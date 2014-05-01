@@ -69,6 +69,8 @@ public:
 
     static int readByte(int memAddr);
     static int readWord(int memAddr);
+    static int addrOfByteOprnd(Enu::EAddrMode addrMode);
+    // Pre: addrMode != Enu::I
     static int readByteOprnd(Enu::EAddrMode addrMode);
     static int readWordOprnd(Enu::EAddrMode addrMode);
 

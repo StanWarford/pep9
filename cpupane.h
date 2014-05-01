@@ -106,6 +106,8 @@ private:
 
     Enu::EWaiting waiting; // Used to store terminal IO waiting for input state
 
+    bool willAccessCharIn(); // Used to lookahead for terminal input when the input buffer is empty
+
     void mousePressEvent(QMouseEvent *);
 
     bool isCurrentlySimulating;
