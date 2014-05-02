@@ -25,7 +25,9 @@
 #include "ui_cpupane.h"
 #include "sim.h"
 #include "pep.h"
+#include "enu.h"
 #include <QtGlobal>
+// #include <QDebug>
 
 CpuPane::CpuPane(QWidget *parent) :
         QWidget(parent),
@@ -228,36 +230,49 @@ void CpuPane::runWithBatch()
 bool CpuPane::willAccessCharIn()
 {
     // Memory-mapped input. Must look ahead to fill empty buffer.
-    if (Pep::decodeMnemonic[Sim::readByte(Sim::programCounter)] != Enu::LDBA && Pep::decodeMnemonic[Sim::readByte(Sim::programCounter)] != Enu::LDBX) {
+    int instructionSpecifier = Sim::readByte(Sim::programCounter);
+    Enu::EMnemonic mnemonic = Pep::decodeMnemonic[instructionSpecifier];
+    if (mnemonic != Enu::LDBA && mnemonic != Enu::LDBX) {
         return false;
     }
-    if (Pep::decodeAddrMode[Sim::readByte(Sim::programCounter)] == Enu::I) {
+    Enu::EAddrMode addrMode = Pep::decodeAddrMode[instructionSpecifier];
+    if (addrMode == Enu::I) {
         return false;
     }
-
-    // Memory-mapped input. Must look ahead to fill empty buffer.
-    && (Pep::decodeMnemonic[Sim::readByte(Sim::programCounter)] == Enu::LDBA || Pep::decodeMnemonic[Sim::readByte(Sim::programCounter)] == Enu::LDBX)
-    && (Pep::decodeAddrMode[Sim::readByte(Sim::programCounter)] != Enu::I)
-    && (willAccessCharIn())
-    ) {
-
-
-addrOfByteOprnd(addrMode)
-
-// Fetch
-instructionSpecifier = readByte(programCounter);
-// Increment
-programCounter = add(programCounter, 1);
-// Decode
-mnemonic = Pep::decodeMnemonic[Sim::instructionSpecifier];
-addrMode = Pep::decodeAddrMode[Sim::instructionSpecifier];
-if (!Pep::isUnaryMap[mnemonic]) {
-    operandSpecifier = readWord(programCounter);
-    programCounter = add(programCounter, 2);
-}
-
-
-
+    int operandSpecifier = Sim::readWord(Sim::add(Sim::programCounter, 1));
+    int addrOfByteOprnd = 0;
+    switch (addrMode) {
+    case Enu::NONE:
+        break;
+    case Enu::I:
+        break;
+    case Enu::D:
+        addrOfByteOprnd = operandSpecifier;
+        break;
+    case Enu::N:
+        addrOfByteOprnd = Sim::readWord(operandSpecifier);
+        break;
+    case Enu::S:
+        addrOfByteOprnd = Sim::add(Sim::stackPointer, operandSpecifier);
+        break;
+    case Enu::SF:
+        addrOfByteOprnd = Sim::readWord(Sim::add(Sim::stackPointer, operandSpecifier));
+        break;
+    case Enu::X:
+        addrOfByteOprnd = Sim::add(operandSpecifier, Sim::indexRegister);
+        break;
+    case Enu::SX:
+        addrOfByteOprnd = Sim::add(Sim::add(Sim::stackPointer, operandSpecifier), Sim::indexRegister);
+        break;
+    case Enu::SXF:
+        addrOfByteOprnd = Sim::add(Sim::readWord(Sim::add(Sim::stackPointer, operandSpecifier)), Sim::indexRegister);
+        break;
+    case Enu::ALL:
+        break;
+    }
+    // qDebug() << "Sim::programCounter == " << Sim::programCounter;
+    // qDebug() << "addrOfByteOprnd == " << addrOfByteOprnd;
+    return addrOfByteOprnd == 256 * Sim::Mem[0xfff8] + Sim::Mem[0xfff9];
 }
 
 void CpuPane::runWithTerminal()
