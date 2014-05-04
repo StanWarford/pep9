@@ -272,7 +272,7 @@ bool CpuPane::willAccessCharIn()
     }
     // qDebug() << "Sim::programCounter == " << Sim::programCounter;
     // qDebug() << "addrOfByteOprnd == " << addrOfByteOprnd;
-    return addrOfByteOprnd == 256 * Sim::Mem[0xfff8] + Sim::Mem[0xfff9];
+    return addrOfByteOprnd == 256 * Sim::Mem[Pep::dotBurnArgument - 7] + Sim::Mem[Pep::dotBurnArgument - 6];
 }
 
 void CpuPane::runWithTerminal()

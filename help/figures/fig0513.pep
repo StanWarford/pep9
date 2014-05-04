@@ -9,10 +9,14 @@
          .WORD   1136        ;Fourth
 ;
          DECO    0x0003,d    ;Interpret First as decimal
-         CHARO   '\n',i
+         LDBA    '\n',i
+         STBA    0xFC49,d
          DECO    0x0005,d    ;Interpret Second and Third as decimal
-         CHARO   '\n',i
-         CHARO   0x0006,d    ;Interpret Third as character
-         CHARO   0x0008,d    ;Interpret Fourth as character
+         LDBA    '\n',i
+         STBA    0xFC49,d
+         LDBA    0x0006,d    ;Interpret Third as character
+         STBA    0xFC49,d
+         LDBA    0x0008,d    ;Interpret Fourth as character
+         STBA    0xFC49,d
          STOP
          .END

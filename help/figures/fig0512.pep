@@ -9,9 +9,9 @@
          DECI    0x0003,d    ;Get the number
          DECO    0x0003,d    ;and output it
          STRO    0x0005,d    ;Output " + 1 = "
-         LDA     0x0003,d    ;A <- the number
+         LDWA    0x0003,d    ;A <- the number
          ADDA    1,i         ;Add one to it
-         STA     0x0003,d    ;Store the sum
+         STWA    0x0003,d    ;Store the sum
          DECO    0x0003,d    ;Output the sum
-         STOP                
-         .END                  
+         STOP
+         .END

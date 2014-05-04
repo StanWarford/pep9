@@ -512,7 +512,7 @@ bool Sim::vonNeumannStep(QString &errorString)
         programCounter = readWord(Pep::dotBurnArgument - 1);
         return true;
     case LDBA:
-        if (addrMode != Enu::I && addrOfByteOprnd(addrMode) == 256 * Mem[0xfff8] + Mem[0xfff9]) {
+        if (addrMode != Enu::I && addrOfByteOprnd(addrMode) == 256 * Mem[Pep::dotBurnArgument - 7] + Mem[Pep::dotBurnArgument - 6]) {
             // Memory-mapped input
             if (Sim::inputBuffer.size() != 0) {
                 QString ch = Sim::inputBuffer.left(1);
@@ -534,7 +534,7 @@ bool Sim::vonNeumannStep(QString &errorString)
         zBit = operand == 0;
         return true;
     case LDBX:
-        if (addrMode != Enu::I && addrOfByteOprnd(addrMode) == 256 * Mem[0xfff8] + Mem[0xfff9]) {
+        if (addrMode != Enu::I && addrOfByteOprnd(addrMode) == 256 * Mem[Pep::dotBurnArgument - 7] + Mem[Pep::dotBurnArgument - 6]) {
             // Memory-mapped input
             if (Sim::inputBuffer.size() != 0) {
                 QString ch = Sim::inputBuffer.left(1);
@@ -659,7 +659,7 @@ bool Sim::vonNeumannStep(QString &errorString)
         return true;
     case STBA:
         operand = accumulator & 0x00ff;
-        if (addrOfByteOprnd(addrMode) == 256 * Mem[0xfffa] + Mem[0xfffb]) {
+        if (addrOfByteOprnd(addrMode) == 256 * Mem[Pep::dotBurnArgument - 5] + Mem[Pep::dotBurnArgument - 4]) {
             // Memory-mapped output
             Sim::outputBuffer = QString(operand);
         } else {
@@ -669,7 +669,7 @@ bool Sim::vonNeumannStep(QString &errorString)
         return true;
     case STBX:
         operand = indexRegister & 0x00ff;
-        if (addrOfByteOprnd(addrMode) == 256 * Mem[0xfffa] + Mem[0xfffb]) {
+        if (addrOfByteOprnd(addrMode) == 256 * Mem[Pep::dotBurnArgument - 5] + Mem[Pep::dotBurnArgument - 4]) {
             // Memory-mapped output
             Sim::outputBuffer = QString(operand);
         } else {

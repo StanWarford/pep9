@@ -3,7 +3,8 @@
 ;Figure 5.18
 ;
          STRO    msg,d
-         CHARO   '\n',i
+         LDBA    '\n',i
+         STBA    charOut,d
          STOP
 msg:     .ASCII  "Love\x00"
          .END

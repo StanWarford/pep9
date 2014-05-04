@@ -365,8 +365,8 @@ opcode38:LDWA    0x00FF,i    ;Assert i, d, n, s, sf, x, sx, sxf
          LDWA    opAddr,n    ;A := oprnd
          CPWA    0,i         ;If oprnd is negative then
          BRGE    printMag
-         LDBA    '-',i       ;Print leading '-'
-         STBA    charOut,d
+         LDBX    '-',i       ;Print leading '-'
+         STBX    charOut,d
          NEGA                ;Make magnitude positive
 printMag:STWA    remain,s    ;remain := abs(oprnd)
          LDWA    FALSE,i     ;Initialize chOut := FALSE
@@ -415,7 +415,7 @@ checkOut:LDWA    chOut2,s    ;else if a previous char was output
          RET                 ;else return to calling routine
 ;
 printDgt:ORX     0x0030,i    ;Convert decimal to ASCII
-         STWX    charOut,d   ;  and output it
+         STBX    charOut,d   ;  and output it
          RET                 ;return to calling routine
 ;
 ;******* Opcode 0x40
