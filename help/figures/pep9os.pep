@@ -1,4 +1,4 @@
-;******* Pep/8 Operating System, 2014/04/27
+;******* Pep/9 Operating System, 2014/05/03
 ;
 TRUE:    .EQUATE 1
 FALSE:   .EQUATE 0
@@ -197,7 +197,7 @@ opcode28:LDWA    0x0001,i    ;Assert i
 ;encountered. The status flags N,Z and V are set appropriately
 ;by this DECI routine. The C status flag is not affected.
 ;
-oldNZVC: .EQUATE 14          ;Stack address of NZVC on interrupt
+oldNZVC: .EQUATE 15          ;Stack address of NZVC on interrupt
 ;
 total:   .EQUATE 11          ;Cumulative total of DECI number
 asciiCh: .EQUATE 10          ;asciiCh, one byte
@@ -215,7 +215,7 @@ opcode30:LDWA    0x00FE,i    ;Assert d, n, s, sf, x, sx, sxf
          STWA    addrMask,d
          CALL    assertAd
          CALL    setAddr     ;Set address of trap operand
-         SUBSP   12,i        ;Allocate storage for locals
+         SUBSP   13,i        ;Allocate storage for locals
          LDWA    FALSE,i     ;isOvfl := FALSE
          STWA    isOvfl,s
          LDWA    init,i      ;state := init
@@ -334,10 +334,11 @@ storeFl: STBX    oldNZVC,s   ;Store the NZVC flags
 ;
 exitDeci:LDWA    total,s     ;Put total in memory
          STWA    opAddr,n
-         ADDSP   12,i        ;Deallocate locals
+         ADDSP   13,i        ;Deallocate locals
          RET                 ;Return to trap handler
 ;
-deciErr: CHARO   '\n',i
+deciErr: LDBA    '\n',i
+         STBA    charOut,d
          LDWA    deciMsg,i   ;Push address of message onto stack
          STWA    -2,s
          SUBSP   2,i
@@ -364,8 +365,9 @@ opcode38:LDWA    0x00FF,i    ;Assert i, d, n, s, sf, x, sx, sxf
          LDWA    opAddr,n    ;A := oprnd
          CPWA    0,i         ;If oprnd is negative then
          BRGE    printMag
-         CHARO   '-',i       ;Print leading '-' and
-         NEGA                ;make magnitude positive
+         LDBA    '-',i       ;Print leading '-'
+         STBA    charOut,d
+         NEGA                ;Make magnitude positive
 printMag:STWA    remain,s    ;remain := abs(oprnd)
          LDWA    FALSE,i     ;Initialize chOut := FALSE
          STWA    chOut,s
@@ -384,7 +386,7 @@ printMag:STWA    remain,s    ;remain := abs(oprnd)
          LDWA    remain,s    ;Always write 1's place
          ORA     0x0030,i    ;Convert decimal to ASCII
          STBA    charOut,d   ;  and output it
-         ADDSP   6,I         ;Dallocate storage for locals
+         ADDSP   6,i         ;Dallocate storage for locals
          RET
 ;
 ;Subroutine to print the most significant decimal digit of the

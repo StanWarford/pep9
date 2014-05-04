@@ -179,10 +179,6 @@ void Pep::initEnumMnemonMaps()
     enumToMnemonMap.insert(BRNE, "BRNE"); mnemonToEnumMap.insert("BRNE", BRNE);
     enumToMnemonMap.insert(BRV, "BRV"); mnemonToEnumMap.insert("BRV", BRV);
     enumToMnemonMap.insert(CALL, "CALL"); mnemonToEnumMap.insert("CALL", CALL);
-    // FOR DEBUGGING NOW. ELIMINATE LATER *************************************************
-    enumToMnemonMap.insert(CHARI, "CHARI"); mnemonToEnumMap.insert("CHARI", CHARI);
-    enumToMnemonMap.insert(CHARO, "CHARO"); mnemonToEnumMap.insert("CHARO", CHARO);
-
     enumToMnemonMap.insert(CPBA, "CPBA"); mnemonToEnumMap.insert("CPBA", CPBA);
     enumToMnemonMap.insert(CPBX, "CPBX"); mnemonToEnumMap.insert("CPBX", CPBX);
     enumToMnemonMap.insert(CPWA, "CPWA"); mnemonToEnumMap.insert("CPWA", CPWA);
@@ -252,10 +248,6 @@ void Pep::initMnemonicMaps()
     opCodeMap.insert(BRV, 32); isUnaryMap.insert(BRV, false); addrModeRequiredMap.insert(BRV, false); isTrapMap.insert(BRV, false);
 
     opCodeMap.insert(CALL, 36); isUnaryMap.insert(CALL, false); addrModeRequiredMap.insert(CALL, false); isTrapMap.insert(CALL, false);
-    // FOR DEBUGGING. REMOVE LATER ***************************************************************
-    opCodeMap.insert(CHARI, 0); isUnaryMap.insert(CHARI, false); addrModeRequiredMap.insert(CHARI, true); isTrapMap.insert(CHARI, false);
-    opCodeMap.insert(CHARO, 0); isUnaryMap.insert(CHARO, false); addrModeRequiredMap.insert(CHARO, true); isTrapMap.insert(CHARO, false);
-    // ******************************************************
     opCodeMap.insert(CPBA, 176); isUnaryMap.insert(CPBA, false); addrModeRequiredMap.insert(CPBA, true); isTrapMap.insert(CPBA, false);
     opCodeMap.insert(CPBX, 184); isUnaryMap.insert(CPBX, false); addrModeRequiredMap.insert(CPBX, true); isTrapMap.insert(CPBX, false);
     opCodeMap.insert(CPWA, 160); isUnaryMap.insert(CPWA, false); addrModeRequiredMap.insert(CPWA, true); isTrapMap.insert(CPWA, false);
@@ -324,10 +316,6 @@ void Pep::initAddrModesMap()
     addrModesMap.insert(BRNE, I | X);
     addrModesMap.insert(BRV, I | X);
     addrModesMap.insert(CALL, I | X);
-    // DEBUGGING FOR NOW. REMOVE LATER
-    addrModesMap.insert(CHARI, D | N | S | SF | X | SX | SXF);
-    addrModesMap.insert(CHARO, ALL);
-    // **********************************************
     addrModesMap.insert(CPBA, ALL);
     addrModesMap.insert(CPBX, ALL);
     addrModesMap.insert(CPWA, ALL);

@@ -907,7 +907,8 @@ void MainWindow::on_actionBuild_Load_triggered()
 void MainWindow::on_actionBuild_Execute_triggered()
 {
     cpuPane->clearCpu();
-    Sim::stackPointer = Sim::readWord(Pep::dotBurnArgument - 7);
+    Sim::stackPointer = Sim::readWord(Pep::dotBurnArgument - 11);
+    // 11 is the vector offset from the last byte of the OS for the User stack pointer
     Sim::programCounter = 0x0000;
     setDebugState(true);
     Sim::trapped = false;
@@ -944,7 +945,8 @@ void MainWindow::on_actionBuild_Start_Debugging_Source_triggered()
 {
     if (!assemblerListingPane->isEmpty() && load()) {
         ui->statusbar->showMessage("Load succeeded", 4000);
-        Sim::stackPointer = Sim::readWord(Pep::dotBurnArgument - 7);
+        Sim::stackPointer = Sim::readWord(Pep::dotBurnArgument - 11);
+        // 11 is the vector offset from the last byte of the OS for the User stack pointer
         Sim::programCounter = 0x0000;
 
         setDebugState(true);
@@ -1002,7 +1004,8 @@ void MainWindow::on_actionBuild_Run_Object_triggered()
 void MainWindow::on_actionBuild_Start_Debugging_Object_triggered()
 {
     if (load()) {
-        Sim::stackPointer = Sim::readWord(Pep::dotBurnArgument - 7);
+        Sim::stackPointer = Sim::readWord(Pep::dotBurnArgument - 11);
+        // 11 is the vector offset from the last byte of the OS for the User stack pointer
         Sim::programCounter = 0x0000;
 
         setDebugState(true);
@@ -1039,8 +1042,8 @@ void MainWindow::on_actionBuild_Start_Debugging_Object_triggered()
 
 void MainWindow::on_actionBuild_Start_Debugging_Loader_triggered()
 {
-    Sim::stackPointer = Sim::readWord(Pep::dotBurnArgument - 5);
-    // 5 is the vector offset from the last byte of the OS for the System stack pointer
+    Sim::stackPointer = Sim::readWord(Pep::dotBurnArgument - 9);
+    // 9 is the vector offset from the last byte of the OS for the System stack pointer
     Sim::programCounter = Sim::readWord(Pep::dotBurnArgument - 3);
     // 3 is the vector offset from the last byte of the OS for the Loader program counter
 
@@ -1216,11 +1219,23 @@ void MainWindow::on_actionSystem_Assemble_Install_New_OS_triggered()
     Pep::memAddrssToAssemblerListing = &Pep::memAddrssToAssemblerListingOS;
     Pep::listingRowChecked = &Pep::listingRowCheckedOS;
     if (sourceCodePane->assemble()) {
-        // Test for definition of charIn
-
-        // Test for definition of charOut
-
-        if (Pep::burnCount == 0) {
+        if(!Pep::symbolTable.contains("charIn")) {
+            QString errorString = ";ERROR: charIn required to install OS.";
+            sourceCodePane->appendMessageInSourceCodePaneAt(0, errorString);
+            assemblerListingPane->clearAssemblerListing();
+            objectCodePane->clearObjectCode();
+            listingTracePane->clearListingTrace();
+            ui->statusbar->showMessage("Assembly failed", 4000);
+        }
+        else if(!Pep::symbolTable.contains("charOut")) {
+            QString errorString = ";ERROR: charOut required to install OS.";
+            sourceCodePane->appendMessageInSourceCodePaneAt(0, errorString);
+            assemblerListingPane->clearAssemblerListing();
+            objectCodePane->clearObjectCode();
+            listingTracePane->clearListingTrace();
+            ui->statusbar->showMessage("Assembly failed", 4000);
+        }
+        else if (Pep::burnCount == 0) {
             QString errorString = ";ERROR: .BURN required to install OS.";
             sourceCodePane->appendMessageInSourceCodePaneAt(0, errorString);
             assemblerListingPane->clearAssemblerListing();

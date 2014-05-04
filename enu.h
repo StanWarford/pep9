@@ -38,8 +38,6 @@ namespace Enu
         ORA, ORX,
         RET, RETTR, ROLA, ROLX, RORA, RORX,
         STBA, STBX, STWA, STWX, STOP, STRO, SUBA, SUBX, SUBSP
-        // FOR DEBUGGING, ELIMINATE EVENTUALLY ***********************
-        , CHARI, CHARO
         };
 
     // Addressing modes for instructions

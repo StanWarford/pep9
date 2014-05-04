@@ -22,6 +22,7 @@
 #include "pep.h"
 #include <QMessageBox>
 #include <QSet>
+// #include <QDebug>
 
 using namespace Enu;
 
@@ -81,11 +82,11 @@ int Sim::addAndSetNZVC(int lhs, int rhs)
 {
     int result = lhs + rhs;    
     if (result >= 65536) {
-        Sim::cBit = 1;
+        Sim::cBit = true;
         result = result & 0xffff;
     }
     else {
-        Sim::cBit = 0;
+        Sim::cBit = false;
     }
     Sim::nBit = result < 32768 ?  false : true;
     Sim::zBit = result == 0 ? true : false;
@@ -463,39 +464,24 @@ bool Sim::vonNeumannStep(QString &errorString)
         writeWord(stackPointer, programCounter); // Mem[SP] <- PC
         programCounter = operand; // PC <- Oprnd
         return true;
-
- //  FOR NOW. MUST CHANGE LATER AND PUT THIS CODE IN LDBX
-    case CHARI:
-        if (Sim::inputBuffer.size() != 0) {
-            QString ch = Sim::inputBuffer.left(1);
-            Sim::inputBuffer.remove(0, 1);
-            int value = QChar(ch[0]).toLatin1();
-            value += value < 0 ? 256 : 0;
-            Sim::writeByteOprnd(addrMode, value);
-            operand = readByteOprnd(addrMode);
-            operandDisplayFieldWidth = 2;
-        }
-        else {
-            Sim::writeByteOprnd(addrMode, 0);
-            operand = readByteOprnd(addrMode);
-            operandDisplayFieldWidth = 2;
-//            errorString = "Error: Attempt to read past end of input.";
-//            return false;
-        }
-        return true;
-
-        //   FOR NOW. MUST CHANGE LATER AND PUT THIS CODE IN STBX
-    case CHARO:
+    case CPBA:
         operand = readByteOprnd(addrMode);
         operandDisplayFieldWidth = 2;
-        Sim::outputBuffer = QString(operand);
+        temp = (accumulator & 0x00ff) - operand;
+        Sim::nBit = temp < 0;
+        Sim::zBit = temp == 0;
+        Sim::vBit = false;
+        Sim::cBit = false;
         return true;
-    case CPBA:
-        errorString = "Not yet implemented.";
-        return false;
     case CPBX:
-        errorString = "Not yet implemented.";
-        return false;
+        operand = readByteOprnd(addrMode);
+        operandDisplayFieldWidth = 2;
+        temp = (indexRegister & 0x00ff) - operand;
+        Sim::nBit = temp < 0;
+        Sim::zBit = temp == 0;
+        Sim::vBit = false;
+        Sim::cBit = false;
+        return true;
     case CPWA:
         operand = readWordOprnd(addrMode);
         operandDisplayFieldWidth = 4;
@@ -514,7 +500,8 @@ bool Sim::vonNeumannStep(QString &errorString)
         return true;
     case DECI: case DECO: case STRO:
     case NOP: case NOP0: case NOP1:
-        temp = readWord(Pep::dotBurnArgument - 5);
+        temp = readWord(Pep::dotBurnArgument - 9);
+        // 9 is the vector offset from the last byte of the OS for the System stack pointer
         writeByte(temp - 1, instructionSpecifier);
         writeWord(temp - 3, stackPointer);
         writeWord(temp - 5, programCounter);

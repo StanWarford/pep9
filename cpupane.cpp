@@ -386,7 +386,7 @@ void CpuPane::resumeWithTerminal()
             do {
                 trapLookahead();
                 qApp->processEvents(); // To make sure that the event filter gets to handle keypresses during the run
-                if ((Pep::decodeMnemonic[Sim::readByte(Sim::programCounter)] == Enu::CHARI) && Sim::inputBuffer.isEmpty()) {
+                if (Sim::inputBuffer.isEmpty() && willAccessCharIn()) {
                     // we are waiting for input
                     ui->singleStepPushButton->setDisabled(true);
                     ui->resumePushButton->setDisabled(true);
@@ -421,7 +421,7 @@ void CpuPane::resumeWithTerminal()
                 }
             } while (Sim::trapped);
         }
-        else if ((Pep::decodeMnemonic[Sim::readByte(Sim::programCounter)] == Enu::CHARI) && Sim::inputBuffer.isEmpty()) {
+        else if (Sim::inputBuffer.isEmpty() && willAccessCharIn()) {
             // we are waiting for input
             ui->singleStepPushButton->setDisabled(true);
             ui->resumePushButton->setDisabled(true);
@@ -541,7 +541,7 @@ void CpuPane::singleStepWithTerminal()
         do {
             trapLookahead();
             qApp->processEvents();
-            if ((Pep::decodeMnemonic[Sim::readByte(Sim::programCounter)] == Enu::CHARI) && Sim::inputBuffer.isEmpty()) {
+            if (Sim::inputBuffer.isEmpty() && willAccessCharIn()) {
                 // we are waiting for input
                 ui->singleStepPushButton->setDisabled(true);
                 ui->resumePushButton->setDisabled(true);
@@ -578,7 +578,7 @@ void CpuPane::singleStepWithTerminal()
         } while (Sim::trapped);
         emit updateSimulationView();
     }
-    else if ((Pep::decodeMnemonic[Sim::readByte(Sim::programCounter)] == Enu::CHARI) && Sim::inputBuffer.isEmpty()) {
+    else if (Sim::inputBuffer.isEmpty() && willAccessCharIn()) {
         ui->singleStepPushButton->setDisabled(true);
         ui->resumePushButton->setDisabled(true);
         emit waitingForInput();

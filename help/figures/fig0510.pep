@@ -2,7 +2,9 @@
 ;Computer Systems, Fourth Edition
 ;Figure 5.10
 ;
-         CHARO   'H',i       ;Output 'H'
-         CHARO   'i',i       ;Output 'i'
-         STOP                
-         .END                  
+         LDBA    'H',i       ;Output 'H'
+         STBA    0xFC49,d
+         LDBA    'i',i       ;Output 'i'
+         STBA    0xFC49,d
+         STOP
+         .END
