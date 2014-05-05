@@ -498,7 +498,7 @@ bool Sim::vonNeumannStep(QString &errorString)
             nBit = !nBit;
         }
         return true;
-    case DECI: case DECO: case STRO:
+    case DECI: case DECO: case HEXO: case STRO:
     case NOP: case NOP0: case NOP1:
         temp = readWord(Pep::dotBurnArgument - 9);
         // 9 is the vector offset from the last byte of the OS for the System stack pointer

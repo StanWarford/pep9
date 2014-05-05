@@ -354,7 +354,7 @@ deciMsg: .ASCII  "ERROR: Invalid DECI input\x00"
 ;magnitude without a leading '+'. It suppresses leading zeros.
 ;
 remain:  .EQUATE 0           ;Remainder of value to output
-chOut:   .EQUATE 2           ;Has a character been output yet?
+outYet:  .EQUATE 2           ;Has a character been output yet?
 place:   .EQUATE 4           ;Place value for division
 ;
 opcode38:LDWA    0x00FF,i    ;Assert i, d, n, s, sf, x, sx, sxf
@@ -369,8 +369,8 @@ opcode38:LDWA    0x00FF,i    ;Assert i, d, n, s, sf, x, sx, sxf
          STBX    charOut,d
          NEGA                ;Make magnitude positive
 printMag:STWA    remain,s    ;remain := abs(oprnd)
-         LDWA    FALSE,i     ;Initialize chOut := FALSE
-         STWA    chOut,s
+         LDWA    FALSE,i     ;Initialize outYet := FALSE
+         STWA    outYet,s
          LDWA    10000,i     ;place := 10,000
          STWA    place,s
          CALL    divide      ;Write 10,000's place
@@ -394,7 +394,7 @@ printMag:STWA    remain,s    ;remain := abs(oprnd)
 ;decimal place value. It updates the remainder.
 ;
 remain2: .EQUATE 2           ;Stack addresses while executing a
-chOut2:  .EQUATE 4           ;  subroutine are greater by two because
+outYet2: .EQUATE 4           ;  subroutine are greater by two because
 place2:  .EQUATE 6           ;  the retAddr is on the stack
 ;
 divide:  LDWA    remain2,s   ;A := remainder
@@ -407,10 +407,10 @@ divLoop: SUBA    place2,s    ;Division by repeated subtraction
 ;
 writeNum:CPWX    0,i         ;If X != 0 then
          BREQ    checkOut
-         LDWA    TRUE,i      ;chOut := TRUE
-         STWA    chOut2,s
+         LDWA    TRUE,i      ;outYet := TRUE
+         STWA    outYet2,s
          BR      printDgt    ;and branch to print this digit
-checkOut:LDWA    chOut2,s    ;else if a previous char was output
+checkOut:LDWA    outYet2,s   ;else if a previous char was output
          BRNE    printDgt    ;then branch to print this zero
          RET                 ;else return to calling routine
 ;
@@ -420,17 +420,43 @@ printDgt:ORX     0x0030,i    ;Convert decimal to ASCII
 ;
 ;******* Opcode 0x40
 ;The HEXO instruction.
-;Outputs a null-terminated string from memory.
+;Outputs one word as four hex characters from memory.
 ;
-opcode40:LDWA    0x0016,i    ;Assert d, n, sf
+opcode40:LDWA    0x00FF,i    ;Assert i, d, n, s, sf, x, sx, sxf
          STWA    addrMask,d
          CALL    assertAd
          CALL    setAddr     ;Set address of trap operand
-         LDWA    opAddr,d    ;Push address of string to print
-         STWA    -2,s
-         SUBSP   2,i
-         CALL    prntMsg     ;and print
-         ADDSP   2,i
+         LDWA    opAddr,n    ;A := oprnd
+         STWA    wordTemp,d  ;Save oprnd in wordTemp
+         LDBA    wordTemp,d  ;Put high-order byte in low-order A
+         ASRA                ;Shift right four bits
+         ASRA
+         ASRA
+         ASRA
+         CALL    hexOut      ;Output first hex character
+         LDBA    wordTemp,d  ;Put high-order byte in low-order A
+         CALL    hexOut      ;Output second hex character
+         LDBA    byteTemp,d  ;Put low-order byte in low order A
+         ASRA                ;Shift right four bits
+         ASRA
+         ASRA
+         ASRA
+         CALL    hexOut      ;Output third hex character
+         LDBA    byteTemp,d  ;Put low-order byte in low order A
+         CALL    hexOut      ;Output fourth hex character
+         RET
+;
+;Subroutine to output in hex the least significant nybble of the
+;accumulator.
+;
+hexOut:  ANDA    0x000F,i    ;Isolate the digit value
+         CPBA    9,i         ;If it is not in 0..9 then
+         BRLE    prepNum
+         SUBA    9,i         ;  convert to ASCII letter
+         ORA     0x0040,i    ;  and prefix ASCII code for letter
+         BR      writeHex
+prepNum: ORA     0x0030,i    ;else prefix ASCII code for number
+writeHex:STBA    charOut,d   ;Output nybble as hex
          RET
 ;
 ;******* Opcode 0x48
