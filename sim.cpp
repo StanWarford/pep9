@@ -330,7 +330,7 @@ bool Sim::vonNeumannStep(QString &errorString)
     case ADDSP:
         operand = readWordOprnd(addrMode);
         operandDisplayFieldWidth = 4;
-        stackPointer = addAndSetNZVC(stackPointer, operand);
+        stackPointer = add(stackPointer, operand);
         return true;
     case ANDA:
         operand = readWordOprnd(addrMode);
@@ -570,10 +570,13 @@ bool Sim::vonNeumannStep(QString &errorString)
         zBit = indexRegister == 0;
         return true;
     case MOVAFLG:
-        errorString = "Not yet implemented.";
-        return false;
+        cBit = (accumulator & 0x0001) != 0;
+        vBit = (accumulator & 0x0002) != 0;
+        zBit = (accumulator & 0x0004) != 0;
+        nBit = (accumulator & 0x0008) != 0;
+        return true;
     case MOVFLGA:
-        accumulator = 0;
+        accumulator = accumulator & 0xff00;
         accumulator |= cBit ? 1 : 0;
         accumulator |= vBit ? 2 : 0;
         accumulator |= zBit ? 4 : 0;
@@ -702,7 +705,7 @@ bool Sim::vonNeumannStep(QString &errorString)
     case SUBSP:
         operand = readWordOprnd(addrMode);
         operandDisplayFieldWidth = 4;
-        stackPointer = addAndSetNZVC(stackPointer, (~operand + 1) & 0xffff);
+        stackPointer = add(stackPointer, (~operand + 1) & 0xffff);
         return true;
     default:
         return false;

@@ -26,7 +26,7 @@ Pep/9 Reference
  <a name = "Topics">Topics:</a>
  <a href="#Instruction">Instruction set</a>,
  <a href="#SettingC">Setting the C bit on subtraction</a>,
- <a href="#SettingN">Setting the N bit on <code>CPr</code></a>,
+ <a href="#SettingN">Setting the N bit on <code>CPWr</code></a>,
  <a href="#Dot">Dot commands</a>,
  <a href="#Addressing">Addressing modes</a>,
  <a href="#Register">Register field</a>,
@@ -184,17 +184,17 @@ in Figure 10.53 in the text.
 <p>
 <a href="#Topics">Scroll to topics</a>.
 
-<h3><a name="SettingN">Setting the N bit on <code>CPr</code></a></h3>
+<h3><a name="SettingN">Setting the N bit on <code>CPWr</code></a></h3>
 
 Normally, the N bit duplicates the sign bit, so that N is 1 when the result of the operation is negative.
-The compare instruction <code>CPr</code> subtracts the operand from the register and sets the status bits without storing
+The compare instruction <code>CPWr</code> subtracts the operand from the register and sets the status bits without storing
 the result of the subtraction.
 <p>
 As long as there is no overflow when the operands are interpreted as signed integers, the N bit is set appropriately for a
 subsequent conditional branch instruction.
 If the result of the subtraction yields an overflow and the N bit were set as usual, the subsequent conditional branch instruction
 might execute an erroneous branch.
-Consequently, if the <code>CPr</code> subtraction operation overflows and sets the V bit, then the N bit is inverted
+Consequently, if the <code>CPWr</code> subtraction operation overflows and sets the V bit, then the N bit is inverted
 from its normal value and does not duplicate the sign bit.
 <p>
 With this adjustment, the compare operation extends the range of valid comparisons.
