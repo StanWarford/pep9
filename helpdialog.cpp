@@ -365,42 +365,42 @@ void HelpDialog::onCurrentItemChanged(QTreeWidgetItem*, QTreeWidgetItem*) {
             }
             else if (row == eFIG638) {
                 ui->leftTextEdit->setText(Pep::resToString(":/help/figures/fig0638.pep"));
-                ui->rightCppTextEdit->setText(Pep::resToString(":/help/figures/fig0638.cpp"));
+                ui->rightCppTextEdit->setText(Pep::resToString(":/help/figures/fig0638.c"));
                 ui->figureLabel->setText("<b>Figure 6.38</b><code>  </code> Passing a local array as a parameter.");
                 ui->rightCppTextEdit->show();
                 ui->rightPepTextEdit->hide();
             }
             else if (row == eFIG640) {
                 ui->leftTextEdit->setText(Pep::resToString(":/help/figures/fig0640.pep"));
-                ui->rightCppTextEdit->setText(Pep::resToString(":/help/figures/fig0640.cpp"));
+                ui->rightCppTextEdit->setText(Pep::resToString(":/help/figures/fig0640.c"));
                 ui->figureLabel->setText("<b>Figure 6.40</b><code>  </code> Translation of a <code>switch</code> statement.");
                 ui->rightCppTextEdit->show();
                 ui->rightPepTextEdit->hide();
             }
             else if (row == eFIG641) {
                 ui->leftTextEdit->setText(Pep::resToString(":/help/figures/fig0641.pep"));
-                ui->rightCppTextEdit->setText(Pep::resToString(":/help/figures/fig0641.cpp"));
+                ui->rightCppTextEdit->setText(Pep::resToString(":/help/figures/fig0641.c"));
                 ui->figureLabel->setText("<b>Figure 6.41</b><code>  </code> Translation of global pointers.");
                 ui->rightCppTextEdit->show();
                 ui->rightPepTextEdit->hide();
             }
             else if (row == eFIG643) {
                 ui->leftTextEdit->setText(Pep::resToString(":/help/figures/fig0643.pep"));
-                ui->rightCppTextEdit->setText(Pep::resToString(":/help/figures/fig0643.cpp"));
+                ui->rightCppTextEdit->setText(Pep::resToString(":/help/figures/fig0643.c"));
                 ui->figureLabel->setText("<b>Figure 6.43</b><code>  </code> Translation of local pointers.");
                 ui->rightCppTextEdit->show();
                 ui->rightPepTextEdit->hide();
             }
             else if (row == eFIG645) {
                 ui->leftTextEdit->setText(Pep::resToString(":/help/figures/fig0645.pep"));
-                ui->rightCppTextEdit->setText(Pep::resToString(":/help/figures/fig0645.cpp"));
+                ui->rightCppTextEdit->setText(Pep::resToString(":/help/figures/fig0645.c"));
                 ui->figureLabel->setText("<b>Figure 6.45</b><code>  </code> Translation of a structure.");
                 ui->rightCppTextEdit->show();
                 ui->rightPepTextEdit->hide();
             }
             else if (row == eFIG647) {
                 ui->leftTextEdit->setText(Pep::resToString(":/help/figures/fig0647.pep"));
-                ui->rightCppTextEdit->setText(Pep::resToString(":/help/figures/fig0647.cpp"));
+                ui->rightCppTextEdit->setText(Pep::resToString(":/help/figures/fig0647.c"));
                 ui->figureLabel->setText("<b>Figure 6.47</b><code>  </code> Translation of a linked list.");
                 ui->rightCppTextEdit->show();
                 ui->rightPepTextEdit->hide();

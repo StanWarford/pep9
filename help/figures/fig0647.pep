@@ -1,5 +1,5 @@
 ;File: fig0647.pep
-;Computer Systems, Fourth edition
+;Computer Systems, Fifth edition
 ;Figure 6.47
 ;
          BR      main
@@ -10,40 +10,40 @@ next:    .EQUATE 2           ;struct field #2h
 first:   .EQUATE 4           ;local variable #2h
 p:       .EQUATE 2           ;local variable #2h
 value:   .EQUATE 0           ;local variable #2d
-main:    SUBSP   6,i         ;allocate #first #p #value
+main:    SUBSP   6,i         ;push storage for #first #p #value
          LDWA    0,i         ;first = 0
          STWA    first,s
-         DECI    value,s     ;cin >> value
+         DECI    value,s     ;scanf("%d", &value);
 while:   LDWA    value,s     ;while (value != -9999)
          CPWA    -9999,i
          BREQ    endWh
-         LDWA    first,s     ;   p = first
+         LDWA    first,s     ;p = first
          STWA    p,s
-         LDWA    4,i         ;   first = new node
-         CALL    new         ;   allocate #data #next
+         LDWA    4,i         ;first = (struct node *) malloc(sizeof(struct node))
+         CALL    new         ;allocate #data #next
          STWX    first,s
-         LDWA    value,s     ;   first->data = value
+         LDWA    value,s     ;first->data = value
          LDWX    data,i
          STWA    first,sxf
-         LDWA    p,s         ;   first->next = p
+         LDWA    p,s         ;first->next = p
          LDWX    next,i
          STWA    first,sxf
-         DECI    value,s     ;   cin >> value
+         DECI    value,s     ;scanf("%d", &value)
          BR      while
 endWh:   LDWA    first,s     ;for (p = first
          STWA    p,s
-for:     LDWA    p,s         ;   p != 0
+for:     LDWA    p,s         ;p != 0
          CPWA    0,i
          BREQ    endFor
-         LDWX    data,i      ;   cout << p->data
+         LDWX    data,i      ;printf("%d ", p->data)
          DECO    p,sxf
-         LDBA    ' ',i       ;      << ' '
+         LDBA    ' ',i
          STBA    charOut,d
-         LDWX    next,i      ;   p = p->next)
+         LDWX    next,i      ;p = p->next)
          LDWA    p,sxf
          STWA    p,s
          BR      for
-endFor:  ADDSP   6,i         ;deallocate #value #p #first
+endFor:  ADDSP   6,i         ;pop #value #p #first
          STOP
 ;
 ;******* operator new

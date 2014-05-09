@@ -132,6 +132,7 @@ addrD:   LDWX    oldPC4,s    ;Direct addressing
 addrN:   LDWX    oldPC4,s    ;Indirect addressing
          SUBX    2,i         ;Oprnd = Mem[Mem[OprndSpec]]
          LDWX    0,x
+         LDWX    0,x
          STWX    opAddr,d
          RET
 ;

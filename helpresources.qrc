@@ -44,17 +44,11 @@
         <file>help/figures/fig0634.pep</file>
         <file>help/figures/fig0636.cpp</file>
         <file>help/figures/fig0636.pep</file>
-        <file>help/figures/fig0638.cpp</file>
         <file>help/figures/fig0638.pep</file>
-        <file>help/figures/fig0640.cpp</file>
         <file>help/figures/fig0640.pep</file>
-        <file>help/figures/fig0641.cpp</file>
         <file>help/figures/fig0641.pep</file>
-        <file>help/figures/fig0643.cpp</file>
         <file>help/figures/fig0643.pep</file>
-        <file>help/figures/fig0645.cpp</file>
         <file>help/figures/fig0645.pep</file>
-        <file>help/figures/fig0647.cpp</file>
         <file>help/figures/fig0647.pep</file>
         <file>help/figures/pep9os.pep</file>
         <file>help/figures/fig0432.pepb</file>
@@ -144,5 +138,11 @@
         <file>help/writingtraphandlers.html</file>
         <file>help/images/scrollto.png</file>
         <file>help/images/memorytrace.png</file>
+        <file>help/figures/fig0638.c</file>
+        <file>help/figures/fig0640.c</file>
+        <file>help/figures/fig0641.c</file>
+        <file>help/figures/fig0643.c</file>
+        <file>help/figures/fig0645.c</file>
+        <file>help/figures/fig0647.c</file>
     </qresource>
 </RCC>
