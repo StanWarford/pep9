@@ -120,7 +120,7 @@ private:
     // This is used to delay the clear of the bytesWrittenLastStep list for purposes of highlighting after a trap
 
     QList<MemoryCellGraphicsItem *> newestHeapItemsList;
-    // This is used to color the most recently new'd heap items light green
+    // This is used to color the most recently malloc'd heap items light green
 
     StackFrameFSM stackFrameFSM;
 
@@ -130,7 +130,7 @@ private:
     void addHeapFrame(int numCells);
 
     void moveHeapUpOneCell();
-    // Moves the heap frame up n cells to accomodate for new items being added.
+    // Moves the heap frame up n cells to accomodate for malloc items being added.
 
     void popBytes(int bytesToPop);
     // This pops bytesToPop bytes off of the runtimeStack

@@ -583,7 +583,7 @@ bool NonUnaryInstruction::processSymbolTraceTags(int &sourceLine, QString &error
         Pep::symbolTraceList.insert(memAddress, list);
         return true;
     }
-    else if (mnemonic == Enu::CALL && argument->getArgumentString() == "new") {
+    else if (mnemonic == Enu::CALL && argument->getArgumentString() == "malloc") {
         int pos = 0;
         QString symbol;
         QStringList list;

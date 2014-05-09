@@ -20,7 +20,7 @@ while:   LDWA    value,s     ;while (value != -9999)
          LDWA    first,s     ;p = first
          STWA    p,s
          LDWA    4,i         ;first = (struct node *) malloc(sizeof(struct node))
-         CALL    new         ;allocate #data #next
+         CALL    malloc      ;allocate #data #next
          STWX    first,s
          LDWA    value,s     ;first->data = value
          LDWX    data,i
@@ -46,10 +46,10 @@ for:     LDWA    p,s         ;p != 0
 endFor:  ADDSP   6,i         ;pop #value #p #first
          STOP
 ;
-;******* operator new
+;******* malloc()
 ;        Precondition: A contains number of bytes
 ;        Postcondition: X contains pointer to bytes
-new:     LDWX    hpPtr,d     ;returned pointer
+malloc:  LDWX    hpPtr,d     ;returned pointer
          ADDA    hpPtr,d     ;allocate from heap
          STWA    hpPtr,d     ;update hpPtr
          RET

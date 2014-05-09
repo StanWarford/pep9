@@ -178,7 +178,7 @@ void MemoryTracePane::updateMemoryTrace()
         heap.at(i)->boxBgColor = Qt::white;
         heap.at(i)->boxTextColor = Qt::black;
     }
-    // Color the newest 'new' items on the heap light green
+    // Color the newest 'malloc' items on the heap light green
     for (int i = 0; i < newestHeapItemsList.size(); i++) {
         newestHeapItemsList.at(i)->boxBgColor = QColor(72, 255, 72, 192);
     }
@@ -402,7 +402,7 @@ void MemoryTracePane::cacheHeapChanges()
         ui->warningLabel->clear();
     }
 
-    if (Pep::decodeMnemonic[Sim::instructionSpecifier] == Enu::CALL && Pep::symbolTable.value("new") == Sim::operandSpecifier) {
+    if (Pep::decodeMnemonic[Sim::instructionSpecifier] == Enu::CALL && Pep::symbolTable.value("malloc") == Sim::operandSpecifier) {
         newestHeapItemsList.clear();
         int numCellsToAdd = 0;
         int offset = 0;
@@ -414,7 +414,7 @@ void MemoryTracePane::cacheHeapChanges()
         }
         else {
             // We have no idea where the heap pointer is. Error!
-            ui->warningLabel->setText("Warning: hpPtr not found, unable to trace <code>CALL \'new\'</code>.");
+            ui->warningLabel->setText("Warning: hpPtr not found, unable to trace <code>CALL \'malloc\'</code>.");
             return;
         }
         int listNumBytes = 0;
@@ -425,7 +425,7 @@ void MemoryTracePane::cacheHeapChanges()
             if (Pep::equateSymbols.contains(heapSymbol) || Pep::blockSymbols.contains(heapSymbol)) {
                 // listNumBytes += number of bytes for that tag * the multiplier (IE, 2d4a is a 4 cell
                 // array of 2 byte decimals, where 2 is the multiplier and 4 is the number of cells.
-                // Note: the multiplier should always be 1 for new'd cells, but that's checked below, where we'll give a more specific error.
+                // Note: the multiplier should always be 1 for malloc'd cells, but that's checked below, where we'll give a more specific error.
                 listNumBytes += Asm::tagNumBytes(Pep::symbolFormat.value(heapSymbol)) * Pep::symbolFormatMultiplier.value(heapSymbol);
             }
         }

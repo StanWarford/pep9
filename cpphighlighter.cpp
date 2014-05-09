@@ -49,7 +49,7 @@ CppHighlighter::CppHighlighter(QTextDocument *parent)
     keywordFormat.setFontWeight(QFont::Bold);
     QStringList keywordPatterns;
     keywordPatterns << "\\bwhile\\b" << "\\bfor\\b" << "\\bswitch\\b"
-            << "\\bif\\b" << "\\bdo\\b" << "\\bnew\\b"
+            << "\\bif\\b" << "\\bdo\\b" << "\\bmalloc\\b"
             << "\\breturn\\b" << "\\belse\\b";
     foreach (const QString &pattern, keywordPatterns) {
         rule.pattern = QRegExp(pattern);

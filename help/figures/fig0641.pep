@@ -9,12 +9,12 @@ c:       .BLOCK  2           ;global variable #2h
 ;
 ;******* main ()
 main:    LDWA    2,i         ;a = (int *) malloc(sizeof(int))
-         CALL    new         ;allocate #a
+         CALL    malloc      ;allocate #a
          STWX    a,d
          LDWA    5,i         ;*a = 5
          STWA    a,n
          LDWA    2,i         ;b = (int *) malloc(sizeof(int))
-         CALL    new         ;allocate #b
+         CALL    malloc      ;allocate #b
          STWX    b,d
          LDWA    3,i         ;*b = 3
          STWA    b,n
@@ -42,10 +42,10 @@ msg0:    .ASCII  "*a = \x00"
 msg1:    .ASCII  "*b = \x00"
 msg2:    .ASCII  "*c = \x00"
 ;
-;******* operator new
+;******* malloc()
 ;        Precondition: A contains number of bytes
 ;        Postcondition: X contains pointer to bytes
-new:     LDWX    hpPtr,d     ;returned pointer
+malloc:  LDWX    hpPtr,d     ;returned pointer
          ADDA    hpPtr,d     ;allocate from heap
          STWA    hpPtr,d     ;update hpPtr
          RET

@@ -21,7 +21,7 @@ main:    LDWX    first,i     ;scanf("%c%c%d %c", &bill.first,
          LDWX    gender,i    ;   &bill.gender)
          LDBA    charIn,d
          STBA    bill,x
-         STRO    msg0,d      ;printf("Initials: %c %c\n",
+         STRO    msg0,d      ;printf("Initials: %c%c\n",
          LDWX    first,i     ;   bill.first,
          LDBA    bill,x
          STBA    charOut,d

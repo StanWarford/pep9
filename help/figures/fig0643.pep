@@ -10,12 +10,12 @@ b:       .EQUATE 2           ;local variable #2h
 c:       .EQUATE 0           ;local variable #2h
 main:    SUBSP   6,i         ;push storage for #a #b #c
          LDWA    2,i         ;a = (int *) malloc(sizeof(int))
-         CALL    new         ;allocate #a
+         CALL    malloc      ;allocate #a
          STWX    a,s
          LDWA    5,i         ;*a = 5
          STWA    a,sf
          LDWA    2,i         ;b = (int *) malloc(sizeof(int))
-         CALL    new         ;allocate #b
+         CALL    malloc      ;allocate #b
          STWX    b,s
          LDWA    3,i         ;*b = 3
          STWA    b,sf
@@ -44,10 +44,10 @@ msg0:    .ASCII  "*a = \x00"
 msg1:    .ASCII  "*b = \x00"
 msg2:    .ASCII  "*c = \x00"
 ;
-;******* operator new
+;******* malloc()
 ;        Precondition: A contains number of bytes
 ;        Postcondition: X contains pointer to bytes
-new:     LDWX    hpPtr,d     ;returned pointer
+malloc:  LDWX    hpPtr,d     ;returned pointer
          ADDA    hpPtr,d     ;allocate from heap
          STWA    hpPtr,d     ;update hpPtr
          RET
