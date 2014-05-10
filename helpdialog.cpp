@@ -330,7 +330,7 @@ void HelpDialog::onCurrentItemChanged(QTreeWidgetItem*, QTreeWidgetItem*) {
             }
             else if (row == eFIG627) {
                 ui->leftTextEdit->setText(Pep::resToString(":/help/figures/fig0627.pep"));
-                ui->rightCppTextEdit->setText(Pep::resToString(":/help/figures/fig0627.cpp"));
+                ui->rightCppTextEdit->setText(Pep::resToString(":/help/figures/fig0627.c"));
                 ui->figureLabel->setText("<b>Figure 6.27</b><code>  </code> Call-by-reference parameters with global variables.");
                 ui->rightCppTextEdit->show();
                 ui->rightPepTextEdit->hide();

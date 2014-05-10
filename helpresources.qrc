@@ -144,5 +144,6 @@
         <file>help/figures/fig0643.c</file>
         <file>help/figures/fig0645.c</file>
         <file>help/figures/fig0647.c</file>
+        <file>help/figures/fig0627.c</file>
     </qresource>
 </RCC>
