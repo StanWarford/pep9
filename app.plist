@@ -66,13 +66,13 @@
 		</dict>
 	</array>
 	<key>CFBundleExecutable</key>
-	<string>pep8-1</string>
+	<string>pep9</string>
 	<key>CFBundleGetInfoString</key>
 	<string>8.1.2</string>
 	<key>CFBundleIconFile</key>
 	<string>icon.icns</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.pepcsdept.pep8-1</string>
+	<string>com.pepcsdept.pep9</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleSignature</key>
