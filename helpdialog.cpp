@@ -227,21 +227,21 @@ void HelpDialog::onCurrentItemChanged(QTreeWidgetItem*, QTreeWidgetItem*) {
             }
             else if (row == eFIG518) {
                 ui->leftTextEdit->setText(Pep::resToString(":/help/figures/fig0518.pep"));
-                ui->rightCppTextEdit->setText(Pep::resToString(":/help/figures/fig0518.cpp"));
+                ui->rightCppTextEdit->setText(Pep::resToString(":/help/figures/fig0518.c"));
                 ui->figureLabel->setText("<b>Figure 5.18</b><code>  </code> The <code>cout</code> statement.");
                 ui->rightCppTextEdit->show();
                 ui->rightPepTextEdit->hide();
             }
             else if (row == eFIG521) {
                 ui->leftTextEdit->setText(Pep::resToString(":/help/figures/fig0521.pep"));
-                ui->rightCppTextEdit->setText(Pep::resToString(":/help/figures/fig0521.cpp"));
+                ui->rightCppTextEdit->setText(Pep::resToString(":/help/figures/fig0521.c"));
                 ui->figureLabel->setText("<b>Figure 5.21</b><code>  </code> The assignment statement with global variables.");
                 ui->rightCppTextEdit->show();
                 ui->rightPepTextEdit->hide();
             }
             else if (row == eFIG526) {
                 ui->leftTextEdit->setText(Pep::resToString(":/help/figures/fig0526.pep"));
-                ui->rightCppTextEdit->setText(Pep::resToString(":/help/figures/fig0526.cpp"));
+                ui->rightCppTextEdit->setText(Pep::resToString(":/help/figures/fig0526.c"));
                 ui->figureLabel->setText("<b>Figure 5.26</b><code>  </code> C++ constants.");
                 ui->rightCppTextEdit->show();
                 ui->rightPepTextEdit->hide();
@@ -254,42 +254,42 @@ void HelpDialog::onCurrentItemChanged(QTreeWidgetItem*, QTreeWidgetItem*) {
             }
             else if (row == eFIG604) {
                 ui->leftTextEdit->setText(Pep::resToString(":/help/figures/fig0604.pep"));
-                ui->rightCppTextEdit->setText(Pep::resToString(":/help/figures/fig0604.cpp"));
+                ui->rightCppTextEdit->setText(Pep::resToString(":/help/figures/fig0604.c"));
                 ui->figureLabel->setText("<b>Figure 6.4</b><code>  </code> Local variables.");
                 ui->rightCppTextEdit->show();
                 ui->rightPepTextEdit->hide();
             }
             else if (row == eFIG606) {
                 ui->leftTextEdit->setText(Pep::resToString(":/help/figures/fig0606.pep"));
-                ui->rightCppTextEdit->setText(Pep::resToString(":/help/figures/fig0606.cpp"));
+                ui->rightCppTextEdit->setText(Pep::resToString(":/help/figures/fig0606.c"));
                 ui->figureLabel->setText("<b>Figure 6.6</b><code>  </code> The <code>if</code> statement.");
                 ui->rightCppTextEdit->show();
                 ui->rightPepTextEdit->hide();
             }
             else if (row == eFIG608) {
                 ui->leftTextEdit->setText(Pep::resToString(":/help/figures/fig0608.pep"));
-                ui->rightCppTextEdit->setText(Pep::resToString(":/help/figures/fig0608.cpp"));
+                ui->rightCppTextEdit->setText(Pep::resToString(":/help/figures/fig0608.c"));
                 ui->figureLabel->setText("<b>Figure 6.8</b><code>  </code> The <code>if</code>/<code>else</code> statement.");
                 ui->rightCppTextEdit->show();
                 ui->rightPepTextEdit->hide();
             }
             else if (row == eFIG610) {
                 ui->leftTextEdit->setText(Pep::resToString(":/help/figures/fig0610.pep"));
-                ui->rightCppTextEdit->setText(Pep::resToString(":/help/figures/fig0610.cpp"));
+                ui->rightCppTextEdit->setText(Pep::resToString(":/help/figures/fig0610.c"));
                 ui->figureLabel->setText("<b>Figure 6.10</b><code>  </code> The <code>while</code> statement.");
                 ui->rightCppTextEdit->show();
                 ui->rightPepTextEdit->hide();
             }
             else if (row == eFIG612) {
                 ui->leftTextEdit->setText(Pep::resToString(":/help/figures/fig0612.pep"));
-                ui->rightCppTextEdit->setText(Pep::resToString(":/help/figures/fig0612.cpp"));
+                ui->rightCppTextEdit->setText(Pep::resToString(":/help/figures/fig0612.c"));
                 ui->figureLabel->setText("<b>Figure 6.12</b><code>  </code> The <code>do</code> statement.");
                 ui->rightCppTextEdit->show();
                 ui->rightPepTextEdit->hide();
             }
             else if (row == eFIG614) {
                 ui->leftTextEdit->setText(Pep::resToString(":/help/figures/fig0614.pep"));
-                ui->rightCppTextEdit->setText(Pep::resToString(":/help/figures/fig0614.cpp"));
+                ui->rightCppTextEdit->setText(Pep::resToString(":/help/figures/fig0614.c"));
                 ui->figureLabel->setText("<b>Figure 6.14</b><code>  </code> The <code>for</code> statement.");
                 ui->rightCppTextEdit->show();
                 ui->rightPepTextEdit->hide();
@@ -302,28 +302,28 @@ void HelpDialog::onCurrentItemChanged(QTreeWidgetItem*, QTreeWidgetItem*) {
             }
             else if (row == eFIG618) {
                 ui->leftTextEdit->setText(Pep::resToString(":/help/figures/fig0618.pep"));
-                ui->rightCppTextEdit->setText(Pep::resToString(":/help/figures/fig0618.cpp"));
+                ui->rightCppTextEdit->setText(Pep::resToString(":/help/figures/fig0618.c"));
                 ui->figureLabel->setText("<b>Figure 6.18</b><code>  </code> A procedure call with no parameters.");
                 ui->rightCppTextEdit->show();
                 ui->rightPepTextEdit->hide();
             }
             else if (row == eFIG621) {
                 ui->leftTextEdit->setText(Pep::resToString(":/help/figures/fig0621.pep"));
-                ui->rightCppTextEdit->setText(Pep::resToString(":/help/figures/fig0621.cpp"));
+                ui->rightCppTextEdit->setText(Pep::resToString(":/help/figures/fig0621.c"));
                 ui->figureLabel->setText("<b>Figure 6.21</b><code>  </code> Call-by-value parameters with global variables.");
                 ui->rightCppTextEdit->show();
                 ui->rightPepTextEdit->hide();
             }
             else if (row == eFIG623) {
                 ui->leftTextEdit->setText(Pep::resToString(":/help/figures/fig0623.pep"));
-                ui->rightCppTextEdit->setText(Pep::resToString(":/help/figures/fig0623.cpp"));
+                ui->rightCppTextEdit->setText(Pep::resToString(":/help/figures/fig0623.c"));
                 ui->figureLabel->setText("<b>Figure 6.23</b><code>  </code> Call-by-value parameters with local variables.");
                 ui->rightCppTextEdit->show();
                 ui->rightPepTextEdit->hide();
             }
             else if (row == eFIG625) {
                 ui->leftTextEdit->setText(Pep::resToString(":/help/figures/fig0625.pep"));
-                ui->rightCppTextEdit->setText(Pep::resToString(":/help/figures/fig0625.cpp"));
+                ui->rightCppTextEdit->setText(Pep::resToString(":/help/figures/fig0625.c"));
                 ui->figureLabel->setText("<b>Figure 6.25</b><code>  </code> A recursive nonvoid function.");
                 ui->rightCppTextEdit->show();
                 ui->rightPepTextEdit->hide();
@@ -337,28 +337,28 @@ void HelpDialog::onCurrentItemChanged(QTreeWidgetItem*, QTreeWidgetItem*) {
             }
             else if (row == eFIG629) {
                 ui->leftTextEdit->setText(Pep::resToString(":/help/figures/fig0629.pep"));
-                ui->rightCppTextEdit->setText(Pep::resToString(":/help/figures/fig0629.cpp"));
+                ui->rightCppTextEdit->setText(Pep::resToString(":/help/figures/fig0629.c"));
                 ui->figureLabel->setText("<b>Figure 6.29</b><code>  </code> Call-by-reference parameters with local variables.");
                 ui->rightCppTextEdit->show();
                 ui->rightPepTextEdit->hide();
             }
             else if (row == eFIG632) {
                 ui->leftTextEdit->setText(Pep::resToString(":/help/figures/fig0632.pep"));
-                ui->rightCppTextEdit->setText(Pep::resToString(":/help/figures/fig0632.cpp"));
+                ui->rightCppTextEdit->setText(Pep::resToString(":/help/figures/fig0632.c"));
                 ui->figureLabel->setText("<b>Figure 6.32</b><code>  </code> Translation of a boolean type.");
                 ui->rightCppTextEdit->show();
                 ui->rightPepTextEdit->hide();
             }
             else if (row == eFIG634) {
                 ui->leftTextEdit->setText(Pep::resToString(":/help/figures/fig0634.pep"));
-                ui->rightCppTextEdit->setText(Pep::resToString(":/help/figures/fig0634.cpp"));
+                ui->rightCppTextEdit->setText(Pep::resToString(":/help/figures/fig0634.c"));
                 ui->figureLabel->setText("<b>Figure 6.32</b><code>  </code> A global array.");
                 ui->rightCppTextEdit->show();
                 ui->rightPepTextEdit->hide();
             }
             else if (row == eFIG636) {
                 ui->leftTextEdit->setText(Pep::resToString(":/help/figures/fig0636.pep"));
-                ui->rightCppTextEdit->setText(Pep::resToString(":/help/figures/fig0636.cpp"));
+                ui->rightCppTextEdit->setText(Pep::resToString(":/help/figures/fig0636.c"));
                 ui->figureLabel->setText("<b>Figure 6.36</b><code>  </code> A local array.");
                 ui->rightCppTextEdit->show();
                 ui->rightPepTextEdit->hide();

@@ -6,43 +6,25 @@
         <file>help/debuggingprograms.html</file>
         <file>help/examples.html</file>
         <file>help/pep8reference.html</file>
-        <file>help/figures/fig0518.cpp</file>
         <file>help/figures/fig0518.pep</file>
-        <file>help/figures/fig0521.cpp</file>
         <file>help/figures/fig0521.pep</file>
-        <file>help/figures/fig0526.cpp</file>
         <file>help/figures/fig0526.pep</file>
         <file>help/figures/fig0601.pep</file>
-        <file>help/figures/fig0604.cpp</file>
         <file>help/figures/fig0604.pep</file>
-        <file>help/figures/fig0606.cpp</file>
         <file>help/figures/fig0606.pep</file>
-        <file>help/figures/fig0608.cpp</file>
         <file>help/figures/fig0608.pep</file>
-        <file>help/figures/fig0610.cpp</file>
         <file>help/figures/fig0610.pep</file>
-        <file>help/figures/fig0612.cpp</file>
         <file>help/figures/fig0612.pep</file>
-        <file>help/figures/fig0614.cpp</file>
         <file>help/figures/fig0614.pep</file>
         <file>help/figures/fig0616.pep</file>
-        <file>help/figures/fig0618.cpp</file>
         <file>help/figures/fig0618.pep</file>
-        <file>help/figures/fig0621.cpp</file>
         <file>help/figures/fig0621.pep</file>
-        <file>help/figures/fig0623.cpp</file>
         <file>help/figures/fig0623.pep</file>
-        <file>help/figures/fig0625.cpp</file>
         <file>help/figures/fig0625.pep</file>
-        <file>help/figures/fig0627.cpp</file>
         <file>help/figures/fig0627.pep</file>
-        <file>help/figures/fig0629.cpp</file>
         <file>help/figures/fig0629.pep</file>
-        <file>help/figures/fig0632.cpp</file>
         <file>help/figures/fig0632.pep</file>
-        <file>help/figures/fig0634.cpp</file>
         <file>help/figures/fig0634.pep</file>
-        <file>help/figures/fig0636.cpp</file>
         <file>help/figures/fig0636.pep</file>
         <file>help/figures/fig0638.pep</file>
         <file>help/figures/fig0640.pep</file>
@@ -145,5 +127,22 @@
         <file>help/figures/fig0645.c</file>
         <file>help/figures/fig0647.c</file>
         <file>help/figures/fig0627.c</file>
+        <file>help/figures/fig0629.c</file>
+        <file>help/figures/fig0632.c</file>
+        <file>help/figures/fig0634.c</file>
+        <file>help/figures/fig0636.c</file>
+        <file>help/figures/fig0518.c</file>
+        <file>help/figures/fig0521.c</file>
+        <file>help/figures/fig0526.c</file>
+        <file>help/figures/fig0604.c</file>
+        <file>help/figures/fig0606.c</file>
+        <file>help/figures/fig0608.c</file>
+        <file>help/figures/fig0610.c</file>
+        <file>help/figures/fig0612.c</file>
+        <file>help/figures/fig0614.c</file>
+        <file>help/figures/fig0618.c</file>
+        <file>help/figures/fig0621.c</file>
+        <file>help/figures/fig0623.c</file>
+        <file>help/figures/fig0625.c</file>
     </qresource>
 </RCC>

@@ -80,7 +80,16 @@
          <string>Code</string>
         </attribute>
         <layout class="QVBoxLayout" name="verticalLayout">
-         <property name="margin">
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
           <number>0</number>
          </property>
          <item>
@@ -100,7 +109,16 @@
          <string>Trace</string>
         </attribute>
         <layout class="QVBoxLayout" name="verticalLayout_2">
-         <property name="margin">
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
           <number>0</number>
          </property>
          <item>
@@ -169,7 +187,16 @@
           <string>Batch I/O</string>
          </attribute>
          <layout class="QVBoxLayout">
-          <property name="margin">
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
            <number>0</number>
           </property>
           <item>
@@ -201,7 +228,16 @@
           <string>Terminal I/O</string>
          </attribute>
          <layout class="QVBoxLayout">
-          <property name="margin">
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
            <number>0</number>
           </property>
           <item>
@@ -313,7 +349,7 @@
      <x>0</x>
      <y>0</y>
      <width>1044</width>
-     <height>23</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_Edit">
@@ -414,11 +450,11 @@
     <addaction name="menuHelp_Writing_Programs"/>
     <addaction name="actionHelp_Debugging_Programs"/>
     <addaction name="actionHelp_Writing_Trap_Handlers"/>
-    <addaction name="actionHelp_Pep_8_Reference"/>
+    <addaction name="actionHelp_Pep_9_Reference"/>
     <addaction name="actionHelp_Examples"/>
-    <addaction name="actionHelp_Pep_8_Operating_System"/>
+    <addaction name="actionHelp_Pep_9_Operating_System"/>
     <addaction name="separator"/>
-    <addaction name="actionAbout_Pep8"/>
+    <addaction name="actionAbout_Pep9"/>
     <addaction name="actionAbout_Qt"/>
    </widget>
    <addaction name="menu_File"/>
@@ -430,7 +466,7 @@
   </widget>
   <action name="actionFile_New">
    <property name="icon">
-    <iconset resource="pep8resources.qrc">
+    <iconset resource="pep9resources.qrc">
      <normaloff>:/images/new.png</normaloff>:/images/new.png</iconset>
    </property>
    <property name="text">
@@ -445,7 +481,7 @@
   </action>
   <action name="actionFile_Open">
    <property name="icon">
-    <iconset resource="pep8resources.qrc">
+    <iconset resource="pep9resources.qrc">
      <normaloff>:/images/open.png</normaloff>:/images/open.png</iconset>
    </property>
    <property name="text">
@@ -460,7 +496,7 @@
   </action>
   <action name="actionFile_Save_Source">
    <property name="icon">
-    <iconset resource="pep8resources.qrc">
+    <iconset resource="pep9resources.qrc">
      <normaloff>:/images/save.png</normaloff>:/images/save.png</iconset>
    </property>
    <property name="text">
@@ -483,7 +519,7 @@
   </action>
   <action name="actionFile_Print_Source">
    <property name="icon">
-    <iconset resource="pep8resources.qrc">
+    <iconset resource="pep9resources.qrc">
      <normaloff>:/images/print.png</normaloff>:/images/print.png</iconset>
    </property>
    <property name="text">
@@ -498,7 +534,7 @@
   </action>
   <action name="actionEdit_Undo">
    <property name="icon">
-    <iconset resource="pep8resources.qrc">
+    <iconset resource="pep9resources.qrc">
      <normaloff>:/images/undo.png</normaloff>:/images/undo.png</iconset>
    </property>
    <property name="text">
@@ -516,7 +552,7 @@
   </action>
   <action name="actionEdit_Redo">
    <property name="icon">
-    <iconset resource="pep8resources.qrc">
+    <iconset resource="pep9resources.qrc">
      <normaloff>:/images/redo.png</normaloff>:/images/redo.png</iconset>
    </property>
    <property name="text">
@@ -531,7 +567,7 @@
   </action>
   <action name="actionEdit_Cut">
    <property name="icon">
-    <iconset resource="pep8resources.qrc">
+    <iconset resource="pep9resources.qrc">
      <normaloff>:/images/cut.png</normaloff>:/images/cut.png</iconset>
    </property>
    <property name="text">
@@ -546,7 +582,7 @@
   </action>
   <action name="actionEdit_Copy">
    <property name="icon">
-    <iconset resource="pep8resources.qrc">
+    <iconset resource="pep9resources.qrc">
      <normaloff>:/images/copy.png</normaloff>:/images/copy.png</iconset>
    </property>
    <property name="text">
@@ -561,7 +597,7 @@
   </action>
   <action name="actionEdit_Paste">
    <property name="icon">
-    <iconset resource="pep8resources.qrc">
+    <iconset resource="pep9resources.qrc">
      <normaloff>:/images/paste.png</normaloff>:/images/paste.png</iconset>
    </property>
    <property name="text">
@@ -584,7 +620,7 @@
   </action>
   <action name="actionBuild_Assemble">
    <property name="icon">
-    <iconset resource="pep8resources.qrc">
+    <iconset resource="pep9resources.qrc">
      <normaloff>:/images/assemble.png</normaloff>:/images/assemble.png</iconset>
    </property>
    <property name="text">
@@ -614,7 +650,7 @@
   </action>
   <action name="actionBuild_Run_Source">
    <property name="icon">
-    <iconset resource="pep8resources.qrc">
+    <iconset resource="pep9resources.qrc">
      <normaloff>:/images/run.png</normaloff>:/images/run.png</iconset>
    </property>
    <property name="text">
@@ -632,7 +668,7 @@
     <bool>false</bool>
    </property>
    <property name="icon">
-    <iconset resource="pep8resources.qrc">
+    <iconset resource="pep9resources.qrc">
      <normaloff>:/images/debugger_start.png</normaloff>:/images/debugger_start.png</iconset>
    </property>
    <property name="text">
@@ -672,7 +708,7 @@
   </action>
   <action name="actionView_Code_Only">
    <property name="icon">
-    <iconset resource="pep8resources.qrc">
+    <iconset resource="pep9resources.qrc">
      <normaloff>:/images/CodeOnly.xpm</normaloff>:/images/CodeOnly.xpm</iconset>
    </property>
    <property name="text">
@@ -687,7 +723,7 @@
   </action>
   <action name="actionView_Code_CPU">
    <property name="icon">
-    <iconset resource="pep8resources.qrc">
+    <iconset resource="pep9resources.qrc">
      <normaloff>:/images/CodeCPU.xpm</normaloff>:/images/CodeCPU.xpm</iconset>
    </property>
    <property name="text">
@@ -702,7 +738,7 @@
   </action>
   <action name="actionView_Code_CPU_Memory">
    <property name="icon">
-    <iconset resource="pep8resources.qrc">
+    <iconset resource="pep9resources.qrc">
      <normaloff>:/images/CodeCPUMemory.xpm</normaloff>:/images/CodeCPUMemory.xpm</iconset>
    </property>
    <property name="text">
@@ -715,9 +751,9 @@
     <bool>false</bool>
    </property>
   </action>
-  <action name="actionAbout_Pep8">
+  <action name="actionAbout_Pep9">
    <property name="text">
-    <string>About Pep8</string>
+    <string>About Pep9</string>
    </property>
   </action>
   <action name="actionAbout_Qt">
@@ -755,7 +791,7 @@
     <bool>false</bool>
    </property>
   </action>
-  <action name="actionHelp_Pep_8_Operating_System">
+  <action name="actionHelp_Pep_9_Operating_System">
    <property name="text">
     <string>Pep/9 Operating System</string>
    </property>
@@ -860,7 +896,7 @@
     <bool>false</bool>
    </property>
    <property name="icon">
-    <iconset resource="pep8resources.qrc">
+    <iconset resource="pep9resources.qrc">
      <normaloff>:/images/stop.png</normaloff>:/images/stop.png</iconset>
    </property>
    <property name="text">
@@ -889,7 +925,7 @@
     <string>Debugging Programs</string>
    </property>
   </action>
-  <action name="actionHelp_Pep_8_Reference">
+  <action name="actionHelp_Pep_9_Reference">
    <property name="text">
     <string>Pep/9 Reference</string>
    </property>
@@ -911,7 +947,7 @@
   </action>
  </widget>
  <resources>
-  <include location="pep8resources.qrc"/>
+  <include location="pep9resources.qrc"/>
  </resources>
  <connections/>
 </ui>
