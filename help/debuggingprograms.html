@@ -2,14 +2,14 @@
 
 <html>
 <head>
- <title> Pep/8: Debugging Programs Documentation </title>
+ <title> Pep/9: Debugging Programs Documentation </title>
   <style type="text/css" media="all">
    code { font-family:Courier, 'Courier New', monospace; font-size:11pt }
    img { vertical-align:text-top; }
    h4 { margin-bottom: 0; border-bottom-width: 0; padding-bottom: 0; }
   </style>
 </head>
-<body bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#000033" alink="#0066FF">
+<body bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#0000FF" alink="#0099FF">
 <table bgcolor="#FB9F14" width="100%" cellpadding="2" cellspacing="0" border="0">
 <tr><td>
 <p style="text-align:center; font-family:helvetica, arial, sans-serif; font-size:14pt; font-weight:bold; color: #29315E">
@@ -18,7 +18,7 @@ Debugging Programs
 </td></tr>
 </table>
 <p>
- The Pep/8 system provides debugging tools to help you locate errors in the programs you write.
+ The Pep/9 system provides debugging tools to help you locate errors in the programs you write.
  The tools include a memory dump, break points, and a symbolic trace feature.
  If you are debugging a machine language program that you wrote you can use the memory dump feature
  but you cannot set break points or use the symbolic trace feature.
@@ -38,7 +38,7 @@ View the Memory Dump pane by selecting View->Code/CPU/Memory from the menu or by
 <img src="images/codecpumemory.png" alt="codecpumemory" hspace=10 vspace=10>
 <img src="images/codecpumemoryicon.png" alt="codecpumemoryicon" hspace=10 vspace=10>
 <p>
-The Pep/8 application may run noticibly slower when the Memory Dump pane is visible.
+The Pep/9 application may run noticibly slower when the Memory Dump pane is visible.
 You can click either of the other two view icons to hide the Memory Dump pane.
 <p>
  <img src="images/codecodememory.png" alt="codecodememory" hspace=10 vspace=10>
@@ -141,7 +141,7 @@ The following screenshot from Figure 6.1 shows the stack starting at address FBC
 <p>
 <h3><a name="Break">Break points</a></h3>
 To use break points for an assembly language program enter the debugging mode as described in the previous section.
-Pep/8 will switch from the Code pane to the Trace pane and display the source program for tracing.
+Pep/9 will switch from the Code pane to the Trace pane and display the source program for tracing.
 The following screenshot shows the Trace pane for the program in Figure 5.15 of the text.
 <p>
 <img src="qrc:/help/images/fig0515listingtrace.png" alt="fig0515listingtrace" hspace=10 vspace=10>
@@ -193,7 +193,7 @@ It highlights the first instruction in the trap handler of the operating system.
 <p>
 When you are tracing an operating system trap, you can set breakpoints and click Single Step or Resume as you would
 with the source program.
-If you resume within the operating system and encounter no further breakpoints, Pep/8 will continue after the return
+If you resume within the operating system and encounter no further breakpoints, Pep/9 will continue after the return
 from trap instruction <code>RETTR</code>
 to the source program until it encounters a break point there.
 <p>
@@ -233,7 +233,7 @@ instruction has just changed its value.
 
 <h3><a name="Byte">Byte converter</a></h3>
 
-Any time the Pep/8 application is running, the byte converter is available in the tool bar.
+Any time the Pep/9 application is running, the byte converter is available in the tool bar.
 The four input fields represent the value of a single byte as displayed from left to right in decimal, hexadecimal, binary, and ASCII.
 Simply enter any value in any input field and the other fields will show the same value in the corresponding format.
 Here is the result of entering the letter <code>P</code> in the ASCII field.
