@@ -1,10 +1,13 @@
 ;File: fig0514a.pep
-;Computer Systems, Fourth Edition
+;Computer Systems, Fifth Edition
 ;Figure 5.14
 ;
-         CHARO   0x000A,d    
-         CHARO   0x000B,d    
-         CHARO   0x000C,d    
+         LDBA    0x0013,d    
+         STBA    0xFC16,d    
+         LDBA    0x0014,d    
+         STBA    0xFC16,d    
+         LDBA    0x0015,d    
+         STBA    0xFC16,d    
          STOP                
          .ASCII  "Pun"       
          .END                  

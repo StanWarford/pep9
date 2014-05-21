@@ -1,10 +1,8 @@
 ;File: fig0518.pep
-;Computer Systems, Fourth Edition
+;Computer Systems, Fifth Edition
 ;Figure 5.18
 ;
-         STRO    msg,d
-         LDBA    '\n',i
-         STBA    charOut,d
-         STOP
-msg:     .ASCII  "Love\x00"
-         .END
+         STRO    msg,d       
+         STOP                
+msg:     .ASCII  "Love\n\x00"
+         .END                  

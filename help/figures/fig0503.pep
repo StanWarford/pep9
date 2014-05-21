@@ -3,9 +3,9 @@
 ;A program to output "Hi"
 ;
          LDBA    0x000D,d    ;Output 'H'
-         STBA    0xFC4F,d
+         STBA    0xFC16,d
          LDBA    0x000E,d    ;Output 'i'
-         STBA    0xFC4F,d
+         STBA    0xFC16,d
          STOP
          .ASCII  "Hi"
          .END

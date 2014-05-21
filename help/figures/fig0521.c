@@ -1,17 +1,16 @@
-// File: fig0521.cpp
-// Computer Systems, Fourth Edition
+// File: fig0521.c
+// Computer Systems, Fifth Edition
 // Figure 5.21
 
-#include <iostream>
-using namespace std;
+#include <stdio.h>
 
 char ch;
 int j;
 
 int main () {
-   cin >> ch >> j;
+   scanf("%c %d", &ch, &j);
    j += 5;
    ch++;
-   cout << ch << endl << j << endl;
+   printf("%c\n%d\n", ch, j);
    return 0;
 }

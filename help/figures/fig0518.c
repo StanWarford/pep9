@@ -1,11 +1,10 @@
-// File: fig0518.cpp
-// Computer Systems, Fourth Edition
+// File: fig0518.c
+// Computer Systems, Fifth Edition
 // Figure 5.18
 
-#include <iostream>
-using namespace std;
+#include <stdio.h>
 
 int main () {
-   cout << "Love" << endl;
+   printf("Love\n");
    return 0;
 }

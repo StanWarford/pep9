@@ -1,5 +1,5 @@
 ;File: fig0515.pep
-;Computer Systems, Fourth edition
+;Computer Systems, Fifth edition
 ;Figure 5.15
 ;
          BR      main        ;Branch around data
