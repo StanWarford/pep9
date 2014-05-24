@@ -24,10 +24,10 @@ while:   LDWA    value,s     ;while (value != -9999)
          STWX    first,s
          LDWA    value,s     ;first->data = value
          LDWX    data,i
-         STWA    first,sxf
+         STWA    first,sfx
          LDWA    p,s         ;first->next = p
          LDWX    next,i
-         STWA    first,sxf
+         STWA    first,sfx
          DECI    value,s     ;scanf("%d", &value)
          BR      while
 endWh:   LDWA    first,s     ;for (p = first
@@ -36,11 +36,11 @@ for:     LDWA    p,s         ;p != 0
          CPWA    0,i
          BREQ    endFor
          LDWX    data,i      ;printf("%d ", p->data)
-         DECO    p,sxf
+         DECO    p,sfx
          LDBA    ' ',i
          STBA    charOut,d
          LDWX    next,i      ;p = p->next)
-         LDWA    p,sxf
+         LDWA    p,sfx
          STWA    p,s
          BR      for
 endFor:  ADDSP   6,i         ;pop #value #p #first

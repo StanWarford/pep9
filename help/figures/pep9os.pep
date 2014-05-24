@@ -116,7 +116,7 @@ addrJT:  .ADDRSS addrI       ;Immediate addressing
          .ADDRSS addrSF      ;Stack relative deferred addressing
          .ADDRSS addrX       ;Indexed addressing
          .ADDRSS addrSX      ;Stack indexed addressing
-         .ADDRSS addrSXF     ;Stack indexed deferred addressing
+         .ADDRSS addrSFX     ;Stack indexed deferred addressing
 ;
 addrI:   LDWX    oldPC4,s    ;Immediate addressing
          SUBX    2,i         ;Oprnd = OprndsSpec
@@ -166,7 +166,7 @@ addrSX:  LDWX    oldPC4,s    ;Stack indexed addressing
          STWX    opAddr,d
          RET
 ;
-addrSXF: LDWX    oldPC4,s    ;Stack indexed deferred addressing
+addrSFX: LDWX    oldPC4,s    ;Stack indexed deferred addressing
          SUBX    2,i         ;Oprnd = Mem[Mem[SP + OprndSpec] + X]
          LDWX    0,x
          ADDX    oldSP4,s
@@ -212,7 +212,7 @@ init:    .EQUATE 0           ;Enumerated values for state
 sign:    .EQUATE 1
 digit:   .EQUATE 2
 ;
-opcode30:LDWA    0x00FE,i    ;Assert d, n, s, sf, x, sx, sxf
+opcode30:LDWA    0x00FE,i    ;Assert d, n, s, sf, x, sx, sfx
          STWA    addrMask,d
          CALL    assertAd
          CALL    setAddr     ;Set address of trap operand
@@ -358,7 +358,7 @@ remain:  .EQUATE 0           ;Remainder of value to output
 outYet:  .EQUATE 2           ;Has a character been output yet?
 place:   .EQUATE 4           ;Place value for division
 ;
-opcode38:LDWA    0x00FF,i    ;Assert i, d, n, s, sf, x, sx, sxf
+opcode38:LDWA    0x00FF,i    ;Assert i, d, n, s, sf, x, sx, sfx
          STWA    addrMask,d
          CALL    assertAd
          CALL    setAddr     ;Set address of trap operand
@@ -423,7 +423,7 @@ printDgt:ORX     0x0030,i    ;Convert decimal to ASCII
 ;The HEXO instruction.
 ;Outputs one word as four hex characters from memory.
 ;
-opcode40:LDWA    0x00FF,i    ;Assert i, d, n, s, sf, x, sx, sxf
+opcode40:LDWA    0x00FF,i    ;Assert i, d, n, s, sf, x, sx, sfx
          STWA    addrMask,d
          CALL    assertAd
          CALL    setAddr     ;Set address of trap operand
@@ -484,7 +484,7 @@ msgAddr: .EQUATE 2           ;Address of message to print
 ;
 prntMsg: LDWX    0,i         ;X := 0
          LDWA    0,i         ;A := 0
-prntMore:LDBA    msgAddr,sxf ;Test next char
+prntMore:LDBA    msgAddr,sfx ;Test next char
          BREQ    exitPrnt    ;If null then exit
          STBA    charOut,d   ;else print
          ADDX    1,i         ;X := X + 1 for next character

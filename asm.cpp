@@ -23,7 +23,7 @@
 #include "code.h"
 
 // Regular expressions for lexical analysis
-QRegExp Asm::rxAddrMode("^((,)(\\s*)(i|d|x|n|s(?![fx])|sx(?![f])|sf|sxf){1}){1}");
+QRegExp Asm::rxAddrMode("^((,)(\\s*)(i|d|x|n|s(?![fx])|sx(?![f])|sf|sfx){1}){1}");
 QRegExp Asm::rxCharConst("^((\')(?![\'])(([^\'|\\\\]){1}|((\\\\)([\'|b|f|n|r|t|v|\"|\\\\]))|((\\\\)(([x|X])([0-9|A-F|a-f]{2}))))(\'))");
 QRegExp Asm::rxComment("^((;{1})(.)*)");
 QRegExp Asm::rxDecConst("^((([+|-]{0,1})([0-9]+))|^(([1-9])([0-9]*)))");
@@ -156,7 +156,7 @@ Enu::EAddrMode Asm::stringToAddrMode(QString str)
     if (str == "SF") return Enu::SF;
     if (str == "X") return Enu::X;
     if (str == "SX") return Enu::SX;
-    if (str == "SXF") return Enu::SXF;
+    if (str == "SFX") return Enu::SFX;
     return Enu::NONE;
 }
 

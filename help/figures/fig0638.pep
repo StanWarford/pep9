@@ -15,7 +15,7 @@ getVect: SUBSP   2,i         ;push storage for #j
 for1:    CPWX    n,sf        ;   j < *n
          BRGE    endFor1
          ASLX                ;   an integer is two bytes
-         DECI    v,sxf       ;   scanf("%d", &v[j])
+         DECI    v,sfx       ;   scanf("%d", &v[j])
          LDWX    j,s         ;   j++)
          ADDX    1,i
          STWX    j,s
@@ -32,7 +32,7 @@ putVect: SUBSP   2,i         ;push storage for #j2
 for2:    CPWX    n2,s        ;   j < n
          BRGE    endFor2
          ASLX                ;   an integer is two bytes
-         DECO    v2,sxf      ;   printf("%d ", v[j])
+         DECO    v2,sfx      ;   printf("%d ", v[j])
          LDBA    ' ',i
          STBA    charOut,d
          LDWX    j2,s        ;   i++)

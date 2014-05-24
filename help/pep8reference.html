@@ -112,52 +112,52 @@ Pep/9 Reference
   <td><code>0010 1aaa</code></td> <td><code>NOP</code></td> <td>Nonunary no operation trap</td> <td>i</td> <td></td>
  </tr>
  <tr>
-  <td><code>0011 0aaa</code></td> <td><code>DECI</code></td> <td>Decimal input trap</td> <td>d, n, s, sf, x, sx, sxf</td> <td>N Z V</td>
+  <td><code>0011 0aaa</code></td> <td><code>DECI</code></td> <td>Decimal input trap</td> <td>d, n, s, sf, x, sx, sfx</td> <td>N Z V</td>
  </tr>
  <tr>
-  <td><code>0011 1aaa</code></td> <td><code>DECO</code></td> <td>Decimal output trap</td> <td>i, d, n, s, sf, x, sx, sxf</td> <td></td>
+  <td><code>0011 1aaa</code></td> <td><code>DECO</code></td> <td>Decimal output trap</td> <td>i, d, n, s, sf, x, sx, sfx</td> <td></td>
  </tr>
  <tr>
-  <td><code>0100 0aaa</code></td> <td><code>HEXO</code></td> <td>Hexadecimal output trap</td> <td>i, d, n, s, sf, x, sx, sxf</td> <td></td>
+  <td><code>0100 0aaa</code></td> <td><code>HEXO</code></td> <td>Hexadecimal output trap</td> <td>i, d, n, s, sf, x, sx, sfx</td> <td></td>
  </tr>
  <tr>
   <td><code>0100 1aaa</code></td> <td><code>STRO</code></td> <td>String output trap</td> <td>d, n, sf</td> <td></td>
  </tr>
  <tr>
-  <td><code>0101 0aaa</code></td> <td><code>ADDSP</code></td> <td>Add to stack pointer (SP)</td> <td>i, d, n, s, sf, x, sx, sxf</td> <td>N Z V C</td>
+  <td><code>0101 0aaa</code></td> <td><code>ADDSP</code></td> <td>Add to stack pointer (SP)</td> <td>i, d, n, s, sf, x, sx, sfx</td> <td>N Z V C</td>
  </tr>
  <tr>
-  <td><code>0101 1aaa</code></td> <td><code>SUBSP</code></td> <td>Subtract from stack pointer (SP)</td> <td>i, d, n, s, sf, x, sx, sxf</td> <td>N Z V C</td>
+  <td><code>0101 1aaa</code></td> <td><code>SUBSP</code></td> <td>Subtract from stack pointer (SP)</td> <td>i, d, n, s, sf, x, sx, sfx</td> <td>N Z V C</td>
  </tr>
  <tr>
-  <td><code>0110 raaa</code></td> <td><code>ADDr</code></td> <td>Add to r</td> <td>i, d, n, s, sf, x, sx, sxf</td> <td>N Z V C</td>
+  <td><code>0110 raaa</code></td> <td><code>ADDr</code></td> <td>Add to r</td> <td>i, d, n, s, sf, x, sx, sfx</td> <td>N Z V C</td>
  </tr>
  <tr>
-  <td><code>0111 raaa</code></td> <td><code>SUBr</code></td> <td>Subtract from r</td> <td>i, d, n, s, sf, x, sx, sxf</td> <td>N Z V C</td>
+  <td><code>0111 raaa</code></td> <td><code>SUBr</code></td> <td>Subtract from r</td> <td>i, d, n, s, sf, x, sx, sfx</td> <td>N Z V C</td>
  </tr>
  <tr>
-  <td><code>1000 raaa</code></td> <td><code>ANDr</code></td> <td>Bitwise AND to r</td> <td>i, d, n, s, sf, x, sx, sxf</td> <td>N Z</td>
+  <td><code>1000 raaa</code></td> <td><code>ANDr</code></td> <td>Bitwise AND to r</td> <td>i, d, n, s, sf, x, sx, sfx</td> <td>N Z</td>
  </tr>
  <tr>
-  <td><code>1001 raaa</code></td> <td><code>ORr</code></td> <td>Bitwise OR to r</td> <td>i, d, n, s, sf, x, sx, sxf</td> <td>N Z</td>
+  <td><code>1001 raaa</code></td> <td><code>ORr</code></td> <td>Bitwise OR to r</td> <td>i, d, n, s, sf, x, sx, sfx</td> <td>N Z</td>
  </tr>
  <tr>
-  <td><code>1010 raaa</code></td> <td><code>CPWr</code></td> <td>Compare word to r</td> <td>i, d, n, s, sf, x, sx, sxf</td> <td>N Z V C</td>
+  <td><code>1010 raaa</code></td> <td><code>CPWr</code></td> <td>Compare word to r</td> <td>i, d, n, s, sf, x, sx, sfx</td> <td>N Z V C</td>
  </tr>
  <tr>
-  <td><code>1011 raaa</code></td> <td><code>CPBr</code></td> <td>Compare byte to r&lt;8..15&gt;</td> <td>i, d, n, s, sf, x, sx, sxf</td> <td>N Z V C</td>
+  <td><code>1011 raaa</code></td> <td><code>CPBr</code></td> <td>Compare byte to r&lt;8..15&gt;</td> <td>i, d, n, s, sf, x, sx, sfx</td> <td>N Z V C</td>
  </tr>
  <tr>
-  <td><code>1100 raaa</code></td> <td><code>LDWr</code></td> <td>Load word r from memory</td> <td>i, d, n, s, sf, x, sx, sxf</td> <td>N Z</td>
+  <td><code>1100 raaa</code></td> <td><code>LDWr</code></td> <td>Load word r from memory</td> <td>i, d, n, s, sf, x, sx, sfx</td> <td>N Z</td>
  </tr>
  <tr>
-  <td><code>1101 raaa</code></td> <td><code>LDBr</code></td> <td>Load byte r&lt;8..15&gt; from memory</td> <td>i, d, n, s, sf, x, sx, sxf</td> <td>N Z</td>
+  <td><code>1101 raaa</code></td> <td><code>LDBr</code></td> <td>Load byte r&lt;8..15&gt; from memory</td> <td>i, d, n, s, sf, x, sx, sfx</td> <td>N Z</td>
  </tr>
  <tr>
-  <td><code>1110 raaa</code></td> <td><code>STWr</code></td> <td>Store word r to memory</td> <td>d, n, s, sf, x, sx, sxf</td> <td></td>
+  <td><code>1110 raaa</code></td> <td><code>STWr</code></td> <td>Store word r to memory</td> <td>d, n, s, sf, x, sx, sfx</td> <td></td>
  </tr>
  <tr>
-  <td><code>1111 raaa</code></td> <td><code>STBr</code></td> <td>Store byte r&lt;8..15&gt; to memory</td> <td>d, n, s, sf, x, sx, sxf</td> <td></td>
+  <td><code>1111 raaa</code></td> <td><code>STBr</code></td> <td>Store byte r&lt;8..15&gt; to memory</td> <td>d, n, s, sf, x, sx, sfx</td> <td></td>
  </tr>
 </table>
 <p>
@@ -265,7 +265,7 @@ will operate as expected.
   <td>Stack-indexed</td> <td><code>110</code></td> <td>sx</td> <td>Mem [SP + OprndSpec + X ]</td>
  </tr>
  <tr>
-  <td>Stack-indexed deferred</td> <td><code>111</code></td> <td>sxf</td> <td>Mem [Mem [SP + OprndSpec ] + X ]</td>
+  <td>Stack-indexed deferred</td> <td><code>111</code></td> <td>sfx</td> <td>Mem [Mem [SP + OprndSpec ] + X ]</td>
  </tr>
 </table>
 <p>

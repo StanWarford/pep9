@@ -46,7 +46,7 @@ RedefineMnemonicsDialog::RedefineMnemonicsDialog(QWidget *parent) :
     ui->sfLabel->setFont(QFont(Pep::labelFont, Pep::labelFontSize, QFont::Bold));
     ui->xLabel->setFont(QFont(Pep::labelFont, Pep::labelFontSize, QFont::Bold));
     ui->sxLabel->setFont(QFont(Pep::labelFont, Pep::labelFontSize, QFont::Bold));
-    ui->sxfLabel->setFont(QFont(Pep::labelFont, Pep::labelFontSize, QFont::Bold));
+    ui->sfxLabel->setFont(QFont(Pep::labelFont, Pep::labelFontSize, QFont::Bold));
 
     ui->nonunaryOpCodeLabel->setFont(QFont(Pep::labelFont, Pep::labelFontSize, QFont::Bold));
 
@@ -92,7 +92,7 @@ RedefineMnemonicsDialog::RedefineMnemonicsDialog(QWidget *parent) :
     connect(ui->mnemon0sfCheckBox, SIGNAL(clicked()), this, SLOT(setNonUnaryAllowedModes()));
     connect(ui->mnemon0xCheckBox, SIGNAL(clicked()), this, SLOT(setNonUnaryAllowedModes()));
     connect(ui->mnemon0sxCheckBox, SIGNAL(clicked()), this, SLOT(setNonUnaryAllowedModes()));
-    connect(ui->mnemon0sxfCheckBox, SIGNAL(clicked()), this, SLOT(setNonUnaryAllowedModes()));
+    connect(ui->mnemon0sfxCheckBox, SIGNAL(clicked()), this, SLOT(setNonUnaryAllowedModes()));
 
     connect(ui->mnemon1iCheckBox, SIGNAL(clicked()), this, SLOT(setNonUnaryAllowedModes()));
     connect(ui->mnemon1dCheckBox, SIGNAL(clicked()), this, SLOT(setNonUnaryAllowedModes()));
@@ -101,7 +101,7 @@ RedefineMnemonicsDialog::RedefineMnemonicsDialog(QWidget *parent) :
     connect(ui->mnemon1sfCheckBox, SIGNAL(clicked()), this, SLOT(setNonUnaryAllowedModes()));
     connect(ui->mnemon1xCheckBox, SIGNAL(clicked()), this, SLOT(setNonUnaryAllowedModes()));
     connect(ui->mnemon1sxCheckBox, SIGNAL(clicked()), this, SLOT(setNonUnaryAllowedModes()));
-    connect(ui->mnemon1sxfCheckBox, SIGNAL(clicked()), this, SLOT(setNonUnaryAllowedModes()));
+    connect(ui->mnemon1sfxCheckBox, SIGNAL(clicked()), this, SLOT(setNonUnaryAllowedModes()));
 
     connect(ui->mnemon2iCheckBox, SIGNAL(clicked()), this, SLOT(setNonUnaryAllowedModes()));
     connect(ui->mnemon2dCheckBox, SIGNAL(clicked()), this, SLOT(setNonUnaryAllowedModes()));
@@ -110,7 +110,7 @@ RedefineMnemonicsDialog::RedefineMnemonicsDialog(QWidget *parent) :
     connect(ui->mnemon2sfCheckBox, SIGNAL(clicked()), this, SLOT(setNonUnaryAllowedModes()));
     connect(ui->mnemon2xCheckBox, SIGNAL(clicked()), this, SLOT(setNonUnaryAllowedModes()));
     connect(ui->mnemon2sxCheckBox, SIGNAL(clicked()), this, SLOT(setNonUnaryAllowedModes()));
-    connect(ui->mnemon2sxfCheckBox, SIGNAL(clicked()), this, SLOT(setNonUnaryAllowedModes()));
+    connect(ui->mnemon2sfxCheckBox, SIGNAL(clicked()), this, SLOT(setNonUnaryAllowedModes()));
 
     connect(ui->mnemon3iCheckBox, SIGNAL(clicked()), this, SLOT(setNonUnaryAllowedModes()));
     connect(ui->mnemon3dCheckBox, SIGNAL(clicked()), this, SLOT(setNonUnaryAllowedModes()));
@@ -119,7 +119,7 @@ RedefineMnemonicsDialog::RedefineMnemonicsDialog(QWidget *parent) :
     connect(ui->mnemon3sfCheckBox, SIGNAL(clicked()), this, SLOT(setNonUnaryAllowedModes()));
     connect(ui->mnemon3xCheckBox, SIGNAL(clicked()), this, SLOT(setNonUnaryAllowedModes()));
     connect(ui->mnemon3sxCheckBox, SIGNAL(clicked()), this, SLOT(setNonUnaryAllowedModes()));
-    connect(ui->mnemon3sxfCheckBox, SIGNAL(clicked()), this, SLOT(setNonUnaryAllowedModes()));
+    connect(ui->mnemon3sfxCheckBox, SIGNAL(clicked()), this, SLOT(setNonUnaryAllowedModes()));
 
     connect(ui->mnemon4iCheckBox, SIGNAL(clicked()), this, SLOT(setNonUnaryAllowedModes()));
     connect(ui->mnemon4dCheckBox, SIGNAL(clicked()), this, SLOT(setNonUnaryAllowedModes()));
@@ -128,7 +128,7 @@ RedefineMnemonicsDialog::RedefineMnemonicsDialog(QWidget *parent) :
     connect(ui->mnemon4sfCheckBox, SIGNAL(clicked()), this, SLOT(setNonUnaryAllowedModes()));
     connect(ui->mnemon4xCheckBox, SIGNAL(clicked()), this, SLOT(setNonUnaryAllowedModes()));
     connect(ui->mnemon4sxCheckBox, SIGNAL(clicked()), this, SLOT(setNonUnaryAllowedModes()));
-    connect(ui->mnemon4sxfCheckBox, SIGNAL(clicked()), this, SLOT(setNonUnaryAllowedModes()));
+    connect(ui->mnemon4sfxCheckBox, SIGNAL(clicked()), this, SLOT(setNonUnaryAllowedModes()));
 }
 
 RedefineMnemonicsDialog::~RedefineMnemonicsDialog()
@@ -148,7 +148,7 @@ void RedefineMnemonicsDialog::restoreDefaults()
     ui->mnemon0sfCheckBox->setChecked(Pep::defaultMnemon0sf);
     ui->mnemon0xCheckBox->setChecked(Pep::defaultMnemon0x);
     ui->mnemon0sxCheckBox->setChecked(Pep::defaultMnemon0sx);
-    ui->mnemon0sxfCheckBox->setChecked(Pep::defaultMnemon0sxf);
+    ui->mnemon0sfxCheckBox->setChecked(Pep::defaultMnemon0sfx);
     ui->nonUnaryMnemonic1LineEdit->setText(Pep::defaultNonUnaryMnemonic1);
     ui->mnemon1iCheckBox->setChecked(Pep::defaultMnemon1i);
     ui->mnemon1dCheckBox->setChecked(Pep::defaultMnemon1d);
@@ -157,7 +157,7 @@ void RedefineMnemonicsDialog::restoreDefaults()
     ui->mnemon1sfCheckBox->setChecked(Pep::defaultMnemon1sf);
     ui->mnemon1xCheckBox->setChecked(Pep::defaultMnemon1x);
     ui->mnemon1sxCheckBox->setChecked(Pep::defaultMnemon1sx);
-    ui->mnemon1sxfCheckBox->setChecked(Pep::defaultMnemon1sxf);
+    ui->mnemon1sfxCheckBox->setChecked(Pep::defaultMnemon1sfx);
     ui->nonUnaryMnemonic2LineEdit->setText(Pep::defaultNonUnaryMnemonic2);
     ui->mnemon2iCheckBox->setChecked(Pep::defaultMnemon2i);
     ui->mnemon2dCheckBox->setChecked(Pep::defaultMnemon2d);
@@ -166,7 +166,7 @@ void RedefineMnemonicsDialog::restoreDefaults()
     ui->mnemon2sfCheckBox->setChecked(Pep::defaultMnemon2sf);
     ui->mnemon2xCheckBox->setChecked(Pep::defaultMnemon2x);
     ui->mnemon2sxCheckBox->setChecked(Pep::defaultMnemon2sx);
-    ui->mnemon2sxfCheckBox->setChecked(Pep::defaultMnemon2sxf);
+    ui->mnemon2sfxCheckBox->setChecked(Pep::defaultMnemon2sfx);
     ui->nonUnaryMnemonic3LineEdit->setText(Pep::defaultNonUnaryMnemonic3);
     ui->mnemon3iCheckBox->setChecked(Pep::defaultMnemon3i);
     ui->mnemon3dCheckBox->setChecked(Pep::defaultMnemon3d);
@@ -175,7 +175,7 @@ void RedefineMnemonicsDialog::restoreDefaults()
     ui->mnemon3sfCheckBox->setChecked(Pep::defaultMnemon3sf);
     ui->mnemon3xCheckBox->setChecked(Pep::defaultMnemon3x);
     ui->mnemon3sxCheckBox->setChecked(Pep::defaultMnemon3sx);
-    ui->mnemon3sxfCheckBox->setChecked(Pep::defaultMnemon3sxf);
+    ui->mnemon3sfxCheckBox->setChecked(Pep::defaultMnemon3sfx);
     ui->nonUnaryMnemonic4LineEdit->setText(Pep::defaultNonUnaryMnemonic4);
     ui->mnemon4iCheckBox->setChecked(Pep::defaultMnemon4i);
     ui->mnemon4dCheckBox->setChecked(Pep::defaultMnemon4d);
@@ -184,7 +184,7 @@ void RedefineMnemonicsDialog::restoreDefaults()
     ui->mnemon4sfCheckBox->setChecked(Pep::defaultMnemon4sf);
     ui->mnemon4xCheckBox->setChecked(Pep::defaultMnemon4x);
     ui->mnemon4sxCheckBox->setChecked(Pep::defaultMnemon4sx);
-    ui->mnemon4sxfCheckBox->setChecked(Pep::defaultMnemon4sxf);
+    ui->mnemon4sfxCheckBox->setChecked(Pep::defaultMnemon4sfx);
 
     int addrMode = 0;
     if (Pep::defaultMnemon0i) addrMode |= I;
@@ -194,7 +194,7 @@ void RedefineMnemonicsDialog::restoreDefaults()
     if (Pep::defaultMnemon0sf) addrMode |= SF;
     if (Pep::defaultMnemon0x) addrMode |= X;
     if (Pep::defaultMnemon0sx) addrMode |= SX;
-    if (Pep::defaultMnemon0sxf) addrMode |= SXF;
+    if (Pep::defaultMnemon0sfx) addrMode |= SFX;
     Pep::addrModesMap.insert(NOP, addrMode);
     addrMode = 0;
     if (Pep::defaultMnemon1i) addrMode |= I;
@@ -204,7 +204,7 @@ void RedefineMnemonicsDialog::restoreDefaults()
     if (Pep::defaultMnemon1sf) addrMode |= SF;
     if (Pep::defaultMnemon1x) addrMode |= X;
     if (Pep::defaultMnemon1sx) addrMode |= SX;
-    if (Pep::defaultMnemon1sxf) addrMode |= SXF;
+    if (Pep::defaultMnemon1sfx) addrMode |= SFX;
     Pep::addrModesMap.insert(DECI, addrMode);
     addrMode = 0;
     if (Pep::defaultMnemon2i) addrMode |= I;
@@ -214,7 +214,7 @@ void RedefineMnemonicsDialog::restoreDefaults()
     if (Pep::defaultMnemon2sf) addrMode |= SF;
     if (Pep::defaultMnemon2x) addrMode |= X;
     if (Pep::defaultMnemon2sx) addrMode |= SX;
-    if (Pep::defaultMnemon2sxf) addrMode |= SXF;
+    if (Pep::defaultMnemon2sfx) addrMode |= SFX;
     Pep::addrModesMap.insert(DECO, addrMode);
     addrMode = 0;
     if (Pep::defaultMnemon3i) addrMode |= I;
@@ -224,7 +224,7 @@ void RedefineMnemonicsDialog::restoreDefaults()
     if (Pep::defaultMnemon3sf) addrMode |= SF;
     if (Pep::defaultMnemon3x) addrMode |= X;
     if (Pep::defaultMnemon3sx) addrMode |= SX;
-    if (Pep::defaultMnemon3sxf) addrMode |= SXF;
+    if (Pep::defaultMnemon3sfx) addrMode |= SFX;
     Pep::addrModesMap.insert(HEXO, addrMode);
     addrMode = 0;
     if (Pep::defaultMnemon4i) addrMode |= I;
@@ -234,7 +234,7 @@ void RedefineMnemonicsDialog::restoreDefaults()
     if (Pep::defaultMnemon4sf) addrMode |= SF;
     if (Pep::defaultMnemon4x) addrMode |= X;
     if (Pep::defaultMnemon4sx) addrMode |= SX;
-    if (Pep::defaultMnemon4sxf) addrMode |= SXF;
+    if (Pep::defaultMnemon4sfx) addrMode |= SFX;
     Pep::addrModesMap.insert(STRO, addrMode);
 
     Pep::initEnumMnemonMaps();
@@ -376,7 +376,7 @@ void RedefineMnemonicsDialog::setNonUnaryAllowedModes()
     if (ui->mnemon0sfCheckBox->isChecked()) addrMode |= SF;
     if (ui->mnemon0xCheckBox->isChecked()) addrMode |= X;
     if (ui->mnemon0sxCheckBox->isChecked()) addrMode |= SX;
-    if (ui->mnemon0sxfCheckBox->isChecked()) addrMode |= SXF;
+    if (ui->mnemon0sfxCheckBox->isChecked()) addrMode |= SFX;
     Pep::addrModesMap.insert(NOP, addrMode);
     addrMode = 0;
     if (ui->mnemon1iCheckBox->isChecked()) addrMode |= I;
@@ -386,7 +386,7 @@ void RedefineMnemonicsDialog::setNonUnaryAllowedModes()
     if (ui->mnemon1sfCheckBox->isChecked()) addrMode |= SF;
     if (ui->mnemon1xCheckBox->isChecked()) addrMode |= X;
     if (ui->mnemon1sxCheckBox->isChecked()) addrMode |= SX;
-    if (ui->mnemon1sxfCheckBox->isChecked()) addrMode |= SXF;
+    if (ui->mnemon1sfxCheckBox->isChecked()) addrMode |= SFX;
     Pep::addrModesMap.insert(DECI, addrMode);
     addrMode = 0;
     if (ui->mnemon2iCheckBox->isChecked()) addrMode |= I;
@@ -396,7 +396,7 @@ void RedefineMnemonicsDialog::setNonUnaryAllowedModes()
     if (ui->mnemon2sfCheckBox->isChecked()) addrMode |= SF;
     if (ui->mnemon2xCheckBox->isChecked()) addrMode |= X;
     if (ui->mnemon2sxCheckBox->isChecked()) addrMode |= SX;
-    if (ui->mnemon2sxfCheckBox->isChecked()) addrMode |= SXF;
+    if (ui->mnemon2sfxCheckBox->isChecked()) addrMode |= SFX;
     Pep::addrModesMap.insert(DECO, addrMode);
     addrMode = 0;
     if (ui->mnemon3iCheckBox->isChecked()) addrMode |= I;
@@ -406,7 +406,7 @@ void RedefineMnemonicsDialog::setNonUnaryAllowedModes()
     if (ui->mnemon3sfCheckBox->isChecked()) addrMode |= SF;
     if (ui->mnemon3xCheckBox->isChecked()) addrMode |= X;
     if (ui->mnemon3sxCheckBox->isChecked()) addrMode |= SX;
-    if (ui->mnemon3sxfCheckBox->isChecked()) addrMode |= SXF;
+    if (ui->mnemon3sfxCheckBox->isChecked()) addrMode |= SFX;
     Pep::addrModesMap.insert(HEXO, addrMode);
     addrMode = 0;
     if (ui->mnemon4iCheckBox->isChecked()) addrMode |= I;
@@ -416,6 +416,6 @@ void RedefineMnemonicsDialog::setNonUnaryAllowedModes()
     if (ui->mnemon4sfCheckBox->isChecked()) addrMode |= SF;
     if (ui->mnemon4xCheckBox->isChecked()) addrMode |= X;
     if (ui->mnemon4sxCheckBox->isChecked()) addrMode |= SX;
-    if (ui->mnemon4sxfCheckBox->isChecked()) addrMode |= SXF;
+    if (ui->mnemon4sfxCheckBox->isChecked()) addrMode |= SFX;
     Pep::addrModesMap.insert(STRO, addrMode);
 }

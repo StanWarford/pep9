@@ -264,7 +264,7 @@ bool CpuPane::willAccessCharIn()
     case Enu::SX:
         addrOfByteOprnd = Sim::add(Sim::add(Sim::stackPointer, operandSpecifier), Sim::indexRegister);
         break;
-    case Enu::SXF:
+    case Enu::SFX:
         addrOfByteOprnd = Sim::add(Sim::readWord(Sim::add(Sim::stackPointer, operandSpecifier)), Sim::indexRegister);
         break;
     case Enu::ALL:

@@ -124,7 +124,7 @@ int Sim::addrOfByteOprnd(Enu::EAddrMode addrMode)
         return add(operandSpecifier, indexRegister);
     case Enu::SX:
         return add(add(stackPointer, operandSpecifier), indexRegister);
-    case Enu::SXF:
+    case Enu::SFX:
         return add(readWord(add(stackPointer, operandSpecifier)), indexRegister);
     case Enu::ALL:
         break;
@@ -151,7 +151,7 @@ int Sim::readByteOprnd(Enu::EAddrMode addrMode)
         return readByte(add(operandSpecifier, indexRegister));
     case Enu::SX:
         return readByte(add(add(stackPointer, operandSpecifier), indexRegister));
-    case Enu::SXF:
+    case Enu::SFX:
         return readByte(add(readWord(add(stackPointer, operandSpecifier)), indexRegister));
     case Enu::ALL:
         break;
@@ -178,7 +178,7 @@ int Sim::readWordOprnd(Enu::EAddrMode addrMode)
         return readWord(add(operandSpecifier, indexRegister));
     case Enu::SX:
         return readWord(add(add(stackPointer, operandSpecifier), indexRegister));
-    case Enu::SXF:
+    case Enu::SFX:
         return readWord(add(readWord(add(stackPointer, operandSpecifier)), indexRegister));
     case Enu::ALL:
         break;
@@ -230,7 +230,7 @@ void Sim::writeByteOprnd(Enu::EAddrMode addrMode, int value)
     case Enu::SX:
         writeByte(add(add(stackPointer, operandSpecifier), indexRegister), value);
         break;
-    case Enu::SXF:
+    case Enu::SFX:
         writeByte(add(readWord(add(stackPointer, operandSpecifier)), indexRegister), value);
         break;
     case Enu::ALL:
@@ -264,7 +264,7 @@ void Sim::writeWordOprnd(Enu::EAddrMode addrMode, int value)
     case Enu::SX:
         writeWord(add(add(stackPointer, operandSpecifier), indexRegister), value);
         break;
-    case Enu::SXF:
+    case Enu::SFX:
         writeWord(add(readWord(add(stackPointer, operandSpecifier)), indexRegister), value);
         break;
     case Enu::ALL:

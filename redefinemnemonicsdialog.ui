@@ -312,7 +312,7 @@
        </widget>
       </item>
       <item row="0" column="9">
-       <widget class="QLabel" name="sxfLabel">
+       <widget class="QLabel" name="sfxLabel">
         <property name="font">
          <font>
           <family>Lucida Grande</family>
@@ -325,7 +325,7 @@
          </font>
         </property>
         <property name="text">
-         <string>sxf</string>
+         <string>sfx</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -405,7 +405,7 @@
        </widget>
       </item>
       <item row="1" column="9">
-       <widget class="QCheckBox" name="mnemon0sxfCheckBox">
+       <widget class="QCheckBox" name="mnemon0sfxCheckBox">
         <property name="text">
          <string/>
         </property>
@@ -484,7 +484,7 @@
        </widget>
       </item>
       <item row="2" column="9">
-       <widget class="QCheckBox" name="mnemon1sxfCheckBox">
+       <widget class="QCheckBox" name="mnemon1sfxCheckBox">
         <property name="text">
          <string/>
         </property>
@@ -563,7 +563,7 @@
        </widget>
       </item>
       <item row="3" column="9">
-       <widget class="QCheckBox" name="mnemon2sxfCheckBox">
+       <widget class="QCheckBox" name="mnemon2sfxCheckBox">
         <property name="text">
          <string/>
         </property>
@@ -642,7 +642,7 @@
        </widget>
       </item>
       <item row="4" column="9">
-       <widget class="QCheckBox" name="mnemon3sxfCheckBox">
+       <widget class="QCheckBox" name="mnemon3sfxCheckBox">
         <property name="text">
          <string/>
         </property>
@@ -721,7 +721,7 @@
        </widget>
       </item>
       <item row="5" column="9">
-       <widget class="QCheckBox" name="mnemon4sxfCheckBox">
+       <widget class="QCheckBox" name="mnemon4sfxCheckBox">
         <property name="text">
          <string/>
         </property>
@@ -787,7 +787,7 @@
   <tabstop>mnemon0sfCheckBox</tabstop>
   <tabstop>mnemon0xCheckBox</tabstop>
   <tabstop>mnemon0sxCheckBox</tabstop>
-  <tabstop>mnemon0sxfCheckBox</tabstop>
+  <tabstop>mnemon0sfxCheckBox</tabstop>
   <tabstop>nonUnaryMnemonic1LineEdit</tabstop>
   <tabstop>mnemon1iCheckBox</tabstop>
   <tabstop>mnemon1dCheckBox</tabstop>
@@ -796,7 +796,7 @@
   <tabstop>mnemon2sCheckBox</tabstop>
   <tabstop>mnemon1xCheckBox</tabstop>
   <tabstop>mnemon1sxCheckBox</tabstop>
-  <tabstop>mnemon1sxfCheckBox</tabstop>
+  <tabstop>mnemon1sfxCheckBox</tabstop>
   <tabstop>nonUnaryMnemonic2LineEdit</tabstop>
   <tabstop>mnemon2iCheckBox</tabstop>
   <tabstop>mnemon3sfCheckBox</tabstop>
@@ -805,7 +805,7 @@
   <tabstop>mnemon2sfCheckBox</tabstop>
   <tabstop>mnemon2xCheckBox</tabstop>
   <tabstop>mnemon2sxCheckBox</tabstop>
-  <tabstop>mnemon2sxfCheckBox</tabstop>
+  <tabstop>mnemon2sfxCheckBox</tabstop>
   <tabstop>nonUnaryMnemonic3LineEdit</tabstop>
   <tabstop>mnemon3iCheckBox</tabstop>
   <tabstop>mnemon3dCheckBox</tabstop>
@@ -814,7 +814,7 @@
   <tabstop>mnemon4iCheckBox</tabstop>
   <tabstop>mnemon3xCheckBox</tabstop>
   <tabstop>mnemon3sxCheckBox</tabstop>
-  <tabstop>mnemon3sxfCheckBox</tabstop>
+  <tabstop>mnemon3sfxCheckBox</tabstop>
   <tabstop>nonUnaryMnemonic4LineEdit</tabstop>
   <tabstop>mnemon2dCheckBox</tabstop>
   <tabstop>mnemon4dCheckBox</tabstop>
@@ -823,7 +823,7 @@
   <tabstop>mnemon4sfCheckBox</tabstop>
   <tabstop>mnemon4xCheckBox</tabstop>
   <tabstop>mnemon4sxCheckBox</tabstop>
-  <tabstop>mnemon4sxfCheckBox</tabstop>
+  <tabstop>mnemon4sfxCheckBox</tabstop>
   <tabstop>defaultMnemonicsButton</tabstop>
  </tabstops>
  <resources/>

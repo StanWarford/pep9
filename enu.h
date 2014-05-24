@@ -51,7 +51,7 @@ namespace Enu
         SF = 16,
         X = 32,
         SX = 64,
-        SXF = 128,
+        SFX = 128,
         ALL = 255
     };
 

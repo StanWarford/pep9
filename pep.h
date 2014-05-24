@@ -52,7 +52,7 @@ public:
     static const bool defaultMnemon0sf;
     static const bool defaultMnemon0x;
     static const bool defaultMnemon0sx;
-    static const bool defaultMnemon0sxf;
+    static const bool defaultMnemon0sfx;
     static const QString defaultNonUnaryMnemonic1;
     static const bool defaultMnemon1i;
     static const bool defaultMnemon1d;
@@ -61,7 +61,7 @@ public:
     static const bool defaultMnemon1sf;
     static const bool defaultMnemon1x;
     static const bool defaultMnemon1sx;
-    static const bool defaultMnemon1sxf;
+    static const bool defaultMnemon1sfx;
     static const QString defaultNonUnaryMnemonic2;
     static const bool defaultMnemon2i;
     static const bool defaultMnemon2d;
@@ -70,7 +70,7 @@ public:
     static const bool defaultMnemon2sf;
     static const bool defaultMnemon2x;
     static const bool defaultMnemon2sx;
-    static const bool defaultMnemon2sxf;
+    static const bool defaultMnemon2sfx;
     static const QString defaultNonUnaryMnemonic3;
     static const bool defaultMnemon3i;
     static const bool defaultMnemon3d;
@@ -79,7 +79,7 @@ public:
     static const bool defaultMnemon3sf;
     static const bool defaultMnemon3x;
     static const bool defaultMnemon3sx;
-    static const bool defaultMnemon3sxf;
+    static const bool defaultMnemon3sfx;
     static const QString defaultNonUnaryMnemonic4;
     static const bool defaultMnemon4i;
     static const bool defaultMnemon4d;
@@ -88,7 +88,7 @@ public:
     static const bool defaultMnemon4sf;
     static const bool defaultMnemon4x;
     static const bool defaultMnemon4sx;
-    static const bool defaultMnemon4sxf;
+    static const bool defaultMnemon4sfx;
 
     // Functions for computing instruction specifiers
     static int aaaAddressField(Enu::EAddrMode addressMode);
