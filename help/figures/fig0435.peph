@@ -1,14 +1,12 @@
 ;File: fig0435.peph
-;Computer Systems, Fourth Edition
+;Computer Systems, Fifth Edition
 ;Chapter 4, Figure 4.35
              
-0000  C10011  ;A := first number 
-0003  710013  ;Add the two numbers 
-0006  A10015  ;Convert sum to character 
-0009  F10010  ;Store the character 
-000C  510010  ;Output the character 
-000F  00      ;Stop
-0010  00      ;Character to output 
-0011  0005    ;Decimal 5 
-0013  0003    ;Decimal 3 
-0015  0030    ;Mask for ASCII char 
+0000  C1000D  ;A <- first number
+0003  61000F  ;Add the two numbers
+0006  910011  ;Convert sum to character
+0009  F1FC16  ;Output the character
+000C  00      ;Stop
+000D  0005    ;Decimal 5
+000F  0003    ;Decimal 3
+0011  0030    ;Mask for ASCII char

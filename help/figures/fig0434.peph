@@ -1,9 +1,12 @@
 ;File: fig0434.peph
-;Computer Systems, Fourth Edition
+;Computer Systems, Fifth Edition
 ;Chapter 4, Figure 4.34
              
-0000  49000D  ;Input first character 
-0003  49000E  ;Input second character 
-0006  51000E  ;Output second character 
-0009  51000D  ;Output first character 
-000C  00      ;Stop
+0000  D1FC15  ;Input first character
+0003  F10013  ;Store first character
+0006  D1FC15  ;Input second character
+0009  F1FC16  ;Output second character
+000C  D10013  ;Load first character
+000F  F1FC16  ;Output first character
+0012  00      ;Stop             
+0013  00      ;Storage for first character

@@ -1,9 +1,10 @@
 ;File: fig0432.peph
-;Computer Systems, Fourth Edition
+;Computer Systems, Fifth Edition
 ;Chapter 4, Figure 4.32
              
-0000  510007  ;Character output
-0003  510008  ;Character output
-0006  00      ;Stop
-0007  48      ;ASCII H character
-0008  69      ;ASCII i character
+0000  D1000D  ;Load byte accumulator 'H'
+0003  F1FC16  ;Store byte accumulator output port
+0006  D1000E  ;Load byte accumulator 'i'
+0009  F1FC16  ;Store byte accumulator output port
+000C  00      ;Stop
+000D  4869    ;ASCII "Hi" characters
