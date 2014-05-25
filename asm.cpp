@@ -24,13 +24,13 @@
 
 // Regular expressions for lexical analysis
 QRegExp Asm::rxAddrMode("^((,)(\\s*)(i|d|x|n|s(?![fx])|sx(?![f])|sf|sfx){1}){1}");
-QRegExp Asm::rxCharConst("^((\')(?![\'])(([^\'|\\\\]){1}|((\\\\)([\'|b|f|n|r|t|v|\"|\\\\]))|((\\\\)(([x|X])([0-9|A-F|a-f]{2}))))(\'))");
+QRegExp Asm::rxCharConst("^((\')(?![\'])(([^\'\\\\]){1}|((\\\\)([\'|b|f|n|r|t|v|\"|\\\\]))|((\\\\)(([x|X])([0-9|A-F|a-f]{2}))))(\'))");
 QRegExp Asm::rxComment("^((;{1})(.)*)");
 QRegExp Asm::rxDecConst("^((([+|-]{0,1})([0-9]+))|^(([1-9])([0-9]*)))");
 QRegExp Asm::rxDotCommand("^((.)(([A-Z|a-z]{1})(\\w)*))");
 QRegExp Asm::rxHexConst("^((0(?![x|X]))|((0)([x|X])([0-9|A-F|a-f])+)|((0)([0-9]+)))");
 QRegExp Asm::rxIdentifier("^((([A-Z|a-z|_]{1})(\\w*))(:){0,1})");
-QRegExp Asm::rxStringConst("^((\")((([^\"|\\\\])|((\\\\)([\'|b|f|n|r|t|v|\"|\\\\]))|((\\\\)(([x|X])([0-9|A-F|a-f]{2}))))*)(\"))");
+QRegExp Asm::rxStringConst("^((\")((([^\"\\\\])|((\\\\)([\'|b|f|n|r|t|v|\"|\\\\]))|((\\\\)(([x|X])([0-9|A-F|a-f]{2}))))*)(\"))");
 
 // Regular expressions for trace tag analysis
 QRegExp Asm::rxFormatTag("(#((1c)|(1d)|(1h)|(2d)|(2h))((\\d)+a)?(\\s|$))");
