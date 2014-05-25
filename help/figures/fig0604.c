@@ -1,17 +1,16 @@
-// File: fig0604.cpp
-// Computer Systems, Fourth Edition
+// File: fig0604.c
+// Computer Systems, Fifth Edition
 // Figure 6.4
 
-#include <iostream>
-using namespace std;
+#include <stdio.h>
 
 int main () {
    const int bonus = 5;
    int exam1;
    int exam2;
    int score;
-   cin >> exam1 >> exam2;
+   scanf("%d %d", &exam1, &exam2);
    score = (exam1 + exam2) / 2 + bonus;
-   cout << "score = " << score << endl;
+   printf("score = %d\n", score);
    return 0;
 }

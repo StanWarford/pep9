@@ -1,17 +1,16 @@
-// File: fig0610.cpp
-// Computer Systems, Fourth Edition
+// File: fig0610.c
+// Computer Systems, Fifth Edition
 // Figure 6.10
 
-#include <iostream>
-using namespace std;
+#include <stdio.h>
 
 char letter;
 
 int main () {
-   cin >> letter;
+   scanf("%c", &letter);
    while (letter != '*') {
-      cout << letter;
-      cin >> letter;
+      printf("[%c]\n", letter);
+      scanf("%c", &letter);
    }
    return 0;
 }

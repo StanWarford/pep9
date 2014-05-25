@@ -1,5 +1,5 @@
 ;File: fig0608.pep
-;Computer Systems, Fourth edition
+;Computer Systems, Fifth edition
 ;Figure 6.8
 ;
          BR      main        
@@ -7,15 +7,15 @@ limit:   .EQUATE 100         ;constant
 num:     .EQUATE 0           ;local variable #2d
 ;
 main:    SUBSP   2,i         ;allocate #num
-         DECI    num,s       ;cin >> num
-if:      LDA     num,s       ;if (num >= limit)
-         CPA     limit,i     
+         DECI    num,s       ;scanf("%d", &num)
+if:      LDWA    num,s       ;if (num >= limit)
+         CPWA    limit,i     
          BRLT    else        
-         STRO    msg1,d      ;   cout << "high"
+         STRO    msg1,d      ;printf("high\n")
          BR      endIf       
-else:    STRO    msg2,d      ;   cout << "low"
+else:    STRO    msg2,d      ;printf("low\n")
 endIf:   ADDSP   2,i         ;deallocate #num
          STOP                
-msg1:    .ASCII  "high\x00"  
-msg2:    .ASCII  "low\x00"   
-         .END
+msg1:    .ASCII  "high\n\x00"
+msg2:    .ASCII  "low\n\x00" 
+         .END                  

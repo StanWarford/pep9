@@ -1,16 +1,15 @@
-// File: fig0606.cpp
-// Computer Systems, Fourth Edition
+// File: fig0606.c
+// Computer Systems, Fifth Edition
 // Figure 6.6
 
-#include <iostream>
-using namespace std;
+#include <stdio.h>
 
 int main () {
    int number;
-   cin >> number;
+   scanf("%d", &number);
    if (number < 0) {
       number = -number;
    }
-   cout << number;
+   printf("%d", number);
    return 0;
 }

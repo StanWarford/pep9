@@ -525,7 +525,7 @@ QString HelpDialog::getCode(Enu::EPane &destPane, Enu::EPane &inputDest, QString
         input = "75";
     }
     else if (row == eFIG610) {
-        input = "happy*";
+        input = "happy* face";
     }
     else if (row == eFIG616) {
         input = "3 -15 25";

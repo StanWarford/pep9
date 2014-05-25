@@ -6,13 +6,13 @@
 number:  .EQUATE 0           ;local variable #2d
 ;
 main:    SUBSP   2,i         ;allocate #number
-         DECI    number,s    ;cin >> number
-if:      LDA     number,s    ;if (number < 0)
+         DECI    number,s    ;scanf("%d", &number)
+if:      LDWA    number,s    ;if (number < 0)
          BRGE    endIf       
-         LDA     number,s    ;   number = -number
+         LDWA    number,s    ;number = -number
          NEGA                
-         STA     number,s    
-endIf:   DECO    number,s    ;cout << number
+         STWA    number,s    
+endIf:   DECO    number,s    ;printf("%d", number)
          ADDSP   2,i         ;deallocate #number
          STOP                
          .END                  

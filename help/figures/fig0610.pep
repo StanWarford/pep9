@@ -1,17 +1,25 @@
 ;File: fig0610.pep
-;Computer Systems, Fourth edition
+;Computer Systems, Fifth edition
 ;Figure 6.10
 ;
          BR      main        
 letter:  .BLOCK  1           ;global variable #1c
 ;
-main:    CHARI   letter,d    ;cin >> letter
-         LDA     0x0000,i    
-while:   LDBYTEA letter,d    ;while (letter != '*')
-         CPA     '*',i       
+main:    LDBA    charIn,d    ;scanf("%c", &letter)
+         STBA    letter,d    
+while:   LDBA    letter,d    ;while (letter != '*')
+         CPBA    '*',i       
          BREQ    endWh       
-         CHARO   letter,d    ;   cout << letter
-         CHARI   letter,d    ;   cin >> letter
+         LDBA    '[',i       ;printf("[%c]\n", letter)
+         STBA    charOut,d   
+         LDBA    letter,d    
+         STBA    charOut,d   
+         LDBA    ']',i       
+         STBA    charOut,d   
+         LDBA    '\n',i      
+         STBA    charOut,d   
+         LDBA    charIn,d    ;scanf("%c", &letter)
+         STBA    letter,d    
          BR      while       
 endWh:   STOP                
          .END                  

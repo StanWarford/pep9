@@ -1,19 +1,18 @@
-// File: fig0608.cpp
-// Computer Systems, Fourth Edition
+// File: fig0608.c
+// Computer Systems, Fifth Edition
 // Figure 6.8
 
-#include <iostream>
-using namespace std;
+#include <stdio.h>
 
 int main () {
    const int limit = 100;
    int num;
-   cin >> num;
+   scanf("%d", &num);
    if (num >= limit) {
-      cout << "high";
+      printf("high\n");
    }
    else {
-      cout << "low";
+      printf("low\n");
    }
    return 0;
 }
