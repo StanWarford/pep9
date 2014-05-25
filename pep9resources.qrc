@@ -1,5 +1,5 @@
 <RCC>
-    <qresource prefix="/" >
+    <qresource prefix="/">
         <file>images/paste.png</file>
         <file>images/cut.png</file>
         <file>images/undo.png</file>
@@ -18,6 +18,6 @@
         <file>images/help.png</file>
         <file>images/stop.png</file>
         <file>sounds/itsatrap.wav</file>
-        <file>images/Pep8-icon.png</file>
+        <file>images/Pep9-icon.png</file>
     </qresource>
 </RCC>
