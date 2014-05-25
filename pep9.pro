@@ -11,7 +11,7 @@ QT += widgets
 QT += printsupport
 
 # Mac icon/plist
-ICON = images/icon.icns
+ICON = images/pep9.icns
 QMAKE_INFO_PLIST = app.plist
 
 # Windows RC file
