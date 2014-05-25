@@ -14,7 +14,7 @@
 				<string>text/plain</string>
 			</array>
 			<key>CFBundleTypeName</key>
-			<string>Pep/8 Source File</string>
+			<string>Pep/9 Source File</string>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>LSTypeIsPackage</key>
@@ -32,7 +32,7 @@
 				<string>text/plain</string>
 			</array>
 			<key>CFBundleTypeName</key>
-			<string>Pep/8 Object File</string>
+			<string>Pep/9 Object File</string>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>LSTypeIsPackage</key>
@@ -52,7 +52,7 @@
 				<string>text/plain</string>
 			</array>
 			<key>CFBundleTypeName</key>
-			<string>Pep/8 Text</string>
+			<string>Pep/9 Text</string>
 			<key>CFBundleTypeOSTypes</key>
 			<array>
 				<string>****</string>
@@ -68,17 +68,17 @@
 	<key>CFBundleExecutable</key>
 	<string>Pep9</string>
 	<key>CFBundleGetInfoString</key>
-	<string>8.1.2</string>
+	<string>9.0.0</string>
 	<key>CFBundleIconFile</key>
-	<string>icon.icns</string>
+	<string>pep9.icns</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.pepcsdept.pep9</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleSignature</key>
-	<string>PEP8</string>
+	<string>PEP9</string>
 	<key>CFBundleVersion</key>
-	<string>8.1.2</string>
+	<string>9.0.0</string>
 	<key>UTExportedTypeDeclarations</key>
 	<array>
 		<dict>
@@ -88,7 +88,7 @@
 				<string>public.text</string>
 			</array>
 			<key>UTTypeDescription</key>
-			<string>Pep8 Document</string>
+			<string>Pep9 Document</string>
 			<key>UTTypeIdentifier</key>
 			<string>org.pepcsdept.pep</string>
 			<key>UTTypeTagSpecification</key>
