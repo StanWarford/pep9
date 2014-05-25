@@ -1,0 +1,7 @@
+*.user
+Makefile
+Makefile.Debug
+*.Debug
+*.Release
+pep9.pro.user
+pep9.pro.user
