@@ -1,44 +1,45 @@
 ;File: fig0629.pep
-;Computer Systems, Fourth edition
+;Computer Systems, Fifth edition
 ;Figure 6.29
 ;
          BR      main        
 ;
-;******* void rect (int& p, int w, int h)
+;******* void rect(int *p, int w, int h)
 p:       .EQUATE 6           ;formal parameter #2h
 w:       .EQUATE 4           ;formal parameter #2d
 h:       .EQUATE 2           ;formal parameter #2d
-rect:    LDA     w,s         ;p = (w + h) * 2
+rect:    LDWA    w,s         ;p = (w + h) * 2
          ADDA    h,s         
          ASLA                
-         STA     p,sf        
-endIf:   RET0                ;pop retAddr
+         STWA    p,sf        
+endIf:   RET                 
 ;
-;******* main ()
+;******* main()
 perim:   .EQUATE 4           ;local variable #2d
 width:   .EQUATE 2           ;local variable #2d
 height:  .EQUATE 0           ;local variable #2d
-main:    SUBSP   6,i         ;allocate #perim #width #height
-         STRO    msg1,d      ;cout << "Enter width: "
-         DECI    width,s     ;cin >> width
-         STRO    msg2,d      ;cout << "Enter height: "
-         DECI    height,s    ;cin >> height
-         MOVSPA              ;push the address of perim
+main:    SUBSP   6,i         ;push #perim #width #height
+         STRO    msg1,d      ;printf("Enter width: ")
+         DECI    width,s     ;scanf("%d", &width)
+         STRO    msg2,d      ;printf("Enter height: ")
+         DECI    height,s    ;scanf("%d", &height)
+         MOVSPA              ;the address of perim
          ADDA    perim,i     
-         STA     -2,s        
-         LDA     width,s     ;push the value of width
-         STA     -4,s        
-         LDA     height,s    ;push the value of height
-         STA     -6,s        
+         STWA    -2,s        
+         LDWA    width,s     ;the value of width
+         STWA    -4,s        
+         LDWA    height,s    ;the value of height
+         STWA    -6,s        
          SUBSP   6,i         ;push #p #w #h
-         CALL    rect        ;rect (perim, width, height)
+         CALL    rect        ;rect(&perim, width, height)
 ra1:     ADDSP   6,i         ;pop #h #w #p
-         STRO    msg3,d      ;cout << "perim = "
-         DECO    perim,s     ;     << perim
-         CHARO   '\n',i      ;     << endl
-         ADDSP   6,i         ;deallocate #height #width #perim
+         STRO    msg3,d      ;printf("Perimeter = %d\n", perim);
+         DECO    perim,s     
+         LDBA    '\n',i      
+         STBA    charOut,d   
+         ADDSP   6,i         ;pop #height #width #perim
          STOP                
 msg1:    .ASCII  "Enter width: \x00"
 msg2:    .ASCII  "Enter height: \x00"
-msg3:    .ASCII  "perim = \x00"
+msg3:    .ASCII  "Perimeter = \x00"
          .END                  

@@ -1,5 +1,5 @@
 ;File: fig0506.pep
-;Computer Systems, Fifth Edition
+;Computer Systems, Fifth edition
 ;Figure 5.6
 ;
          LDBA    0xFC15,d    ;Input first character

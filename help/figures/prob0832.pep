@@ -1,5 +1,5 @@
 ;File: prob0832.pep
-;Computer Systems, Fourth edition
+;Computer Systems, Fifth edition
 ;Problem 8.32
 ;
          LDA     5,i         ;Push 5

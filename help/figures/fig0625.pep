@@ -1,61 +1,64 @@
 ;File: fig0625.pep
-;Computer Systems, Fourth edition
+;Computer Systems, Fifth edition
 ;Figure 6.25
 ;
          BR      main        
 ;
-;******* int binomCoeff (int n, int k)
+;******* int binomCoeff(int n, int k)
 retVal:  .EQUATE 10          ;returned value #2d
 n:       .EQUATE 8           ;formal parameter #2d
 k:       .EQUATE 6           ;formal parameter #2d
 y1:      .EQUATE 2           ;local variable #2d
 y2:      .EQUATE 0           ;local variable #2d
-binCoeff:SUBSP   4,i         ;allocate #y1 #y2
-if:      LDA     k,s         ;if ((k == 0)
+binCoeff:SUBSP   4,i         ;push #y1 #y2
+if:      LDWA    k,s         ;if ((k == 0)
          BREQ    then        
-         LDA     n,s         ;|| (n == k))
-         CPA     k,s         
+         LDWA    n,s         ;|| (n == k))
+         CPWA    k,s         
          BRNE    else        
-then:    LDA     1,i         ;return 1
-         STA     retVal,s    
-         RET4                ;deallocate #y2 #y1, pop retAddr
-else:    LDA     n,s         ;push n - 1
+then:    LDWA    1,i         ;return 1
+         STWA    retVal,s    
+         ADDSP   4,i         ;pop #y2 #y1
+         RET                 
+else:    LDWA    n,s         ;n - 1
          SUBA    1,i         
-         STA     -4,s        
-         LDA     k,s         ;push k
-         STA     -6,s        
+         STWA    -4,s        
+         LDWA    k,s         ;k
+         STWA    -6,s        
          SUBSP   6,i         ;push #retVal #n #k
-         CALL    binCoeff    
+         CALL    binCoeff    ;binCoeff(n - 1, k)
 ra2:     ADDSP   6,i         ;pop #k #n #retVal
-         LDA     -2,s        ;y1 = binomCoeff (n - 1, k)
-         STA     y1,s        
-         LDA     n,s         ;push n - 1
+         LDWA    -2,s        ;y1 = binomCoeff(n - 1, k)
+         STWA    y1,s        
+         LDWA    n,s         ;n - 1
          SUBA    1,i         
-         STA     -4,s        
-         LDA     k,s         ;push k - 1
+         STWA    -4,s        
+         LDWA    k,s         ;k - 1
          SUBA    1,i         
-         STA     -6,s        
+         STWA    -6,s        
          SUBSP   6,i         ;push #retVal #n #k
-         CALL    binCoeff    
+         CALL    binCoeff    ;binomCoeff(n - 1, k - 1)
 ra3:     ADDSP   6,i         ;pop #k #n #retVal
-         LDA     -2,s        ;y2 = binomCoeff (n - 1, k - 1)
-         STA     y2,s        
-         LDA     y1,s        ;return y1 + y2
+         LDWA    -2,s        ;y2 = binomCoeff(n - 1, k - 1)
+         STWA    y2,s        
+         LDWA    y1,s        ;return y1 + y2
          ADDA    y2,s        
-         STA     retVal,s    
-endIf:   RET4                ;deallocate #y2 #y1, pop retAddr
+         STWA    retVal,s    
+endIf:   ADDSP   4,i         ;pop #y2 #y1
+         RET                 
 ;
-;******* main ()
-main:    STRO    msg,d       ;cout << "binCoeff (3, 1) = "
-         LDA     3,i         ;push 3
-         STA     -4,s        
-         LDA     1,i         ;push 1
-         STA     -6,s        
+;******* main()
+main:    STRO    msg,d       ;printf("binCoeff(3, 1) = %d\n", binCoeff(3, 1))
+         LDWA    3,i         ;3
+         STWA    -4,s        
+         LDWA    1,i         ;1
+         STWA    -6,s        
          SUBSP   6,i         ;push #retVal #n #k
-         CALL    binCoeff    
+         CALL    binCoeff    ;binCoeff(3, 1)
 ra1:     ADDSP   6,i         ;pop #k #n #retVal
-         DECO    -2,s        ;<< binCoeff (3, 1)
-         CHARO   '\n',i      ;cout << endl
+         DECO    -2,s        
+         LDBA    '\n',i      
+         STBA    charOut,d   
          STOP                
-msg:     .ASCII  "binCoeff (3, 1) = \x00"
+msg:     .ASCII  "binCoeff(3, 1) = \x00"
          .END                  

@@ -1,5 +1,5 @@
 ;File: fig0510.pep
-;Computer Systems, Fifth Edition
+;Computer Systems, Fifth edition
 ;Figure 5.10
 ;
          LDBA    'H',i       ;Output 'H'

@@ -1,5 +1,5 @@
 ;File: fig0601.pep
-;Computer Systems, Fifth Edition
+;Computer Systems, Fifth edition
 ;Figure 6.1
 ;
          LDBA    'B',i       ;push B

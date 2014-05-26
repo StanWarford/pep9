@@ -1,5 +1,5 @@
 ;File: fig0514b.pep
-;Computer Systems, Fifth Edition
+;Computer Systems, Fifth edition
 ;Figure 5.14
 ;
          LDBA    0x0013,d    

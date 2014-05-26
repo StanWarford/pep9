@@ -1,26 +1,25 @@
-// File: fig0623.cpp
-// Computer Systems, Fourth Edition
+// File: fig0623.c
+// Computer Systems, Fifth edition
 // Figure 6.23
 
-#include <iostream>
-using namespace std;
+#include <stdio.h>
 
-void printBar (int n) {
+void printBar(int n) {
    int k;
    for (k = 1; k <= n; k++) {
-      cout << '*';
+      printf("*");
    }
-   cout << endl;
+   printf("\n");
 }
 
-int main () {
+int main() {
    int numPts;
    int value;
    int j;
-   cin >> numPts;
+   scanf("%d", &numPts);
    for (j = 1; j <= numPts; j++) {
-      cin >> value;
-      printBar (value);
+      scanf("%d", &value);
+      printBar(value);
    }
    return 0;
 }

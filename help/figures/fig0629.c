@@ -1,22 +1,21 @@
 // File: fig0629.cpp
-// Computer Systems, Fourth Edition
+// Computer Systems, Fifth edition
 // Figure 6.29
 
-#include <iostream>
-using namespace std;
+#include <stdio.h>
 
-void rect (int& p, int w, int h) {
-   p = (w + h) * 2;
+void rect(int *p, int w, int h) {
+   *p = (w + h) * 2;
 }
 
-int main () {
+int main() {
    int perim, width, height;
-   cout << "Enter width: ";
-   cin >> width;
-   cout << "Enter height: ";
-   cin >> height;
-   rect (perim, width, height);
+   printf("Enter width: ");
+   scanf("%d", &width);
+   printf("Enter height: ");
+   scanf("%d", &height);
+   rect(&perim, width, height);
    // ra1
-   cout << "perim = " << perim << endl;
+   printf("Perimeter = %d\n", perim);
    return 0;
 }

@@ -1,5 +1,5 @@
 ;File: prob0829.pep
-;Computer Systems, Fourth edition
+;Computer Systems, Fifth edition
 ;Problem 8.29
 ;
          BR      main       

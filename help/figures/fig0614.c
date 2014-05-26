@@ -1,15 +1,13 @@
-// File: fig0614.cpp
-// Computer Systems, Fourth Edition
+// File: fig0614.c
+// Computer Systems, Fifth edition
 // Figure 6.14
 
-#include <iostream>
-using namespace std;
+#include <stdio.h>
 
-int main () {
+int main() {
    int j;
    for (j = 0; j < 3; j++) {
-      cout << "j = " << j << endl; 
+      printf("j = %d\n", j);
    }
-   cout << "j = " << j << endl;
    return 0;
 }

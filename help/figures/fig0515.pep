@@ -4,7 +4,6 @@
 ;
          BR      main        ;Branch around data
 num:     .BLOCK  2           ;Storage for one integer #2d
-msg:     .ASCII  " + 1 = \x00"
 ;
 main:    DECI    num,d       ;Get the number
          DECO    num,d       ;and output it
@@ -13,5 +12,6 @@ main:    DECI    num,d       ;Get the number
          ADDA    1,i         ;Add one to it
          STWA    num,d       ;Store the sum
          DECO    num,d       ;Output the sum
-         STOP
-         .END
+         STOP                
+msg:     .ASCII  " + 1 = \x00"
+         .END                  

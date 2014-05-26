@@ -1,14 +1,13 @@
-// File: fig0612.cpp
-// Computer Systems, Fourth Edition
+// File: fig0612.c
+// Computer Systems, Fifth edition
 // Figure 6.12
 
-#include <iostream>
-using namespace std;
+#include <stdio.h>
 
 int cop;
 int driver;
 
-int main () {
+int main() {
    cop = 0;
    driver = 40;
    do {
@@ -16,6 +15,6 @@ int main () {
       driver += 20;
    }
    while (cop < driver);
-   cout << cop;
+   printf("%d", cop);
    return 0;
 }

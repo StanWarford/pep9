@@ -1,5 +1,5 @@
 ;File: fig0432.peph
-;Computer Systems, Fifth Edition
+;Computer Systems, Fifth edition
 ;Chapter 4, Figure 4.32
              
 0000  D1000D  ;Load byte accumulator 'H'

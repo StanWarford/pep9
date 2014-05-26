@@ -1,5 +1,5 @@
 ;File: fig0507.pep
-;Computer Systems, Fifth Edition
+;Computer Systems, Fifth edition
 ;Figure 5.7
 ;
          LDWA    0x000D,d    ;A <- first number

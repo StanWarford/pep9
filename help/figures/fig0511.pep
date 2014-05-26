@@ -1,5 +1,5 @@
 ;File: fig0511.pep
-;Computer Systems, Fifth Edition
+;Computer Systems, Fifth edition
 ;Figure 5.11
 ;
          BR      0x0005      ;Branch around data

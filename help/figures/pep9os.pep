@@ -25,7 +25,7 @@ charOut: .BLOCK  1           ;Memory-mapped output port
 ;file must be lowercase zz, which is used as the terminating
 ;sentinel by the loader.
 ;
-loader:  LDWX    0,i         ;X := 0
+loader:  LDWX    0,i         ;X <- 0
 ;
 getChar: LDBA    charIn,d    ;Get first hex character
          CPBA    'z',i       ;If end of file sentinel 'z'
@@ -45,7 +45,7 @@ shift:   ASLA                ;Shift left by four bits to send
 combine: ANDA    0x000F,i    ;Mask out the left nybble
          ORA     wordTemp,d  ;Combine both hex digits in binary
          STBA    0,x         ;Store in Mem[X]
-         ADDX    1,i         ;X := X + 1
+         ADDX    1,i         ;X <- X + 1
          LDBA    charIn,d    ;Skip blank or <LF>
          BR      getChar     ;
 ;
@@ -54,7 +54,7 @@ stopLoad:STOP                ;
 ;******* Trap handler
 oldIR:   .EQUATE 9           ;Stack address of IR on trap
 ;
-trap:    LDBX    oldIR,s     ;X := trapped IR
+trap:    LDBX    oldIR,s     ;X <- trapped IR
          CPBX    0x0028,i    ;If X >= first nonunary trap opcode
          BRGE    nonUnary    ;  trap opcode is nonunary
 ;
@@ -82,8 +82,8 @@ nonUnJT: .ADDRSS opcode28    ;Address of NOP subroutine
 ;
 ;******* Assert valid trap addressing mode
 oldIR4:  .EQUATE 13          ;oldIR + 4 with two return addresses
-assertAd:LDBA    1,i         ;A := 1
-         LDBX    oldIR4,s    ;X := OldIR
+assertAd:LDBA    1,i         ;A <- 1
+         LDBX    oldIR4,s    ;X <- OldIR
          ANDX    0x0007,i    ;Keep only the addressing mode bits
          BREQ    testAd      ;000 = immediate addressing
 loop:    ASLA                ;Shift the 1 bit left
@@ -105,7 +105,7 @@ trapMsg: .ASCII  "ERROR: Invalid trap addressing mode.\x00"
 oldX4:   .EQUATE 7           ;oldX + 4 with two return addresses
 oldPC4:  .EQUATE 9           ;oldPC + 4 with two return addresses
 oldSP4:  .EQUATE 11          ;oldSP + 4 with two return addresses
-setAddr: LDBX    oldIR4,s    ;X := old instruction register
+setAddr: LDBX    oldIR4,s    ;X <- old instruction register
          ANDX    0x0007,i    ;Keep only the addressing mode bits
          ASLX                ;An address is two bytes
          BR      addrJT,x
@@ -166,7 +166,7 @@ addrSX:  LDWX    oldPC4,s    ;Stack indexed addressing
          STWX    opAddr,d
          RET
 ;
-addrSFX: LDWX    oldPC4,s    ;Stack indexed deferred addressing
+addrSFX: LDWX    oldPC4,s    ;Stack deferred indexed addressing
          SUBX    2,i         ;Oprnd = Mem[Mem[SP + OprndSpec] + X]
          LDWX    0,x
          ADDX    oldSP4,s
@@ -217,9 +217,9 @@ opcode30:LDWA    0x00FE,i    ;Assert d, n, s, sf, x, sx, sfx
          CALL    assertAd
          CALL    setAddr     ;Set address of trap operand
          SUBSP   13,i        ;Allocate storage for locals
-         LDWA    FALSE,i     ;isOvfl := FALSE
+         LDWA    FALSE,i     ;isOvfl <- FALSE
          STWA    isOvfl,s
-         LDWA    init,i      ;state := init
+         LDWA    init,i      ;state <- init
          STWA    state,s
 ;
 do:      LDBA    charIn,d    ;Get asciiCh
@@ -237,17 +237,17 @@ stateJT: .ADDRSS sInit
 ;
 sInit:   CPBA    '+',i       ;if (asciiCh == '+')
          BRNE    ifMinus
-         LDWX    FALSE,i     ;isNeg := FALSE
+         LDWX    FALSE,i     ;isNeg <- FALSE
          STWX    isNeg,s
-         LDWX    sign,i      ;state := sign
+         LDWX    sign,i      ;state <- sign
          STWX    state,s
          BR      do
 ;
 ifMinus: CPBA    '-',i       ;else if (asciiCh == '-')
          BRNE    ifDigit
-         LDWX    TRUE,i      ;isNeg := TRUE
+         LDWX    TRUE,i      ;isNeg <- TRUE
          STWX    isNeg,s
-         LDWX    sign,i      ;state := sign
+         LDWX    sign,i      ;state <- sign
          STWX    state,s
          BR      do
 ;
@@ -255,11 +255,11 @@ ifDigit: CPBA    '0',i       ;else if (asciiCh is a digit)
          BRLT    ifWhite
          CPBA    '9',i
          BRGT    ifWhite
-         LDWX    FALSE,i     ;isNeg := FALSE
+         LDWX    FALSE,i     ;isNeg <- FALSE
          STWX    isNeg,s
-         LDWX    valAscii,s  ;total := Value(asciiCh)
+         LDWX    valAscii,s  ;total <- Value(asciiCh)
          STWX    total,s
-         LDWX    digit,i     ;state := digit
+         LDWX    digit,i     ;state <- digit
          STWX    state,s
          BR      do
 ;
@@ -273,9 +273,9 @@ sSign:   CPBA    '0',i       ;if asciiCh (is not a digit)
          BRLT    deciErr
          CPBA    '9',i
          BRGT    deciErr     ;exit with DECI error
-         LDWX    valAscii,s  ;else total := Value(asciiCh)
+         LDWX    valAscii,s  ;else total <- Value(asciiCh)
          STWX    total,s
-         LDWX    digit,i     ;state := digit
+         LDWX    digit,i     ;state <- digit
          STWX    state,s
          BR      do
 ;
@@ -283,29 +283,29 @@ sDigit:  CPBA    '0',i       ;if (asciiCh is not a digit)
          BRLT    deciNorm
          CPBA    '9',i
          BRGT    deciNorm    ;exit normaly
-         LDWX    TRUE,i      ;else X := TRUE for later assignments
+         LDWX    TRUE,i      ;else X <- TRUE for later assignments
          LDWA    total,s     ;Multiply total by 10 as follows:
          ASLA                ;First, times 2
          BRV     ovfl1       ;If overflow then
          BR      L1
-ovfl1:   STWX    isOvfl,s    ;isOvfl := TRUE
+ovfl1:   STWX    isOvfl,s    ;isOvfl <- TRUE
 L1:      STWA    temp,s      ;Save 2 * total in temp
          ASLA                ;Now, 4 * total
          BRV     ovfl2       ;If overflow then
          BR      L2
-ovfl2:   STWX    isOvfl,s    ;isOvfl := TRUE
+ovfl2:   STWX    isOvfl,s    ;isOvfl <- TRUE
 L2:      ASLA                ;Now, 8 * total
          BRV     ovfl3       ;If overflow then
          BR      L3
-ovfl3:   STWX    isOvfl,s    ;isOvfl := TRUE
+ovfl3:   STWX    isOvfl,s    ;isOvfl <- TRUE
 L3:      ADDA    temp,s      ;Finally, 8 * total + 2 * total
          BRV     ovfl4       ;If overflow then
          BR      L4
-ovfl4:   STWX    isOvfl,s    ;isOvfl := TRUE
-L4:      ADDA    valAscii,s  ;A := 10 * total + valAscii
+ovfl4:   STWX    isOvfl,s    ;isOvfl <- TRUE
+L4:      ADDA    valAscii,s  ;A <- 10 * total + valAscii
          BRV     ovfl5       ;If overflow then
          BR      L5
-ovfl5:   STWX    isOvfl,s    ;isOvfl := TRUE
+ovfl5:   STWX    isOvfl,s    ;isOvfl <- TRUE
 L5:      STWA    total,s     ;Update total
          BR      do
 ;
@@ -318,7 +318,7 @@ deciNorm:LDWA    isNeg,s     ;If isNeg then
          STWA    total,s
          BR      setNZ
 L6:      LDWA    FALSE,i     ;else -32768 is a special case
-         STWA    isOvfl,s    ;isOvfl := FALSE
+         STWA    isOvfl,s    ;isOvfl <- FALSE
 ;
 setNZ:   LDBX    oldNZVC,s   ;Set NZ according to total result:
          ANDX    0x0001,i    ;First initialize NZV to 000
@@ -363,25 +363,25 @@ opcode38:LDWA    0x00FF,i    ;Assert i, d, n, s, sf, x, sx, sfx
          CALL    assertAd
          CALL    setAddr     ;Set address of trap operand
          SUBSP   6,i         ;Allocate storage for locals
-         LDWA    opAddr,n    ;A := oprnd
+         LDWA    opAddr,n    ;A <- oprnd
          CPWA    0,i         ;If oprnd is negative then
          BRGE    printMag
          LDBX    '-',i       ;Print leading '-'
          STBX    charOut,d
          NEGA                ;Make magnitude positive
-printMag:STWA    remain,s    ;remain := abs(oprnd)
-         LDWA    FALSE,i     ;Initialize outYet := FALSE
+printMag:STWA    remain,s    ;remain <- abs(oprnd)
+         LDWA    FALSE,i     ;Initialize outYet <- FALSE
          STWA    outYet,s
-         LDWA    10000,i     ;place := 10,000
+         LDWA    10000,i     ;place <- 10,000
          STWA    place,s
          CALL    divide      ;Write 10,000's place
-         LDWA    1000,i      ;place := 1,000
+         LDWA    1000,i      ;place <- 1,000
          STWA    place,s
          CALL    divide      ;Write 1000's place
-         LDWA    100,i       ;place := 100
+         LDWA    100,i       ;place <- 100
          STWA    place,s
          CALL    divide      ;Write 100's place
-         LDWA    10,i        ;place := 10
+         LDWA    10,i        ;place <- 10
          STWA    place,s
          CALL    divide      ;Write 10's place
          LDWA    remain,s    ;Always write 1's place
@@ -398,17 +398,17 @@ remain2: .EQUATE 2           ;Stack addresses while executing a
 outYet2: .EQUATE 4           ;  subroutine are greater by two because
 place2:  .EQUATE 6           ;  the retAddr is on the stack
 ;
-divide:  LDWA    remain2,s   ;A := remainder
-         LDWX    0,i         ;X := 0
+divide:  LDWA    remain2,s   ;A <- remainder
+         LDWX    0,i         ;X <- 0
 divLoop: SUBA    place2,s    ;Division by repeated subtraction
          BRLT    writeNum    ;If remainder is negative then done
-         ADDX    1,i         ;X := X + 1
+         ADDX    1,i         ;X <- X + 1
          STWA    remain2,s   ;Store the new remainder
          BR      divLoop
 ;
 writeNum:CPWX    0,i         ;If X != 0 then
          BREQ    checkOut
-         LDWA    TRUE,i      ;outYet := TRUE
+         LDWA    TRUE,i      ;outYet <- TRUE
          STWA    outYet2,s
          BR      printDgt    ;and branch to print this digit
 checkOut:LDWA    outYet2,s   ;else if a previous char was output
@@ -427,7 +427,7 @@ opcode40:LDWA    0x00FF,i    ;Assert i, d, n, s, sf, x, sx, sfx
          STWA    addrMask,d
          CALL    assertAd
          CALL    setAddr     ;Set address of trap operand
-         LDWA    opAddr,n    ;A := oprnd
+         LDWA    opAddr,n    ;A <- oprnd
          STWA    wordTemp,d  ;Save oprnd in wordTemp
          LDBA    wordTemp,d  ;Put high-order byte in low-order A
          ASRA                ;Shift right four bits
@@ -482,12 +482,12 @@ opcode48:LDWA    0x0016,i    ;Assert d, n, sf
 ;
 msgAddr: .EQUATE 2           ;Address of message to print
 ;
-prntMsg: LDWX    0,i         ;X := 0
-         LDWA    0,i         ;A := 0
+prntMsg: LDWX    0,i         ;X <- 0
+         LDWA    0,i         ;A <- 0
 prntMore:LDBA    msgAddr,sfx ;Test next char
          BREQ    exitPrnt    ;If null then exit
          STBA    charOut,d   ;else print
-         ADDX    1,i         ;X := X + 1 for next character
+         ADDX    1,i         ;X <- X + 1 for next character
          BR      prntMore
 ;
 exitPrnt:RET

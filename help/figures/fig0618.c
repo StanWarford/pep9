@@ -1,20 +1,19 @@
-// File: fig0618.cpp
-// Computer Systems, Fourth Edition
+// File: fig0618.c
+// Computer Systems, Fifth edition
 // Figure 6.18
 
-#include <iostream>
-using namespace std;
+#include <stdio.h>
 
-void printTri () {
-   cout << "*" << endl;
-   cout << "**" << endl;
-   cout << "***" << endl;
-   cout << "****" << endl;
+void printTri() {
+   printf("*\n");
+   printf("**\n");
+   printf("***\n");
+   printf("****\n");
 }
 
-int main () {
-   printTri ();
-   printTri ();
-   printTri ();
+int main() {
+   printTri();
+   printTri();
+   printTri();
    return 0;
 }

@@ -1,5 +1,5 @@
 // File: fig0641.c
-// Computer Systems, Fifth Edition
+// Computer Systems, Fifth edition
 // Figure 6.41
 
 #include <stdio.h>

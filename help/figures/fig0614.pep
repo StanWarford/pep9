@@ -1,26 +1,24 @@
 ;File: fig0614.pep
-;Computer Systems, Fourth edition
+;Computer Systems, Fifth edition
 ;Figure 6.14
 ;
          BR      main        
 j:       .EQUATE 0           ;local variable #2d
 ;
-main:    SUBSP   2,i         ;allocate #j
-         LDA     0,i         ;for (j = 0
-         STA     j,s         
-for:     CPA     3,i         ;   j < 3
+main:    SUBSP   2,i         ;push #j
+         LDWA    0,i         ;for (j = 0
+         STWA    j,s         
+for:     CPWA    3,i         ;j < 3
          BRGE    endFor      
-         STRO    msg,d       ;   cout << "j = "
-         DECO    j,s         ;      << j
-         CHARO   '\n',i      ;      << endl
-         LDA     j,s         ;   j++)
+         STRO    msg,d       ;printf("j = %d\n", j)
+         DECO    j,s         
+         LDBA    '\n',i      
+         STBA    charOut,d   
+         LDWA    j,s         ;j++)
          ADDA    1,i         
-         STA     j,s         
+         STWA    j,s         
          BR      for         
-endFor:  STRO    msg,d       ;cout << "j = "
-         DECO    j,s         ;   << j
-         CHARO   '\n',i      ;   << endl
-         ADDSP   2,i         ;deallocate #j
+endFor:  ADDSP   2,i         ;pop #j
          STOP                
 msg:     .ASCII  "j = \x00"  
          .END                  

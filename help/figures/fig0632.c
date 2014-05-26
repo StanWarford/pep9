@@ -1,14 +1,14 @@
 // File: fig0632.cpp
-// Computer Systems, Fourth Edition
+// Computer Systems, Fifth edition
 // Figure 6.32
 
-#include <iostream>
-using namespace std;
+#include <stdio.h>
+#include <stdbool.h>
 
 const int LOWER = 21;
 const int UPPER = 65;
 
-bool inRange (int a) {
+bool inRange(int a) {
    if ((LOWER <= a) && (a <= UPPER)) {
       return true;
    }
@@ -17,14 +17,14 @@ bool inRange (int a) {
    }
 }
 
-int main () {
+int main() {
    int age;
-   cin >> age;
-   if (inRange (age)) {
-      cout << "Qualified\n";
+   scanf("%d", &age);
+   if (inRange(age)) {
+      printf("Qualified\n");
    }
    else {
-      cout << "Unqualified\n";
+      printf("Unqualified\n");
    }
    return 0;
 }
