@@ -76,7 +76,7 @@ const bool Pep::defaultMnemon4d = true;
 const bool Pep::defaultMnemon4n = true;
 const bool Pep::defaultMnemon4s = false;
 const bool Pep::defaultMnemon4sf = true;
-const bool Pep::defaultMnemon4x = false;
+const bool Pep::defaultMnemon4x = true;
 const bool Pep::defaultMnemon4sx = false;
 const bool Pep::defaultMnemon4sfx = false;
 
