@@ -12,7 +12,7 @@ rect:    LDWA    w,s         ;p = (w + h) * 2
          ADDA    h,s         
          ASLA                
          STWA    p,sf        
-endIf:   RET                 
+         RET
 ;
 ;******* main()
 perim:   .EQUATE 4           ;local variable #2d
