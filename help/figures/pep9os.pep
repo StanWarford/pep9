@@ -119,7 +119,7 @@ addrJT:  .ADDRSS addrI       ;Immediate addressing
          .ADDRSS addrSFX     ;Stack indexed deferred addressing
 ;
 addrI:   LDWX    oldPC4,s    ;Immediate addressing
-         SUBX    2,i         ;Oprnd = OprndsSpec
+         SUBX    2,i         ;Oprnd = OprndSpec
          STWX    opAddr,d
          RET
 ;
