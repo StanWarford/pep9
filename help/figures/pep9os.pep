@@ -1,4 +1,4 @@
-;******* Pep/9 Operating System, 2014/05/03
+;******* Pep/9 Operating System, 2015/05/17
 ;
 TRUE:    .EQUATE 1
 FALSE:   .EQUATE 0
@@ -464,7 +464,7 @@ writeHex:STBA    charOut,d   ;Output nybble as hex
 ;The STRO instruction.
 ;Outputs a null-terminated string from memory.
 ;
-opcode48:LDWA    0x0016,i    ;Assert d, n, sf
+opcode48:LDWA    0x0036,i    ;Assert d, n, sf, x
          STWA    addrMask,d
          CALL    assertAd
          CALL    setAddr     ;Set address of trap operand
