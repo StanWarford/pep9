@@ -83,6 +83,17 @@ public:
     void appendSourceLine(QStringList &assemblerListingList, QStringList &listingTraceList, QList<bool> &hasCheckBox);
 };
 
+class DotAlign: public Code
+{
+    friend class Asm;
+private:
+    Argument *argument;
+    Argument *numBytesGenerated;
+public:
+    void appendObjectCode(QList<int> &objectCode);
+    void appendSourceLine(QStringList &assemblerListingList, QStringList &listingTraceList, QList<bool> &hasCheckBox);
+};
+
 class DotAscii: public Code
 {
     friend class Asm;

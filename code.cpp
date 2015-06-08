@@ -59,6 +59,15 @@ void DotAddrss::appendObjectCode(QList<int> &objectCode)
     }
 }
 
+void DotAlign::appendObjectCode(QList<int> &objectCode)
+{
+    if ((Pep::burnCount == 0) || ((Pep::burnCount == 1) && (memAddress >= Pep::romStartAddress))) {
+        for (int i = 0; i < numBytesGenerated->getArgumentValue(); i++) {
+            objectCode.append(0);
+        }
+    }
+}
+
 void DotAscii::appendObjectCode(QList<int> &objectCode)
 {
     if ((Pep::burnCount == 0) || ((Pep::burnCount == 1) && (memAddress >= Pep::romStartAddress))) {
@@ -210,6 +219,50 @@ void DotAddrss::appendSourceLine(QStringList &assemblerListingList, QStringList 
     assemblerListingList.append(lineStr);
     listingTraceList.append(lineStr);
     hasCheckBox.append(false);
+}
+
+void DotAlign::appendSourceLine(QStringList &assemblerListingList, QStringList &listingTraceList, QList<bool> &hasCheckBox)
+{
+    int arg = argument->getArgumentValue();
+    int numBytes = numBytesGenerated->getArgumentValue();
+    QString memStr = numBytes == 0 ? "      " : QString("%1").arg(memAddress, 4, 16, QLatin1Char('0')).toUpper();
+    QString codeStr = "";
+    while ((numBytes > 0) && (codeStr.length() < 6)) {
+        codeStr.append("00");
+        numBytes--;
+    }
+    if ((Pep::burnCount == 1) && (memAddress < Pep::romStartAddress)) {
+        codeStr = "      ";
+    }
+    QString symbolStr = symbolDef;
+    if (symbolStr.length() > 0) {
+        symbolStr.append(":");
+    }
+    QString dotStr = ".ALIGN";
+    QString oprndStr = argument->getArgumentString();
+    QString lineStr = QString("%1%2%3%4%5%6")
+                      .arg(memStr, -6, QLatin1Char(' '))
+                      .arg(codeStr, -7, QLatin1Char(' '))
+                      .arg(symbolStr, -9, QLatin1Char(' '))
+                      .arg(dotStr, -8, QLatin1Char(' '))
+                      .arg(oprndStr, -12)
+                      .arg(comment);
+    assemblerListingList.append(lineStr);
+    listingTraceList.append(lineStr);
+    hasCheckBox.append(false);
+    if ((Pep::burnCount == 0) || ((Pep::burnCount == 1) && (memAddress >= Pep::romStartAddress))) {
+        while (numBytes > 0) {
+            codeStr = "";
+            while ((numBytes > 0) && (codeStr.length() < 6)) {
+                codeStr.append("00");
+                numBytes--;
+            }
+            lineStr = QString("      %1").arg(codeStr, -7, QLatin1Char(' '));
+            assemblerListingList.append(lineStr);
+            listingTraceList.append(lineStr);
+            hasCheckBox.append(false);
+        }
+    }
 }
 
 void DotAscii::appendSourceLine(QStringList &assemblerListingList, QStringList &listingTraceList, QList<bool> &hasCheckBox)

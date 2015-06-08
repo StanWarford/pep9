@@ -50,7 +50,7 @@ PepHighlighter::PepHighlighter(QTextDocument *parent)
     QStringList dotPatterns;
     dotPatterns << "[\\.]\\bEQUATE\\b" << "[\\.]\\bASCII\\b" << "[\\.]\\bBLOCK\\b"
             << "[\\.]\\bBURN\\b" << "[\\.]\\bBYTE\\b" << "[\\.]\\bEND\\b"
-            << "[\\.]\\bEQUATE\\b" << "[\\.]\\bWORD\\b" << "[\\.]\\bADDRSS\\b";
+            << "[\\.]\\bALIGN\\b" << "[\\.]\\bWORD\\b" << "[\\.]\\bADDRSS\\b";
     foreach (const QString &pattern, dotPatterns) {
         rule.pattern = QRegExp(pattern);
         rule.format = dotFormat;

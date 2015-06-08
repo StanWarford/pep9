@@ -112,7 +112,7 @@ QString Pep::intToAddrMode(EAddrMode addressMode) {
     return ""; // Should not occur
 }
 
-QString Pep::commaSpaceToAddrMode(EAddrMode addressMode) {
+QString Pep::addrModeToCommaSpace(EAddrMode addressMode) {
     if (addressMode == NONE) return "";
     if (addressMode == I) return ", i";
     if (addressMode == D) return ", d";

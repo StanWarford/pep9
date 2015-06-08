@@ -295,6 +295,7 @@ bool Asm::processSourceLine(QString sourceLine, int lineNum, Code *&code, QStrin
     UnaryInstruction *unaryInstruction = NULL;
     NonUnaryInstruction *nonUnaryInstruction = NULL;
     DotAddrss *dotAddrss = NULL;
+    DotAlign *dotAlign = NULL;
     DotAscii *dotAscii = NULL;
     DotBlock *dotBlock = NULL;
     DotBurn *dotBurn = NULL;
@@ -350,6 +351,13 @@ bool Asm::processSourceLine(QString sourceLine, int lineNum, Code *&code, QStrin
                     code = dotAddrss;
                     code->memAddress = Pep::byteCount;
                     state = Asm::PS_DOT_ADDRSS;
+                }
+                else if (tokenString == "ALIGN") {
+                    dotAlign = new DotAlign;
+                    dotAlign->symbolDef = "";
+                    code = dotAlign;
+                    code->memAddress = Pep::byteCount;
+                    state = Asm::PS_DOT_ALIGN;
                 }
                 else if (tokenString == "ASCII") {
                     dotAscii = new DotAscii;
@@ -645,6 +653,28 @@ bool Asm::processSourceLine(QString sourceLine, int lineNum, Code *&code, QStrin
             }
             else {
                 errorString = ";ERROR: .ADDRSS requires a symbol argument.";
+                return false;
+            }
+            break;
+
+        case Asm::PS_DOT_ALIGN:
+            if (token == Asm::LT_DEC_CONSTANT) {
+                bool ok;
+                int value = tokenString.toInt(&ok, 10);
+                if (value == 2 || value == 4 || value == 8) {
+                    int numBytes = (value - Pep::byteCount % value) % value;
+                    dotAlign->argument = new UnsignedDecArgument(value);
+                    dotAlign->numBytesGenerated = new UnsignedDecArgument(numBytes);
+                    Pep::byteCount += numBytes;
+                    state = Asm::PS_CLOSE;
+                }
+                else {
+                    errorString = ";ERROR: Decimal constant is out of range (2, 4, 8).";
+                    return false;
+                }
+            }
+            else {
+                errorString = ";ERROR: .ALIGN requires a decimal constant 2, 4, or 8.";
                 return false;
             }
             break;

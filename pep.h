@@ -94,7 +94,7 @@ public:
     static int aaaAddressField(Enu::EAddrMode addressMode);
     static int aAddressField(Enu::EAddrMode addressMode);
     static QString intToAddrMode(Enu::EAddrMode addressMode);
-    static QString commaSpaceToAddrMode(Enu::EAddrMode addressMode);
+    static QString addrModeToCommaSpace(Enu::EAddrMode addressMode);
 
     // Function to read text from a resource file
     static QString resToString(QString fileName);

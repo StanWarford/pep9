@@ -115,7 +115,7 @@ void CpuPane::updateCpu() {
 
     ui->instrSpecBinLabel->setText(QString("%1").arg(Sim::instructionSpecifier, 8, 2, QLatin1Char('0')).toUpper());
     ui->instrSpecMnemonLabel->setText(" " + Pep::enumToMnemonMap.value(Pep::decodeMnemonic[Sim::instructionSpecifier])
-                                           + Pep::commaSpaceToAddrMode(addrMode));
+                                           + Pep::addrModeToCommaSpace(addrMode));
 
     if (Pep::decodeAddrMode.value(Sim::instructionSpecifier) == Enu::NONE) {
         ui->oprndSpecHexLabel->setText("");
