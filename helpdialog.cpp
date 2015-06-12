@@ -202,13 +202,13 @@ void HelpDialog::onCurrentItemChanged(QTreeWidgetItem*, QTreeWidgetItem*) {
             }
             else if (row == eFIG514a) {
                 ui->leftTextEdit->setText(Pep::resToString(":/help/figures/fig0514a.pep"));
-                ui->figureLabel->setText("<b>Figure 5.14a</b><code>  </code> Two different source programs that produce the same object program and, therefore, the same output.");
+                ui->figureLabel->setText("<b>Figure 5.14(a)</b><code>  </code> Two different source programs that produce the same object program and, therefore, the same output.");
                 ui->rightCppTextEdit->hide();
                 ui->rightPepTextEdit->hide();
             }
             else if (row == eFIG514b) {
                 ui->leftTextEdit->setText(Pep::resToString(":/help/figures/fig0514b.pep"));
-                ui->figureLabel->setText("<b>Figure 5.14b</b><code>  </code> Two different source programs that produce the same object program and, therefore, the same output.");
+                ui->figureLabel->setText("<b>Figure 5.14(b)</b><code>  </code> Two different source programs that produce the same object program and, therefore, the same output.");
                 ui->rightCppTextEdit->hide();
                 ui->rightPepTextEdit->hide();
             }
@@ -525,7 +525,7 @@ QString HelpDialog::getCode(Enu::EPane &destPane, Enu::EPane &inputDest, QString
         input = "75";
     }
     else if (row == eFIG610) {
-        input = "happy* face";
+        input = "Hello, world!";
     }
     else if (row == eFIG616) {
         input = "3 -15 25";

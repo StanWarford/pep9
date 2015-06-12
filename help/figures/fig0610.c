@@ -9,7 +9,12 @@ char letter;
 int main () {
    scanf("%c", &letter);
    while (letter != '*') {
-      printf("[%c]\n", letter);
+      if (letter == ' ') {
+         printf("\n");
+      }
+      else {
+         printf("%c", letter);
+      }
       scanf("%c", &letter);
    }
    return 0;

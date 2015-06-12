@@ -10,15 +10,13 @@ main:    LDBA    charIn,d    ;scanf("%c", &letter)
 while:   LDBA    letter,d    ;while (letter != '*')
          CPBA    '*',i       
          BREQ    endWh       
-         LDBA    '[',i       ;printf("[%c]\n", letter)
+if:      CPBA    ' ',i       ;if (letter == ' ')
+         BRNE    else        
+         LDBA    '\n',i      ;printf("\n")
          STBA    charOut,d   
-         LDBA    letter,d    
-         STBA    charOut,d   
-         LDBA    ']',i       
-         STBA    charOut,d   
-         LDBA    '\n',i      
-         STBA    charOut,d   
-         LDBA    charIn,d    ;scanf("%c", &letter)
+         BR      endIf       
+else:    STBA    charOut,d   ;printf("%c", letter)
+endIf:   LDBA    charIn,d    ;scanf("%c", &letter)
          STBA    letter,d    
          BR      while       
 endWh:   STOP                
