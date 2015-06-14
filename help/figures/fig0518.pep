@@ -4,5 +4,5 @@
 ;
          STRO    msg,d       
          STOP                
-msg:     .ASCII  "Love\n\x00"
+msg:     .ASCII  "Hello, world!\n\x00"
          .END                  
