@@ -1,4 +1,4 @@
-// File: fig0629.cpp
+// File: fig0629.c
 // Computer Systems, Fifth edition
 // Figure 6.29
 
