@@ -15,7 +15,7 @@ struct person bill;
 int main() {
    scanf("%c%c%d %c", &bill.first, &bill.last, &bill.age, &bill.gender);
    printf("Initials: %c%c\n", bill.first, bill.last);
-   printf("Age:  %d\n", bill.age);
+   printf("Age: %d\n", bill.age);
    printf("Gender: ");
    if (bill.gender == 'm') {
       printf("male\n");
