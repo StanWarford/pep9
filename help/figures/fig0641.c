@@ -7,7 +7,7 @@
 
 int *a, *b, *c;
 
-int main () {
+int main() {
    a = (int *) malloc(sizeof(int));
    *a = 5;
    b = (int *) malloc(sizeof(int));

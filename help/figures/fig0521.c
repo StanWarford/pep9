@@ -7,7 +7,7 @@
 char ch;
 int j;
 
-int main () {
+int main() {
    scanf("%c %d", &ch, &j);
    j += 5;
    ch++;

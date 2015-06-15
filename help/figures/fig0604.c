@@ -4,7 +4,7 @@
 
 #include <stdio.h>
 
-int main () {
+int main() {
    const int bonus = 5;
    int exam1;
    int exam2;

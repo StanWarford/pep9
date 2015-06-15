@@ -4,7 +4,7 @@
 
 #include <stdio.h>
 
-int main () {
+int main() {
    int number;
    scanf("%d", &number);
    if (number < 0) {

@@ -4,7 +4,7 @@
 
 #include <stdio.h>
 
-int main () {
+int main() {
    const int limit = 100;
    int num;
    scanf("%d", &num);

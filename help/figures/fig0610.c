@@ -6,7 +6,7 @@
 
 char letter;
 
-int main () {
+int main() {
    scanf("%c", &letter);
    while (letter != '*') {
       if (letter == ' ') {
