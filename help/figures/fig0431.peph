@@ -1,6 +1,6 @@
-;File: fig0432.peph
+;File: fig0431.peph
 ;Computer Systems, Fifth edition
-;Chapter 4, Figure 4.32
+;Chapter 4, Figure 4.31
              
 0000  D1000D  ;Load byte accumulator 'H'
 0003  F1FC16  ;Store byte accumulator output port

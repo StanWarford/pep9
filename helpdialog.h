@@ -76,7 +76,7 @@ private:
         eASSEMBLY = 1,
         eMACHINE = 0,
 
-        eFIG432 = 0,
+        eFIG431 = 0,
         eFIG434 = 1,
         eFIG435 = 2,
         eFIG436 = 3,
