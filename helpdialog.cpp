@@ -131,10 +131,10 @@ void HelpDialog::onCurrentItemChanged(QTreeWidgetItem*, QTreeWidgetItem*) {
                 ui->copyToSourceButton->setText("Copy to Object");
 
             }
-            else if (row == eFIG434) {
-                ui->leftTextEdit->setText(Pep::resToString(":/help/figures/fig0434.peph"));
-                ui->rightPepTextEdit->setText(Pep::resToString(":/help/figures/fig0434.pepb"));
-                ui->figureLabel->setText("<b>Figure 4.34</b><code>  </code> A machine language program to input two characters and output them in reverse order.");
+            else if (row == eFIG433) {
+                ui->leftTextEdit->setText(Pep::resToString(":/help/figures/fig0433.peph"));
+                ui->rightPepTextEdit->setText(Pep::resToString(":/help/figures/fig0433.pepb"));
+                ui->figureLabel->setText("<b>Figure 4.33</b><code>  </code> A machine language program to input two characters and output them in reverse order.");
                 ui->rightPepTextEdit->show();
                 ui->rightCppTextEdit->hide();
                 ui->copyToSourceButton->setText("Copy to Object");
@@ -164,8 +164,8 @@ void HelpDialog::onCurrentItemChanged(QTreeWidgetItem*, QTreeWidgetItem*) {
             }
             else if (row == eFIG506) {
                 ui->leftTextEdit->setText(Pep::resToString(":/help/figures/fig0506.pep"));
-                ui->rightPepTextEdit->setText(Pep::resToString(":/help/figures/fig0434.peph"));
-                ui->figureLabel->setText("<b>Figure 5.6</b><code>  </code> An assembly language program to input two characters and output them in reverse order. It is the assembly language version of Figure 4.34.");
+                ui->rightPepTextEdit->setText(Pep::resToString(":/help/figures/fig0433.peph"));
+                ui->figureLabel->setText("<b>Figure 5.6</b><code>  </code> An assembly language program to input two characters and output them in reverse order. It is the assembly language version of Figure 4.33.");
                 ui->rightCppTextEdit->hide();
                 ui->rightPepTextEdit->show();
             }
@@ -487,10 +487,10 @@ QString HelpDialog::getCode(Enu::EPane &destPane, Enu::EPane &inputDest, QString
         destPane = Enu::EObject;
         return Pep::resToString(":/help/figures/fig0431.pepo");
     }
-    else if (row == eFIG434) {
+    else if (row == eFIG433) {
         destPane = Enu::EObject;
         input = "up";
-        return Pep::resToString(":/help/figures/fig0434.pepo");
+        return Pep::resToString(":/help/figures/fig0433.pepo");
     }
     else if (row == eFIG435) {
         destPane = Enu::EObject;

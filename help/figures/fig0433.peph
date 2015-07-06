@@ -1,6 +1,6 @@
-;File: fig0434.peph
+;File: fig0433.peph
 ;Computer Systems, Fifth edition
-;Chapter 4, Figure 4.34
+;Chapter 4, Figure 4.33
              
 0000  D1FC15  ;Input first character
 0003  F10013  ;Store first character

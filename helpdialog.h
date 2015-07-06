@@ -77,7 +77,7 @@ private:
         eMACHINE = 0,
 
         eFIG431 = 0,
-        eFIG434 = 1,
+        eFIG433 = 1,
         eFIG435 = 2,
         eFIG436 = 3,
         eFIG503  = 4,
