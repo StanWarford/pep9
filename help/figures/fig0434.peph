@@ -1,6 +1,6 @@
-;File: fig0435.peph
+;File: fig0434.peph
 ;Computer Systems, Fifth edition
-;Chapter 4, Figure 4.35
+;Chapter 4, Figure 4.34
              
 0000  C1000D  ;A <- first number
 0003  61000F  ;Add the two numbers

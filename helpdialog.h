@@ -78,7 +78,7 @@ private:
 
         eFIG431 = 0,
         eFIG433 = 1,
-        eFIG435 = 2,
+        eFIG434 = 2,
         eFIG436 = 3,
         eFIG503  = 4,
         eFIG506  = 5,
