@@ -147,10 +147,10 @@ void HelpDialog::onCurrentItemChanged(QTreeWidgetItem*, QTreeWidgetItem*) {
                 ui->rightCppTextEdit->hide();
                 ui->copyToSourceButton->setText("Copy to Object");
             }
-            else if (row == eFIG436) {
-                ui->leftTextEdit->setText(Pep::resToString(":/help/figures/fig0436.peph"));
-                ui->rightPepTextEdit->setText(Pep::resToString(":/help/figures/fig0436.pepb"));
-                ui->figureLabel->setText("<b>Figure 4.36</b><code>  </code> A machine language program that modifies itself. The add accumulator instruction changes to a subtract instruction.");
+            else if (row == eFIG435) {
+                ui->leftTextEdit->setText(Pep::resToString(":/help/figures/fig0435.peph"));
+                ui->rightPepTextEdit->setText(Pep::resToString(":/help/figures/fig0435.pepb"));
+                ui->figureLabel->setText("<b>Figure 4.35</b><code>  </code> A machine language program that modifies itself. The add accumulator instruction changes to a subtract instruction.");
                 ui->rightPepTextEdit->show();
                 ui->rightCppTextEdit->hide();
                 ui->copyToSourceButton->setText("Copy to Object");
@@ -496,9 +496,9 @@ QString HelpDialog::getCode(Enu::EPane &destPane, Enu::EPane &inputDest, QString
         destPane = Enu::EObject;
         return Pep::resToString(":/help/figures/fig0434.pepo");
     }
-    else if (row == eFIG436) {
+    else if (row == eFIG435) {
         destPane = Enu::EObject;
-        return Pep::resToString(":/help/figures/fig0436.pepo");
+        return Pep::resToString(":/help/figures/fig0435.pepo");
     }
     else if (row == eFIG506) {
         input = "up";

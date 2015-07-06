@@ -1,6 +1,6 @@
-;File: fig0436.peph
+;File: fig0435.peph
 ;Computer Systems, Fifth edition
-;Chapter 4, Figure 4.36
+;Chapter 4, Figure 4.35
 
 0000  D10019  ;Load byte accumulator
 0003  F10009  ;Store byte accumulator
