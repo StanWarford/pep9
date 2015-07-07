@@ -3,8 +3,8 @@
 ;Chapter 4, Figure 4.31
              
 0000  D1000D  ;Load byte accumulator 'H'
-0003  F1FC16  ;Store byte accumulator output port
+0003  F1FC16  ;Store byte accumulator output device
 0006  D1000E  ;Load byte accumulator 'i'
-0009  F1FC16  ;Store byte accumulator output port
+0009  F1FC16  ;Store byte accumulator output device
 000C  00      ;Stop
 000D  4869    ;ASCII "Hi" characters
