@@ -122,10 +122,10 @@ void HelpDialog::onCurrentItemChanged(QTreeWidgetItem*, QTreeWidgetItem*) {
             ui->helpSplitter->widget(0)->hide();
             ui->helpSplitter->widget(1)->show();
             ui->copyToSourceButton->setText("Copy to Source");
-            if (row == eFIG431) {
-                ui->leftTextEdit->setText(Pep::resToString(":/help/figures/fig0431.peph"));
-                ui->rightPepTextEdit->setText(Pep::resToString(":/help/figures/fig0431.pepb"));
-                ui->figureLabel->setText("<b>Figure 4.31</b><code>  </code> A machine language program to output the characters <code>Hi</code>.");
+            if (row == eFIG433) {
+                ui->leftTextEdit->setText(Pep::resToString(":/help/figures/fig0433.peph"));
+                ui->rightPepTextEdit->setText(Pep::resToString(":/help/figures/fig0433.pepb"));
+                ui->figureLabel->setText("<b>Figure 4.33</b><code>  </code> A machine language program to output the characters <code>Hi</code>.");
                 ui->rightPepTextEdit->show();
                 ui->rightCppTextEdit->hide();
                 ui->copyToSourceButton->setText("Copy to Object");
@@ -483,9 +483,9 @@ QString HelpDialog::getCode(Enu::EPane &destPane, Enu::EPane &inputDest, QString
         destPane = Enu::ESource;
         return ui->leftTextEdit->toPlainText();
     }
-    if (row == eFIG431) {
+    if (row == eFIG433) {
         destPane = Enu::EObject;
-        return Pep::resToString(":/help/figures/fig0431.pepo");
+        return Pep::resToString(":/help/figures/fig0433.pepo");
     }
     else if (row == eFIG435) {
         destPane = Enu::EObject;
