@@ -157,8 +157,8 @@ void HelpDialog::onCurrentItemChanged(QTreeWidgetItem*, QTreeWidgetItem*) {
             }
             else if (row == eFIG503) {
                 ui->leftTextEdit->setText(Pep::resToString(":/help/figures/fig0503.pep"));
-                ui->rightPepTextEdit->setText(Pep::resToString(":/help/figures/fig0432.peph"));
-                ui->figureLabel->setText("<b>Figure 5.3</b><code>  </code> An assembly-language program to output <code>Hi</code>. It is the assembly-language version of Figure 4.32.");
+                ui->rightPepTextEdit->setText(Pep::resToString(":/help/figures/fig0433.peph"));
+                ui->figureLabel->setText("<b>Figure 5.3</b><code>  </code> An assembly-language program to output <code>Hi</code>. It is the assembly-language version of Figure 4.33.");
                 ui->rightCppTextEdit->hide();
                 ui->rightPepTextEdit->show();
             }
