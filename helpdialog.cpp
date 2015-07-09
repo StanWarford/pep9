@@ -139,18 +139,18 @@ void HelpDialog::onCurrentItemChanged(QTreeWidgetItem*, QTreeWidgetItem*) {
                 ui->rightCppTextEdit->hide();
                 ui->copyToSourceButton->setText("Copy to Object");
             }
-            else if (row == eFIG434) {
-                ui->leftTextEdit->setText(Pep::resToString(":/help/figures/fig0434.peph"));
-                ui->rightPepTextEdit->setText(Pep::resToString(":/help/figures/fig0434.pepb"));
-                ui->figureLabel->setText("<b>Figure 4.34</b><code>  </code> A machine language program to add 5 and 3 and output the single-character result.");
+            else if (row == eFIG436) {
+                ui->leftTextEdit->setText(Pep::resToString(":/help/figures/fig0436.peph"));
+                ui->rightPepTextEdit->setText(Pep::resToString(":/help/figures/fig0436.pepb"));
+                ui->figureLabel->setText("<b>Figure 4.36</b><code>  </code> A machine language program to add 5 and 3 and output the single-character result.");
                 ui->rightPepTextEdit->show();
                 ui->rightCppTextEdit->hide();
                 ui->copyToSourceButton->setText("Copy to Object");
             }
-            else if (row == eFIG435) {
-                ui->leftTextEdit->setText(Pep::resToString(":/help/figures/fig0435.peph"));
-                ui->rightPepTextEdit->setText(Pep::resToString(":/help/figures/fig0435.pepb"));
-                ui->figureLabel->setText("<b>Figure 4.35</b><code>  </code> A machine language program that modifies itself. The add accumulator instruction changes to a subtract instruction.");
+            else if (row == eFIG437) {
+                ui->leftTextEdit->setText(Pep::resToString(":/help/figures/fig0437.peph"));
+                ui->rightPepTextEdit->setText(Pep::resToString(":/help/figures/fig0437.pepb"));
+                ui->figureLabel->setText("<b>Figure 4.37</b><code>  </code> A machine language program that modifies itself. The add accumulator instruction changes to a subtract instruction.");
                 ui->rightPepTextEdit->show();
                 ui->rightCppTextEdit->hide();
                 ui->copyToSourceButton->setText("Copy to Object");
@@ -171,8 +171,8 @@ void HelpDialog::onCurrentItemChanged(QTreeWidgetItem*, QTreeWidgetItem*) {
             }
             else if (row == eFIG507) {
                 ui->leftTextEdit->setText(Pep::resToString(":/help/figures/fig0507.pep"));
-                ui->rightPepTextEdit->setText(Pep::resToString(":/help/figures/fig0434.peph"));
-                ui->figureLabel->setText("<b>Figure 5.7</b><code>  </code> An assembly language program to add 3 and 5 and output the single-character result. It is the assembly language version of Figure 4.34.");
+                ui->rightPepTextEdit->setText(Pep::resToString(":/help/figures/fig0436.peph"));
+                ui->figureLabel->setText("<b>Figure 5.7</b><code>  </code> An assembly language program to add 3 and 5 and output the single-character result. It is the assembly language version of Figure 4.36.");
                 ui->rightCppTextEdit->hide();
                 ui->rightPepTextEdit->show();
             }
@@ -492,13 +492,13 @@ QString HelpDialog::getCode(Enu::EPane &destPane, Enu::EPane &inputDest, QString
         input = "up";
         return Pep::resToString(":/help/figures/fig0433.pepo");
     }
-    else if (row == eFIG434) {
+    else if (row == eFIG436) {
         destPane = Enu::EObject;
-        return Pep::resToString(":/help/figures/fig0434.pepo");
+        return Pep::resToString(":/help/figures/fig0436.pepo");
     }
-    else if (row == eFIG435) {
+    else if (row == eFIG437) {
         destPane = Enu::EObject;
-        return Pep::resToString(":/help/figures/fig0435.pepo");
+        return Pep::resToString(":/help/figures/fig0437.pepo");
     }
     else if (row == eFIG506) {
         input = "up";
