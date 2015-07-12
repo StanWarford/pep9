@@ -3,7 +3,7 @@
 ;Figure 5.26
 ;
          BR      main        
-bonus:   .EQUATE 5           ;constant
+bonus:   .EQUATE 10          ;constant
 exam1:   .BLOCK  2           ;global variable #2d
 exam2:   .BLOCK  2           ;global variable #2d
 score:   .BLOCK  2           ;global variable #2d
