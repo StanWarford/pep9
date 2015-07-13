@@ -1,6 +1,6 @@
-;File: fig0526.pep
+;File: fig0527.pep
 ;Computer Systems, Fifth edition
-;Figure 5.26
+;Figure 5.27
 ;
          BR      main        
 bonus:   .EQUATE 10          ;constant

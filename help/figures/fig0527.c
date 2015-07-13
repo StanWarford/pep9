@@ -1,6 +1,6 @@
-// File: fig0526.c
+// File: fig0527.c
 // Computer Systems, Fifth edition
-// Figure 5.26
+// Figure 5.27
 
 #include <stdio.h>
 

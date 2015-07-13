@@ -1,6 +1,6 @@
-;File: fig0518.pep
+;File: fig0519.pep
 ;Computer Systems, Fifth edition
-;Figure 5.18
+;Figure 5.19
 ;
          STRO    msg,d       
          STOP                

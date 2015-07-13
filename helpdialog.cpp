@@ -225,24 +225,24 @@ void HelpDialog::onCurrentItemChanged(QTreeWidgetItem*, QTreeWidgetItem*) {
                 ui->rightCppTextEdit->hide();
                 ui->rightPepTextEdit->hide();
             }
-            else if (row == eFIG518) {
-                ui->leftTextEdit->setText(Pep::resToString(":/help/figures/fig0518.pep"));
-                ui->rightCppTextEdit->setText(Pep::resToString(":/help/figures/fig0518.c"));
-                ui->figureLabel->setText("<b>Figure 5.18</b><code>  </code> The <code>cout</code> statement.");
+            else if (row == eFIG519) {
+                ui->leftTextEdit->setText(Pep::resToString(":/help/figures/fig0519.pep"));
+                ui->rightCppTextEdit->setText(Pep::resToString(":/help/figures/fig0519.c"));
+                ui->figureLabel->setText("<b>Figure 5.19</b><code>  </code> The <code>cout</code> statement.");
                 ui->rightCppTextEdit->show();
                 ui->rightPepTextEdit->hide();
             }
-            else if (row == eFIG521) {
-                ui->leftTextEdit->setText(Pep::resToString(":/help/figures/fig0521.pep"));
-                ui->rightCppTextEdit->setText(Pep::resToString(":/help/figures/fig0521.c"));
-                ui->figureLabel->setText("<b>Figure 5.21</b><code>  </code> The assignment statement with global variables.");
+            else if (row == eFIG522) {
+                ui->leftTextEdit->setText(Pep::resToString(":/help/figures/fig0522.pep"));
+                ui->rightCppTextEdit->setText(Pep::resToString(":/help/figures/fig0522.c"));
+                ui->figureLabel->setText("<b>Figure 5.22</b><code>  </code> The assignment statement with global variables.");
                 ui->rightCppTextEdit->show();
                 ui->rightPepTextEdit->hide();
             }
-            else if (row == eFIG526) {
-                ui->leftTextEdit->setText(Pep::resToString(":/help/figures/fig0526.pep"));
-                ui->rightCppTextEdit->setText(Pep::resToString(":/help/figures/fig0526.c"));
-                ui->figureLabel->setText("<b>Figure 5.26</b><code>  </code> C++ constants.");
+            else if (row == eFIG527) {
+                ui->leftTextEdit->setText(Pep::resToString(":/help/figures/fig0527.pep"));
+                ui->rightCppTextEdit->setText(Pep::resToString(":/help/figures/fig0527.c"));
+                ui->figureLabel->setText("<b>Figure 5.27</b><code>  </code> C++ constants.");
                 ui->rightCppTextEdit->show();
                 ui->rightPepTextEdit->hide();
             }
@@ -512,10 +512,10 @@ QString HelpDialog::getCode(Enu::EPane &destPane, Enu::EPane &inputDest, QString
     else if (row == eFIG515) {
         input = "-479";
     }
-    else if (row == eFIG521) {
+    else if (row == eFIG522) {
         input = "M 419";
     }
-    else if (row == eFIG526 || row == eFIG604) {
+    else if (row == eFIG527 || row == eFIG604) {
         input = "68 84";
     }
     else if (row == eFIG606) {

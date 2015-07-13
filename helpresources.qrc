@@ -6,9 +6,9 @@
         <file>help/debuggingprograms.html</file>
         <file>help/examples.html</file>
         <file>help/pep8reference.html</file>
-        <file>help/figures/fig0518.pep</file>
-        <file>help/figures/fig0521.pep</file>
-        <file>help/figures/fig0526.pep</file>
+        <file>help/figures/fig0519.pep</file>
+        <file>help/figures/fig0522.pep</file>
+        <file>help/figures/fig0527.pep</file>
         <file>help/figures/fig0601.pep</file>
         <file>help/figures/fig0604.pep</file>
         <file>help/figures/fig0606.pep</file>
@@ -131,9 +131,9 @@
         <file>help/figures/fig0632.c</file>
         <file>help/figures/fig0634.c</file>
         <file>help/figures/fig0636.c</file>
-        <file>help/figures/fig0518.c</file>
-        <file>help/figures/fig0521.c</file>
-        <file>help/figures/fig0526.c</file>
+        <file>help/figures/fig0519.c</file>
+        <file>help/figures/fig0522.c</file>
+        <file>help/figures/fig0527.c</file>
         <file>help/figures/fig0604.c</file>
         <file>help/figures/fig0606.c</file>
         <file>help/figures/fig0608.c</file>
