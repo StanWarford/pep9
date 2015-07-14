@@ -9,8 +9,8 @@ wordTemp:.BLOCK  1           ;Temporary word storage
 byteTemp:.BLOCK  1           ;Least significant byte of wordTemp
 addrMask:.BLOCK  2           ;Addressing mode mask
 opAddr:  .BLOCK  2           ;Trap instruction operand address
-charIn:  .BLOCK  1           ;Memory-mapped input port
-charOut: .BLOCK  1           ;Memory-mapped output port
+charIn:  .BLOCK  1           ;Memory-mapped input device
+charOut: .BLOCK  1           ;Memory-mapped output device
 ;
 ;******* Operating system ROM
          .BURN   0xFFFF
@@ -495,8 +495,8 @@ exitPrnt:RET
 ;******* Vectors for system memory map
          .ADDRSS osRAM       ;User stack pointer
          .ADDRSS wordTemp    ;System stack pointer
-         .ADDRSS charIn      ;Memory-mapped input port
-         .ADDRSS charOut     ;Memory-mapped output port
+         .ADDRSS charIn      ;Memory-mapped input device
+         .ADDRSS charOut     ;Memory-mapped output device
          .ADDRSS loader      ;Loader program counter
          .ADDRSS trap        ;Trap program counter
 ;
