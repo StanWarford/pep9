@@ -873,6 +873,12 @@ bool Asm::processSourceLine(QString sourceLine, int lineNum, Code *&code, QStrin
                 Pep::adjustSymbolValueForBurn.insert(dotEquate->symbolDef, false);
                 state = Asm::PS_CLOSE;
             }
+            else if (token == Asm::LT_CHAR_CONSTANT) {
+                dotEquate->argument = new CharArgument(tokenString);
+                Pep::symbolTable.insert(dotEquate->symbolDef, Asm::charStringToInt(tokenString));
+                Pep::adjustSymbolValueForBurn.insert(dotEquate->symbolDef, false);
+                state = Asm::PS_CLOSE;
+            }
             else {
                 errorString = ";ERROR: .EQUATE requires a dec, hex, or string constant argument.";
                 return false;
