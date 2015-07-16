@@ -3,7 +3,7 @@
 ;Figure 6.4
 ;
          BR      main        
-bonus:   .EQUATE 5           ;constant
+bonus:   .EQUATE 10          ;constant
 exam1:   .EQUATE 4           ;local variable #2d
 exam2:   .EQUATE 2           ;local variable #2d
 score:   .EQUATE 0           ;local variable #2d

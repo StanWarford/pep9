@@ -5,7 +5,7 @@
 #include <stdio.h>
 
 int main() {
-   const int bonus = 5;
+   const int bonus = 10;
    int exam1;
    int exam2;
    int score;
