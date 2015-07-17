@@ -12,8 +12,8 @@ main:    SUBSP   10,i        ;push #vector #j
          STWX    j,s         
 for1:    CPWX    4,i         ;j < 4
          BRGE    endFor1     
-         ASLX                ;scanf("%d", &vector[j])
-         DECI    vector,sx   
+         ASLX                ;two bytes per integer
+         DECI    vector,sx   ;scanf("%d", &vector[j])
          LDWX    j,s         ;j++)
          ADDX    1,i         
          STWX    j,s         
@@ -25,7 +25,7 @@ for2:    CPWX    0,i         ;j >= 0
          DECO    j,s         ;printf("%d %d\n", j, vector[j])
          LDBA    ' ',i       
          STBA    charOut,d   
-         ASLX                
+         ASLX                ;two bytes per integer
          DECO    vector,sx   
          LDBA    '\n',i      
          STBA    charOut,d   

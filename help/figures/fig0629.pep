@@ -8,7 +8,7 @@
 p:       .EQUATE 6           ;formal parameter #2h
 w:       .EQUATE 4           ;formal parameter #2d
 h:       .EQUATE 2           ;formal parameter #2d
-rect:    LDWA    w,s         ;p = (w + h) * 2
+rect:    LDWA    w,s         ;*p = (w + h) * 2
          ADDA    h,s         
          ASLA                
          STWA    p,sf        
