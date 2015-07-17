@@ -5,7 +5,7 @@
          BR      main        
 ;
 ;******* int binomCoeff(int n, int k)
-retVal:  .EQUATE 10          ;returned value #2d
+retVal:  .EQUATE 10          ;return value #2d
 n:       .EQUATE 8           ;formal parameter #2d
 k:       .EQUATE 6           ;formal parameter #2d
 y1:      .EQUATE 2           ;local variable #2d

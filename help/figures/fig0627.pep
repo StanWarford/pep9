@@ -11,11 +11,11 @@ r:       .EQUATE 6           ;formal parameter #2h
 s:       .EQUATE 4           ;formal parameter #2h
 temp:    .EQUATE 0           ;local variable #2d
 swap:    SUBSP   2,i         ;push #temp
-         LDWA    r,sf        ;temp = r
+         LDWA    r,sf        ;temp = *r
          STWA    temp,s
-         LDWA    s,sf        ;r = s
+         LDWA    s,sf        ;*r = *s
          STWA    r,sf
-         LDWA    temp,s      ;s = temp
+         LDWA    temp,s      ;*s = temp
          STWA    s,sf
          ADDSP   2,i         ;pop #temp
          RET
@@ -23,7 +23,7 @@ swap:    SUBSP   2,i         ;push #temp
 ;******* void order(int *x, int *y)
 x:       .EQUATE 4           ;formal parameter #2h
 y:       .EQUATE 2           ;formal parameter #2h
-order:   LDWA    x,sf        ;if (x > y)
+order:   LDWA    x,sf        ;if (*x > *y)
          CPWA    y,sf
          BRLE    endIf
          LDWA    x,s         ;actual parameter x
