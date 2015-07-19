@@ -418,7 +418,7 @@ void MemoryTracePane::cacheHeapChanges()
             return;
         }
         int listNumBytes = 0;
-        // Check and make sure the accumulator matches the number of bytes we're newing:
+        // Check and make sure the accumulator matches the number of bytes we're mallocing:
         // We'll start by adding up the number of bytes...
         for (int i = 0; i < lookAheadSymbolList.size(); i++) {
             heapSymbol = lookAheadSymbolList.at(i);

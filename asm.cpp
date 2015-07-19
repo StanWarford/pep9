@@ -136,7 +136,6 @@ bool Asm::getToken(QString &sourceLine, ELexicalToken &token, QString &tokenStri
 QList<QString> Asm::listOfReferencedSymbols;
 QList<int> Asm::listOfReferencedSymbolLineNums;
 
-
 bool Asm::startsWithHexPrefix(QString str)
 {
     if (str.length() < 2) return false;

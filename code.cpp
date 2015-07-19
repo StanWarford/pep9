@@ -602,6 +602,31 @@ bool UnaryInstruction::processSymbolTraceTags(int &sourceLine, QString &errorStr
 }
 */
 
+bool NonUnaryInstruction::processFormatTraceTags(int &, QString &) {
+    if (mnemonic == Enu::CALL && argument->getArgumentString() == "malloc") {
+        int pos = Asm::rxFormatTag.indexIn(comment);
+        if (pos > -1) {
+            QStringList list;
+            QString formatTag = Asm::rxFormatTag.cap(0);
+            Enu::ESymbolFormat tagType = Asm::formatTagType(formatTag);
+            int multiplier = Asm::formatMultiplier(formatTag);
+            QString symbolDef = "_dummy"; // Dummy symbol for format tag in malloc
+            if (!Pep::equateSymbols.contains(symbolDef)){
+                Pep::equateSymbols.append(symbolDef); // Limitation: only one dummy format per program
+            }
+            Pep::symbolFormat.insert(symbolDef, tagType); // Any duplicates have value replaced
+            Pep::symbolFormatMultiplier.insert(symbolDef, multiplier);
+            list.append(symbolDef);
+            Pep::symbolTraceList.insert(memAddress, list);
+            qDebug() << "Pep::equateSymbols" << Pep::equateSymbols;
+            qDebug() << "Pep::symbolFormat" << Pep::symbolFormat;
+            qDebug() << "Pep::symbolFormatMultiplier" << Pep::symbolFormatMultiplier;
+            qDebug() << "Pep::symbolTraceList" << Pep::symbolTraceList;
+        }
+    }
+    return true;
+}
+
 bool NonUnaryInstruction::processSymbolTraceTags(int &sourceLine, QString &errorString) {
     if (mnemonic == Enu::ADDSP || mnemonic == Enu::SUBSP) {
         int numBytesAllocated;
@@ -648,9 +673,9 @@ bool NonUnaryInstruction::processSymbolTraceTags(int &sourceLine, QString &error
                 return false;
             }
             list.append(symbol);
-            Pep::symbolTraceList.insert(memAddress, list);
             pos += Asm::rxSymbolTag.matchedLength();
         }
+        Pep::symbolTraceList.insert(memAddress, list);
         return true;
     }
     else {
