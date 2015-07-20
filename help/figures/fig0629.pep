@@ -12,7 +12,7 @@ rect:    LDWA    w,s         ;*p = (w + h) * 2
          ADDA    h,s         
          ASLA                
          STWA    p,sf        
-         RET
+         RET                 
 ;
 ;******* main()
 perim:   .EQUATE 4           ;local variable #2d
@@ -23,12 +23,12 @@ main:    SUBSP   6,i         ;push #perim #width #height
          DECI    width,s     ;scanf("%d", &width)
          STRO    msg2,d      ;printf("Enter height: ")
          DECI    height,s    ;scanf("%d", &height)
-         MOVSPA              ;the address of perim
+         MOVSPA              ;move &perim
          ADDA    perim,i     
          STWA    -2,s        
-         LDWA    width,s     ;the value of width
+         LDWA    width,s     ;move width
          STWA    -4,s        
-         LDWA    height,s    ;the value of height
+         LDWA    height,s    ;move height
          STWA    -6,s        
          SUBSP   6,i         ;push #p #w #h
          CALL    rect        ;rect(&perim, width, height)

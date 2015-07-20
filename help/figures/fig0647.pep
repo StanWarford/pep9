@@ -2,7 +2,7 @@
 ;Computer Systems, Fifth edition
 ;Figure 6.47
 ;
-         BR      main
+         BR      main        
 data:    .EQUATE 0           ;struct field #2d
 next:    .EQUATE 2           ;struct field #2h
 ;
@@ -10,41 +10,41 @@ next:    .EQUATE 2           ;struct field #2h
 first:   .EQUATE 4           ;local variable #2h
 p:       .EQUATE 2           ;local variable #2h
 value:   .EQUATE 0           ;local variable #2d
-main:    SUBSP   6,i         ;push storage for #first #p #value
+main:    SUBSP   6,i         ;push #first #p #value
          LDWA    0,i         ;first = 0
-         STWA    first,s
+         STWA    first,s     
          DECI    value,s     ;scanf("%d", &value);
 while:   LDWA    value,s     ;while (value != -9999)
-         CPWA    -9999,i
-         BREQ    endWh
+         CPWA    -9999,i     
+         BREQ    endWh       
          LDWA    first,s     ;p = first
-         STWA    p,s
+         STWA    p,s         
          LDWA    4,i         ;first = (struct node *) malloc(sizeof(struct node))
          CALL    malloc      ;allocate #data #next
-         STWX    first,s
+         STWX    first,s     
          LDWA    value,s     ;first->data = value
-         LDWX    data,i
-         STWA    first,sfx
+         LDWX    data,i      
+         STWA    first,sfx   
          LDWA    p,s         ;first->next = p
-         LDWX    next,i
-         STWA    first,sfx
+         LDWX    next,i      
+         STWA    first,sfx   
          DECI    value,s     ;scanf("%d", &value)
-         BR      while
+         BR      while       
 endWh:   LDWA    first,s     ;for (p = first
-         STWA    p,s
+         STWA    p,s         
 for:     LDWA    p,s         ;p != 0
-         CPWA    0,i
-         BREQ    endFor
+         CPWA    0,i         
+         BREQ    endFor      
          LDWX    data,i      ;printf("%d ", p->data)
-         DECO    p,sfx
-         LDBA    ' ',i
-         STBA    charOut,d
+         DECO    p,sfx       
+         LDBA    ' ',i       
+         STBA    charOut,d   
          LDWX    next,i      ;p = p->next)
-         LDWA    p,sfx
-         STWA    p,s
-         BR      for
+         LDWA    p,sfx       
+         STWA    p,s         
+         BR      for         
 endFor:  ADDSP   6,i         ;pop #value #p #first
-         STOP
+         STOP                
 ;
 ;******* malloc()
 ;        Precondition: A contains number of bytes
@@ -52,7 +52,7 @@ endFor:  ADDSP   6,i         ;pop #value #p #first
 malloc:  LDWX    hpPtr,d     ;returned pointer
          ADDA    hpPtr,d     ;allocate from heap
          STWA    hpPtr,d     ;update hpPtr
-         RET
+         RET                 
 hpPtr:   .ADDRSS heap        ;address of next free byte
 heap:    .BLOCK  1           ;first byte in the heap
-         .END
+         .END                  

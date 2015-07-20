@@ -8,7 +8,7 @@
 v:       .EQUATE 6           ;formal parameter #2h
 n:       .EQUATE 4           ;formal parameter #2h
 j:       .EQUATE 0           ;local variable #2d
-getVect: SUBSP   2,i         ;push storage for #j
+getVect: SUBSP   2,i         ;push #j
          DECI    n,sf        ;scanf("%d", n)
          LDWX    0,i         ;for (j = 0
          STWX    j,s         
@@ -27,7 +27,7 @@ endFor1: ADDSP   2,i         ;pop #j
 v2:      .EQUATE 6           ;formal parameter #2h
 n2:      .EQUATE 4           ;formal parameter #2d
 j2:      .EQUATE 0           ;local variable #2d
-putVect: SUBSP   2,i         ;push storage for #j2
+putVect: SUBSP   2,i         ;push #j2
          LDWX    0,i         ;for (j = 0
          STWX    j2,s        
 for2:    CPWX    n2,s        ;j < n
@@ -49,19 +49,19 @@ endFor2: LDBA    '\n',i      ;printf("\n")
 vector:  .EQUATE 2           ;local variable #2d8a
 numItms: .EQUATE 0           ;local variable #2d
 main:    SUBSP   18,i        ;push storage for #vector #numItms
-         MOVSPA              ;push address of vector
+         MOVSPA              ;move (&)vector
          ADDA    vector,i    
          STWA    -2,s        
-         MOVSPA              ;push address of numItms
+         MOVSPA              ;move &numItms
          ADDA    numItms,i   
          STWA    -4,s        
          SUBSP   4,i         ;push #v #n
          CALL    getVect     ;getVect(vector, &numItms)
          ADDSP   4,i         ;pop #n #v
-         MOVSPA              ;push address of vector
+         MOVSPA              ;move (&)vector
          ADDA    vector,i    
          STWA    -2,s        
-         LDWA    numItms,s   ;push value of numItms
+         LDWA    numItms,s   ;move numItms
          STWA    -4,s        
          SUBSP   4,i         ;push #v2 #n2
          CALL    putVect     ;putVect(vector, numItms)

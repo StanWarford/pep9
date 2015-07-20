@@ -20,20 +20,20 @@ then:    LDWA    1,i         ;return 1
          STWA    retVal,s    
          ADDSP   4,i         ;pop #y2 #y1
          RET                 
-else:    LDWA    n,s         ;n - 1
+else:    LDWA    n,s         ;move n - 1
          SUBA    1,i         
          STWA    -4,s        
-         LDWA    k,s         ;k
+         LDWA    k,s         ;move k
          STWA    -6,s        
          SUBSP   6,i         ;push #retVal #n #k
          CALL    binCoeff    ;binCoeff(n - 1, k)
 ra2:     ADDSP   6,i         ;pop #k #n #retVal
          LDWA    -2,s        ;y1 = binomCoeff(n - 1, k)
          STWA    y1,s        
-         LDWA    n,s         ;n - 1
+         LDWA    n,s         ;move n - 1
          SUBA    1,i         
          STWA    -4,s        
-         LDWA    k,s         ;k - 1
+         LDWA    k,s         ;move k - 1
          SUBA    1,i         
          STWA    -6,s        
          SUBSP   6,i         ;push #retVal #n #k

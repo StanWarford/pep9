@@ -34,7 +34,7 @@ main:    SUBSP   6,i         ;push #numPts #value #j
 for2:    CPWA    numPts,s    ;j <= numPts
          BRGT    endFor2     
          DECI    value,s     ;scanf("%d", &value)
-         LDWA    value,s     
+         LDWA    value,s     ;move value
          STWA    -2,s        
          SUBSP   2,i         ;push #n
          CALL    printBar    ;printBar(value)

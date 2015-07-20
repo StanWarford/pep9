@@ -29,7 +29,7 @@ else:    LDWA    false,i     ;return false
 age:     .EQUATE 0           ;local variable #2d
 main:    SUBSP   2,i         ;push #age
          DECI    age,s       ;scanf("%d", &age)
-         LDWA    age,s       
+         LDWA    age,s       ;move age
          STWA    -4,s        
          SUBSP   4,i         ;push #retVal #a
          CALL    inRange     ;inRange(age)

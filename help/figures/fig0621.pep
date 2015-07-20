@@ -33,7 +33,7 @@ main:    DECI    numPts,d    ;scanf("%d", &numPts)
 for2:    CPWA    numPts,d    ;j <= numPts
          BRGT    endFor2     
          DECI    value,d     ;scanf("%d", &value)
-         LDWA    value,d     
+         LDWA    value,d     ;move value
          STWA    -2,s        
          SUBSP   2,i         ;push #n
          CALL    printBar    ;printBar(value)

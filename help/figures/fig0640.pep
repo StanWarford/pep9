@@ -6,7 +6,7 @@
 ;
 ;******* main()
 guess:   .EQUATE 0           ;local variable #2d
-main:    SUBSP   2,i         ;push storage for #guess
+main:    SUBSP   2,i         ;push #guess
          STRO    msgIn,d     ;printf("Pick a number 0..3: ")
          DECI    guess,s     ;scanf("%d", &guess)
          LDWX    guess,s     ;switch (guess)
