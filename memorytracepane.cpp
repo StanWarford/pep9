@@ -403,6 +403,7 @@ void MemoryTracePane::cacheHeapChanges()
     }
 
     if (Pep::decodeMnemonic[Sim::instructionSpecifier] == Enu::CALL && Pep::symbolTable.value("malloc") == Sim::operandSpecifier) {
+        qDebug() << "In cacheHeapChanges()";
         newestHeapItemsList.clear();
         int numCellsToAdd = 0;
         int offset = 0;
@@ -420,7 +421,9 @@ void MemoryTracePane::cacheHeapChanges()
         int listNumBytes = 0;
         // Check and make sure the accumulator matches the number of bytes we're mallocing:
         // We'll start by adding up the number of bytes...
+        qDebug() << "lookAheadSymbolList" << lookAheadSymbolList;
         for (int i = 0; i < lookAheadSymbolList.size(); i++) {
+            qDebug() << "In loop. i == " << i;
             heapSymbol = lookAheadSymbolList.at(i);
             if (Pep::equateSymbols.contains(heapSymbol) || Pep::blockSymbols.contains(heapSymbol)) {
                 // listNumBytes += number of bytes for that tag * the multiplier (IE, 2d4a is a 4 cell
@@ -435,6 +438,7 @@ void MemoryTracePane::cacheHeapChanges()
         }
         for (int i = 0; i < lookAheadSymbolList.size(); i++) {
             heapSymbol = lookAheadSymbolList.at(i);
+            qDebug() << "heapSymbol = " << heapSymbol;
             if (Pep::equateSymbols.contains(heapSymbol) || Pep::blockSymbols.contains(heapSymbol)) {
                 multiplier = Pep::symbolFormatMultiplier.value(heapSymbol);
             }
