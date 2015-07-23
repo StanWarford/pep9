@@ -49,9 +49,9 @@ endIf:   ADDSP   4,i         ;pop #y2 #y1
 ;
 ;******* main()
 main:    STRO    msg,d       ;printf("binCoeff(3, 1) = %d\n",
-         LDWA    3,i         ;binCoeff(3, 1))
+         LDWA    3,i         ;move 3
          STWA    -4,s        
-         LDWA    1,i         
+         LDWA    1,i         ;move 1
          STWA    -6,s        
          SUBSP   6,i         ;push #retVal #n #k
          CALL    binCoeff    ;binCoeff(3, 1)
