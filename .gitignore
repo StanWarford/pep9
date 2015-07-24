@@ -1,13 +1,8 @@
-*.user
 Makefile
 Makefile.Debug
 *.Debug
 *.Release
-pep9.pro.user
-pep9.pro.user
 ui_byteconverterchar.h
-*.user
-pep9.pro.user.3.0-pre1
 ui_aboutpep.h
 ui_assemblerlistingpane.h
 ui_byteconverterbin.h
@@ -23,9 +18,8 @@ ui_memorydumppane.h
 ui_memorytracepane.h
 ui_objectcodepane.h
 ui_outputpane.h
-pep9.pro.user
 ui_redefinemnemonicsdialog.h
 ui_sourcecodepane.h
 ui_terminalpane.h
-pep9.pro.user
 *.user
+*.user*

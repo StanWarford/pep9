@@ -37,6 +37,9 @@ MemoryCellGraphicsItem::MemoryCellGraphicsItem(int addr, QString sym,  Enu::ESym
     x = xLoc;
     y = yLoc;
     address = addr;
+    if (sym.length() > 0 && sym.at(0).isDigit()) {
+        sym = "";
+    }
     symbol = sym;
     eSymbolFormat = eSymFrmt;
     boxColor = Qt::black;
@@ -66,6 +69,7 @@ void MemoryCellGraphicsItem::paint(QPainter *painter, const QStyleOptionGraphics
     painter->setFont(QFont(Pep::codeFont, Pep::codeFontSize));
 
     painter->drawText(QRectF(x - addressWidth - bufferWidth, y, addressWidth, boxHeight), Qt::AlignVCenter | Qt::AlignRight, QString("%1").arg(address, 4, 16, QLatin1Char('0')).toUpper());
+
     painter->drawText(QRectF(x + bufferWidth + boxWidth, y, symbolWidth, boxHeight), Qt::AlignVCenter | Qt::AlignLeft, QString("%1").arg(symbol));
 
     painter->setPen(boxTextColor);

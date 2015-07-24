@@ -478,7 +478,7 @@ void BlankLine::appendSourceLine(QStringList &assemblerListingList, QStringList 
 }
 
 bool DotBlock::processFormatTraceTags(int &sourceLine, QString &errorString) {
-    if (symbolDef.size() == 0) {
+    if (symbolDef.isEmpty()) {
         return true;
     }
     int pos = Asm::rxFormatTag.indexIn(comment);
@@ -499,7 +499,7 @@ bool DotBlock::processFormatTraceTags(int &sourceLine, QString &errorString) {
 }
 
 bool DotEquate::processFormatTraceTags(int &, QString &) {
-    if (symbolDef.size() == 0) {
+    if (symbolDef.isEmpty()) {
         return true;
     }
     int pos = Asm::rxFormatTag.indexIn(comment);
@@ -514,12 +514,13 @@ bool DotEquate::processFormatTraceTags(int &, QString &) {
 
 bool DotBlock::processSymbolTraceTags(int &sourceLine, QString &errorString) {
     // For global structs.
-    if (symbolDef.size() == 0) {
+    if (symbolDef.isEmpty()) {
         return true;
     }
     if (Pep::blockSymbols.contains(symbolDef)) {
-        return true; // Format tag takes precedence over symbol tags.
+        return true; // Pre-existing format tag takes precedence over symbol tag.
     }
+
     int numBytesAllocated = argument->getArgumentValue();
     QString symbol;
     QStringList list;
@@ -547,61 +548,6 @@ bool DotBlock::processSymbolTraceTags(int &sourceLine, QString &errorString) {
     return true;
 }
 
-/* DON'T NEED THIS ANY MORE WITH PEP/9
- *
-bool UnaryInstruction::processSymbolTraceTags(int &sourceLine, QString &errorString) {
-    int numBytesDeallocated;
-    switch (mnemonic) {
-    case Enu::RET1:
-        numBytesDeallocated = 1;
-        break;
-    case Enu::RET2:
-        numBytesDeallocated = 2;
-        break;
-    case Enu::RET3:
-        numBytesDeallocated = 3;
-        break;
-    case Enu::RET4:
-        numBytesDeallocated = 4;
-        break;
-    case Enu::RET5:
-        numBytesDeallocated = 5;
-        break;
-    case Enu::RET6:
-        numBytesDeallocated = 6;
-        break;
-    case Enu::RET7:
-        numBytesDeallocated = 7;
-        break;
-    default:
-        return true;
-    }
-    QString symbol;
-    QStringList list;
-    int numBytesListed = 0;
-    int pos = 0;
-    while ((pos = Asm::rxSymbolTag.indexIn(comment, pos)) != -1) {
-        symbol = Asm::rxSymbolTag.cap(1);
-        if (!Pep::equateSymbols.contains(symbol)) {
-            errorString = ";WARNING: " + symbol + " not specified in .EQUATE.";
-            sourceLine = sourceCodeLine;
-            return false;
-        }
-        numBytesListed += Asm::tagNumBytes(Pep::symbolFormat.value(symbol)) * Pep::symbolFormatMultiplier.value(symbol);
-        list.append(symbol);
-        pos += Asm::rxSymbolTag.matchedLength();
-    }
-    if (numBytesDeallocated != numBytesListed) {
-        errorString = ";WARNING: Number of bytes deallocated (" + QString("%1").arg(numBytesDeallocated) +
-                      ") not equal to number of bytes listed in trace tag (" + QString("%1").arg(numBytesListed) + ").";
-        sourceLine = sourceCodeLine;
-        return false;
-    }
-    Pep::symbolTraceList.insert(memAddress, list);
-    return true;
-}
-*/
-
 bool NonUnaryInstruction::processFormatTraceTags(int &, QString &) {
     if (mnemonic == Enu::CALL && argument->getArgumentString() == "malloc") {
         int pos = Asm::rxFormatTag.indexIn(comment);
@@ -610,18 +556,15 @@ bool NonUnaryInstruction::processFormatTraceTags(int &, QString &) {
             QString formatTag = Asm::rxFormatTag.cap(0);
             Enu::ESymbolFormat tagType = Asm::formatTagType(formatTag);
             int multiplier = Asm::formatMultiplier(formatTag);
-            QString symbolDef = "_dummy"; // Dummy symbol for format tag in malloc
+            QString symbolDef = QString("%1").arg(memAddress); // Dummy symbol for format tag in malloc
             if (!Pep::equateSymbols.contains(symbolDef)){
-                Pep::equateSymbols.append(symbolDef); // Limitation: only one dummy format per program
+                // Limitation: only one dummy format per program
+                Pep::equateSymbols.append(symbolDef);
             }
             Pep::symbolFormat.insert(symbolDef, tagType); // Any duplicates have value replaced
             Pep::symbolFormatMultiplier.insert(symbolDef, multiplier);
             list.append(symbolDef);
             Pep::symbolTraceList.insert(memAddress, list);
-            qDebug() << "Pep::equateSymbols" << Pep::equateSymbols;
-            qDebug() << "Pep::symbolFormat" << Pep::symbolFormat;
-            qDebug() << "Pep::symbolFormatMultiplier" << Pep::symbolFormatMultiplier;
-            qDebug() << "Pep::symbolTraceList" << Pep::symbolTraceList;
         }
     }
     return true;
@@ -675,7 +618,10 @@ bool NonUnaryInstruction::processSymbolTraceTags(int &sourceLine, QString &error
             list.append(symbol);
             pos += Asm::rxSymbolTag.matchedLength();
         }
-        Pep::symbolTraceList.insert(memAddress, list);
+
+        if (!list.isEmpty()) {
+            Pep::symbolTraceList.insert(memAddress, list);
+        }
         return true;
     }
     else {
