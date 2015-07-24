@@ -9,12 +9,12 @@ c:       .BLOCK  2           ;global variable #2h
 ;
 ;******* main ()
 main:    LDWA    2,i         ;a = (int *) malloc(sizeof(int))
-         CALL    malloc      ;allocate #a
+         CALL    malloc      ;allocate #2d
          STWX    a,d
          LDWA    5,i         ;*a = 5
          STWA    a,n
          LDWA    2,i         ;b = (int *) malloc(sizeof(int))
-         CALL    malloc      ;allocate #b
+         CALL    malloc      ;allocate #2d
          STWX    b,d
          LDWA    3,i         ;*b = 3
          STWA    b,n

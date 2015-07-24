@@ -10,12 +10,12 @@ b:       .EQUATE 2           ;local variable #2h
 c:       .EQUATE 0           ;local variable #2h
 main:    SUBSP   6,i         ;push #a #b #c
          LDWA    2,i         ;a = (int *) malloc(sizeof(int))
-         CALL    malloc      ;allocate #a
+         CALL    malloc      ;allocate #2d
          STWX    a,s         
          LDWA    5,i         ;*a = 5
          STWA    a,sf        
          LDWA    2,i         ;b = (int *) malloc(sizeof(int))
-         CALL    malloc      ;allocate #b
+         CALL    malloc      ;allocate #2d
          STWX    b,s         
          LDWA    3,i         ;*b = 3
          STWA    b,sf        
