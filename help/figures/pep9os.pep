@@ -59,7 +59,7 @@ trap:    LDBX    oldIR,s     ;X <- trapped IR
          BRGE    nonUnary    ;  trap opcode is nonunary
 ;
 unary:   ANDX    0x0001,i    ;Mask out all but rightmost bit
-         ASLX                ;An address is two bytes
+         ASLX                ;Two bytes per address
          CALL    unaryJT,x   ;Call unary trap routine
          RETTR               ;Return from trap
 ;
@@ -70,7 +70,7 @@ nonUnary:ASRX                ;Trap opcode is nonunary
          ASRX                ;Discard addressing mode bits
          ASRX
          SUBX    5,i         ;Adjust so that NOP opcode = 0
-         ASLX                ;An address is two bytes
+         ASLX                ;Two bytes per address
          CALL    nonUnJT,x   ;Call nonunary trap routine
 return:  RETTR               ;Return from trap
 ;
@@ -107,7 +107,7 @@ oldPC4:  .EQUATE 9           ;oldPC + 4 with two return addresses
 oldSP4:  .EQUATE 11          ;oldSP + 4 with two return addresses
 setAddr: LDBX    oldIR4,s    ;X <- old instruction register
          ANDX    0x0007,i    ;Keep only the addressing mode bits
-         ASLX                ;An address is two bytes
+         ASLX                ;Two bytes per address
          BR      addrJT,x
 addrJT:  .ADDRSS addrI       ;Immediate addressing
          .ADDRSS addrD       ;Direct addressing
@@ -228,7 +228,7 @@ do:      LDBA    charIn,d    ;Get asciiCh
          STWA    valAscii,s
          LDBA    asciiCh,s   ;A<low> = asciiCh throughout the loop
          LDWX    state,s     ;switch (state)
-         ASLX                ;An address is two bytes
+         ASLX                ;Two bytes per address
          BR      stateJT,x
 ;
 stateJT: .ADDRSS sInit
