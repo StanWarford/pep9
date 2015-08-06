@@ -202,7 +202,7 @@ oldNZVC: .EQUATE 15          ;Stack address of NZVC on interrupt
 ;
 total:   .EQUATE 11          ;Cumulative total of DECI number
 asciiCh: .EQUATE 10          ;asciiCh, one byte
-valAscii:.EQUATE 8           ;Value(asciiCh)
+valAscii:.EQUATE 8           ;value(asciiCh)
 isOvfl:  .EQUATE 6           ;Overflow boolean
 isNeg:   .EQUATE 4           ;Negative boolean
 state:   .EQUATE 2           ;State variable
@@ -257,7 +257,7 @@ ifDigit: CPBA    '0',i       ;else if (asciiCh is a digit)
          BRGT    ifWhite
          LDWX    FALSE,i     ;isNeg <- FALSE
          STWX    isNeg,s
-         LDWX    valAscii,s  ;total <- Value(asciiCh)
+         LDWX    valAscii,s  ;total <- value(asciiCh)
          STWX    total,s
          LDWX    digit,i     ;state <- digit
          STWX    state,s
@@ -273,7 +273,7 @@ sSign:   CPBA    '0',i       ;if asciiCh (is not a digit)
          BRLT    deciErr
          CPBA    '9',i
          BRGT    deciErr     ;exit with DECI error
-         LDWX    valAscii,s  ;else total <- Value(asciiCh)
+         LDWX    valAscii,s  ;else total <- value(asciiCh)
          STWX    total,s
          LDWX    digit,i     ;state <- digit
          STWX    state,s
