@@ -464,7 +464,7 @@ writeHex:STBA    charOut,d   ;Output nybble as hex
 ;The STRO instruction.
 ;Outputs a null-terminated string from memory.
 ;
-opcode48:LDWA    0x0036,i    ;Assert d, n, sf, x
+opcode48:LDWA    0x003E,i    ;Assert d, n, s, sf, x
          STWA    addrMask,d
          CALL    assertAd
          CALL    setAddr     ;Set address of trap operand
