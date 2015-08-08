@@ -118,8 +118,9 @@ private:
         eFIG645 = 39,
         eFIG647 = 40,
         eEXER804 = 41,
-        ePROB829 = 42,
-        ePROB832 = 43,
+        ePROB826 = 42,
+        ePROB829 = 43,
+        ePROB832 = 44,
     };
 
 private slots:
