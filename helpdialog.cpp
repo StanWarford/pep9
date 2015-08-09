@@ -417,6 +417,12 @@ void HelpDialog::onCurrentItemChanged(QTreeWidgetItem*, QTreeWidgetItem*) {
                 ui->rightCppTextEdit->hide();
                 ui->rightPepTextEdit->hide();
             }
+            else if (row == ePROB827) {
+                ui->leftTextEdit->setText(Pep::resToString(":/help/figures/prob0827.pep"));
+                ui->figureLabel->setText("<b>Problem 8.27</b><code>  </code> A test driver for the <code>ASLMANY</code> instruction.");
+                ui->rightCppTextEdit->hide();
+                ui->rightPepTextEdit->hide();
+            }
             else if (row == ePROB829) {
                 ui->leftTextEdit->setText(Pep::resToString(":/help/figures/prob0829.pep"));
                 ui->figureLabel->setText("<b>Problem 8.29</b><code>  </code> A test driver for the <code>STADI</code> instruction.");
