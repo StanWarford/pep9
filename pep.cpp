@@ -25,11 +25,11 @@
 using namespace Enu;
 
 // Fonts
-const QString Pep::codeFont = getSystem() == "Windows" ? "Courier New" : (getSystem() == "Mac" ? "Courier" : "Courier 10 Pitch");
-const int Pep::codeFontSize = getSystem() == "Mac" ? 12 : 9;
-const int Pep::ioFontSize = getSystem() == "Mac" ? 13 : 10;
-const QString Pep::labelFont = getSystem() == "Mac" ? "Lucida Grande" : "Verdana";
-const int Pep::labelFontSize = getSystem() == "Mac" ? 13 : 10;
+const QString Pep::codeFont = getSystem() == "Windows" ? "Courier New" : (getSystem() == "Mac" ? "Courier" : "Courier New");
+const int Pep::codeFontSize = getSystem() == "Windows" ? 9 : (getSystem() == "Mac" ? 12 : 10);
+const int Pep::ioFontSize = getSystem() ==  "Windows" ? 10 : (getSystem() == "Mac" ? 13 : 10);
+const QString Pep::labelFont = getSystem() == "Windows" ? "Verdana" : (getSystem() == "Mac" ? "Lucida Grande" : "Ubuntu");
+const int Pep::labelFontSize = getSystem() == "Windows" ? 10 : (getSystem() == "Mac" ? 13 : 10);
 
 // Default redefine mnemonics
 const QString Pep::defaultUnaryMnemonic0 = "NOP0";
