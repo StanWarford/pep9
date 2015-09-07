@@ -87,7 +87,7 @@ void HelpDialog::onCurrentItemChanged(QTreeWidgetItem*, QTreeWidgetItem*) {
     if ((!isHelpSubCat && row == eWRITING) || parentRow == eWRITING) {
         ui->helpSplitter->widget(1)->hide();
         ui->webView->show();
-        if (!isHelpSubCat) {                          // Writing Programs
+        if (!isHelpSubCat) {                  // Writing Programs
             ui->webView->load(QUrl("qrc:/help/writingprograms.html"));
         }
         else if (row == eMACHINE) {           // Writing Programs > Machine Language
@@ -405,7 +405,19 @@ void HelpDialog::onCurrentItemChanged(QTreeWidgetItem*, QTreeWidgetItem*) {
                 ui->rightCppTextEdit->show();
                 ui->rightPepTextEdit->hide();
             }
-            else if (row == eEXER804) {
+        }
+    }
+    else if ((!isHelpSubCat && row == ePROBLEMS) || parentRow == ePROBLEMS) {
+        if (!isHelpSubCat) {
+            ui->helpSplitter->widget(1)->hide();
+            ui->webView->show();
+            ui->webView->load(QUrl("qrc:/help/problems.html"));
+        }
+        else {
+            ui->helpSplitter->widget(0)->hide();
+            ui->helpSplitter->widget(1)->show();
+            ui->copyToSourceButton->setText("Copy to Source");
+            if (row == eEXER804) {
                 ui->leftTextEdit->setText(Pep::resToString(":/help/figures/exer0804.pep"));
                 ui->figureLabel->setText("<b>Exercise 8.4</b><code>  </code> An excercise for the <code>DECI</code> trap.");
                 ui->rightCppTextEdit->hide();
@@ -435,7 +447,6 @@ void HelpDialog::onCurrentItemChanged(QTreeWidgetItem*, QTreeWidgetItem*) {
                 ui->rightCppTextEdit->hide();
                 ui->rightPepTextEdit->hide();
             }
-
         }
     }
     else if (!isHelpSubCat && row == eOS) {         // Pep/9 Operating System

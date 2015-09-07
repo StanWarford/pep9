@@ -71,10 +71,11 @@ private:
         eTRAP = 2,
         eREFERENCE = 3,
         eEXAMPLES = 4,
-        eOS = 5,
+        ePROBLEMS = 5,
+        eOS = 6,
 
-        eASSEMBLY = 1,
         eMACHINE = 0,
+        eASSEMBLY = 1,
 
         eFIG433 = 0,
         eFIG435 = 1,
@@ -117,11 +118,12 @@ private:
         eFIG643 = 38,
         eFIG645 = 39,
         eFIG647 = 40,
-        eEXER804 = 41,
-        ePROB826 = 42,
-        ePROB827 = 43,
-        ePROB829 = 44,
-        ePROB832 = 45,
+
+        eEXER804 = 0,
+        ePROB826 = 1,
+        ePROB827 = 2,
+        ePROB829 = 3,
+        ePROB832 = 4,
     };
 
 private slots:

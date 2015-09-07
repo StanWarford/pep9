@@ -146,5 +146,6 @@
         <file>help/figures/fig0625.c</file>
         <file>help/figures/prob0826.pep</file>
         <file>help/figures/prob0827.pep</file>
+        <file>help/problems.html</file>
     </qresource>
 </RCC>

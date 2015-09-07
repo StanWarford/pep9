@@ -371,9 +371,14 @@
          <string>Figure 6.47</string>
         </property>
        </item>
+      </item>
+      <item>
+       <property name="text">
+        <string>Problems</string>
+       </property>
        <item>
         <property name="text">
-         <string>Excercise 8.4</string>
+         <string>Exercise 8.4</string>
         </property>
        </item>
        <item>
