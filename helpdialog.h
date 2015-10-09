@@ -122,8 +122,9 @@ private:
         eEXER804 = 0,
         ePROB826 = 1,
         ePROB827 = 2,
-        ePROB829 = 3,
-        ePROB832 = 4,
+        ePROB828 = 3,
+        ePROB829 = 4,
+        ePROB832 = 5,
     };
 
 private slots:

@@ -435,6 +435,12 @@ void HelpDialog::onCurrentItemChanged(QTreeWidgetItem*, QTreeWidgetItem*) {
                 ui->rightCppTextEdit->hide();
                 ui->rightPepTextEdit->hide();
             }
+            else if (row == ePROB828) {
+                ui->leftTextEdit->setText(Pep::resToString(":/help/figures/prob0828.pep"));
+                ui->figureLabel->setText("<b>Problem 8.28</b><code>  </code> A test driver for the <code>MULA</code> instruction.");
+                ui->rightCppTextEdit->hide();
+                ui->rightPepTextEdit->hide();
+            }
             else if (row == ePROB829) {
                 ui->leftTextEdit->setText(Pep::resToString(":/help/figures/prob0829.pep"));
                 ui->figureLabel->setText("<b>Problem 8.29</b><code>  </code> A test driver for the <code>STADI</code> instruction.");
@@ -582,9 +588,18 @@ QString HelpDialog::getCode(Enu::EPane &destPane, Enu::EPane &inputDest, QString
             inputDest = Enu::ETerminal;
         }
     }
-    else if (parentRow == ePROBLEMS) {
+    if (parentRow == ePROBLEMS) {
         if (row == eEXER804) {
             input = "37";
+        }
+        else if (row == ePROB826) {
+            input = "7";
+        }
+        else if (row == ePROB827) {
+            input = "7 3";
+        }
+        else if (row == ePROB828) {
+            input = "5 9";
         }
     }
     destPane = Enu::ESource;

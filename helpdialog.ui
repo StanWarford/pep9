@@ -393,6 +393,11 @@
        </item>
        <item>
         <property name="text">
+         <string>Problem 8.28</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
          <string>Problem 8.29</string>
         </property>
        </item>
