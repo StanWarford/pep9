@@ -3,23 +3,28 @@
 ;Problem 8.28 test program
 ;
          BR      main        ;Branch around data
-num:     .BLOCK  2           ;Global variable
-count:   .BLOCK  2           ;Global variable
-flags:   .BLOCK  1           ;Flags from shift
+mpr:     .BLOCK  2           ;Global variable
+mcand:   .BLOCK  2           ;Global variable
+product: .BLOCK  2           ;Global variable
+flags:   .BLOCK  1           ;Flags from product
 ;
-main:    DECI    num,d       ;Input decimal value
-         DECI    count,d     ;Input shift count
-         STRO    msg1,d      ;Output original value
-         DECO    num,d       
+main:    DECI    mpr,d       ;Input multiplier
+         DECI    mcand,d     ;Input multiplicand
+         STRO    msg1,d      ;Output multiplier
+         DECO    mpr,d       
          LDBA    '\n',i      
          STBA    charOut,d   
-         LDWA    num,d       ;Test ASLMANY instruction
-         MULA    count,d     
-         STWA    num,d       
+         STRO    msg2,d      ;Output multiplicand
+         DECO    mcand,d     
+         LDBA    '\n',i      
+         STBA    charOut,d   
+         LDWA    mcand,d     ;Test MULA instruction
+         MULA    mpr,d       
+         STWA    product,d   
          MOVFLGA             ;Store flags
          STBA    flags,d     
-         STRO    msg2,d      ;Output shifted value
-         DECO    num,d       
+         STRO    msg3,d      ;Output product
+         DECO    product,d   
          LDBA    '\n',i      
          STBA    charOut,d   
 testN:   LDBA    flags,d     ;Test N
@@ -47,8 +52,9 @@ testC:   LDBA    flags,d     ;Test C
          BR      halt        
 outC0:   STRO    msgC0,d     ;Output "C = 0"
 halt:    STOP                
-msg1:    .ASCII  "Original value = \x00"
-msg2:    .ASCII  "Shifted value = \x00"
+msg1:    .ASCII  "Multiplier = \x00"
+msg2:    .ASCII  "Multiplicand = \x00"
+msg3:    .ASCII  "Product = \x00"
 msgN0:   .ASCII  "N = 0\n\x00"
 msgN1:   .ASCII  "N = 1\n\x00"
 msgZ0:   .ASCII  "Z = 0\n\x00"
