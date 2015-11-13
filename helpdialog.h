@@ -124,7 +124,9 @@ private:
         ePROB827 = 2,
         ePROB828 = 3,
         ePROB829 = 4,
-        ePROB832 = 5,
+        ePROB830 = 5,
+        ePROB831 = 6,
+        ePROB832 = 7
     };
 
 private slots:

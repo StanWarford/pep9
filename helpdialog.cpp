@@ -443,13 +443,25 @@ void HelpDialog::onCurrentItemChanged(QTreeWidgetItem*, QTreeWidgetItem*) {
             }
             else if (row == ePROB829) {
                 ui->leftTextEdit->setText(Pep::resToString(":/help/figures/prob0829.pep"));
-                ui->figureLabel->setText("<b>Problem 8.29</b><code>  </code> A test driver for the <code>STADI</code> instruction.");
+                ui->figureLabel->setText("<b>Problem 8.29</b><code>  </code> A test driver for the <code>STWADI</code> instruction.");
+                ui->rightCppTextEdit->hide();
+                ui->rightPepTextEdit->hide();
+            }
+            else if (row == ePROB830) {
+                ui->leftTextEdit->setText(Pep::resToString(":/help/figures/prob0830.pep"));
+                ui->figureLabel->setText("<b>Problem 8.30</b><code>  </code> A test driver for the <code>BOOLO</code> instruction.");
+                ui->rightCppTextEdit->hide();
+                ui->rightPepTextEdit->hide();
+            }
+            else if (row == ePROB831) {
+                ui->leftTextEdit->setText(Pep::resToString(":/help/figures/prob0831.pep"));
+                ui->figureLabel->setText("<b>Problem 8.31</b><code>  </code> A test driver for the <code>STACKADD</code> instruction.");
                 ui->rightCppTextEdit->hide();
                 ui->rightPepTextEdit->hide();
             }
             else if (row == ePROB832) {
                 ui->leftTextEdit->setText(Pep::resToString(":/help/figures/prob0832.pep"));
-                ui->figureLabel->setText("<b>Problem 8.32</b><code>  </code> A test driver for the <code>STACKADD</code> instruction.");
+                ui->figureLabel->setText("<b>Problem 8.32</b><code>  </code> A test driver for the <code>XORA</code> instruction.");
                 ui->rightCppTextEdit->hide();
                 ui->rightPepTextEdit->hide();
             }

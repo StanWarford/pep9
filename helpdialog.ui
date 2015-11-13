@@ -403,6 +403,16 @@
        </item>
        <item>
         <property name="text">
+         <string>Problem 8.30</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Problem 8.31</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
          <string>Problem 8.32</string>
         </property>
        </item>
