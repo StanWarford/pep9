@@ -48,7 +48,7 @@ endFor2: LDBA    '\n',i      ;printf("\n")
 ;******* main()
 vector:  .EQUATE 2           ;local variable #2d8a
 numItms: .EQUATE 0           ;local variable #2d
-main:    SUBSP   18,i        ;push storage for #vector #numItms
+main:    SUBSP   18,i        ;push #vector #numItms
          MOVSPA              ;move (&)vector
          ADDA    vector,i    
          STWA    -2,s        

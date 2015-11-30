@@ -15,7 +15,7 @@ void swap(int *r, int *s) {
 
 void order(int *x, int *y) {
    if (*x > *y) {
-      swap (x, y);
+      swap(x, y);
    }  // ra2
 }
 
