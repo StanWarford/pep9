@@ -2,48 +2,48 @@
 ;Computer Systems, Fifth edition
 ;Problem 8.26 test program
 ;
-         BR      main        ;Branch around data
-num:     .BLOCK  2           ;Global variable
-flags:   .BLOCK  1           ;Flags from double shift
+         BR      main        ;branch around data
+num:     .BLOCK  2           ;global variable
+flags:   .BLOCK  1           ;flags from double shift
 ;
-main:    DECI    num,d       ;Input decimal value
-         STRO    msg1,d      ;Output original value
+main:    DECI    num,d       ;input decimal value
+         STRO    msg1,d      ;output original value
          DECO    num,d       
          LDBA    '\n',i      
          STBA    charOut,d   
-         LDWA    num,d       ;Test ASL2 instruction
+         LDWA    num,d       ;test ASL2 instruction
          ASL2                
          STWA    num,d       
-         MOVFLGA             ;Store flags
+         MOVFLGA             ;store flags
          STBA    flags,d     
-         STRO    msg2,d      ;Output shifted value
+         STRO    msg2,d      ;output shifted value
          DECO    num,d       
          LDBA    '\n',i      
          STBA    charOut,d   
-testN:   LDBA    flags,d     ;Test N
+testN:   LDBA    flags,d     ;test N
          ANDA    0x0008,i    
          BREQ    outN0       
-         STRO    msgN1,d     ;Output "N = 1"
+         STRO    msgN1,d     ;output "N = 1"
          BR      testZ       
-outN0:   STRO    msgN0,d     ;Output "N = 0"
-testZ:   LDBA    flags,d     ;Test Z
+outN0:   STRO    msgN0,d     ;output "N = 0"
+testZ:   LDBA    flags,d     ;test Z
          ANDA    0x0004,i    
          BREQ    outZ0       
-         STRO    msgZ1,d     ;Output "Z = 1"
+         STRO    msgZ1,d     ;output "Z = 1"
          BR      testV       
-outZ0:   STRO    msgZ0,d     ;Output "Z = 0"
-testV:   LDBA    flags,d     ;Test V
+outZ0:   STRO    msgZ0,d     ;output "Z = 0"
+testV:   LDBA    flags,d     ;test V
          ANDA    0x0002,i    
          BREQ    outV0       
-         STRO    msgV1,d     ;Output "V = 1"
+         STRO    msgV1,d     ;output "V = 1"
          BR      testC       
-outV0:   STRO    msgV0,d     ;Output "V = 0"
-testC:   LDBA    flags,d     ;Test C
+outV0:   STRO    msgV0,d     ;output "V = 0"
+testC:   LDBA    flags,d     ;test C
          ANDA    0x0001,i    
          BREQ    outC0       
-         STRO    msgC1,d     ;Output "C = 1"
+         STRO    msgC1,d     ;output "C = 1"
          BR      halt        
-outC0:   STRO    msgC0,d     ;Output "C = 0"
+outC0:   STRO    msgC0,d     ;output "C = 0"
 halt:    STOP                
 msg1:    .ASCII  "Original value = \x00"
 msg2:    .ASCII  "Shifted value = \x00"

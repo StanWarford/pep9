@@ -8,7 +8,7 @@ dBool:   .BLOCK  2           ;global variable #2d
 ;******* void bTest()
 sBool:   .EQUATE 0           ;local variable #2d
 bTest:   SUBSP   2,i         ;push #sBool
-         STRO    msgFs,d     ;Test direct addressing
+         STRO    msgFs,d     ;test stack-relative addressing
          LDWA    0,i         ;sBool = 0
          STWA    dBool,s     
          BOOLO   dBool,s     
@@ -29,19 +29,19 @@ bTest:   SUBSP   2,i         ;push #sBool
          ADDSP   2,i         ;pop #sBool
          RET                 
 ;
-main:    STRO    msgFi,d     ;Test immediate addressing
-         BOOLO   0,i         ;Test with 0
+main:    STRO    msgFi,d     ;test immediate addressing
+         BOOLO   0,i         ;test with 0
          LDBA    '\n',i      
          STBA    charOut,d   
          STRO    msgTi,d     
-         BOOLO   2,i         ;Test with 2
+         BOOLO   2,i         ;test with 2
          LDBA    '\n',i      
          STBA    charOut,d   
          STRO    msgTi,d     
-         BOOLO   -2,i        ;Test with -2
+         BOOLO   -2,i        ;test with -2
          LDBA    '\n',i      
          STBA    charOut,d   
-         STRO    msgFd,d     ;Test direct addressing
+         STRO    msgFd,d     ;test direct addressing
          LDWA    0,i         ;dBool = 0
          STWA    dBool,d     
          BOOLO   dBool,d     

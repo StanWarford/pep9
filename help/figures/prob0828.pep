@@ -2,55 +2,55 @@
 ;Computer Systems, Fifth edition
 ;Problem 8.28 test program
 ;
-         BR      main        ;Branch around data
-mpr:     .BLOCK  2           ;Global variable
-mcand:   .BLOCK  2           ;Global variable
-product: .BLOCK  2           ;Global variable
-flags:   .BLOCK  1           ;Flags from product
+         BR      main        ;branch around data
+mpr:     .BLOCK  2           ;global variable
+mcand:   .BLOCK  2           ;global variable
+product: .BLOCK  2           ;global variable
+flags:   .BLOCK  1           ;flags from product
 ;
-main:    DECI    mpr,d       ;Input multiplier
-         DECI    mcand,d     ;Input multiplicand
-         STRO    msg1,d      ;Output multiplier
+main:    DECI    mpr,d       ;input multiplier
+         DECI    mcand,d     ;input multiplicand
+         STRO    msg1,d      ;output multiplier
          DECO    mpr,d       
          LDBA    '\n',i      
          STBA    charOut,d   
-         STRO    msg2,d      ;Output multiplicand
+         STRO    msg2,d      ;output multiplicand
          DECO    mcand,d     
          LDBA    '\n',i      
          STBA    charOut,d   
-         LDWA    mcand,d     ;Test MULA instruction
+         LDWA    mcand,d     ;test MULA instruction
          MULA    mpr,d       
          STWA    product,d   
-         MOVFLGA             ;Store flags
+         MOVFLGA             ;store flags
          STBA    flags,d     
-         STRO    msg3,d      ;Output product
+         STRO    msg3,d      ;output product
          DECO    product,d   
          LDBA    '\n',i      
          STBA    charOut,d   
-testN:   LDBA    flags,d     ;Test N
+testN:   LDBA    flags,d     ;test N
          ANDA    0x0008,i    
          BREQ    outN0       
-         STRO    msgN1,d     ;Output "N = 1"
+         STRO    msgN1,d     ;output "N = 1"
          BR      testZ       
-outN0:   STRO    msgN0,d     ;Output "N = 0"
-testZ:   LDBA    flags,d     ;Test Z
+outN0:   STRO    msgN0,d     ;output "N = 0"
+testZ:   LDBA    flags,d     ;test Z
          ANDA    0x0004,i    
          BREQ    outZ0       
-         STRO    msgZ1,d     ;Output "Z = 1"
+         STRO    msgZ1,d     ;output "Z = 1"
          BR      testV       
-outZ0:   STRO    msgZ0,d     ;Output "Z = 0"
-testV:   LDBA    flags,d     ;Test V
+outZ0:   STRO    msgZ0,d     ;output "Z = 0"
+testV:   LDBA    flags,d     ;test V
          ANDA    0x0002,i    
          BREQ    outV0       
-         STRO    msgV1,d     ;Output "V = 1"
+         STRO    msgV1,d     ;output "V = 1"
          BR      testC       
-outV0:   STRO    msgV0,d     ;Output "V = 0"
-testC:   LDBA    flags,d     ;Test C
+outV0:   STRO    msgV0,d     ;output "V = 0"
+testC:   LDBA    flags,d     ;test C
          ANDA    0x0001,i    
          BREQ    outC0       
-         STRO    msgC1,d     ;Output "C = 1"
+         STRO    msgC1,d     ;output "C = 1"
          BR      halt        
-outC0:   STRO    msgC0,d     ;Output "C = 0"
+outC0:   STRO    msgC0,d     ;output "C = 0"
 halt:    STOP                
 msg1:    .ASCII  "Multiplier = \x00"
 msg2:    .ASCII  "Multiplicand = \x00"
