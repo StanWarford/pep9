@@ -7,7 +7,7 @@ first:   .EQUATE 0           ;struct field #1c
 last:    .EQUATE 1           ;struct field #1c
 age:     .EQUATE 2           ;struct field #2d
 gender:  .EQUATE 4           ;struct field #1c
-bill:    .BLOCK  5           ;global variable #first #last #age #gender
+bill:    .BLOCK  5           ;globals #first #last #age #gender
 ;
 ;******* main()
 main:    LDWX    first,i     ;scanf("%c%c%d %c", &bill.first,
