@@ -25,6 +25,6 @@ int main() {
    printf("Enter an integer: ");
    scanf("%d", &b);
    order (&a, &b);
-   printf("Ordered they are: %d, %d\n", a ,b); // ra1
+   printf("Ordered they are: %d, %d\n", a, b); // ra1
    return 0;
 }

@@ -47,10 +47,10 @@ main:    STRO    msg1,d      ;printf("Enter an integer: ")
          SUBSP   4,i         ;push #x #y
          CALL    order       ;order(&a, &b)
 ra1:     ADDSP   4,i         ;pop #y #x
-         STRO    msg2,d      ;printf("Ordered they are: %d, %d\n", a ,b)
-         DECO    a,d         
+         STRO    msg2,d      ;printf("Ordered they are: %d, %d\n"
+         DECO    a,d         ;, a
          STRO    msg3,d      
-         DECO    b,d         
+         DECO    b,d         ;, b)
          LDBA    '\n',i      
          STBA    charOut,d   
          STOP                
