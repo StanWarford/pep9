@@ -1268,6 +1268,8 @@ void MainWindow::on_actionSystem_Assemble_Install_New_OS_triggered()
             listingTracePane->setListingTrace(sourceCodePane->getAssemblerListingList(), sourceCodePane->getHasCheckBox());
             sourceCodePane->installOS();
             memoryDumpPane->refreshMemory();
+            ui->actionEdit_Format_From_Listing->setEnabled(true);
+
             ui->statusbar->showMessage("Assembly succeeded, OS installed", 4000);
         }
     }
