@@ -114,10 +114,10 @@ private:
         eFIG636 = 34,
         eFIG638 = 35,
         eFIG640 = 36, // Interactive input
-        eFIG641 = 37,
-        eFIG643 = 38,
-        eFIG645 = 39,
-        eFIG647 = 40,
+        eFIG642 = 37,
+        eFIG644 = 38,
+        eFIG646 = 39,
+        eFIG648 = 40,
 
         eEXER804 = 0,
         ePROB826 = 1,

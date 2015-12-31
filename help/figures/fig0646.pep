@@ -1,6 +1,6 @@
-;File: fig0645.pep
+;File: fig0646.pep
 ;Computer Systems, Fifth edition
-;Figure 6.45
+;Figure 6.46
 ;
          BR      main        
 first:   .EQUATE 0           ;struct field #1c

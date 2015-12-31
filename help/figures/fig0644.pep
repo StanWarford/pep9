@@ -1,6 +1,6 @@
-;File: fig0643.pep
+;File: fig0644.pep
 ;Computer Systems, Fifth edition
-;Figure 6.43
+;Figure 6.44
 ;
          BR      main        
 ;
