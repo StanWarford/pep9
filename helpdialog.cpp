@@ -616,6 +616,9 @@ QString HelpDialog::getCode(Enu::EPane &destPane, Enu::EPane &inputDest, QString
         else if (row == ePROB831) {
             input = "12 7";
         }
+        else if (row == ePROB832) {
+            input = "32773 6";
+        }
     }
     destPane = Enu::ESource;
     return ui->leftTextEdit->toPlainText();

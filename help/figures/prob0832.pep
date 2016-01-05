@@ -1,4 +1,4 @@
-;File: prob0831.pep
+;File: prob0832.pep
 ;Computer Systems, Fifth edition
 ;Problem 8.32
 ;
@@ -16,14 +16,17 @@ main:    DECI    first,d     ;input first
          STWA    xor,d       ;store result into xor
          MOVFLGA             ;store flags
          STBA    flags,d     
-         STRO    msg1,d      
+         STRO    msg1,d      ;output first
          HEXO    first,d     
-         STRO    msg2,d      
+         STRO    bashN,d     
+         STRO    msg2,d      ;output second
          HEXO    second,d    
-         STRO    msg3,d      
+         STRO    bashN,d     
+         STRO    msg3,d      ;output xor
+         STRO    msg1,d      
          HEXO    xor,d       
-         LDBA    '\n',i      
-         STBA    charOut,d   
+         STRO    bashN,d     
+         STRO    bashN,d     
 testN:   LDBA    flags,d     ;test N
          ANDA    0x0008,i    
          BREQ    outN0       
@@ -37,11 +40,12 @@ testZ:   LDBA    flags,d     ;test Z
          BR      halt        
 outZ0:   STRO    msgZ0,d     ;output "Z = 0"
 halt:    STOP                
+bashN:   .ASCII  "\n\x00"    
 msg1:    .ASCII  "     \x00" 
-msg2:    .ASCII  "\nXOR  \x00"
-msg3:    .ASCII  "\n---------\n     \x00"
-msgN0:   .ASCII  "\nN = 0\n\x00"
-msgN1:   .ASCII  "\nN = 1\n\x00"
+msg2:    .ASCII  "XOR  \x00" 
+msg3:    .ASCII  "---------\n\x00"
+msgN0:   .ASCII  "N = 0\n\x00"
+msgN1:   .ASCII  "N = 1\n\x00"
 msgZ0:   .ASCII  "Z = 0\n\x00"
 msgZ1:   .ASCII  "Z = 1\n\x00"
 msgV0:   .ASCII  "V = 0\n\x00"
