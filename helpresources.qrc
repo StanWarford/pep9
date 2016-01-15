@@ -107,7 +107,6 @@
         <file>help/images/fig0434io.png</file>
         <file>help/images/fig0434memorydump.png</file>
         <file>help/images/runobject.png</file>
-        <file>help/images/fig0441.png</file>
         <file>help/images/fig0441output.png</file>
         <file>help/images/startdebuggingicon.png</file>
         <file>help/images/pep8help.png</file>
@@ -150,5 +149,6 @@
         <file>help/figures/prob0828.pep</file>
         <file>help/figures/prob0830.pep</file>
         <file>help/figures/prob0831.pep</file>
+        <file>help/images/fig0443.png</file>
     </qresource>
 </RCC>
