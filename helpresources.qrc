@@ -75,11 +75,11 @@
         <file>help/images/startdebuggingsource.png</file>
         <file>help/images/stopdebugging.png</file>
         <file>help/images/assembleicon.png</file>
-        <file>help/images/fig518.png</file>
-        <file>help/images/fig518assembled.png</file>
-        <file>help/images/fig518error.png</file>
-        <file>help/images/fig518tracetagwarning.png</file>
-        <file>help/images/fig518unformatted.png</file>
+        <file>help/images/fig0519.png</file>
+        <file>help/images/fig0519assembled.png</file>
+        <file>help/images/fig0519error.png</file>
+        <file>help/images/fig0519tracetagwarning.png</file>
+        <file>help/images/fig0519unformatted.png</file>
         <file>help/images/singlestep.png</file>
         <file>help/images/loadsucceeded.png</file>
         <file>help/images/assemblysucceeded.png</file>
