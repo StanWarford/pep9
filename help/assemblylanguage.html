@@ -36,15 +36,15 @@ Writing an assembly language program is a four-step process.
 <p>
 <h4>Step 1.</h4>
 With this Pep/8 application, you write the assembly language program using the built-in text editor in the Source Code pane.
-The following figure shows the source program after entering the program from Figure 5.18 of the textbook.
+The following figure shows the source program after entering the program from Figure 5.19 of the textbook.
 <p>
-<img src="qrc:/help/images/fig518.png" alt="fig518" hspace=10 vspace=10>
+<img src="qrc:/help/images/fig0519.png" alt="fig0519" hspace=10 vspace=10>
 <p>
 Strict formatting is not required as long as there is one instruction or dot command per line,
 and at least one space between a mnemonic and an operand specifier.
 For example, the above program could be entered as follows.
 <p>
-<img src="qrc:/help/images/fig518unformatted.png" alt="fig518unformatted" hspace=10 vspace=10>
+<img src="qrc:/help/images/fig0519unformatted.png" alt="fig0519unformatted" hspace=10 vspace=10>
 <p>
 <h4>Step 2.</h4>
 After writing the assembly language program, assemble it by selecting Build->Assemble from the menu
@@ -60,13 +60,13 @@ If there are no errors in the program a message to that effect will appear at th
 The translated program will appear in the Object Code pane,
 and a formatted listing will appear in the Assembler Listing pane.
 <p>
-<img src="qrc:/help/images/fig518assembled.png" alt="fig518assembled" hspace=10 vspace=10>
+<img src="qrc:/help/images/fig0519assembled.png" alt="fig0519assembled" hspace=10 vspace=10>
 <p>
 If there is an error in your program, an error message will appear in the source code pane.
 The following screenshot shows what would happen if you fail to supply the addressing mode for
 the <code>STRO</code> instruction.
 <P>
-<img src="qrc:/help/images/fig518error.png" alt="fig518error" hspace=10 vspace=10>
+<img src="qrc:/help/images/fig0519error.png" alt="fig0519error" hspace=10 vspace=10>
 <p>
 If you would like, you can select Build->Remove Error Messages from the menu to delete the error message.
 Then, you can correct your error and try to assemble your program again.
@@ -96,9 +96,9 @@ To execute the program select Build -> Execute from the menu.
 <h3><a name="Trace">Trace tag warnings</a></h3>
 
 If your program assembles correctly but there is an error in your trace tags, a trace tag warning is displayed.
-For example, here is what happens if you make an error in one of the trace tags in the program from Figure 5.26.
+For example, here is what happens if you make an error in one of the trace tags in the program from Figure 5.27.
 <p>
-<img src="qrc:/help/images/fig518tracetagwarning.png" alt="fig518tracetagwarning" hspace=10 vspace=10>
+<img src="qrc:/help/images/fig0519tracetagwarning.png" alt="fig0519tracetagwarning" hspace=10 vspace=10>
 <p>
 Programs with trace tag warnings have assembled correctly and will still run.
 In the debugger, you can still single step through the program, set break points, and trace memory in the Memory Dump pane.

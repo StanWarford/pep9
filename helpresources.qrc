@@ -28,10 +28,10 @@
         <file>help/figures/fig0636.pep</file>
         <file>help/figures/fig0638.pep</file>
         <file>help/figures/fig0640.pep</file>
-        <file>help/figures/fig0641.pep</file>
-        <file>help/figures/fig0643.pep</file>
-        <file>help/figures/fig0645.pep</file>
-        <file>help/figures/fig0647.pep</file>
+        <file>help/figures/fig0642.pep</file>
+        <file>help/figures/fig0644.pep</file>
+        <file>help/figures/fig0646.pep</file>
+        <file>help/figures/fig0648.pep</file>
         <file>help/figures/pep9os.pep</file>
         <file>help/figures/fig0433.pepb</file>
         <file>help/figures/fig0433.peph</file>
@@ -75,11 +75,11 @@
         <file>help/images/startdebuggingsource.png</file>
         <file>help/images/stopdebugging.png</file>
         <file>help/images/assembleicon.png</file>
-        <file>help/images/fig518.png</file>
-        <file>help/images/fig518assembled.png</file>
-        <file>help/images/fig518error.png</file>
-        <file>help/images/fig518tracetagwarning.png</file>
-        <file>help/images/fig518unformatted.png</file>
+        <file>help/images/fig0519.png</file>
+        <file>help/images/fig0519assembled.png</file>
+        <file>help/images/fig0519error.png</file>
+        <file>help/images/fig0519tracetagwarning.png</file>
+        <file>help/images/fig0519unformatted.png</file>
         <file>help/images/singlestep.png</file>
         <file>help/images/loadsucceeded.png</file>
         <file>help/images/assemblysucceeded.png</file>
@@ -107,7 +107,6 @@
         <file>help/images/fig0434io.png</file>
         <file>help/images/fig0434memorydump.png</file>
         <file>help/images/runobject.png</file>
-        <file>help/images/fig0441.png</file>
         <file>help/images/fig0441output.png</file>
         <file>help/images/startdebuggingicon.png</file>
         <file>help/images/pep8help.png</file>
@@ -122,10 +121,10 @@
         <file>help/images/memorytrace.png</file>
         <file>help/figures/fig0638.c</file>
         <file>help/figures/fig0640.c</file>
-        <file>help/figures/fig0641.c</file>
-        <file>help/figures/fig0643.c</file>
-        <file>help/figures/fig0645.c</file>
-        <file>help/figures/fig0647.c</file>
+        <file>help/figures/fig0642.c</file>
+        <file>help/figures/fig0644.c</file>
+        <file>help/figures/fig0646.c</file>
+        <file>help/figures/fig0648.c</file>
         <file>help/figures/fig0627.c</file>
         <file>help/figures/fig0629.c</file>
         <file>help/figures/fig0632.c</file>
@@ -150,5 +149,6 @@
         <file>help/figures/prob0828.pep</file>
         <file>help/figures/prob0830.pep</file>
         <file>help/figures/prob0831.pep</file>
+        <file>help/images/fig0443.png</file>
     </qresource>
 </RCC>

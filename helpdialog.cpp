@@ -377,31 +377,31 @@ void HelpDialog::onCurrentItemChanged(QTreeWidgetItem*, QTreeWidgetItem*) {
                 ui->rightCppTextEdit->show();
                 ui->rightPepTextEdit->hide();
             }
-            else if (row == eFIG641) {
-                ui->leftTextEdit->setText(Pep::resToString(":/help/figures/fig0641.pep"));
-                ui->rightCppTextEdit->setText(Pep::resToString(":/help/figures/fig0641.c"));
-                ui->figureLabel->setText("<b>Figure 6.41</b><code>  </code> Translation of global pointers.");
+            else if (row == eFIG642) {
+                ui->leftTextEdit->setText(Pep::resToString(":/help/figures/fig0642.pep"));
+                ui->rightCppTextEdit->setText(Pep::resToString(":/help/figures/fig0642.c"));
+                ui->figureLabel->setText("<b>Figure 6.42</b><code>  </code> Translation of global pointers.");
                 ui->rightCppTextEdit->show();
                 ui->rightPepTextEdit->hide();
             }
-            else if (row == eFIG643) {
-                ui->leftTextEdit->setText(Pep::resToString(":/help/figures/fig0643.pep"));
-                ui->rightCppTextEdit->setText(Pep::resToString(":/help/figures/fig0643.c"));
-                ui->figureLabel->setText("<b>Figure 6.43</b><code>  </code> Translation of local pointers.");
+            else if (row == eFIG644) {
+                ui->leftTextEdit->setText(Pep::resToString(":/help/figures/fig0644.pep"));
+                ui->rightCppTextEdit->setText(Pep::resToString(":/help/figures/fig0644.c"));
+                ui->figureLabel->setText("<b>Figure 6.44</b><code>  </code> Translation of local pointers.");
                 ui->rightCppTextEdit->show();
                 ui->rightPepTextEdit->hide();
             }
-            else if (row == eFIG645) {
-                ui->leftTextEdit->setText(Pep::resToString(":/help/figures/fig0645.pep"));
-                ui->rightCppTextEdit->setText(Pep::resToString(":/help/figures/fig0645.c"));
-                ui->figureLabel->setText("<b>Figure 6.45</b><code>  </code> Translation of a structure.");
+            else if (row == eFIG646) {
+                ui->leftTextEdit->setText(Pep::resToString(":/help/figures/fig0646.pep"));
+                ui->rightCppTextEdit->setText(Pep::resToString(":/help/figures/fig0646.c"));
+                ui->figureLabel->setText("<b>Figure 6.46</b><code>  </code> Translation of a structure.");
                 ui->rightCppTextEdit->show();
                 ui->rightPepTextEdit->hide();
             }
-            else if (row == eFIG647) {
-                ui->leftTextEdit->setText(Pep::resToString(":/help/figures/fig0647.pep"));
-                ui->rightCppTextEdit->setText(Pep::resToString(":/help/figures/fig0647.c"));
-                ui->figureLabel->setText("<b>Figure 6.47</b><code>  </code> Translation of a linked list.");
+            else if (row == eFIG648) {
+                ui->leftTextEdit->setText(Pep::resToString(":/help/figures/fig0648.pep"));
+                ui->rightCppTextEdit->setText(Pep::resToString(":/help/figures/fig0648.c"));
+                ui->figureLabel->setText("<b>Figure 6.48</b><code>  </code> Translation of a linked list.");
                 ui->rightCppTextEdit->show();
                 ui->rightPepTextEdit->hide();
             }
@@ -590,10 +590,10 @@ QString HelpDialog::getCode(Enu::EPane &destPane, Enu::EPane &inputDest, QString
         else if (row == eFIG638) {
             input = "5  40 50 60 70 80";
         }
-        else if (row == eFIG645) {
+        else if (row == eFIG646) {
             input = "bj 32 m";
         }
-        else if (row == eFIG647) {
+        else if (row == eFIG648) {
             input = "10 20 30 40 -9999";
         }
         else if (row == eFIG627 || row == eFIG629 || row == eFIG640) {
@@ -615,6 +615,9 @@ QString HelpDialog::getCode(Enu::EPane &destPane, Enu::EPane &inputDest, QString
         }
         else if (row == ePROB831) {
             input = "12 7";
+        }
+        else if (row == ePROB832) {
+            input = "32773 6";
         }
     }
     destPane = Enu::ESource;

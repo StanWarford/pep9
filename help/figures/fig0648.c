@@ -1,6 +1,6 @@
-// File: fig0647.c
+// File: fig0648.c
 // Computer Systems, Fifth edition
-// Figure 6.47
+// Figure 6.48
 
 #include <stdio.h>
 #include <stdlib.h>

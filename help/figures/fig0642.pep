@@ -1,6 +1,6 @@
-;File: fig0641.pep
+;File: fig0642.pep
 ;Computer Systems, Fifth edition
-;Figure 6.41
+;Figure 6.42
 ;
          BR      main
 a:       .BLOCK  2           ;global variable #2h

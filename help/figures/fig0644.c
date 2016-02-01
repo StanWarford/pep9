@@ -1,13 +1,12 @@
-// File: fig0641.c
+// File: fig0644.c
 // Computer Systems, Fifth edition
-// Figure 6.41
+// Figure 6.44
 
 #include <stdio.h>
 #include <stdlib.h>
 
-int *a, *b, *c;
-
 int main() {
+   int *a, *b, *c;
    a = (int *) malloc(sizeof(int));
    *a = 5;
    b = (int *) malloc(sizeof(int));
