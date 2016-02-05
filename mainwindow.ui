@@ -758,7 +758,7 @@
   </action>
   <action name="actionAbout_Qt">
    <property name="text">
-    <string>About QT</string>
+    <string>About Qt</string>
    </property>
   </action>
   <action name="actionHelp_Assembly_Language">

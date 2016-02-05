@@ -1407,7 +1407,7 @@ void MainWindow::helpCopyToSourceButtonClicked()
 
 void MainWindow::on_actionAbout_Qt_triggered()
 {
-    QDesktopServices::openUrl(QUrl("http://qt.nokia.com/"));
+    QDesktopServices::openUrl(QUrl("http://www.qt.io/"));
 }
 
 void MainWindow::slotByteConverterDecEdited(const QString &str)
