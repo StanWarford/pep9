@@ -103,7 +103,7 @@
         <file>help/images/redefinemnemonics.png</file>
         <file>help/images/nop0.png</file>
         <file>help/images/relocatedos.png</file>
-        <file>help/images/fig0434.png</file>
+        <file>help/images/fig0435.png</file>
         <file>help/images/fig0434io.png</file>
         <file>help/images/fig0434memorydump.png</file>
         <file>help/images/runobject.png</file>
@@ -114,7 +114,7 @@
         <file>help/images/codecodememory.png</file>
         <file>help/images/stackpointer.png</file>
         <file>help/images/fig0601.png</file>
-        <file>help/images/fig0434cpu.png</file>
+        <file>help/images/fig0435cpu.png</file>
         <file>help/images/sourcecode.png</file>
         <file>help/writingtraphandlers.html</file>
         <file>help/images/scrollto.png</file>
