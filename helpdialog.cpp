@@ -242,7 +242,7 @@ void HelpDialog::onCurrentItemChanged(QTreeWidgetItem*, QTreeWidgetItem*) {
             else if (row == eFIG527) {
                 ui->leftTextEdit->setText(Pep::resToString(":/help/figures/fig0527.pep"));
                 ui->rightCppTextEdit->setText(Pep::resToString(":/help/figures/fig0527.c"));
-                ui->figureLabel->setText("<b>Figure 5.27</b><code>  </code> C++ constants.");
+                ui->figureLabel->setText("<b>Figure 5.27</b><code>  </code> C constants.");
                 ui->rightCppTextEdit->show();
                 ui->rightPepTextEdit->hide();
             }

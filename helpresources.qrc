@@ -78,7 +78,7 @@
         <file>help/images/fig0519.png</file>
         <file>help/images/fig0519assembled.png</file>
         <file>help/images/fig0519error.png</file>
-        <file>help/images/fig0519tracetagwarning.png</file>
+        <file>help/images/fig0527tracetagwarning.png</file>
         <file>help/images/fig0519unformatted.png</file>
         <file>help/images/singlestep.png</file>
         <file>help/images/loadsucceeded.png</file>
@@ -99,13 +99,13 @@
         <file>help/images/echoprogram.png</file>
         <file>help/images/modifieddotburn.png</file>
         <file>help/images/pecho.png</file>
-        <file>help/images/pep8oshelpsystem.png</file>
+        <file>help/images/pep9oshelpsystem.png</file>
         <file>help/images/redefinemnemonics.png</file>
         <file>help/images/nop0.png</file>
         <file>help/images/relocatedos.png</file>
         <file>help/images/fig0435.png</file>
         <file>help/images/fig0434io.png</file>
-        <file>help/images/fig0434memorydump.png</file>
+        <file>help/images/fig0435memorydump.png</file>
         <file>help/images/runobject.png</file>
         <file>help/images/fig0441output.png</file>
         <file>help/images/startdebuggingicon.png</file>
@@ -150,5 +150,6 @@
         <file>help/figures/prob0830.pep</file>
         <file>help/figures/prob0831.pep</file>
         <file>help/images/fig0443.png</file>
+        <file>help/images/fig0601dump.png</file>
     </qresource>
 </RCC>

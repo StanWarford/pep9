@@ -98,7 +98,7 @@ The Operand field in the CPU pane is enclosed in parentheses to emphasize the fa
 <img src="qrc:/help/images/operand.png" alt="operand" hspace=10 vspace=10>
 <p>
  The values in the CPU pane are the values <i>after</i> the instruction in the instruction specifier has executed.
- For example, the values in the above screenshots are the values after the first <code>CHARI</code> executes.
+ For example, the values in the above screenshots are the values after the first <code>LDBA</code> executes.
  In the von Neumann cycle, the program counter increments before the instruction executes.
  So, the value of the program counter is the address of the <i>next</i> instruction to execute.
  In the above screenshot, the program counter is 3, which is the address of the <i>next</i> instruction to execute,
@@ -106,25 +106,25 @@ The Operand field in the CPU pane is enclosed in parentheses to emphasize the fa
 <p>
  As you single step through the program, the Memory Dump pane highlights in red the bytes that have changed,
  and highlights in blue the bytes of the instruction as specified by the program counter.
- The following screenshot shows the Memory Dump pane after the first click of the Single Step button.
+ The following screenshot shows the Memory Dump pane after the second click of the Single Step button.
 <p>
-<img src="qrc:/help/images/fig0434memorydump.png" alt="fig0434memorydump" hspace=10 vspace=10>
+<img src="qrc:/help/images/fig0435memorydump.png" alt="fig0435memorydump" hspace=10 vspace=10>
 <p>
 Each line of the Memory Dump pane displays eight bytes, each byte represented as two hexadecimal digits.
 The address in the first column is the address of the first byte.
 The rightmost column shows the value of the bytes in the row displayed as ASCII characters.
 If the byte is a control character that cannot be displayed, the column depicts the value as a period.
 <p>
-The above screenshot highlights the byte at address 000D in red because the first <code>CHARI</code> instruction
+The above screenshot highlights the byte at address 0013 in red because the first <code>STBA</code> instruction
 input the letter <code>u</code> at that address.
-It hightlights the bytes starting at address 0003 in blue because that is the value of the program counter,
+It hightlights the bytes starting at address 0006 in blue because that is the value of the program counter,
 and those bytes are the instruction that will execute <i>next</i>.
 <p>
 The Memory Dump pane also highlights the top byte of the stack in magenta.
-The following screenshot from Figure 6.1 shows the stack starting at address FBCE just before the <code>ADDSP</code> executes.
+The following screenshot from Figure 6.1 shows the stack starting at address FB8E just before the <code>ADDSP</code> executes.
 <p>
 <img src="qrc:/help/images/fig0601.png" alt="fig0601" hspace=10 vspace=10>
-<p>
+<img src="qrc:/help/images/fig0601dump.png" alt="fig0601dump" hspace=10 vspace=10><p>
  <h4>Switching out of debug mode</h4>
  If you want the program to run to completion, click the Resume button.
  The program will run to completion and exit the debug mode.
@@ -152,7 +152,7 @@ has executed.
 In addition, the Trace pane highlights the instruction specified by the program counter, which is the <i>next</i> instruction
 to be executed.
 The following screenshot shows the Trace pane after five clicks of the Single Step button.
-The <code>LDA</code> instruction has just executed, and the <code>ADDA</code> instruction will execute next.
+The <code>LDWA</code> instruction has just executed, and the <code>ADDA</code> instruction will execute next.
 <p>
 <img src="qrc:/help/images/fig0515listingadda.png" alt="fig0515listingadda" hspace=10 vspace=10>
 <img src="qrc:/help/images/fig0515cpu.png" alt="fig0515cpu" hspace=10 vspace=10>
@@ -161,14 +161,14 @@ The <code>LDA</code> instruction has just executed, and the <code>ADDA</code> in
 <h4>Setting break points</h4>
  Each executable instruction in the Trace pane has a checkbox for setting a break point.
  The following screenshot shows the Trace pane for the program in Figure 5.15 before any statement has been executed.
- The programmer has set a breakpoint at the <code>STA</code> instruction.
+ The programmer has set a breakpoint at the <code>STWA</code> instruction.
 <p>
 <img src="qrc:/help/images/fig0515breakpoint.png" alt="fig0515breakpoint" hspace=10 vspace=10>
 <p>
  When the programmer clicks the Resume button, the program resumes executing until it gets to an instruction with a breakpoint
  or until completion if no breakpoint is encountered.
  The following screenshots show what happens when the Resume button is clicked.
- Note that the <code>STA</code> instruction will execute next if the programmer clicks the Single Step button at this point.
+ Note that the <code>STWA</code> instruction will execute next if the programmer clicks the Single Step button at this point.
  <p>
 <img src="qrc:/help/images/resume.png" alt="resume" hspace=10 vspace=10>
 <img src="qrc:/help/images/fig0515resumed.png" alt="fig0515resumed" hspace=10 vspace=10>
@@ -210,9 +210,9 @@ If your program does not include trace tags, the memory trace pane will not be v
 You can still use the debugger to single-step through your program and set break points.
 If it does include trace tags, but errors are detected in the tags, a blue warning will be issued.
 You can still run your program and use the debugger, but the memory trace pane will not be visible.
-The screenshot below shows what happens if you make an error in one of the trace tags in the program from Figure 5.26.
+The screenshot below shows what happens if you make an error in one of the trace tags in the program from Figure 5.27.
 <p>
-<img src="qrc:/help/images/fig518tracetagwarning.png" alt="fig518tracetagwarning" hspace=10 vspace=10>
+<img src="qrc:/help/images/fig0527tracetagwarning.png" alt="fig0527tracetagwarning" hspace=10 vspace=10>
 <p>
 If your program does include trace tags and they have no errors, the memory trace will automatically become visible
 below the listing trace pane.
