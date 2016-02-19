@@ -1,4 +1,4 @@
-Pep/8 is a virtual machine for writing machine language and assembly
+Pep/9 is a virtual machine for writing machine language and assembly
 language programs. It is designed to be used with the textbook,
 Computer Systems, J. Stanley Warford, Fourth edition, Jones and Bartlett,
 Publishers, 2010.
