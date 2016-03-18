@@ -223,7 +223,6 @@ void DotAddrss::appendSourceLine(QStringList &assemblerListingList, QStringList 
 
 void DotAlign::appendSourceLine(QStringList &assemblerListingList, QStringList &listingTraceList, QList<bool> &hasCheckBox)
 {
-    int arg = argument->getArgumentValue();
     int numBytes = numBytesGenerated->getArgumentValue();
     QString memStr = numBytes == 0 ? "      " : QString("%1").arg(memAddress, 4, 16, QLatin1Char('0')).toUpper();
     QString codeStr = "";
