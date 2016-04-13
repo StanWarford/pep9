@@ -510,6 +510,7 @@ bool Sim::vonNeumannStep(QString &errorString)
         writeByte(temp - 10, nzvcToInt());
         stackPointer = temp - 10;
         programCounter = readWord(Pep::dotBurnArgument - 1);
+        indexRegister = 0; // To compensate for a bug in Pep/9 OS, where it should be done. (But the book is published already!)
         return true;
     case LDBA:
         if (addrMode != Enu::I && addrOfByteOprnd(addrMode) == 256 * Mem[Pep::dotBurnArgument - 7] + Mem[Pep::dotBurnArgument - 6]) {
