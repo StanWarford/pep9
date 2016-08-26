@@ -1,1 +1,1 @@
-./macdeployqt ~/Developer/build-pep9-Release/Pep9.app/
+./macdeployqt ~/Developer/build-pep9-Release/Pep9.app/ -dmg

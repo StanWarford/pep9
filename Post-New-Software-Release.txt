@@ -1,0 +1,12 @@
+How to post updated software.
+
+1. Login to InMotion cPanel.
+2. Click on File Manager under Files category.
+3. Select Document Root for computersystemsbook.com, which will take you to Home/compu147.
+4. Expand public_html/wp-content/uploads and find the current year and month folder.
+5. Upload the software to the current year and month. Be sure to wait until the progress
+bar in the bottom right is complete before leaving the page.
+8. In the downloads page, find the simple URL link attached to the download button.
+9. Under Simple URLs, find the simple URL and edit it.
+10. Change the "Redirect URI" field manually to point to the uploaded software.
+The software to download never needs to be in the Media Library.
