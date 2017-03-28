@@ -8,7 +8,6 @@ void printTri() {
    printf("*\n");
    printf("**\n");
    printf("***\n");
-   printf("****\n");
 }
 
 int main() {
