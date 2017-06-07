@@ -228,7 +228,7 @@ void HelpDialog::onCurrentItemChanged(QTreeWidgetItem*, QTreeWidgetItem*) {
             else if (row == eFIG519) {
                 ui->leftTextEdit->setText(Pep::resToString(":/help/figures/fig0519.pep"));
                 ui->rightCppTextEdit->setText(Pep::resToString(":/help/figures/fig0519.c"));
-                ui->figureLabel->setText("<b>Figure 5.19</b><code>  </code> The <code>cout</code> statement.");
+                ui->figureLabel->setText("<b>Figure 5.19</b><code>  </code> The <code>printf()</code> function.");
                 ui->rightCppTextEdit->show();
                 ui->rightPepTextEdit->hide();
             }
