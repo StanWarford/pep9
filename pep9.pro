@@ -5,7 +5,8 @@ TEMPLATE = app
 TARGET = Pep9
 DEPENDPATH += .
 INCLUDEPATH += .
-QT += webenginewidgets
+QT += webkit
+QT += webkitwidgets
 QT += widgets
 QT += printsupport
 
