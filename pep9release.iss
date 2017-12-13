@@ -7,7 +7,7 @@
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
 AppId={{A20CAD68-8A36-445C-BE4B-ECE5343DC3B4}
 AppName=Pep9
-AppVersion=v9.0
+AppVersion=v9.1
 ;AppVerName=Pep9 v9.0
 AppPublisher=Warford & Dimpfl
 AppPublisherURL=http://computersystemsbook.com/
@@ -16,7 +16,7 @@ AppUpdatesURL=http://computersystemsbook.com/
 DefaultDirName={pf}\Pep9
 DefaultGroupName=Pep9
 AllowNoIcons=yes
-LicenseFile=C:\Users\Emily\Desktop\Dropbox\Work\Personal\pep9\LICENSE.txt
+LicenseFile=C:\Users\Emily\projects\pep9\LICENSE.txt
 OutputBaseFilename=pep9setup
 Compression=lzma
 SolidCompression=yes
@@ -28,8 +28,8 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "F:\Pep9Win\Pep9.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "F:\Pep9Win\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "..\Pep9.1\Pep9.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\Pep9.1\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
