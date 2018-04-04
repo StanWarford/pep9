@@ -402,6 +402,31 @@ void SourceCodePane::tab()
     }
 }
 
+void SourceCodePane::writeSettings(QSettings &settings)
+{
+    settings.beginGroup("SourceCodePane");
+    settings.setValue("EditorFont",ui->textEdit->font());
+    settings.endGroup();
+}
+
+void SourceCodePane::readSettings(QSettings &settings)
+{
+    settings.beginGroup("SourceCodePane");
+    QFont font = QFont(Pep::codeFont,Pep::codeFontSize);
+    QVariant val = settings.value("EditorFont",font);
+    if(val.canConvert<QFont>())
+    {
+        font = qvariant_cast<QFont>(val);
+    }
+    ui->textEdit->setFont(font);
+    settings.endGroup();
+}
+
+void SourceCodePane::onDefaultFonts()
+{
+    ui->textEdit->setFont(QFont(Pep::codeFont,Pep::codeFontSize));
+}
+
 void SourceCodePane::mouseReleaseEvent(QMouseEvent *)
 {
     ui->textEdit->setFocus();

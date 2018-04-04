@@ -25,6 +25,7 @@
 #include <QWidget>
 #include <QString>
 #include <QList>
+#include <QSettings>
 #include "asm.h" // For Code in QList<Code *> codeList;
 #include "pephighlighter.h" // For syntax highlighting
 #include "enu.h"
@@ -140,6 +141,10 @@ public:
 
     void tab();
 
+    void writeSettings(QSettings& settings);
+    void readSettings(QSettings& settings);
+public slots:
+    void onDefaultFonts();
 private:
     Ui::SourceCodePane *ui;
     QList<Code *> codeList;

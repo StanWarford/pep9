@@ -150,6 +150,7 @@ private slots:
     void on_actionEdit_Paste_triggered();
     void on_actionEdit_Format_From_Listing_triggered();
     void on_actionEdit_Font_triggered();
+    void on_actionRest_Fonts_to_Default_triggered();
     void on_actionEdit_Remove_Error_Messages_triggered();
 
     // Build
@@ -238,7 +239,9 @@ private slots:
     void slotSaveTraceTraps(int);
     void slotSaveTraceLoader(int);
 */
-
+signals:
+    //If a subobject needs to be aware of font resets, connect to this signal
+    void defaultFonts();
 };
 
 #endif // MAINWINDOW_H
