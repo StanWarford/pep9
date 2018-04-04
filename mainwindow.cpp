@@ -151,7 +151,8 @@ MainWindow::MainWindow(QWidget *parent)
     connect(terminalPane, SIGNAL(inputReceived()), this, SLOT(inputReceived()));
 
     // connect(ui->horizontalSplitter, SIGNAL(splitterMoved(int,int)), this, SLOT(resizeDocWidth(int,int)));
-
+    //Connect font defaulting signals
+    connect(this,SIGNAL(defaultFonts()),sourceCodePane,SLOT(onDefaultFonts()));
     readSettings();
 
     // Recent files
@@ -212,12 +213,13 @@ bool MainWindow::saveObject()
 
 void MainWindow::readSettings()
 {
-    QSettings settings("Pep9", "MainWindow");
+    QSettings settings("cslab.pepperdine", "Pep9");
     QDesktopWidget *desktop = QApplication::desktop();
     int width = static_cast<int>(desktop->width() * 0.80);
     int height = static_cast<int>(desktop->height() * 0.70);
     int screenWidth = desktop->width();
     int screenHeight = desktop->height();
+    settings.beginGroup("MainWindow");
     QPoint pos = settings.value("pos", QPoint((screenWidth - width) / 2, (screenHeight - height) / 2)).toPoint();
     QSize size = settings.value("size", QSize(width, height)).toSize();
     if (Pep::getSystem() == "Mac") {
@@ -232,14 +234,19 @@ void MainWindow::readSettings()
     resize(size);
     move(pos);
     curPath = settings.value("filePath", QDir::homePath()).toString();
+    settings.endGroup();
+    sourceCodePane->readSettings(settings);
 }
 
 void MainWindow::writeSettings()
 {
-    QSettings settings("Pep9", "MainWindow");
+    QSettings settings("cslab.pepperdine", "Pep9");
+    settings.beginGroup("MainWindow");
     settings.setValue("pos", pos());
     settings.setValue("size", size());
     settings.setValue("filePath", curPath);
+    settings.endGroup();
+    sourceCodePane->writeSettings(settings);
 }
 
 bool MainWindow::maybeSaveSource()
@@ -876,6 +883,11 @@ void MainWindow::on_actionEdit_Font_triggered()
         memoryDumpPane->updateGeometry();
         memoryDumpPane->setMaximumWidth(memoryDumpPane->memoryDumpWidth());
     }
+}
+
+void MainWindow::on_actionRest_Fonts_to_Default_triggered()
+{
+    emit defaultFonts();
 }
 
 void MainWindow::on_actionEdit_Remove_Error_Messages_triggered()

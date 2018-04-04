@@ -370,6 +370,7 @@
     <addaction name="actionEdit_Remove_Error_Messages"/>
     <addaction name="separator"/>
     <addaction name="actionEdit_Font"/>
+    <addaction name="actionRest_Fonts_to_Default"/>
    </widget>
    <widget class="QMenu" name="menu_File">
     <property name="toolTip">
@@ -943,6 +944,11 @@
   <action name="actionSystem_Clear_Memory">
    <property name="text">
     <string>Clear Memory</string>
+   </property>
+  </action>
+  <action name="actionRest_Fonts_to_Default">
+   <property name="text">
+    <string>Reset Fonts to Default</string>
    </property>
   </action>
  </widget>
