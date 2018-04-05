@@ -103,15 +103,6 @@ void InputPane::paste()
     ui->plainTextEdit->paste();
 }
 
-void InputPane::setFont()
-{
-    bool ok = false;
-    QFont font = QFontDialog::getFont(&ok, QFont(ui->plainTextEdit->font()), this, "Set Input Font");
-    if (ok) {
-        ui->plainTextEdit->setFont(font);
-    }
-}
-
 void InputPane::setReadOnly(bool b)
 {
     ui->plainTextEdit->setReadOnly(b);
@@ -135,6 +126,11 @@ void InputPane::tab()
 
         ui->plainTextEdit->insertPlainText(string);
     }
+}
+
+void InputPane::onFontChanged(QFont font)
+{
+    ui->plainTextEdit->setFont(font);
 }
 
 void InputPane::mouseReleaseEvent(QMouseEvent *)

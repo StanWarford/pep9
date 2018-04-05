@@ -65,11 +65,11 @@ public:
     void copy();
     // Post: selected text in the text edit is copied to the clipboard
 
-    void setFont();
-    // Post: the font used by the text edit is set to a font chosen in a font dialog
-
     int memoryDumpWidth();
     // Post: the width of the memory dump text edit document is returned
+
+public slots:
+    void onFontChanged(QFont font);
 
 private:
     Ui::MemoryDumpPane *ui;

@@ -62,11 +62,11 @@ public:
     bool hasFocus();
     // Post: returns if the pane has focus
 
-    void setFont();
-    // Post: the font used by the text edit is set to a font chosen in a font dialog
-
     void setFocus();
     // Post: the graphics item has focus
+
+public slots:
+    void onFontChanged(QFont font);
     
 private:
     Ui::MemoryTracePane *ui;

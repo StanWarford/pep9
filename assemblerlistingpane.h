@@ -57,14 +57,15 @@ public:
     void copy();
     // Copies selected text to the clipboard
 
-    void setFont();
-    // Post: the font used by the text edit is set to a font chosen in a font dialog
     
     void setFocus();
     // Post: the text edit has focus
     
     bool isEmpty();
     // Post: returns if the assembler listing is empty
+
+public slots:
+    void onFontChanged(QFont font);
 
 private:
     Ui::AssemblerListingPane *ui;

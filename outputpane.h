@@ -50,8 +50,8 @@ public:
     void copy();
     // Post: selected text in the text edit is copied to the clipboard
 
-    void setFont();
-    // Post: the font used by the text edit is set to a font chosen in a font dialog
+public slots:
+    void onFontChanged(QFont font);
 
 private:
     Ui::OutputPane *ui;

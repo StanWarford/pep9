@@ -185,21 +185,17 @@ bool ListingTracePane::hasFocus()
     return ui->listingTraceTableWidget->hasFocus() || ui->listingPepOsTraceTableWidget->hasFocus();
 }
 
-void ListingTracePane::setFont()
-{
-    bool ok = false;
-    QFont font = QFontDialog::getFont(&ok, QFont(ui->listingTraceTableWidget->font()), this, "Set Listing Trace Font");
-    if (ok) {
-        ui->listingTraceTableWidget->setFont(font);
-        ui->listingPepOsTraceTableWidget->setFont(font);
-        ui->listingTraceTableWidget->resizeColumnsToContents();
-        ui->listingPepOsTraceTableWidget->resizeColumnsToContents();
-    }
-}
-
 void ListingTracePane::setFocus()
 {
     ui->listingTraceTableWidget->isHidden() ? ui->listingPepOsTraceTableWidget->setFocus() : ui->listingTraceTableWidget->setFocus();
+}
+
+void ListingTracePane::onFontChanged(QFont font)
+{
+    ui->listingTraceTableWidget->setFont(font);
+    ui->listingPepOsTraceTableWidget->setFont(font);
+    ui->listingTraceTableWidget->resizeColumnsToContents();
+    ui->listingPepOsTraceTableWidget->resizeColumnsToContents();
 }
 
 //void ListingTracePane::resizeDocWidth()

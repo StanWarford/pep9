@@ -151,8 +151,17 @@ MainWindow::MainWindow(QWidget *parent)
     connect(terminalPane, SIGNAL(inputReceived()), this, SLOT(inputReceived()));
 
     // connect(ui->horizontalSplitter, SIGNAL(splitterMoved(int,int)), this, SLOT(resizeDocWidth(int,int)));
-    //Connect font defaulting signals
-    connect(this,SIGNAL(defaultFonts()),sourceCodePane,SLOT(onDefaultFonts()));
+    //Connect font signals
+    connect(this,SIGNAL(fontChanged(QFont)),sourceCodePane,SLOT(onFontChanged(QFont)));
+    connect(this,SIGNAL(fontChanged(QFont)),objectCodePane,SLOT(onFontChanged(QFont)));
+    connect(this,SIGNAL(fontChanged(QFont)),assemblerListingPane,SLOT(onFontChanged(QFont)));
+    connect(this,SIGNAL(fontChanged(QFont)),listingTracePane,SLOT(onFontChanged(QFont)));
+    connect(this,SIGNAL(fontChanged(QFont)),memoryTracePane,SLOT(onFontChanged(QFont)));
+    connect(this,SIGNAL(fontChanged(QFont)),inputPane,SLOT(onFontChanged(QFont)));
+    connect(this,SIGNAL(fontChanged(QFont)),outputPane,SLOT(onFontChanged(QFont)));
+    connect(this,SIGNAL(fontChanged(QFont)),terminalPane,SLOT(onFontChanged(QFont)));
+    connect(this,SIGNAL(fontChanged(QFont)),memoryDumpPane,SLOT(onFontChanged(QFont)));
+    connect(this,SIGNAL(fontChanged(QFont)),helpDialog,SLOT(onFontChanged(QFont)));
     readSettings();
 
     // Recent files
@@ -219,6 +228,7 @@ void MainWindow::readSettings()
     int height = static_cast<int>(desktop->height() * 0.70);
     int screenWidth = desktop->width();
     int screenHeight = desktop->height();
+    paneFonts = QFont(Pep::codeFont,Pep::codeFontSize);
     settings.beginGroup("MainWindow");
     QPoint pos = settings.value("pos", QPoint((screenWidth - width) / 2, (screenHeight - height) / 2)).toPoint();
     QSize size = settings.value("size", QSize(width, height)).toSize();
@@ -234,6 +244,12 @@ void MainWindow::readSettings()
     resize(size);
     move(pos);
     curPath = settings.value("filePath", QDir::homePath()).toString();
+    QVariant val = settings.value("font", paneFonts);
+    if(val.canConvert<QFont>())
+    {
+        paneFonts = qvariant_cast<QFont>(val);
+    }
+    emit fontChanged(paneFonts);
     settings.endGroup();
     sourceCodePane->readSettings(settings);
 }
@@ -245,6 +261,7 @@ void MainWindow::writeSettings()
     settings.setValue("pos", pos());
     settings.setValue("size", size());
     settings.setValue("filePath", curPath);
+    settings.setValue("font",paneFonts);
     settings.endGroup();
     sourceCodePane->writeSettings(settings);
 }
@@ -854,40 +871,19 @@ void MainWindow::on_actionEdit_Format_From_Listing_triggered()
 
 void MainWindow::on_actionEdit_Font_triggered()
 {
-    if (sourceCodePane->hasFocus()) {
-        sourceCodePane->setFont();
-    }
-    else if (objectCodePane->hasFocus()) {
-        objectCodePane->setFont();
-    }
-    else if (assemblerListingPane->hasFocus()) {
-        assemblerListingPane->setFont();
-    }
-    else if (listingTracePane->hasFocus()) {
-        listingTracePane->setFont();
-    }
-    else if (memoryTracePane->hasFocus()) {
-        memoryTracePane->setFont();
-    }
-    else if (inputPane->hasFocus()) {
-        inputPane->setFont();
-    }
-    else if (outputPane->hasFocus()) {
-        outputPane->setFont();
-    }
-    else if (terminalPane->hasFocus()) {
-        terminalPane->setFont();
-    }
-    else if (memoryDumpPane->hasFocus()) {
-        memoryDumpPane->setFont();
-        memoryDumpPane->updateGeometry();
-        memoryDumpPane->setMaximumWidth(memoryDumpPane->memoryDumpWidth());
+    bool ok = false;
+    QFont font = QFontDialog::getFont(&ok, QFont(paneFonts), this, "Set Code Font");
+    if(ok)
+    {
+        paneFonts = font;
+        emit fontChanged(paneFonts);
     }
 }
 
 void MainWindow::on_actionRest_Fonts_to_Default_triggered()
 {
-    emit defaultFonts();
+    paneFonts=QFont(Pep::codeFont,Pep::codeFontSize);
+    emit fontChanged(paneFonts);
 }
 
 void MainWindow::on_actionEdit_Remove_Error_Messages_triggered()

@@ -56,6 +56,8 @@ public:
 
     void setCopyButtonDisabled(bool b);
     // Post: the enabled state of the copy to source/object code button is set to b
+public slots:
+    void onFontChanged(QFont font);
 
 private:
     Ui::HelpDialog *ui;

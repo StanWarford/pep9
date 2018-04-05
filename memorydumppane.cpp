@@ -297,19 +297,15 @@ void MemoryDumpPane::copy()
     ui->textEdit->copy();
 }
 
-void MemoryDumpPane::setFont()
-{
-    bool ok = false;
-    QFont font = QFontDialog::getFont(&ok, QFont(ui->textEdit->font()), this, "Set Memory Dump Font");
-    if (ok) {
-        ui->textEdit->setFont(font);
-    }
-}
-
 int MemoryDumpPane::memoryDumpWidth()
 {
     return ui->textEdit->document()->documentLayout()->documentSize().toSize().width() +
             ui->textEdit->verticalScrollBar()->width() + 6;
+}
+
+void MemoryDumpPane::onFontChanged(QFont font)
+{
+    ui->textEdit->setFont(font);
 }
 
 void MemoryDumpPane::highlightByte(int memAddr, QColor foreground, QColor background)

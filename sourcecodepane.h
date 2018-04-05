@@ -133,9 +133,6 @@ public:
     void paste();
     // Post: selected text in the clipboard is pasted to the text edit
 
-    void setFont();
-    // Post: the font used by the text edit is set to a font chosen in a font dialog
-
     void setReadOnly(bool b);
     // Post: the text edit's read only attribute is set to b
 
@@ -144,7 +141,7 @@ public:
     void writeSettings(QSettings& settings);
     void readSettings(QSettings& settings);
 public slots:
-    void onDefaultFonts();
+    void onFontChanged(QFont font);
 private:
     Ui::SourceCodePane *ui;
     QList<Code *> codeList;

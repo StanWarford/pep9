@@ -127,15 +127,6 @@ void AssemblerListingPane::copy()
     ui->textEdit->copy();
 }
 
-void AssemblerListingPane::setFont()
-{
-    bool ok = false;
-    QFont font = QFontDialog::getFont(&ok, QFont(ui->textEdit->font()), this, "Set Assembler Listing Font");
-    if (ok) {
-        ui->textEdit->setFont(font);
-    }
-}
-
 void AssemblerListingPane::setFocus()
 {
     ui->textEdit->setFocus();
@@ -144,6 +135,11 @@ void AssemblerListingPane::setFocus()
 bool AssemblerListingPane::isEmpty()
 {
     return ui->textEdit->toPlainText() == "";
+}
+
+void AssemblerListingPane::onFontChanged(QFont font)
+{
+    ui->textEdit->setFont(font);
 }
 
 void AssemblerListingPane::mouseReleaseEvent(QMouseEvent *)
