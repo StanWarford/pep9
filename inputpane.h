@@ -68,14 +68,14 @@ public:
     void paste();
     // Post: selected text in the clipboard is pasted to the text edit
 
-    void setFont();
-    // Post: the font used by the text edit is set to a font chosen in a font dialog
-
     void setReadOnly(bool b);
     // Post: the text edit's read only attribute is set to b
 
     void tab();
     // Post: a tab is inserted in the input pane if it is not read only
+
+public slots:
+    void onFontChanged(QFont font);
 
 private:
     Ui::InputPane *ui;

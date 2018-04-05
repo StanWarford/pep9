@@ -644,3 +644,10 @@ void HelpDialog::setCopyButtonDisabled(bool b)
 {
     ui->copyToSourceButton->setDisabled(b);
 }
+
+void HelpDialog::onFontChanged(QFont font)
+{
+    ui->rightCppTextEdit->setFont(font);
+    ui->rightPepTextEdit->setFont(font);
+    ui->leftTextEdit->setFont(font);
+}

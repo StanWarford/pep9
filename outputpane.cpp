@@ -70,13 +70,9 @@ void OutputPane::copy()
     ui->plainTextEdit->copy();
 }
 
-void OutputPane::setFont()
+void OutputPane::onFontChanged(QFont font)
 {
-    bool ok = false;
-    QFont font = QFontDialog::getFont(&ok, QFont(ui->plainTextEdit->font()), this, "Set Output Font");
-    if (ok) {
-        ui->plainTextEdit->setFont(font);
-    }
+    ui->plainTextEdit->setFont(font);
 }
 
 void OutputPane::mouseReleaseEvent(QMouseEvent *)

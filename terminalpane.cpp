@@ -88,13 +88,9 @@ void TerminalPane::copy()
     ui->plainTextEdit->copy();
 }
 
-void TerminalPane::setFont()
+void TerminalPane::onFontChanged(QFont font)
 {
-    bool ok = false;
-    QFont font = QFontDialog::getFont(&ok, QFont(ui->plainTextEdit->font()), this, "Set Terminal Font");
-    if (ok) {
-        ui->plainTextEdit->setFont(font);
-    }
+    ui->plainTextEdit->setFont(font);
 }
 
 void TerminalPane::displayTerminal()

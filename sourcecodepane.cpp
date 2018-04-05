@@ -356,15 +356,6 @@ void SourceCodePane::paste()
     ui->textEdit->paste();
 }
 
-void SourceCodePane::setFont()
-{
-    bool ok = false;
-    QFont font = QFontDialog::getFont(&ok, QFont(ui->textEdit->font()), this, "Set Source Code Font");
-    if (ok) {
-        ui->textEdit->setFont(font);
-    }
-}
-
 void SourceCodePane::setReadOnly(bool b)
 {
     ui->textEdit->setReadOnly(b);
@@ -405,26 +396,18 @@ void SourceCodePane::tab()
 void SourceCodePane::writeSettings(QSettings &settings)
 {
     settings.beginGroup("SourceCodePane");
-    settings.setValue("EditorFont",ui->textEdit->font());
     settings.endGroup();
 }
 
 void SourceCodePane::readSettings(QSettings &settings)
 {
     settings.beginGroup("SourceCodePane");
-    QFont font = QFont(Pep::codeFont,Pep::codeFontSize);
-    QVariant val = settings.value("EditorFont",font);
-    if(val.canConvert<QFont>())
-    {
-        font = qvariant_cast<QFont>(val);
-    }
-    ui->textEdit->setFont(font);
     settings.endGroup();
 }
 
-void SourceCodePane::onDefaultFonts()
+void SourceCodePane::onFontChanged(QFont font)
 {
-    ui->textEdit->setFont(QFont(Pep::codeFont,Pep::codeFontSize));
+    ui->textEdit->setFont(font);
 }
 
 void SourceCodePane::mouseReleaseEvent(QMouseEvent *)

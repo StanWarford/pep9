@@ -161,18 +161,14 @@ void ObjectCodePane::paste()
     ui->textEdit->paste();
 }
 
-void ObjectCodePane::setFont()
-{
-    bool ok = false;
-    QFont font = QFontDialog::getFont(&ok, QFont(ui->textEdit->font()), this, "Set Object Code Font");
-    if (ok) {
-        ui->textEdit->setFont(font);
-    }
-}
-
 void ObjectCodePane::setReadOnly(bool b)
 {
     ui->textEdit->setReadOnly(b);
+}
+
+void ObjectCodePane::onFontChanged(QFont font)
+{
+    ui->textEdit->setFont(font);
 }
 
 void ObjectCodePane::mouseReleaseEvent(QMouseEvent *)

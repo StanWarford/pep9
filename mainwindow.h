@@ -68,7 +68,7 @@ protected:
 
 private:
     Ui::MainWindowClass *ui;
-
+    QFont paneFonts;
     // Left pane
     SourceCodePane *sourceCodePane;
     ObjectCodePane *objectCodePane;
@@ -241,7 +241,7 @@ private slots:
 */
 signals:
     //If a subobject needs to be aware of font resets, connect to this signal
-    void defaultFonts();
+    void fontChanged(QFont font);
 };
 
 #endif // MAINWINDOW_H
