@@ -41,6 +41,16 @@ public:
     static const QString labelFont;
     static const int labelFontSize;
 
+    // Syntax colors
+    static QColor colorOprnd;
+    static QColor colorSymbol;
+    static QColor colorString;
+    static QColor colorComment;
+    static QColor colorErrorFg;
+    static QColor colorErrorBg;
+    static QColor colorWarningFg;
+    static QColor colorWarningBg;
+
     // Default redefine mnemonics
     static const QString defaultUnaryMnemonic0;
     static const QString defaultUnaryMnemonic1;

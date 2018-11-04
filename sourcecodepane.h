@@ -142,6 +142,7 @@ public:
     void readSettings(QSettings& settings);
 public slots:
     void onFontChanged(QFont font);
+    void onColorChanged();
 private:
     Ui::SourceCodePane *ui;
     QList<Code *> codeList;

@@ -19,13 +19,14 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "pephighlighter.h"
+#include "mainwindow.h"
 
 PepHighlighter::PepHighlighter(QTextDocument *parent)
     : QSyntaxHighlighter(parent)
 {
     HighlightingRule rule;
 
-    oprndFormat.setForeground(Qt::darkBlue);
+    oprndFormat.setForeground(Pep::colorOprnd);
     oprndFormat.setFontWeight(QFont::Bold);
     QStringList oprndPatterns;
     oprndPatterns << "\\bADD(A|SP|X)\\b" << "\\bAND(A|X)\\b" << "\\bASL(A|X)\\b"
@@ -45,7 +46,7 @@ PepHighlighter::PepHighlighter(QTextDocument *parent)
         highlightingRules.append(rule);
     }
 
-    dotFormat.setForeground(Qt::darkBlue);
+    dotFormat.setForeground(Pep::colorOprnd);
     dotFormat.setFontItalic(true);
     QStringList dotPatterns;
     dotPatterns << "[\\.]\\bEQUATE\\b" << "[\\.]\\bASCII\\b" << "[\\.]\\bBLOCK\\b"
@@ -58,31 +59,31 @@ PepHighlighter::PepHighlighter(QTextDocument *parent)
     }
 
     symbolFormat.setFontWeight(QFont::Bold);
-    symbolFormat.setForeground(Qt::darkMagenta);
+    symbolFormat.setForeground(Pep::colorSymbol);
     rule.pattern = QRegExp("[A-Za-z0-9_]+(?=:)");
     rule.format = symbolFormat;
     highlightingRules.append(rule);
 
-    singleLineCommentFormat.setForeground(Qt::darkGreen);
+    singleLineCommentFormat.setForeground(Pep::colorComment);
     rule.pattern = QRegExp(";.*");
     rule.format = singleLineCommentFormat;
     highlightingRules.append(rule);
 
-    multiLineCommentFormat.setForeground(Qt::white);
-    multiLineCommentFormat.setBackground(Qt::red);
+    multiLineCommentFormat.setForeground(Pep::colorErrorFg);
+    multiLineCommentFormat.setBackground(Pep::colorErrorBg);
 
-    singleQuotationFormat.setForeground(Qt::red);
+    singleQuotationFormat.setForeground(Pep::colorString);
     rule.pattern = QRegExp("((\')(?![\'])(([^\'|\\\\]){1}|((\\\\)([\'|b|f|n|r|t|v|\"|\\\\]))|((\\\\)(([x|X])([0-9|A-F|a-f]{2}))))(\'))");
     rule.format = singleQuotationFormat;
     highlightingRules.append(rule);
 
-    doubleQuotationFormat.setForeground(Qt::red);
+    doubleQuotationFormat.setForeground(Pep::colorString);
     rule.pattern = QRegExp("((\")((([^\"|\\\\])|((\\\\)([\'|b|f|n|r|t|v|\"|\\\\]))|((\\\\)(([x|X])([0-9|A-F|a-f]{2}))))*)(\"))");
     rule.format = doubleQuotationFormat;
     highlightingRules.append(rule);
 
-    warningFormat.setForeground(Qt::white);
-    warningFormat.setBackground(Qt::blue);
+    warningFormat.setForeground(Pep::colorWarningFg);
+    warningFormat.setBackground(Pep::colorWarningBg);
     rule.pattern = QRegExp(";WARNING:[\\s].*$");
     rule.format = warningFormat;
     highlightingRules.append(rule);
