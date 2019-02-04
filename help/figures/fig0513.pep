@@ -12,8 +12,8 @@
          LDBA    '\n',i      
          STBA    0xFC16,d    
          DECO    0x0005,d    ;Interpret Second and Third as dec
-         STBA    0xFC16,d    
          LDBA    '\n',i      
+         STBA    0xFC16,d    
          HEXO    0x0005,d    ;Interpret Second and Third as hex
          LDBA    '\n',i      
          STBA    0xFC16,d    
