@@ -69,6 +69,7 @@ protected:
 private:
     Ui::MainWindowClass *ui;
     QFont paneFonts;
+
     // Left pane
     SourceCodePane *sourceCodePane;
     ObjectCodePane *objectCodePane;
@@ -130,6 +131,8 @@ private:
 
     bool eventFilter(QObject *, QEvent *event);
 
+    void changeFontColor(QColor &fontColor);
+
 private slots:
     // File
     void on_actionFile_New_triggered();
@@ -151,6 +154,14 @@ private slots:
     void on_actionEdit_Format_From_Listing_triggered();
     void on_actionEdit_Font_triggered();
     void on_actionRest_Fonts_to_Default_triggered();
+    void on_actionOperator_Color_triggered();
+    void on_actionSymbol_Color_triggered();
+    void on_actionComment_Color_triggered();
+    void on_actionString_Color_triggered();
+    void on_actionWarningBg_Color_triggered();
+    void on_actionWarningFg_Color_triggered();
+    void on_actionErrorBg_Color_triggered();
+    void on_actionErrorFg_Color_triggered();
     void on_actionEdit_Remove_Error_Messages_triggered();
 
     // Build
@@ -242,6 +253,7 @@ private slots:
 signals:
     //If a subobject needs to be aware of font resets, connect to this signal
     void fontChanged(QFont font);
+    void colorChanged();
 };
 
 #endif // MAINWINDOW_H

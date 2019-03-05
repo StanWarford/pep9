@@ -152,6 +152,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     // connect(ui->horizontalSplitter, SIGNAL(splitterMoved(int,int)), this, SLOT(resizeDocWidth(int,int)));
     //Connect font signals
+    connect(this,SIGNAL(colorChanged()),sourceCodePane,SLOT(onColorChanged()));
     connect(this,SIGNAL(fontChanged(QFont)),sourceCodePane,SLOT(onFontChanged(QFont)));
     connect(this,SIGNAL(fontChanged(QFont)),objectCodePane,SLOT(onFontChanged(QFont)));
     connect(this,SIGNAL(fontChanged(QFont)),assemblerListingPane,SLOT(onFontChanged(QFont)));
@@ -229,6 +230,7 @@ void MainWindow::readSettings()
     int screenWidth = desktop->width();
     int screenHeight = desktop->height();
     paneFonts = QFont(Pep::codeFont,Pep::codeFontSize);
+
     settings.beginGroup("MainWindow");
     QPoint pos = settings.value("pos", QPoint((screenWidth - width) / 2, (screenHeight - height) / 2)).toPoint();
     QSize size = settings.value("size", QSize(width, height)).toSize();
@@ -577,6 +579,13 @@ void MainWindow::setDebugState(bool b)
     }
 }
 
+void MainWindow::changeFontColor(QColor &syntax)
+{
+    QColor color = QColorDialog::getColor(Qt::white, this, "Pick a color:");
+    syntax = color;
+    emit colorChanged();
+}
+
 bool MainWindow::eventFilter(QObject *, QEvent *event)
 {
     if (event->type() == QEvent::KeyPress) {
@@ -889,6 +898,47 @@ void MainWindow::on_actionRest_Fonts_to_Default_triggered()
 void MainWindow::on_actionEdit_Remove_Error_Messages_triggered()
 {
     sourceCodePane->removeErrorMessages();
+}
+
+// Syntax highlighting actions
+void MainWindow::on_actionOperator_Color_triggered()
+{
+    MainWindow::changeFontColor(Pep::colorOprnd);
+}
+
+void MainWindow::on_actionSymbol_Color_triggered()
+{
+    MainWindow::changeFontColor(Pep::colorSymbol);
+}
+
+void MainWindow::on_actionComment_Color_triggered()
+{
+    MainWindow::changeFontColor(Pep::colorComment);
+}
+
+void MainWindow::on_actionString_Color_triggered()
+{
+    MainWindow::changeFontColor(Pep::colorString);
+}
+
+void MainWindow::on_actionWarningBg_Color_triggered()
+{
+    MainWindow::changeFontColor(Pep::colorWarningBg);
+}
+
+void MainWindow::on_actionWarningFg_Color_triggered()
+{
+    MainWindow::changeFontColor(Pep::colorWarningFg);
+}
+
+void MainWindow::on_actionErrorBg_Color_triggered()
+{
+    MainWindow::changeFontColor(Pep::colorErrorBg);
+}
+
+void MainWindow::on_actionErrorFg_Color_triggered()
+{
+    MainWindow::changeFontColor(Pep::colorErrorFg);
 }
 
 // Build MainWindow triggers

@@ -410,6 +410,12 @@ void SourceCodePane::onFontChanged(QFont font)
     ui->textEdit->setFont(font);
 }
 
+// TODO: Make syntax highlighting persistent between runs, like fonts are.
+void SourceCodePane::onColorChanged() {
+    pepHighlighter = new PepHighlighter(ui->textEdit->document());
+    pepHighlighter->rehighlight();
+}
+
 void SourceCodePane::mouseReleaseEvent(QMouseEvent *)
 {
     ui->textEdit->setFocus();
@@ -431,5 +437,4 @@ void SourceCodePane::setLabelToModified(bool modified)
         ui->label->setText(temp);
     }
 }
-
 

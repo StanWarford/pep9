@@ -349,7 +349,7 @@
      <x>0</x>
      <y>0</y>
      <width>1044</width>
-     <height>22</height>
+     <height>33</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_Edit">
@@ -359,6 +359,40 @@
     <property name="title">
      <string>&amp;Edit</string>
     </property>
+    <widget class="QMenu" name="menuFonts">
+     <property name="title">
+      <string>Fo&amp;nts...</string>
+     </property>
+     <widget class="QMenu" name="menu_Change_Syntax_Colors">
+      <property name="title">
+       <string>&amp;Change Syntax Colors</string>
+      </property>
+      <widget class="QMenu" name="menuWarning">
+       <property name="title">
+        <string>&amp;Warning</string>
+       </property>
+       <addaction name="actionWarningBg_Color"/>
+       <addaction name="actionWarningFg_Color"/>
+      </widget>
+      <widget class="QMenu" name="menuError">
+       <property name="title">
+        <string>&amp;Error</string>
+       </property>
+       <addaction name="actionErrorFg_Color"/>
+       <addaction name="actionErrorBg_Color"/>
+      </widget>
+      <addaction name="actionOperator_Color"/>
+      <addaction name="actionSymbol_Color"/>
+      <addaction name="actionComment_Color"/>
+      <addaction name="actionString_Color"/>
+      <addaction name="menuWarning"/>
+      <addaction name="menuError"/>
+     </widget>
+     <addaction name="actionEdit_Font"/>
+     <addaction name="actionRest_Fonts_to_Default"/>
+     <addaction name="separator"/>
+     <addaction name="menu_Change_Syntax_Colors"/>
+    </widget>
     <addaction name="actionEdit_Undo"/>
     <addaction name="actionEdit_Redo"/>
     <addaction name="separator"/>
@@ -369,8 +403,7 @@
     <addaction name="actionEdit_Format_From_Listing"/>
     <addaction name="actionEdit_Remove_Error_Messages"/>
     <addaction name="separator"/>
-    <addaction name="actionEdit_Font"/>
-    <addaction name="actionRest_Fonts_to_Default"/>
+    <addaction name="menuFonts"/>
    </widget>
    <widget class="QMenu" name="menu_File">
     <property name="toolTip">
@@ -394,7 +427,7 @@
    </widget>
    <widget class="QMenu" name="menuBuild">
     <property name="title">
-     <string>Build</string>
+     <string>B&amp;uild</string>
     </property>
     <addaction name="actionBuild_Assemble"/>
     <addaction name="actionBuild_Load"/>
@@ -413,7 +446,7 @@
    </widget>
    <widget class="QMenu" name="menu_System">
     <property name="title">
-     <string>&amp;System</string>
+     <string>S&amp;ystem</string>
     </property>
     <addaction name="actionSystem_Clear_Memory"/>
     <addaction name="actionSystem_Redefine_Mnemonics"/>
@@ -441,7 +474,7 @@
     </property>
     <widget class="QMenu" name="menuHelp_Writing_Programs">
      <property name="title">
-      <string>Writing Programs</string>
+      <string>&amp;Writing Programs</string>
      </property>
      <addaction name="actionHelp_Machine_Language"/>
      <addaction name="actionHelp_Assembly_Language"/>
@@ -512,7 +545,7 @@
   </action>
   <action name="actionFile_Save_Source_As">
    <property name="text">
-    <string>Save Source As...</string>
+    <string>Sa&amp;ve Source As...</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+Shift+S</string>
@@ -587,7 +620,7 @@
      <normaloff>:/images/copy.png</normaloff>:/images/copy.png</iconset>
    </property>
    <property name="text">
-    <string>Copy</string>
+    <string>C&amp;opy</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+C</string>
@@ -602,7 +635,7 @@
      <normaloff>:/images/paste.png</normaloff>:/images/paste.png</iconset>
    </property>
    <property name="text">
-    <string>Paste</string>
+    <string>&amp;Paste</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+V</string>
@@ -613,7 +646,7 @@
   </action>
   <action name="actionEdit_Font">
    <property name="text">
-    <string>Font...</string>
+    <string>Change Fo&amp;nt</string>
    </property>
    <property name="shortcut">
     <string/>
@@ -625,7 +658,7 @@
      <normaloff>:/images/assemble.png</normaloff>:/images/assemble.png</iconset>
    </property>
    <property name="text">
-    <string>Assemble</string>
+    <string>&amp;Assemble</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+Shift+A</string>
@@ -640,7 +673,7 @@
      <normaloff>:/images/execute.png</normaloff>:/images/execute.png</iconset>
    </property>
    <property name="text">
-    <string>Execute</string>
+    <string>&amp;Execute</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+Shift+E</string>
@@ -655,7 +688,7 @@
      <normaloff>:/images/run.png</normaloff>:/images/run.png</iconset>
    </property>
    <property name="text">
-    <string>Run Source</string>
+    <string>&amp;Run Source</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+R</string>
@@ -673,7 +706,7 @@
      <normaloff>:/images/debugger_start.png</normaloff>:/images/debugger_start.png</iconset>
    </property>
    <property name="text">
-    <string>Start Debugging Source</string>
+    <string>&amp;Start Debugging Source</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+D</string>
@@ -684,27 +717,27 @@
   </action>
   <action name="actionEdit_Remove_Error_Messages">
    <property name="text">
-    <string>Remove Error Messages</string>
+    <string>Remove &amp;Error Messages</string>
    </property>
   </action>
   <action name="actionSystem_Redefine_Mnemonics">
    <property name="text">
-    <string>Redefine Mnemonics...</string>
+    <string>&amp;Redefine Mnemonics...</string>
    </property>
   </action>
   <action name="actionSystem_Assemble_Install_New_OS">
    <property name="text">
-    <string>Assemble/Install New OS</string>
+    <string>&amp;Assemble/Install New OS</string>
    </property>
   </action>
   <action name="actionSystem_Reinstall_Default_OS">
    <property name="text">
-    <string>Reinstall Default OS</string>
+    <string>Reinstall &amp;Default OS</string>
    </property>
   </action>
   <action name="actionHelp_Writing_Trap_Handlers">
    <property name="text">
-    <string>Writing Trap Handlers</string>
+    <string>Writing Trap &amp;Handlers</string>
    </property>
   </action>
   <action name="actionView_Code_Only">
@@ -713,7 +746,7 @@
      <normaloff>:/images/CodeOnly.xpm</normaloff>:/images/CodeOnly.xpm</iconset>
    </property>
    <property name="text">
-    <string>Code Only</string>
+    <string>&amp;Code Only</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+1</string>
@@ -728,7 +761,7 @@
      <normaloff>:/images/CodeCPU.xpm</normaloff>:/images/CodeCPU.xpm</iconset>
    </property>
    <property name="text">
-    <string>Code/CPU</string>
+    <string>C&amp;ode/CPU</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+2</string>
@@ -743,7 +776,7 @@
      <normaloff>:/images/CodeCPUMemory.xpm</normaloff>:/images/CodeCPUMemory.xpm</iconset>
    </property>
    <property name="text">
-    <string>Code/CPU/Memory</string>
+    <string>Code/CPU/&amp;Memory</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+3</string>
@@ -754,27 +787,27 @@
   </action>
   <action name="actionAbout_Pep9">
    <property name="text">
-    <string>About Pep9</string>
+    <string>&amp;About Pep9</string>
    </property>
   </action>
   <action name="actionAbout_Qt">
    <property name="text">
-    <string>About Qt</string>
+    <string>About &amp;Qt</string>
    </property>
   </action>
   <action name="actionHelp_Assembly_Language">
    <property name="text">
-    <string>Assembly Language</string>
+    <string>&amp;Assembly Language</string>
    </property>
   </action>
   <action name="actionHelp_Machine_Language">
    <property name="text">
-    <string>Machine Language</string>
+    <string>&amp;Machine Language</string>
    </property>
   </action>
   <action name="actionHelp_Examples">
    <property name="text">
-    <string>Examples</string>
+    <string>&amp;Examples</string>
    </property>
   </action>
   <action name="actionBuild_Load">
@@ -783,7 +816,7 @@
      <normaloff>:/images/load.xpm</normaloff>:/images/load.xpm</iconset>
    </property>
    <property name="text">
-    <string>Load</string>
+    <string>&amp;Load</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+Shift+L</string>
@@ -794,27 +827,27 @@
   </action>
   <action name="actionHelp_Pep_9_Operating_System">
    <property name="text">
-    <string>Pep/9 Operating System</string>
+    <string>Pep/&amp;9 Operating System</string>
    </property>
   </action>
   <action name="actionFile_Save_Object_As">
    <property name="text">
-    <string>Save Object As...</string>
+    <string>Sav&amp;e Object As...</string>
    </property>
   </action>
   <action name="actionFile_Save_Listing_As">
    <property name="text">
-    <string>Save Listing As...</string>
+    <string>Save &amp;Listing As...</string>
    </property>
   </action>
   <action name="actionFile_Print_Object">
    <property name="text">
-    <string>&amp;Print Object...</string>
+    <string>P&amp;rint Object...</string>
    </property>
   </action>
   <action name="actionFile_Print_Listing">
    <property name="text">
-    <string>&amp;Print Listing...</string>
+    <string>Pr&amp;int Listing...</string>
    </property>
   </action>
   <action name="actionHelp">
@@ -835,7 +868,7 @@
     <bool>false</bool>
    </property>
    <property name="text">
-    <string>Format From Listing</string>
+    <string>&amp;Format From Listing</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+L</string>
@@ -843,7 +876,7 @@
   </action>
   <action name="actionView_Code_Tab">
    <property name="text">
-    <string>Code Tab</string>
+    <string>Co&amp;de Tab</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+4</string>
@@ -851,7 +884,7 @@
   </action>
   <action name="actionView_Trace_Tab">
    <property name="text">
-    <string>Trace Tab</string>
+    <string>&amp;Trace Tab</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+5</string>
@@ -859,7 +892,7 @@
   </action>
   <action name="actionView_Batch_I_O_Tab">
    <property name="text">
-    <string>Batch I/O Tab</string>
+    <string>&amp;Batch I/O Tab</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+6</string>
@@ -867,7 +900,7 @@
   </action>
   <action name="actionView_Terminal_Tab">
    <property name="text">
-    <string>Terminal Tab</string>
+    <string>T&amp;erminal Tab</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+7</string>
@@ -878,7 +911,7 @@
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>Start Debugging Object</string>
+    <string>Start De&amp;bugging Object</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+Shift+D</string>
@@ -886,7 +919,7 @@
   </action>
   <action name="actionBuild_Run_Object">
    <property name="text">
-    <string>Run Object</string>
+    <string>Run &amp;Object</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+Shift+R</string>
@@ -901,7 +934,7 @@
      <normaloff>:/images/stop.png</normaloff>:/images/stop.png</iconset>
    </property>
    <property name="text">
-    <string>Stop Debugging</string>
+    <string>Stop &amp;Debugging</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+E</string>
@@ -915,7 +948,7 @@
     <bool>false</bool>
    </property>
    <property name="text">
-    <string>Interrupt Execution</string>
+    <string>&amp;Interrupt Execution</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+.</string>
@@ -923,32 +956,72 @@
   </action>
   <action name="actionHelp_Debugging_Programs">
    <property name="text">
-    <string>Debugging Programs</string>
+    <string>&amp;Debugging Programs</string>
    </property>
   </action>
   <action name="actionHelp_Pep_9_Reference">
    <property name="text">
-    <string>Pep/9 Reference</string>
+    <string>&amp;Pep/9 Reference</string>
    </property>
   </action>
   <action name="actionBuild_Start_Debugging_Loader">
    <property name="text">
-    <string>Start Debugging Loader</string>
+    <string>Start Deb&amp;ugging Loader</string>
    </property>
   </action>
   <action name="actionHelp_Check_for_updates">
    <property name="text">
-    <string>Check for updates...</string>
+    <string>&amp;Check for updates...</string>
    </property>
   </action>
   <action name="actionSystem_Clear_Memory">
    <property name="text">
-    <string>Clear Memory</string>
+    <string>&amp;Clear Memory</string>
    </property>
   </action>
   <action name="actionRest_Fonts_to_Default">
    <property name="text">
-    <string>Reset Fonts to Default</string>
+    <string>Reset Fonts to &amp;Default</string>
+   </property>
+  </action>
+  <action name="actionComment_Color">
+   <property name="text">
+    <string>&amp;Comment</string>
+   </property>
+  </action>
+  <action name="actionOperator_Color">
+   <property name="text">
+    <string>&amp;Operator</string>
+   </property>
+  </action>
+  <action name="actionString_Color">
+   <property name="text">
+    <string>St&amp;ring/Character</string>
+   </property>
+  </action>
+  <action name="actionWarningBg_Color">
+   <property name="text">
+    <string>&amp;Background</string>
+   </property>
+  </action>
+  <action name="actionWarningFg_Color">
+   <property name="text">
+    <string>&amp;ForeGround</string>
+   </property>
+  </action>
+  <action name="actionErrorFg_Color">
+   <property name="text">
+    <string>&amp;Foreground</string>
+   </property>
+  </action>
+  <action name="actionErrorBg_Color">
+   <property name="text">
+    <string>&amp;Background</string>
+   </property>
+  </action>
+  <action name="actionSymbol_Color">
+   <property name="text">
+    <string>&amp;Symbol</string>
    </property>
   </action>
  </widget>

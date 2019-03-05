@@ -31,6 +31,16 @@ const int Pep::ioFontSize = getSystem() ==  "Windows" ? 10 : (getSystem() == "Ma
 const QString Pep::labelFont = getSystem() == "Windows" ? "Verdana" : (getSystem() == "Mac" ? "Lucida Grande" : "Ubuntu");
 const int Pep::labelFontSize = getSystem() == "Windows" ? 10 : (getSystem() == "Mac" ? 13 : 10);
 
+// Syntax Colors
+QColor Pep::colorComment = Qt::darkGreen;
+QColor Pep::colorErrorBg = Qt::red;
+QColor Pep::colorErrorFg = Qt::white;
+QColor Pep::colorOprnd = Qt::blue;
+QColor Pep::colorString = Qt::red;
+QColor Pep::colorSymbol = Qt::darkMagenta;
+QColor Pep::colorWarningBg = Qt::blue;
+QColor Pep::colorWarningFg = Qt::white;
+
 // Default redefine mnemonics
 const QString Pep::defaultUnaryMnemonic0 = "NOP0";
 const QString Pep::defaultUnaryMnemonic1 = "NOP1";
