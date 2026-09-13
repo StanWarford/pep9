@@ -214,7 +214,7 @@ void MemoryTracePane::updateMemoryTrace()
     }
 
     // Color global/stack/heap items red if they were modified last step
-    QList<int> modifiedBytesToBeUpdated = modifiedBytes.toList();
+    //QList<int> modifiedBytesToBeUpdated = modifiedBytes.toList();
     for (int i = 0; i < bytesWrittenLastStep.size(); i++) {
         if (addressToGlobalItemMap.contains(bytesWrittenLastStep.at(i))) {
             addressToGlobalItemMap.value(bytesWrittenLastStep.at(i))->boxBgColor = Qt::red;
@@ -230,7 +230,7 @@ void MemoryTracePane::updateMemoryTrace()
         }
     }
     // Update modified cells
-    for (int i = 0; i < modifiedBytesToBeUpdated.size(); i++) {
+    /*for (int i = 0; i < modifiedBytesToBeUpdated.size(); i++) {
         if (addressToGlobalItemMap.contains(modifiedBytesToBeUpdated.at(i))) {
             addressToGlobalItemMap.value(modifiedBytesToBeUpdated.at(i))->updateValue();
         }
@@ -240,7 +240,7 @@ void MemoryTracePane::updateMemoryTrace()
         if (addressToHeapItemMap.contains(modifiedBytesToBeUpdated.at(i))) {
             addressToHeapItemMap.value(modifiedBytesToBeUpdated.at(i))->updateValue();
         }
-    }
+    }*/
 
     scene->setSceneRect(scene->itemsBoundingRect());
     // This is time-consuming, but worthwhile to ensure scrollbars aren't going off into oblivion after items are removed.
@@ -268,13 +268,13 @@ void MemoryTracePane::cacheChanges()
     modifiedBytes.unite(Sim::modifiedBytes);
     if (Sim::tracingTraps) {
         bytesWrittenLastStep.clear();
-        bytesWrittenLastStep = Sim::modifiedBytes.toList();
+        // bytesWrittenLastStep = Sim::modifiedBytes.toList();
     }
     else if (Sim::trapped) {
         // We delay for a single vonNeumann step so that we preserve the modified bytes until we leave the trap - this allows for
         // recoloring of cells modified by a trap instruction.
         delayLastStepClear = true;
-        bytesWrittenLastStep.append(Sim::modifiedBytes.toList());
+        //bytesWrittenLastStep.append(Sim::modifiedBytes.toList());
     }
     else if (delayLastStepClear) {
         // Phew! We can now update (in updateMemoryTrace). If we don't, no harm done - they didn't want to see what happened in the trap
@@ -283,7 +283,7 @@ void MemoryTracePane::cacheChanges()
     else {
         // Clear the bytes written the step before last, and get the new list from the previous step. This is used in our update for coloring.
         bytesWrittenLastStep.clear();
-        bytesWrittenLastStep = Sim::modifiedBytes.toList();
+        //bytesWrittenLastStep = Sim::modifiedBytes.toList();
     }
 
     // Look ahead for heap/stack changes:
@@ -567,9 +567,9 @@ void MemoryTracePane::mouseReleaseEvent(QMouseEvent *)
 
 void MemoryTracePane::zoomFactorChanged(int factor)
 {
-    QMatrix matrix;
-    matrix.scale(factor * .01, factor * .01);
-    ui->graphicsView->setMatrix(matrix);
+    //QMatrix matrix;
+    //matrix.scale(factor * .01, factor * .01);
+    //ui->graphicsView->setMatrix(matrix);
 }
 
 void MemoryTracePane::mouseDoubleClickEvent(QMouseEvent *)

@@ -23,7 +23,6 @@
 #define BYTECONVERTERHEX_H
 
 #include <QtWidgets/QWidget>
-#include <QRegExpValidator>
 
 namespace Ui {
     class ByteConverterHex;
@@ -39,7 +38,6 @@ public:
 
 private:
     Ui::ByteConverterHex *ui;
-    QRegExpValidator* hexValidator;
 
 private slots:
     void moveCursorAwayFromPrefix(int old, int current);

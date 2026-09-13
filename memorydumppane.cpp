@@ -178,8 +178,6 @@ void MemoryDumpPane::highlightMemory(bool b)
             highlightedData.append(Sim::programCounter);
         }
 
-        bytesWrittenLastStep = bytesWrittenLastStep.toSet().toList();
-        qSort(bytesWrittenLastStep);
         while (!bytesWrittenLastStep.isEmpty()) {
             // This is to prevent bytes modified by the OS from being highlighted when we are not tracing traps:
             if (bytesWrittenLastStep.at(0) < Sim::readWord(Pep::dotBurnArgument - 0x7) || Sim::trapped) {
@@ -198,18 +196,19 @@ void MemoryDumpPane::cacheModifiedBytes()
     modifiedBytes.unite(Sim::modifiedBytes);
     if (Sim::tracingTraps) {
         bytesWrittenLastStep.clear();
-        bytesWrittenLastStep = Sim::modifiedBytes.toList();
+        bytesWrittenLastStep = QList(Sim::modifiedBytes.begin(), Sim::modifiedBytes.end());
     }
     else if (Sim::trapped) {
         delayLastStepClear = true;
-        bytesWrittenLastStep.append(Sim::modifiedBytes.toList());
+        auto l = QList(Sim::modifiedBytes.begin(), Sim::modifiedBytes.end());
+        bytesWrittenLastStep.append(l);
     }
     else if (delayLastStepClear) {
         delayLastStepClear = false;
     }
     else {
         bytesWrittenLastStep.clear();
-        bytesWrittenLastStep = Sim::modifiedBytes.toList();
+        bytesWrittenLastStep = QList(Sim::modifiedBytes.begin(), Sim::modifiedBytes.end());
     }
 }
 
@@ -226,12 +225,12 @@ void MemoryDumpPane::updateMemory()
     int lineNum;
 
     modifiedBytes.unite(Sim::modifiedBytes);
-    list = modifiedBytes.toList();
+    //list = modifiedBytes.toList();
     while(!list.isEmpty()) {
         linesToBeUpdated.insert(list.takeFirst() / 8);
     }
-    list = linesToBeUpdated.toList();
-    qSort(list.begin(), list.end());
+    //list = linesToBeUpdated.toList();
+    //qSort(list.begin(), list.end());
     QTextCursor cursor(ui->textEdit->document());
     cursor.setPosition(0);
     lineNum = 0;

@@ -27,9 +27,6 @@ ByteConverterBin::ByteConverterBin(QWidget *parent) :
 {
     ui->setupUi(this);
     // Regular expression to validate a binary byte
-    QRegExp binRx("([0-1]{0,8})");
-    binValidator = new QRegExpValidator(binRx, this);
-    ui->lineEdit->setValidator(binValidator);
     // Forward the textEdited() signal from ui->lineEdit up to the main window
     QObject::connect(ui->lineEdit, SIGNAL(textEdited(const QString &)), this,
                      SIGNAL(textEdited(const QString &)));

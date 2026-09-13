@@ -23,7 +23,6 @@
 #define BYTECONVERTERBIN_H
 
 #include <QtWidgets/QWidget>
-#include <QRegExpValidator>
 
 namespace Ui {
     class ByteConverterBin;
@@ -39,7 +38,6 @@ class ByteConverterBin : public QWidget {
 
 private:
     Ui::ByteConverterBin *ui;
-    QRegExpValidator* binValidator;
 
 signals:
     void textEdited(const QString &);

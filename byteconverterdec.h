@@ -23,7 +23,6 @@
 #define BYTECONVERTERDEC_H
 
 #include <QtWidgets>
-#include <QRegExpValidator>
 
 namespace Ui {
     class ByteConverterDec;
@@ -39,7 +38,6 @@ public:
 
 private:
     Ui::ByteConverterDec *ui;
-    QRegExpValidator* decValidator;
 
 signals:
     void textEdited(const QString &);

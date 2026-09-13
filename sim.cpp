@@ -665,7 +665,7 @@ bool Sim::vonNeumannStep(QString &errorString)
         operand = accumulator & 0x00ff;
         if (addrOfByteOprnd(addrMode) == 256 * Mem[Pep::dotBurnArgument - 5] + Mem[Pep::dotBurnArgument - 4]) {
             // Memory-mapped output
-            Sim::outputBuffer = QString(operand);
+            Sim::outputBuffer = QString("%1").arg(operand);
         } else {
             writeByteOprnd(addrMode, operand);
         }
@@ -675,7 +675,7 @@ bool Sim::vonNeumannStep(QString &errorString)
         operand = indexRegister & 0x00ff;
         if (addrOfByteOprnd(addrMode) == 256 * Mem[Pep::dotBurnArgument - 5] + Mem[Pep::dotBurnArgument - 4]) {
             // Memory-mapped output
-            Sim::outputBuffer = QString(operand);
+            Sim::outputBuffer = QString("%1").arg(operand);
         } else {
             writeByteOprnd(addrMode, operand);
         }

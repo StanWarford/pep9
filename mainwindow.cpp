@@ -32,7 +32,6 @@
 #include <QTextDocument>
 #include <QFontDatabase>
 #include <QTextStream>
-#include <QDesktopWidget>
 #include <QTextCodec>
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
@@ -77,10 +76,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     // Dialog boxes setup
     redefineMnemonicsDialog = new RedefineMnemonicsDialog(this);
-    helpDialog = new HelpDialog(this);
     aboutPepDialog = new AboutPep(this);
-
-    connect(helpDialog, SIGNAL(clicked()), this, SLOT(helpCopyToSourceButtonClicked()));
 
     // Byte converter setup
     byteConverterDec = new ByteConverterDec();
@@ -162,7 +158,6 @@ MainWindow::MainWindow(QWidget *parent)
     connect(this,SIGNAL(fontChanged(QFont)),outputPane,SLOT(onFontChanged(QFont)));
     connect(this,SIGNAL(fontChanged(QFont)),terminalPane,SLOT(onFontChanged(QFont)));
     connect(this,SIGNAL(fontChanged(QFont)),memoryDumpPane,SLOT(onFontChanged(QFont)));
-    connect(this,SIGNAL(fontChanged(QFont)),helpDialog,SLOT(onFontChanged(QFont)));
     readSettings();
 
     // Recent files
@@ -224,7 +219,7 @@ bool MainWindow::saveObject()
 void MainWindow::readSettings()
 {
     QSettings settings("cslab.pepperdine", "Pep9");
-    QDesktopWidget *desktop = QApplication::desktop();
+    /*QDesktopWidget *desktop = QApplication::desktop();
     int width = static_cast<int>(desktop->width() * 0.80);
     int height = static_cast<int>(desktop->height() * 0.70);
     int screenWidth = desktop->width();
@@ -253,7 +248,7 @@ void MainWindow::readSettings()
     }
     emit fontChanged(paneFonts);
     settings.endGroup();
-    sourceCodePane->readSettings(settings);
+    sourceCodePane->readSettings(settings);*/
 }
 
 void MainWindow::writeSettings()
@@ -312,7 +307,7 @@ void MainWindow::loadFile(const QString &fileName)
     }
 
     QTextStream in(&file);
-    in.setCodec(QTextCodec::codecForName("ISO 8859-1"));
+    //in.setCodec(QTextCodec::codecForName("ISO 8859-1"));
     QApplication::setOverrideCursor(Qt::WaitCursor);
     QRegExp rx(".*.pepo");
     Enu::EPane pane;
@@ -347,7 +342,7 @@ bool MainWindow::saveFileSource(const QString &fileName)
     }
 
     QTextStream out(&file);
-    out.setCodec(QTextCodec::codecForName("ISO 8859-1"));
+    //out.setCodec(QTextCodec::codecForName("ISO 8859-1"));
     QApplication::setOverrideCursor(Qt::WaitCursor);
     out << sourceCodePane->toPlainText();
     QApplication::restoreOverrideCursor();
@@ -369,7 +364,7 @@ bool MainWindow::saveFileObject(const QString &fileName) // Copied and pasted, c
     }
 
     QTextStream out(&file);
-    out.setCodec(QTextCodec::codecForName("ISO 8859-1"));
+    //out.setCodec(QTextCodec::codecForName("ISO 8859-1"));
     QApplication::setOverrideCursor(Qt::WaitCursor);
     out << objectCodePane->toPlainText();
     QApplication::restoreOverrideCursor();
@@ -391,7 +386,7 @@ bool MainWindow::saveFileListing(const QString &fileName)
     }
 
     QTextStream out(&file);
-    out.setCodec(QTextCodec::codecForName("ISO 8859-1"));
+    //out.setCodec(QTextCodec::codecForName("ISO 8859-1"));
     QApplication::setOverrideCursor(Qt::WaitCursor);
     out << assemblerListingPane->toPlainText();
     QApplication::restoreOverrideCursor();
@@ -568,7 +563,6 @@ void MainWindow::setDebugState(bool b)
     cpuPane->setDebugState(b);
     sourceCodePane->setReadOnly(b);
     objectCodePane->setReadOnly(b);
-    helpDialog->setCopyButtonDisabled(b);
     if (b) {
         Pep::memAddrssToAssemblerListing = &Pep::memAddrssToAssemblerListingProg;
         Pep::listingRowChecked = &Pep::listingRowCheckedProg;
@@ -850,9 +844,6 @@ void MainWindow::on_actionEdit_Copy_triggered()
     else if (memoryDumpPane->hasFocus()) {
         memoryDumpPane->copy();
     }
-    else if (helpDialog->hasFocus()) {
-        helpDialog->copy();
-    }
 }
 
 void MainWindow::on_actionEdit_Paste_triggered()
@@ -871,11 +862,11 @@ void MainWindow::on_actionEdit_Paste_triggered()
 void MainWindow::on_actionEdit_Format_From_Listing_triggered()
 {
     QStringList assemblerListingList = sourceCodePane->getAssemblerListingList();
-    assemblerListingList.replaceInStrings(QRegExp("^............."), "");
+    /*assemblerListingList.replaceInStrings(QRegExp("^............."), "");
     assemblerListingList.removeAll("");
     if (!assemblerListingList.isEmpty()) {
         sourceCodePane->setSourceCodePaneText(assemblerListingList.join("\n"));
-    }
+    }*/
 }
 
 void MainWindow::on_actionEdit_Font_triggered()
@@ -1354,62 +1345,37 @@ void MainWindow::on_actionSystem_Reinstall_Default_OS_triggered()
 }
 
 // Help MainWindow triggers
-void MainWindow::on_actionHelp_triggered()
-{
-    if (helpDialog->isHidden()) {
-        helpDialog->setHidden(false);
-    }
-    else {
-        helpDialog->raise();
-        helpDialog->activateWindow();
-    }
-}
+void MainWindow::on_actionHelp_triggered() {}
 
 void MainWindow::on_actionHelp_Check_for_updates_triggered()
 {
     QDesktopServices::openUrl(QUrl("http://code.google.com/p/pep8-1/"));
 }
 
-void MainWindow::on_actionHelp_Machine_Language_triggered()
-{
-    helpDialog->show();
-    helpDialog->machineLanguageClicked();
-}
+void MainWindow::on_actionHelp_Machine_Language_triggered() {}
 
 void MainWindow::on_actionHelp_Assembly_Language_triggered()
 {
-    helpDialog->show();
-    helpDialog->assemblyLanguageClicked();
 }
 
 void MainWindow::on_actionHelp_Debugging_Programs_triggered()
 {
-    helpDialog->show();
-    helpDialog->debuggingProgramsClicked();
 }
 
 void MainWindow::on_actionHelp_Writing_Trap_Handlers_triggered()
 {
-    helpDialog->show();
-    helpDialog->writingTrapHandlersClicked();
 }
 
 void MainWindow::on_actionHelp_Pep_9_Reference_triggered()
 {
-    helpDialog->show();
-    helpDialog->pep9ReferenceClicked();
 }
 
 void MainWindow::on_actionHelp_Examples_triggered()
 {
-    helpDialog->show();
-    helpDialog->examplesClicked();
 }
 
 void MainWindow::on_actionHelp_Pep_9_Operating_System_triggered()
 {
-    helpDialog->show();
-    helpDialog->operatingSystemClicked();
 }
 
 void MainWindow::on_actionAbout_Pep9_triggered()
@@ -1417,51 +1383,7 @@ void MainWindow::on_actionAbout_Pep9_triggered()
     aboutPepDialog->exec();
 }
 
-void MainWindow::helpCopyToSourceButtonClicked()
-{
-    helpDialog->hide();
-    if (ui->actionBuild_Stop_Debugging->isEnabled()) { // Leaving this here to safeguard.
-        ui->statusbar->showMessage("Copy to source failed, in debugging mode", 4000);
-        return;
-    }
-    Enu::EPane destPane;
-    Enu::EPane inputDest;
-    QString input = "";
-    QString code = helpDialog->getCode(destPane, inputDest, input);
-    outputPane->clearOutput();
-    inputPane->setText("");
-    ui->pepCodeTraceTab->setCurrentIndex(0);
-    if (destPane == Enu::ESource) {
-        if (maybeSaveSource()) {
-            setCurrentFile("", Enu::ESource);
-            sourceCodePane->setSourceCodePaneText(code);
-            assemblerListingPane->clearAssemblerListing();
-            objectCodePane->clearObjectCode();
-            listingTracePane->clearListingTrace();
-            statusBar()->showMessage("Copied to source", 4000);
-            ui->actionBuild_Start_Debugging_Source->setEnabled(false);
-        }
-    }
-    else if (maybeSaveObject()) {
-        setCurrentFile("", Enu::EObject);
-        objectCodePane->setObjectCodePaneText(code);
-        sourceCodePane->clearSourceCode();
-        assemblerListingPane->clearAssemblerListing();
-        listingTracePane->clearListingTrace();
-        statusBar()->showMessage("Copied to object", 4000);
-        ui->actionBuild_Start_Debugging_Source->setEnabled(false);
-    }
-    if (inputDest == Enu::ETerminal) {
-        ui->pepInputOutputTab->setCurrentIndex(1);
-    }
-    else {
-        if (!input.isEmpty()) {
-            inputPane->setText(input);
-            ui->pepInputOutputTab->setCurrentIndex(0);
-            outputPane->clearOutput();
-        }
-    }
-}
+void MainWindow::helpCopyToSourceButtonClicked() {}
 
 void MainWindow::on_actionAbout_Qt_triggered()
 {
@@ -1611,13 +1533,6 @@ void MainWindow::mainWindowUtilities(QWidget *, QWidget *)
         ui->actionEdit_Paste->setDisabled(true);
     }
     else if (memoryDumpPane->hasFocus()) {
-        ui->actionEdit_Undo->setDisabled(true);
-        ui->actionEdit_Redo->setDisabled(true);
-        ui->actionEdit_Cut->setDisabled(true);
-        ui->actionEdit_Copy->setDisabled(false);
-        ui->actionEdit_Paste->setDisabled(true);
-    }
-    else if (helpDialog->hasFocus()) {
         ui->actionEdit_Undo->setDisabled(true);
         ui->actionEdit_Redo->setDisabled(true);
         ui->actionEdit_Cut->setDisabled(true);

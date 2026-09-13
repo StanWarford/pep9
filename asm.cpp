@@ -19,6 +19,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "asm.h"
+#include <QRegExp>
 #include "argument.h"
 #include "code.h"
 

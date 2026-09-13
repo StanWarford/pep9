@@ -23,7 +23,6 @@
 #define BYTECONVERTERCHAR_H
 
 #include <QWidget>
-#include <QRegExpValidator>
 
 namespace Ui {
     class ByteConverterChar;
@@ -39,7 +38,6 @@ public:
 
 private:
     Ui::ByteConverterChar *ui;
-    QRegExpValidator* charValidator;
 
 signals:
     void textEdited(const QString &);

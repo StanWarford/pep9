@@ -5,14 +5,13 @@ TEMPLATE = app
 TARGET = Pep9
 DEPENDPATH += .
 INCLUDEPATH += .
-QT += webenginewidgets
+QT += core5compat
 QT += widgets
 QT += printsupport
 
 # Mac icon/plist
 ICON = images/pep9.icns
 QMAKE_INFO_PLIST = app.plist
-QMAKE_MAC_SDK = macosx10.12
 
 # Windows RC file
 RC_FILE = pep9resources.rc
@@ -35,7 +34,6 @@ HEADERS += mainwindow.h \
     byteconverterchar.h \
     byteconverterbin.h \
     pep.h \
-    helpdialog.h \
     listingtracepane.h \
     asm.h \
     code.h \
@@ -63,7 +61,6 @@ FORMS += mainwindow.ui \
     byteconverterdec.ui \
     byteconverterchar.ui \
     byteconverterbin.ui \
-    helpdialog.ui \
     listingtracepane.ui \
     aboutpep.ui \
     byteconverterinstr.ui
@@ -84,7 +81,6 @@ SOURCES += main.cpp \
     byteconverterchar.cpp \
     byteconverterbin.cpp \
     pep.cpp \
-    helpdialog.cpp \
     listingtracepane.cpp \
     asm.cpp \
     code.cpp \

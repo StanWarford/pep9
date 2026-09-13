@@ -18,7 +18,6 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-#include <QRegExpValidator>
 #include "redefinemnemonicsdialog.h"
 #include "ui_redefinemnemonicsdialog.h"
 
@@ -64,18 +63,6 @@ RedefineMnemonicsDialog::RedefineMnemonicsDialog(QWidget *parent) :
     ui->nonUnaryMnemonic4LineEdit->setFont(QFont(Pep::codeFont));
 
     connect(ui->defaultMnemonicsButton, SIGNAL(clicked()), this, SLOT(restoreDefaults()));
-
-    QRegExp rx("^[A-Za-z][A-Za-z0-9]{0,7}");
-    QValidator *validator = new QRegExpValidator(rx, this);
-
-    ui->nonUnaryMnemonic0LineEdit->setValidator(validator);
-    ui->nonUnaryMnemonic1LineEdit->setValidator(validator);
-    ui->nonUnaryMnemonic2LineEdit->setValidator(validator);
-    ui->nonUnaryMnemonic3LineEdit->setValidator(validator);
-    ui->nonUnaryMnemonic4LineEdit->setValidator(validator);
-
-    ui->unaryMnemonic0LineEdit->setValidator(validator);
-    ui->unaryMnemonic1LineEdit->setValidator(validator);
 
     connect(ui->nonUnaryMnemonic0LineEdit, SIGNAL(textEdited(QString)), this, SLOT(redefineNonUnaryMnemonic0(QString)));
     connect(ui->nonUnaryMnemonic1LineEdit, SIGNAL(textEdited(QString)), this, SLOT(redefineNonUnaryMnemonic1(QString)));
